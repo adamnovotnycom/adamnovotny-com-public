@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Machine Learning Tutorial #2: Training</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Adam Novotny's website. LinkedIn, Medium, Twiter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <base href="/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-green.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+        <main class="mdl-layout__content">
+
+<div class="demo-back">
+    <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="/" title="go back" role="button">
+        <i class="material-icons" role="presentation">arrow_back</i>
+    </a>
+</div>
+<div class="demo-blog__posts mdl-grid">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image: url(https://cdn-images-1.medium.com/max/2600/1*iPgIcpnc-nzkigs6RaTZBw.png); background-repeat: no-repeat; background-size: cover;">
+        <h3>Machine Learning Tutorial #2: Training</h3>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+        <div>
+            <strong>Adam Novotny</strong>
+            <span>2018-08-12</span>
+        </div>
+        <div class="section-spacer"></div>
+        <div>
+            <a href="https://twitter.com/excitedAtom">
+                <i class="material-icons" role="presentation">share</i>
+                <span class="visuallyhidden">share</span>
+            </a>
+        </div>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+            <p>Topics: Performance Metrics, Cross Validation, Model Selection, Hyperparameter Optimization, Project Reflection, Tools</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2600/1*iPgIcpnc-nzkigs6RaTZBw.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%">
+<p>This second part of the ML Tutorial follows up on the first <a href="https://medium.com/@adam5ny/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> part. All code is available in this <a href="https://github.com/adam5ny/blogs/tree/master/ml-training" target="_blank">Github repo</a>. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, #2 Training (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+<p>I concluded Tutorial #1 with 4 datasets: training features, testing features, training target variables, and testing target variables. Only training features and and training target variables will be used in this Tutorial #2. The testing data will be used for evaluation purposes in Tutorial #3.</p>
+<p>Performance Metrics</p>
+<p>We are focused on regression algorithms so I will consider 3 most often used performance metrics</p>
+<ul><li><a href="https://en.wikipedia.org/wiki/Mean_absolute_error" target="_blank">Mean Absolute Error</a> (MAE)</li></ul>
+<ul><li><a href="https://en.wikipedia.org/wiki/Mean_squared_error" target="_blank">Mean Squared Error</a> (MSE)</li></ul>
+<ul><li><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" target="_blank">R²</a></li></ul>
+<p>In practice, a domain-specific decision could be made to supplement the standard metrics above. For example, investors are typically more concerned about significant downside errors rather than upside errors. As a result, a metric could be derived that overemphasizes downside errors corresponding to financial losses.</p>
+<p>Cross Validation</p>
+<p>I will return to the same topic I addressed in <a href="https://medium.com/@adam5ny/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a>. Due to the nature of time series data, standard randomized K-fold validation produces forward looking bias and should not be used. To illustrate the issue here, let’s assume that we split 8 years of data into 8 folds, each representing one year. The first training cycle will use folds #1–7 for training and fold #8 for testing. The next training cycle may use folds #2–8 for training and fold #1 for testing. This is of course unacceptable because we are using data from years 2–7 to forecast year 1.</p>
+<p>Our cross validation must respect the temporal sequence of the data. We can use Walk Forward Validation or simply multiple Train-Test Splits. For illustration, I will use 3 Train-Test splits. For example, let’s assume we have 2000 samples sorted by timestamp from the earliest. Our 3 segments would look as follows:</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*cFti5rqcbFrE5p_4My4eww.png" alt="Train-Test splits. Author: Adam Novotny" style="width: 100%">
+<p>Model Selection</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*M2clZWay68ODL2jEB-J5Dw.png" alt="ML Model Selection. Author: Adam Novotny" style="width: 100%">
+<p>In this section, I will select the models to train. The “Supervised” algorithms section (red section in the image above) is relevant because the dataset contains both features and labels (target variables). I like to follow <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" target="_blank">Occam’s razor</a> when it comes to algorithms selection. In other words, start with the algorithm that exhibits the fastest times to train and the greatest interpretability. Then we can increase complexity.</p>
+<p>I will explore the following algorithms in this section:</p>
+<ul><li>Linear Regression: fast to learn, easy to interpret</li></ul>
+<ul><li>Decision Trees: fast to learn (requires pruning), easy to interpret</li></ul>
+<ul><li>Neural Networks: slow to learn, hard to interpret</li></ul>
+<p>Linear Regression</p>
+<p>Starting with linear regression is useful to see if we can “get away” with simple statistics to achieve our goal before diving into complex machine learning algorithms. House price forecasting with clearly defined features is an example where linear regression often works well and using more complex algorithms is unnecessary.</p>
+<p>Training a linear regression model using sklearn is simple:</p>
+<pre>from sklearn import linear_model
+model = linear_model.LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)</pre>
+<p>Initial results yielded nothing remotely promising so I took another step and transformed features further. I created polynomial and nonlinear features to account for nonlinear relationships. For example, features [a, b] become [1, a, b, a², ab, b²] in the case of degree-2 polynomial.</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*c9-D9EJoTwKsRlJuK_WQaQ.png" alt="Linear Regression results. Author: Adam Novotny" style="width: 100%">
+<p>The x-axis represents 3 cross validation segments (the fold 1st uses 1749 samples for training and 1749 for testing, the 2nd uses 3499 for training and 1749 for testing, and the last uses 5249 for training and 1749 for testing). Clearly, the results suggest that the linear model is not useful in practice. At this stage I have at least the following options:</p>
+<ul><li>Ridge regression: addresses overfitting (if any)</li></ul>
+<ul><li>Lasso linear: reduces model complexity</li></ul>
+<p>At this point, I don’t believe that any of the options above will meaningfully impact the outcome. I will move on to other algorithms to see how they compare.</p>
+<p>Before moving on, however, I need to set expectations. There is a saying in finance that successful forecasters only need to be correct 51% of the time. Financial leverage can be used to magnify results so being just a little correct produces impactful outcomes. This sets expectations because we will never find algorithms that are constantly 60% correct or better in this domain. As a result, we expect low R² values. This needs to be said because many sample projects in machine learning are designed to look good, which we can never match in real-life price forecasting.</p>
+<p>Decision Tree</p>
+<p>Training a decision tree regressor model using sklearn is equally simple:</p>
+<pre>from sklearn import tree
+model = tree.DecisionTreeRegressor()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)</pre>
+<p>The default results for the fit function above almost always <a href="https://en.wikipedia.org/wiki/Overfitting" target="_blank">overfit</a>. Decision trees have a very expressive hypothesis space so they can represent almost any function when not pruned. R² for training data can easily become perfect 1.0 while for testing data the result will be 0. We therefore need to use the max_depth argument of scikit-learn <a href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor" target="_blank">DecisionTreeRegressor</a> to enforce that the tree generalizes well for test data.</p>
+<p>One of the biggest advantages of decision trees is their interpretability: see many useful <a href="https://medium.com/@rnbrown/creating-and-visualizing-decision-trees-with-python-f8e8fa394176" target="_blank">visualization articles</a> using standard illustrative datasets.</p>
+<p>Neural Networks</p>
+<p>Scikit-learn makes <a href="http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor" target="_blank">simple neural network</a> training just as simple as building a decision tree:</p>
+<pre>from sklearn.neural_network import MLPRegressor
+model = MLPRegressor(hidden_layer_sizes=(200, 200), solver="lbfgs", activation="relu")
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)</pre>
+<p>Training a neural net with 2 hidden layers (of 200 units each) and polynomial features starts taking tens of seconds on an average laptop. To speed up the training process in the next section, I will step away from scikit-learn and use <a href="https://keras.io/" target="_blank">Keras</a> with TensorFlow backend.</p>
+<p>Keras API is equally simple. The project even includes <a href="https://keras.io/scikit-learn-api/#wrappers-for-the-scikit-learn-api" target="_blank">wrappers for scikit-learn</a> to take advantage of scikit’s research libraries.</p>
+<pre>from keras.models import Sequential
+from keras.layers import Dense
+model = Sequential()
+input_size = len(X[0])
+model.add(Dense(200, activation="relu", input_dim=input_size))
+model.add(Dense(200, activation="relu"))
+model.add(Dense(1, activation="linear"))
+model.compile(optimizer="adam", loss="mse")
+model.fit(X_train, y_train, epochs=25, verbose=1)
+y_pred = model.predict(X_test)</pre>
+<p>Hyperparameter Optimization</p>
+<p>The trick to doing hyperparameter optimization is to understand that parameters should not be treated independently. Many parameters interact with each other which is why exhaustive <a href="https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search" target="_blank">grid search</a> is often performed. However, grid search is that it becomes expensive very quickly.</p>
+<p>Decision Tree</p>
+<p>Our decision tree grid search will iterate over the following inputs:</p>
+<ul><li>splitter: strategy used to split nodes (best or random)</li></ul>
+<ul><li>max depth of the tree</li></ul>
+<ul><li>min samples per split: the minimum number of samples required to split an internal node</li></ul>
+<ul><li>max leaf nodes: number or None (allow unlimited number of leaf nodes)</li></ul>
+<p>Illustrative grid search results are below:</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*CQHDbOr3_ZO7oWkdOYdKQw.png" alt="Grid Search Decision Tree — first rows" style="width: 100%">
+<img src="https://cdn-images-1.medium.com/max/2600/1*DQHZ9reWIOMF6fq9eKA8IQ.png" alt="Grid Search Decision Tree — last rows" style="width: 100%">
+<p>Performance using the best parameters:</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*2qHu4Z1DiJGmx440QCyTAA.png" alt="Decision Tree results" style="width: 100%">
+<p>Again, the results do not seem to be very promising. They appear to be better than linear regression (lower MAE and MSE) but R² is still too low to be useful. I would conclude, however, that the greater expressiveness of decision trees is useful and I would discard the linear regression model at this stage.</p>
+<p>Neural Networks</p>
+<p>Exploring the hyperparameters of the neural net build by Keras, we can alter at least the following parameters:</p>
+<ul><li>number of hidden layers and/or units in each layer</li></ul>
+<ul><li>model <a href="https://keras.io/optimizers/" target="_blank">optimizer</a> (SGD, Adam, etc)</li></ul>
+<ul><li><a href="https://keras.io/activations/" target="_blank">activation function</a> in each layer (relu, tanh)</li></ul>
+<ul><li>batch size: the number of samples per gradient update</li></ul>
+<ul><li>epochs to train: the number of iterations over the entire training dataset</li></ul>
+<p>Illustrative grid search results are below:</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*c_fhFAu5NkphQXM6Do8QXQ.png" alt="Grid Search Neural Net — first rows" style="width: 100%">
+<img src="https://cdn-images-1.medium.com/max/2600/1*CZIYuZ9UrEdoVkWhOtfIWQ.png" alt="Grid Search Neural Net — last rows" style="width: 100%">
+<p>Using the best parameters, we obtain the following performance metrics:</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*auWhs2uGbBher9adskreog.png" alt="" style="width: 100%">
+<p>Neural net and decision tree results are similar which is common. Both algorithms have very expressive hypothesis spaces and often produce comparable results. If I achieve comparable results, I tend to use the decision tree model for its faster training times and greater interpretability.</p>
+<p>Project Reflection</p>
+<p>At this stage it becomes clear that no model can be used in production. While the decision tree model appears to perform the best, its performance on testing data is still unreliable. At this stage, it would be time to go back and find additional features and/or data sources.</p>
+<p>As I mentioned in the first <a href="https://medium.com/@adam5ny/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing Tutorial</a>, finance practitioners might spend months sourcing data and building features. Domain-specific knowledge is crucial and I would argue that financial markets exhibit at least the <a href="https://www.investopedia.com/exam-guide/cfa-level-1/securities-markets/weak-semistrong-strong-emh-efficient-market-hypothesis.asp" target="_blank">Weak-Form of Efficient Market Hypothesis</a>. This implies that future stock returns cannot be predicted from past price movements. I have used only past price movements to develop the models above so practitioners would notice already in the first tutorial that results would not be promising.</p>
+<p>For the sake of completing this tutorial, I will go ahead and save the decision tree model and use it for illustrative purposes in the next sections of this tutorial (as if it were the Final production model):</p>
+<pre>pickle.dump(model, open("dtree_model.pkl", "wb"))</pre>
+<p>Important: there are <a href="https://www.cs.uic.edu/~s/musings/pickle/" target="_blank">known security vulnerabilities</a> in the Python pickle library. To stay on the safe side, the key takeaway is to never unpickle data you did not create.</p>
+<p>Tools</p>
+<p>Tooling is a common question but often not critical until the project is composed of tens of thousands of examples and at least hundreds of features. I typically start with scikit-learn and move elsewhere when performance becomes the bottleneck. <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a>, for example, is not just a deep learning framework but also contains other algorithms such as <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor" target="_blank">LinearRegressor</a>. We could train Linear Regression above with TensorFlow and GPUs if scikit-learn does not perform well enough.</p>
+<p>Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, #2 Training (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+<p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
+            <a href="https://medium.com/@excitedAtom/machine-learning-tutorial-2-training-f6f735830838/"><i class="fab fa-medium fa-lg"></i></a>
+        </div>
+    </div>
+    <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+        <a href="/" class="demo-nav__button">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            Newer
+        </a>
+    </nav>
+</div>
+
+
+
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <a href="https://keybase.io/adam5ny">Keybase <i class="fab fa-keybase fa-lg"></i></a>
+                    <a href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-lg"></i></a>
+                    <a href="/quotes/q-list.html">Quotes</a>
+                    
+                </div>
+                <div class="mdl-mini-footer--right-section">
+                    <a href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </footer>
+        </main>
+        <div class="mdl-layout__obfuscator"></div>
+    </div>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-71868344-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+<script>
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+        var link = el.querySelector('a');
+        if(!link) {
+        return;
+        }
+        var target = link.getAttribute('href');
+        if(!target) {
+        return;
+        }
+        el.addEventListener('click', function() {
+        location.href = target;
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Machine Learning Tutorial #3: Evaluation</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Adam Novotny's website. LinkedIn, Medium, Twiter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <base href="/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-green.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+        <main class="mdl-layout__content">
+
+<div class="demo-back">
+    <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="/" title="go back" role="button">
+        <i class="material-icons" role="presentation">arrow_back</i>
+    </a>
+</div>
+<div class="demo-blog__posts mdl-grid">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image: url(https://cdn-images-1.medium.com/max/2600/1*iPgIcpnc-nzkigs6RaTZBw.png); background-repeat: no-repeat; background-size: cover;">
+        <h3>Machine Learning Tutorial #3: Evaluation</h3>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+        <div>
+            <strong>Adam Novotny</strong>
+            <span>2018-08-19</span>
+        </div>
+        <div class="section-spacer"></div>
+        <div>
+            <a href="https://twitter.com/excitedAtom">
+                <i class="material-icons" role="presentation">share</i>
+                <span class="visuallyhidden">share</span>
+            </a>
+        </div>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+            <p>Topics: Performance Metrics, Commentary</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2600/1*iPgIcpnc-nzkigs6RaTZBw.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%">
+<p>In this third phase of the series, I will explore the Evaluation part of the ML project. I will reuse some of the code and solutions from the second Training phase. However, it is important to note that the Evaluation phase should be completely separate from training except for using the final model produced in the Training step. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, #3 Evaluation (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a>. <a href="https://github.com/adam5ny/blogs/tree/master/ml-evaluation" target="_blank">Github code</a>.</p>
+<p>Performace Metrics</p>
+<p>The goal of this section is to determine how our model from the Training step performs on real life data it has not learned from. First, we have to load the model we saved as the Final model:</p>
+<pre>model = pickle.load(open("dtree_model.pkl", "rb"))</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>model
+DecisionTreeRegressor(criterion='mse', max_depth=3, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=5, min_weight_fraction_leaf=0.0, presort=False, random_state=1, splitter='best')</pre>
+<p>Next, we will load the testing data we created in the Preprocessing part of this tutorial. The primary reason why I keep the Evaluation section separate from Training is precisely this step. I keep the code separate as well to ensure that no information from training leaks into evaluation. To restate, we should have not seen the data used in this section at any point until now.</p>
+<pre>X = pd.read_csv("X_test.csv", header=0)
+y = pd.read_csv("y_test.csv", header=0)</pre>
+<p>At this stage, we may perform additional performance evaluation on top of the Training step. However, I will stick to the metrics used previously: MAE, MSE, R2.</p>
+<img src="https://cdn-images-1.medium.com/max/2600/1*5Cjov6KncJ3qLJ-fHi6MTg.png" alt="" style="width: 100%">
+<p>Commentary</p>
+<p>We have known that our model does not perform well enough in practice from the previous tutorial already. However, as I mentioned before, I went ahead and used it for illustrative purposes here in order to complete the tutorial and to explain the kind of thinking involved in real life projects where performance is not always ideal out of the box as many toy datasets would make one think.</p>
+<p>The key comparison is how well does our model evaluate relative to the training phase. In the case of models ready for production, I would expect the performance in the Evaluation step to be comparable to those of testing folds in the Training phase.</p>
+<p>Comparing the last training test fold <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">here</a> (5249 datapoints used to train) and the Evaluation results above:</p>
+<ul><li>MAE: final Training phase ~10^-2. Evaluation phase ~10^-2</li></ul>
+<ul><li>MSE: final Training phase ~10^-4. Evaluation phase ~10^-3</li></ul>
+<ul><li>R²: final Training phase ~0. Evaluation phase ~0</li></ul>
+<p>The performance on dataset the model has never seen before is reasonably similar. Nonetheless, overfitting is still something to potentially address. If we had a model ready for production from the Training phase, we would be reasonably confident at this stage that it would perform as we expect on out of sample data.</p>
+<p>Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, #3 Evaluation (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+<p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
+</blockquote>
+</blockquote>
+</blockquote>
+            <a href="https://medium.com/@excitedAtom/machine-learning-tutorial-3-evaluation-a157f90914c9/"><i class="fab fa-medium fa-lg"></i></a>
+        </div>
+    </div>
+    <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+        <a href="/" class="demo-nav__button">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            Newer
+        </a>
+    </nav>
+</div>
+
+
+
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <a href="https://keybase.io/adam5ny">Keybase <i class="fab fa-keybase fa-lg"></i></a>
+                    <a href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-lg"></i></a>
+                    <a href="/quotes/q-list.html">Quotes</a>
+                    
+                </div>
+                <div class="mdl-mini-footer--right-section">
+                    <a href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </footer>
+        </main>
+        <div class="mdl-layout__obfuscator"></div>
+    </div>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-71868344-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+<script>
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+        var link = el.querySelector('a');
+        if(!link) {
+        return;
+        }
+        var target = link.getAttribute('href');
+        if(!target) {
+        return;
+        }
+        el.addEventListener('click', function() {
+        location.href = target;
+        });
+    });
+</script>
+</html>

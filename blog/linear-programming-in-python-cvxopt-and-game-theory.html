@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Linear programming in Python: CVXOPT and game theory</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Adam Novotny's website. LinkedIn, Medium, Twiter.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <base href="/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-green.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+        <main class="mdl-layout__content">
+
+<div class="demo-back">
+    <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="/" title="go back" role="button">
+        <i class="material-icons" role="presentation">arrow_back</i>
+    </a>
+</div>
+<div class="demo-blog__posts mdl-grid">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image: url(); background-repeat: no-repeat; background-size: cover;">
+        <h3>Linear programming in Python: CVXOPT and game theory</h3>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+        <div>
+            <strong>Adam Novotny</strong>
+            <span>2017-08-16</span>
+        </div>
+        <div class="section-spacer"></div>
+        <div>
+            <a href="https://twitter.com/excitedAtom">
+                <i class="material-icons" role="presentation">share</i>
+                <span class="visuallyhidden">share</span>
+            </a>
+        </div>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+            <p>CVXOPT is an excellent Python package for linear programming. However, when I was getting started with it, I spent way too much time getting it to work with simple game theory example problems. This tutorial aims to shorten the startup time for everyone trying to use CVXOPT for more advanced problems.</p>
+
+<p>All code is available <a href="http://github.com/adam5ny/blogs/tree/master/cvxopt" target="_blank">here</a>.</p>
+
+<p>Installation of dependencies:</p>
+
+<ul><li>Using Docker is the fastest way to run the code. In only 5 commands you can replicate my environment and run the code.</li></ul>
+
+<ul><li>Alternatively, the code has the following dependencies: Python (3.5.3), numpy (1.12.1), cvxopt (1.1.9), glpk optimizer (but you can use the default optimizer, glpk is better for some more advanced problems)</li></ul>
+
+<p>Please review <a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank">how CVXOPT solves simple maximization problems</a>. While this article focuses on game theory problems, it is critical to understand how CVXOPT defines optimization problems in general.</p>
+
+<p>The first problem we will solve is a <a href="http://en.wikipedia.org/wiki/Minimax#Example" target="_blank">2-player zero-sum game</a>.</p>
+
+<p>The constraints matrix A is defined as</p>
+
+<pre>A = [[3, -2, 2], [-1, 0, 4] ,[-4, -3, 1]]</pre>
+
+<p>Next, we define a maxmin helper function</p>
+
+<pre>def maxmin(self, A, solver="glpk"):
+    num_vars = len(A)
+     minimize matrix c
+    c = [-1] + [0 for i in range(num_vars)]
+    c = np.array(c, dtype="float")
+    c = matrix(c)
+     constraints G*x <= h
+    G = np.matrix(A, dtype="float").T  reformat each variable is in a row
+    G *= -1  minimization constraint
+    G = np.vstack([G, np.eye(num_vars) * -1])  > 0 constraint for all vars
+    new_col = [1 for i in range(num_vars)] + [0 for i in range(num_vars)]
+    G = np.insert(G, 0, new_col, axis=1)  insert utility column
+    G = matrix(G)
+    h = ([0 for i in range(num_vars)] + 
+         [0 for i in range(num_vars)])
+    h = np.array(h, dtype="float")
+    h = matrix(h)
+     contraints Ax = b
+    A = [0] + [1 for i in range(num_vars)]
+    A = np.matrix(A, dtype="float")
+    A = matrix(A)
+    b = np.matrix(1, dtype="float")
+    b = matrix(b)
+    sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
+    return sol</pre>
+
+<p>Last, we use the maxmin helper function to solve our example problem:</p>
+
+<pre>sol = maxmin(A=A, solver=”glpk”)
+probs = sol[“x”]
+print(probs)
+ [ 1.67e-01]
+ [ 8.33e-01]
+ [ 0.00e+00]</pre>
+
+<p>In other words, player A chooses action 1 with probility 1/6 and action 2 with probability 5/6.</p>
+
+<p>Next we will solve a Correlated Equilibrium problem called Game of Chicken as defined on page 3 of <a href="http://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank">this document</a>. The constraints matrix A is defined as</p>
+
+<pre>A = [[6, 6], [2, 7], [7, 2], [0, 0]]</pre>
+
+<p>Next, we define a ce and build_ce_constraints helper functions:</p>
+
+<pre>def ce(self, A, solver=None):
+    num_vars = len(A)
+     maximize matrix c
+    c = [sum(i) for i in A]  sum of payoffs for both players
+    c = np.array(c, dtype="float")
+    c = matrix(c)
+    c *= -1  cvxopt minimizes so *-1 to maximize
+     constraints G*x <= h
+    G = self.build_ce_constraints(A=A)
+    G = np.vstack([G, np.eye(num_vars) * -1])  > 0 constraint for all vars
+    h_size = len(G)
+    G = matrix(G)
+    h = [0 for i in range(h_size)]
+    h = np.array(h, dtype="float")
+    h = matrix(h)
+     contraints Ax = b
+    A = [1 for i in range(num_vars)]
+    A = np.matrix(A, dtype="float")
+    A = matrix(A)
+    b = np.matrix(1, dtype="float")
+    b = matrix(b)
+    sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
+    return sol</pre>
+
+<pre>def build_ce_constraints(self, A):
+    num_vars = int(len(A) ** (1/2))
+    G = []
+     row player
+    for i in range(num_vars):  action row i
+        for j in range(num_vars):  action row j
+            if i != j:
+                constraints = [0 for i in A]
+                base_idx = i * num_vars
+                comp_idx = j * num_vars
+                for k in range(num_vars):
+                    constraints[base_idx+k] = (- A[base_idx+k][0]
+                                               + A[comp_idx+k][0])
+                G += [constraints]
+     col player
+    for i in range(num_vars):  action column i
+        for j in range(num_vars):  action column j
+            if i != j:
+                constraints = [0 for i in A]
+                for k in range(num_vars):
+                    constraints[i + (k * num_vars)] = (
+                        - A[i + (k * num_vars)][1]
+                        + A[j + (k * num_vars)][1])
+                G += [constraints]
+    return np.matrix(G, dtype="float")</pre>
+
+<p>Using the helper functions, we solve the Game of Chicken</p>
+
+<pre>sol = ce(A=A, solver="glpk")
+probs = sol["x"]
+print(probs)
+ [ 5.00e-01]
+ [ 2.50e-01]
+ [ 2.50e-01]
+ [ 0.00e+00]</pre>
+
+<p>In other words, the optimal strategy is for both players to select actions [6, 6] 50% of the time, actions [2, 7] 25% of the time, and action [7, 2] also 25% of the time.</p>
+
+<p>Hopefully this overview helps in getting you started with linear programming and game theory in Python.</p>
+
+<p>Credits: <a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank">cvxopt.org/examples/tutorial/lp.html</a><a href="https://www.cs.duke.edu/courses/fall12/cps270/lpandgames.pdf" target="_blank">, cs.duke.edu/courses/fall12/cps270/lpandgames.pdf</a><a href="https://en.wikipedia.org/wiki/Minimax#Example" target="_blank">, en.wikipedia.org/wiki/Minimax#Example</a><a href="https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf" target="_blank">, https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf</a><a href="https://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank">, cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps</a><a href="https://www.cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf" target="_blank">, cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf</a></p>
+            <a href="https://medium.com/@excitedAtom/linear-programming-in-python-cvxopt-and-game-theory-8626a143d428/"><i class="fab fa-medium fa-lg"></i></a>
+        </div>
+    </div>
+    <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+        <a href="/" class="demo-nav__button">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            Newer
+        </a>
+    </nav>
+</div>
+
+
+
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <a href="https://keybase.io/adam5ny">Keybase <i class="fab fa-keybase fa-lg"></i></a>
+                    <a href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-lg"></i></a>
+                    <a href="/quotes/q-list.html">Quotes</a>
+                    
+                </div>
+                <div class="mdl-mini-footer--right-section">
+                    <a href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-lg"></i></a>
+                </div>
+            </footer>
+        </main>
+        <div class="mdl-layout__obfuscator"></div>
+    </div>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-71868344-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+<script>
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+        var link = el.querySelector('a');
+        if(!link) {
+        return;
+        }
+        var target = link.getAttribute('href');
+        if(!target) {
+        return;
+        }
+        el.addEventListener('click', function() {
+        location.href = target;
+        });
+    });
+</script>
+</html>

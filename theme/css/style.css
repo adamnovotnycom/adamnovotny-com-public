@@ -303,12 +303,23 @@ body .demo-blog {
           flex-direction: column;
 }
 .demo-blog--blogpost .meta + .mdl-card__supporting-text p {
-  max-width: 512px;
-  margin: 16px auto;
+  max-width: 90%;
+  margin: 3px;
+  padding-right: 5px;
   font-size: 16px;
   line-height: 28px;
 }
-
+@media (min-width: 1025px) and (-webkit-min-device-pixel-ratio: 1.5),
+       (min-width: 1025px) and (min-resolution: 1.5dppx),
+       (min-width: 2049px) and (-webkit-max-device-pixel-ratio: 1.5),
+       (min-width: 2049px) and (max-resolution: 1.5dppx) {
+    .demo-blog--blogpost .meta + .mdl-card__supporting-text p {
+        max-width: 512px;
+        margin: 16px auto;
+        font-size: 16px;
+        line-height: 28px;
+    }
+}
 .demo-blog--blogpost .comments {
   display: -webkit-flex;
   display: -ms-flexbox;

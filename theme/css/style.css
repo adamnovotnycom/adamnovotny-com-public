@@ -295,6 +295,7 @@ body .demo-blog {
 }
 .demo-blog--blogpost .meta + .mdl-card__supporting-text {
   border: 0;
+  width: 92%;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -497,8 +498,8 @@ body .demo-blog {
 
 .demo-blog--blogpost .meta + .mdl-card__supporting-text pre {
     max-width: 512px;
-    margin: 16px auto;
-    font-size: 12px;
+    margin: 2px auto;
+    font-size: 10px;
     line-height: 28px;
 }
 

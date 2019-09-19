@@ -11,10 +11,12 @@ var app = new Vue({
         axios
             .get('https://spreadsheets.google.com/feeds/list/1g6UwXwvHwpAQcNwkrR5CszdU2eIEDP02y1OGr3V5H40/od6/public/basic?alt=json')
             .then(response => {
-                fullQuote = response['data']['feed']['entry'][0];
-                this.text = fullQuote['title']['$t'];
-                this.author = fullQuote['content']['$t'].split(',')[0].split(' ').slice(1,5).join(" ");
-                this.url = fullQuote['content']['$t'].split(',')[1].split(' ')[2];
+                quotes = response['data']['feed']['entry']
+                quoteIndex = Math.floor(Math.random() * (quotes.length - 1))
+                selectedQuote = quotes[quoteIndex]; // random quote
+                this.text = selectedQuote['title']['$t'];
+                this.author = selectedQuote['content']['$t'].split(',')[0].split(' ').slice(1,5).join(" ");
+                this.url = selectedQuote['content']['$t'].split(',')[1].split(' ')[2];
             })
     }
 })

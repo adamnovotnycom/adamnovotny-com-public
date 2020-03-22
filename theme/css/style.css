@@ -15,7 +15,7 @@ body::before {
        (max-width: 1024px) and (-webkit-max-device-pixel-ratio: 1.5),
        (max-width: 1024px) and (max-resolution: 1.5dppx) {
   body::before {
-    background-image: url(../images/background.jpg);
+    background-color: #cfd8dc;
   }
 }
 @media (min-width: 513px)  and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
@@ -23,7 +23,7 @@ body::before {
        (min-width: 1025px) and (max-width: 2048px) and (-webkit-max-device-pixel-ratio: 1.5),
        (min-width: 1025px) and (max-width: 2048px) and (max-resolution: 1.5dppx)  {
   body::before {
-    background-image: url(../images/background.jpg);
+    background-color: #cfd8dc;
   }
 }
 @media (min-width: 1025px) and (-webkit-min-device-pixel-ratio: 1.5),
@@ -31,7 +31,7 @@ body::before {
        (min-width: 2049px) and (-webkit-max-device-pixel-ratio: 1.5),
        (min-width: 2049px) and (max-resolution: 1.5dppx) {
   body::before {
-    background-image: url(../images/background.jpg);
+    background-color: #cfd8dc;
   }
 }
 body .demo-blog {
@@ -39,7 +39,7 @@ body .demo-blog {
 }
 
 .demo-blog .demo-blog__posts {
-  max-width: 900px;
+  max-width: 720px;
   padding: 0;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,7 +52,7 @@ body .demo-blog {
 }
 
 .demo-blog.mdl-layout .mdl-layout__content {
-  padding-top: 230px;
+  padding-top: 24px;
   position: relative;
   -webkit-overflow-scrolling: touch;
 }
@@ -209,8 +209,8 @@ body .demo-blog {
   border-top-right-radius: 2px;
 }
 .demo-blog .something-else .mdl-card__media img {
-  width: min(70%, 278px);
-  height: min(70%, 153px);
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
 }
 .demo-blog .something-else .mdl-card__supporting-text {

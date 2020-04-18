@@ -512,6 +512,6 @@ body .demo-blog {
 }
 
 .demo-blog--blogpost .meta + .mdl-card__supporting-text img {
-    max-width: 512px;
+    max-width: 800px;
     margin: 16px auto;
 }

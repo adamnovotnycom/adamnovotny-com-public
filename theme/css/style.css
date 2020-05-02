@@ -519,3 +519,7 @@ body .demo-blog {
 .mdl-card {
     min-height: 0px;
 }
+
+.mdl-card__media img {
+    max-width: 200px;
+}

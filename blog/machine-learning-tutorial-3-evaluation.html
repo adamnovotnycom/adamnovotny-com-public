@@ -39,11 +39,11 @@
         </div>
         </div>
         <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-            <p>Topics: Performance Metrics, Commentary</p>
+            <h4>Topics: Performance Metrics, Commentary</h4>
 
 <p><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy">
 <p>In this third phase of the series, I will explore the Evaluation part of the ML project. I will reuse some of the code and solutions from the second Training phase. However, it is important to note that the Evaluation phase should be completely separate from training except for using the final model produced in the Training step. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, #3 Evaluation (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a>. <a href="https://github.com/adam5ny/blogs/tree/master/ml-evaluation" target="_blank">Github code</a>.</p>
-<p>Performace Metrics</p>
+<h4>Performace Metrics</h4>
 <p>The goal of this section is to determine how our model from the Training step performs on real life data it has not learned from. First, we have to load the model we saved as the Final model:</p>
 <pre>model = pickle.load(open("dtree_model.pkl", "rb"))</p>
 <blockquote>
@@ -56,7 +56,7 @@ DecisionTreeRegressor(criterion='mse', max_depth=3, max_features=None, max_leaf_
 y = pd.read_csv("y_test.csv", header=0)</pre>
 <p>At this stage, we may perform additional performance evaluation on top of the Training step. However, I will stick to the metrics used previously: MAE, MSE, R2.</p>
 <img src="/theme/images/1*5Cjov6KncJ3qLJ-fHi6MTg.png.png" alt="" style="width: 100%" loading="lazy">
-<p>Commentary</p>
+<h4>Commentary</h4>
 <p>We have known that our model does not perform well enough in practice from the previous tutorial already. However, as I mentioned before, I went ahead and used it for illustrative purposes here in order to complete the tutorial and to explain the kind of thinking involved in real life projects where performance is not always ideal out of the box as many toy datasets would make one think.</p>
 <p>The key comparison is how well does our model evaluate relative to the training phase. In the case of models ready for production, I would expect the performance in the Evaluation step to be comparable to those of testing folds in the Training phase.</p>
 <p>Comparing the last training test fold <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">here</a> (5249 datapoints used to train) and the Evaluation results above:</p>
@@ -98,14 +98,6 @@ y = pd.read_csv("y_test.csv", header=0)</pre>
     </div>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="/theme/js/main.js" defer></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-71868344-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </body>
 <script>
     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {

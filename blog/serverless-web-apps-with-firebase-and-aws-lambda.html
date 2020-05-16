@@ -39,7 +39,7 @@
         </div>
         </div>
         <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-            <p>Topics: Firebase Hosting, AWS Lambda</p>
+            <h4>Topics: Firebase Hosting, AWS Lambda</h4>
 
 <p>Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to use technologies that might not be optimal for their projects. For example, people using <a href="https://firebase.google.com/" target="_blank">Google’s Firebase</a> to host their static resources have to write custom endpoint <a href="https://firebase.google.com/docs/functions/" target="_blank">functions</a> in JavaScript or TypeScript (as of August 2018). Developers typically use custom backend functions to hide business logic or proprietary data operations from users because anything that runs in the browsers front end as JavaScript is ultimately an open book from the users perspective.</p>
 
@@ -49,7 +49,7 @@
 <ul><li>www.example.com (<a href="https://en.wikipedia.org/wiki/Single-page_application" target="_blank">single page app</a> served by Firebase)</li></ul>
 <ul><li>api.example.com (AWS lambda function serving custom business logic used by www.example.com)</li></ul>
 <p>I will not go into specific details on each platform because their UIs constantly change. Instead, I will highlight the sequence of steps I typically take to setup the services quickly.</p>
-<p>Firebase hosting</p>
+<h4>Firebase hosting</h4>
 <ul><li>1) Deploy a static web app to <a href="https://firebase.google.com/products/hosting/" target="_blank">Firebase</a> by following <a href="https://firebase.google.com/docs/hosting/deploying" target="_blank">this part</a> of the Firebase documentation. The end result will be a public web app. Its URL will look something like this: my-project-name.firebaseapp.com</li></ul>
 <img src="/theme/images/1*gH7ELyB6td5o2A1bY4drGw.png.png" alt="Firebase hosting setup" style="width: 100%" loading="lazy">
 <ul><li>2) Let’s assume we purchased the custom domain example.com. We now need to update the DNS records so that example.com and www.example.com point to our static web app.</li></ul>
@@ -57,7 +57,7 @@
 <img src="/theme/images/1*Kd7lW2alk8UA4cL8kkvxxA.png.png" alt="Connect custom domain to Firebase app" style="width: 100%" loading="lazy">
 <ul><li>4) Go to your domain registrar’s DNS settings, and create a DNS A record for subdomain www pointing to the IP address of the Firebase servers obtained in the previous step. After SSL certificates are automatically provisioned by Firebase, users can go to https://www.example.com to locate your Firebase app.</li></ul>
 <ul><li>5) We also need to make sure that users entering just example.com are also pointed to https://www.example.com. To accomplish this, return to your registrar’s DNS settings and a setup subdomain forwarding. The exact steps vary for each registrar but the end result will be example.com -&gt; https://www.example.com. If possible, set the redirect as permanent 301, forward path, and enable SSL.</li></ul>
-<p>AWS Lambda</p>
+<h4>AWS Lambda</h4>
 <p>At this point we have a web app deployed and using our custom URL. The app however uses the subdomain api.example.com to obtain proprietary data. In Angular, the code requesting data from the subdomain may look something like this:</p>
 <pre>const headers = {
     headers: new HttpHeaders({
@@ -116,14 +116,6 @@ this.http.get('<a href="https://api.examle.com/get-data'" target="_blank">https:
     </div>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="/theme/js/main.js" defer></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-71868344-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </body>
 <script>
     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {

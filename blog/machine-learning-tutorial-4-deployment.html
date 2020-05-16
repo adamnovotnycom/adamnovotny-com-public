@@ -39,21 +39,21 @@
         </div>
         </div>
         <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-            <p>Topics: Stack Selection, Heroku, Testing</p>
+            <h4>Topics: Stack Selection, Heroku, Testing</h4>
 
 <p><img src="/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy">
 <p>In this final phase of the series, I will suggest a few options ML engineers have to deploy their code. In large organizations, this part of the project will be handled by a specialized team which is especially important when scaling is a concern. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , #4 Deployment (this article). <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github code</a>.</p>
-<p>Stack Selection</p>
+<h4>Stack Selection</h4>
 <p>The number of options to deploy ML code is numerous but I typically decide between at least the three general buckets:</p>
 <ul><li>Solution provided as-a-service (e.g. Microsoft Azure Machine Learning Studio)</li></ul>
 <ul><li>Serverless function (e.g. <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-programming-model.html" target="_blank">AWS Lambda</a>)</li></ul>
 <ul><li>Custom backend code (e.g. <a href="http://flask.pocoo.org/docs/0.12/" target="_blank">Python Flask</a> served by <a href="https://devcenter.heroku.com/articles/getting-started-with-python" target="_blank">Heroku</a>)</li></ul>
-<p>As-a-service solution</p>
+<h4>As-a-service solution</h4>
 <p>Platforms such as Microsoft Azure Machine Learning Studio offer the full suite of tools for the entire project including preprocessing and training. Custom API endpoints are usually easy to generate and writing code is often not necessary thanks to drag-and-drop interfaces. The solutions are often well optimized for <a href="https://en.wikipedia.org/wiki/Lazy_learning" target="_blank">lazy learners</a> where evaluation is the most expensive computational step. The downside is that it is sometimes more challenging to bring in custom code (such as the final model) without going through all the project steps on the platform.</p>
 <img src="/theme/images/1*4F3z9NovnqtOtIRWRCJn_Q.jpeg.png" alt="As-a-service deployment example: Microsoft Azure" style="width: 100%" loading="lazy">
-<p>Serverless function</p>
+<h4>Serverless function</h4>
 <p>Serverless functions are a good solution for inexpensive computations. AWS uses default timeout of 3 seconds for a function to complete. While timeouts can be extended, the default value is often a good general guideline when deciding about suitability. Lambda only allows 50MB of custom code to be uploaded which is generally not enough for most machine learning purposes. However, functions are well suited for fast computations such as linear regression models. Another downside is that platforms support only specific languages. In terms of Python solutions, AWS Lambda supports versions 2.7 and 3.6 only at the time of writing this article.</p>
-<p>Custom backend code</p>
+<h4>Custom backend code</h4>
 <p>Writing a custom backend code on platform such as Heroku or Amazon’s EC2 allows us to replicate fully the code we write on local machines. The code and server deployment can be fully customized for the type of ML algorithm we are deploying. The downside of such solutions is their operational complexity because we need to focus on many steps unrelated to ML such as security.</p>
 <p>I will deploy the code on <a href="https://devcenter.heroku.com/articles/getting-started-with-python" target="_blank">Heroku</a> which offers a free tier for testing purposes. The lightweight <a href="http://flask.pocoo.org/" target="_blank">Flask framework</a> will drive the backend. The primary reason for this choice is that it allows us to reuse essentially all the code written in previous tutorials for the backend. We can install Flask with Python 3.6 and all machine learning libraries we use previously side by side.</p>
 <p>The entire backend code to run the app is literally a few lines long with Flask:</p>
@@ -90,7 +90,7 @@ def forecast_post():
 <ul><li>preprocess(…): copy of our code from the <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> tutorial that manipulates raw price data into features. Importantly, the scaler used must be the exact same we used in Preprocessing so it has to be saved to pickle file first during Preprocessing and loaded from pickle now</li></ul>
 <ul><li>run_model(…): loads and runs our saved final model from the <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">Training</a> tutorial</li></ul>
 <ul><li>make_response(…): returns forecasts</li></ul>
-<p>Heroku</p>
+<h4>Heroku</h4>
 <p>Deploying our prediction code to Heroku will require that we collect at least two necessary pieces of our code from previous tutorials: the final model (saved as a pickle file) and the code from the <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> tutorial that transforms the original features we collected from the real world to features our model can handle.</p>
 <p>I will not go into details about how to deploy a Docker app on Heroku. There are plenty of good materials including Heroku’s documentation, which is excellent. All the necessary code to run and deploy the Docker app on Heroku is also in the <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github </a>repo. There are a few key steps to remember:</p>
 <ul><li>Save Dockerfile as Dockerfile.web which is a container of all code necessary to run the app</li></ul>
@@ -99,7 +99,7 @@ def forecast_post():
 <p>At this point our code is deployed which we can test using <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjmut-U1JvdAhVKsqQKHaQUBg0QFjAAegQIBRAC&url=https%3A%2F%2Fwww.getpostman.com%2F&usg=AOvVaw1vWzpwzQOHi5ErKZnywLDR" target="_blank">Postman</a> to make a manual forecast request:</p>
 <img src="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" alt="" style="width: 100%" loading="lazy">
 <p>The date is represented by Unix timestamp. The first Body window consists of inputs we provide to the endpoint in the form of prices. The second window returns forecasts from the app.</p>
-<p>Testing</p>
+<h4>Testing</h4>
 <p>To test the implementation, I will reuse the code from the Evaluation step. However, instead of making predictions locally using our sklearn model, I will use the Heroku app to predict the 691 samples from Evaluation as a batch. The goal is for our predictions we made on a local machine to perfectly match those made using our deployment stack.</p>
 <p>This step is critical to ensure that we can replicate our results remotely using a pre-trained model. The testing code is also available on <a href="https://github.com/adam5ny/blogs/blob/master/ml-deployment/backend/tests/test_app.py" target="_blank">Github</a>. We confirm that the performance of our Heroku app matches the performance generated locally in the Evaluation tutorial:</p>
 <img src="/theme/images/1*Oewaabcu926MZpC-zFFpHQ.png.png" alt="Tested deployment performance matches evaluation results" style="width: 100%" loading="lazy">
@@ -135,14 +135,6 @@ def forecast_post():
     </div>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="/theme/js/main.js" defer></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-71868344-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </body>
 <script>
     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {

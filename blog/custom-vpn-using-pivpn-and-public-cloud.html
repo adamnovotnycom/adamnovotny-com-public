@@ -39,23 +39,23 @@
         </div>
         </div>
         <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-            <p>Motivation: Many public Wi-Fi networks block certain internet ports and protocols. For example, a public library might only allow ports 80 and 443 and the TCP protocol. Leaving aside the logic of such decisions by network owners, they prevent users from taking advantage of many commercial VPN products that rely on other ports. The goal of this article is to create a custom VPN solution to improve privacy even on such restricted public networks.</p>
+            <h4>Motivation: Many public Wi-Fi networks block certain internet ports and protocols. For example, a public library might only allow ports 80 and 443 and the TCP protocol. Leaving aside the logic of such decisions by network owners, they prevent users from taking advantage of many commercial VPN products that rely on other ports. The goal of this article is to create a custom VPN solution to improve privacy even on such restricted public networks.</h4>
 
 <p><img src="/theme/images/1*hI_JbE-q2OQpXW1tEB46Cg.png.png" alt="AWS, Google Cloud, Microsoft Azure" style="width: 100%" loading="lazy">
 <img src="/theme/images/1*7C1odbX4Kk_yxToAaKnlwA.png.png" alt="PiVPN" style="width: 100%" loading="lazy">
 <p>All step are outlined in more detail in <a href="https://github.com/adam5ny/vpn-gcp-pivpn" target="_blank">this Github repo</a>. The tutorial is written for Python 3 and <a href="https://cloud.google.com/compute/" target="_blank">Google Cloud Compute</a>. However, all public clouds can be used including AWS or Azure.</p>
-<p>Create public cloud compute instance</p>
+<h4>Create public cloud compute instance</h4>
 <p>Login to <a href="https://console.cloud.google.com/" target="_blank">GCP console</a>. Create an Ubuntu machine and make sure to allow https traffic. Then locate your public IP which is where your traffic will be routed. In GCP, you can find it using the following steps (as of Dec 2018): VPC network &gt; External IP addresses &gt; switch the type of your instance IP from “Ephemeral” to “Static”. This will be your public IP.</p>
-<p>Create PiVPN instance</p>
+<h4>Create PiVPN instance</h4>
 <p>Login to your compute instance and download PiVPN using the following command:</p>
 <pre>curl -L <a href="https://install.pivpn.io" target="_blank">https://install.pivpn.io</a> | bash</pre>
 <p>Follow all setup steps using default values except for port and protocol. Select port 443 and protocol TCP. Select reboot at the end of the installation.</p>
-<p>Create VPN credentials</p>
+<h4>Create VPN credentials</h4>
 <pre>pivpn add</pre>
 <p>Enter your custom username and password. Download credentials to your computer from your newly create cloud computer instance. Credentials are typically located at ~/ovpns on your Ubuntu instance.</p>
-<p>Download a VPN client for your platform</p>
+<h4>Download a VPN client for your platform</h4>
 <p>For MacOS you may use <a href="https://tunnelblick.net/" target="_blank">Tunnelblick</a>. Then drag credentials (.ovpn) from the previous step to the Tunneblick app icon. Click on Tunneblick icon to connect to your VPN with your custom username and password.</p>
-<p>Final notes:</p>
+<h4>Final notes:</h4>
 <ul><li>use port 80 instead of 443 above if necessary.</li></ul>
 <ul><li>to minimize cost, remember to shut down your compute instance when you are not using the VPN. The typical cost is &lt; $20 for 100GB of traffic and 24/7 usage which is in line with respectable third-party VPN providers. However, your cost may be significantly lower if you shut down unused instances and use pre-emptible instances (GCP-specific).</li></ul>
 <p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
@@ -88,14 +88,6 @@
     </div>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="/theme/js/main.js" defer></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-71868344-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </body>
 <script>
     Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {

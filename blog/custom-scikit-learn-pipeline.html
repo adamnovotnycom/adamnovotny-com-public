@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Custom scikit-learn Pipeline</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Adam Novotny's website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <base href="/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-light_blue.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="32x32" href="/theme/images/favicon.png">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+        <main class="mdl-layout__content">
+
+<div class="demo-blog__posts mdl-grid">
+    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image: url(/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png); background-repeat: no-repeat; background-size: cover;">
+        <h3>Custom scikit-learn Pipeline</h3>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+        <div>
+            <strong>Adam Novotny</strong>
+            <span>2020-06-25</span>
+        </div>
+        <div class="section-spacer"></div>
+        <div>
+            <a href="https://twitter.com/excitedAtom">
+                <i class="material-icons" role="presentation">share</i>
+                <span class="visuallyhidden">share</span>
+            </a>
+        </div>
+        </div>
+        <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+            <p>I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like. As of 6/2020, here is my latest iteration.</p>
+
+<p><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 100%" loading="lazy">
+<p>In general, a machine learning pipeline should have the following characteristics:</p>
+<ul><li>Include every step shared between training and scoring to ensure consistency. The pipeline does not need to include one-off steps such as removing duplicates which would not be relevant at scoring time.</li></ul>
+<ul><li>Have as few custom components as necessary. For example, when filling missing values in numerical columns with median value, there is no reason NOT to use SimpleImputer class from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html" target="_blank">sklearn.impute</a>. In my example gist below I included a custom FeatureSelector class just to illustrate how to defined a custom pipeline step. In reality, an already defined scikit-learn class with the same functionality would be used.</li></ul>
+<ul><li>Allow for parallel preprocessing subject to the computing environment limits. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps do not affect each other.</li></ul>
+<ul><li>(optional) The pipeline should be as small as possible when serialized to enable a serverless deployment. Serverless frameworks such as <a href="https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html" target="_blank">AWS Lambda limit</a> the zipped deployment size of all code. As of 6/2020 Lambda limits the deployment size to 250MB. This is enough for certain combinations of code such as scikit-learn and XGBoost with certain optimization.</li></ul>
+<p>Full scikit-learn pipeline gist</p>
+<h4>Description</h4>
+<ul><li>FeatureSelector is defined to illustrate what a custom pipeline step looks like. In this case, the step simply selects a subset of columns to which the transformation defined in the next step of a scikit-learn Pipeline class is applied.</li></ul>
+<ul><li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns have their missing values filled using each column’s median value. Lastly, all numerical columns are scaled.</li></ul>
+<ul><li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns with containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li></ul></p>
+            <a href="https://medium.com/@excitedAtom/custom-scikit-learn-pipeline-925dcd25ca89/"><i class="fab fa-medium fa-lg"></i></a>
+        </div>
+    </div>
+    <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+        <a href="/" class="demo-nav__button">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+        </a>
+    </nav>
+</div>
+
+
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <a href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-lg"></i></a>
+                    <a href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-lg"></i></a>
+                    <a href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="/books/books.html">Bookshelf</a>
+                </div>
+            </footer>
+        </main>
+        <div class="mdl-layout__obfuscator"></div>
+    </div>
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="/theme/js/main.js" defer></script>
+</body>
+<script>
+    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
+        var link = el.querySelector('a');
+        if(!link) {
+        return;
+        }
+        var target = link.getAttribute('href');
+        if(!target) {
+        return;
+        }
+        el.addEventListener('click', function() {
+        location.href = target;
+        });
+    });
+</script>
+</html>

@@ -54,30 +54,15 @@
 <ul><li>FeatureSelector is defined to illustrate what a custom pipeline step looks like. In this case, the step simply selects a subset of columns to which the transformation defined in the next step of a scikit-learn Pipeline class is applied.</li></ul>
 <ul><li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns have their missing values filled using each column’s median value. Lastly, all numerical columns are scaled.</li></ul>
 <ul><li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns with containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li></ul></p>
-            <a href="https://medium.com/@excitedAtom/custom-scikit-learn-pipeline-925dcd25ca89/"><i class="fab fa-medium fa-lg"></i></a>
+            <a href="https://medium.com/@excitedAtom/custom-scikit-learn-pipeline-925dcd25ca89/">Also on <i class="fab fa-medium fa-lg"></i></a>
         </div>
     </div>
     <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-        <a href="/" class="demo-nav__button">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-        </a>
+        <a href="/"><i class="fas fa-arrow-alt-circle-left"></i></a>
     </nav>
 </div>
 
-
-            <footer class="mdl-mini-footer">
-                <div class="mdl-mini-footer--left-section">
-                    <a href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-lg"></i></a>
-                    <a href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-lg"></i></a>
-                    <a href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-lg"></i></a>
-                    <a href="/books/books.html">Bookshelf</a>
-                </div>
-            </footer>
         </main>
-        <div class="mdl-layout__obfuscator"></div>
     </div>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="/theme/js/main.js" defer></script>

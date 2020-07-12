@@ -1,45 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Limited Competition in Sports</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Adam Novotny's website">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <base href="/">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-light_blue.min.css" /> 
-    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <title>Limited Competition in Sports</title>
+
     <link rel="icon" type="image/png" sizes="32x32" href="/theme/images/favicon.png">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
-        <main class="mdl-layout__content">
+    <script src="/theme/js/main.js" defer></script>
 
-<div class="demo-blog__posts mdl-grid">
-    <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-        <div class="mdl-card__media mdl-color-text--grey-50" style="background-image: url(/theme/images/0*kUuFLf4l1vTfAs79.png); background-repeat: no-repeat; background-size: cover;">
-        <h3>Limited Competition in Sports</h3>
+    <!-- Custom styles for this template -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="/theme/css/blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+            </div>
+            <div class="col-4 text-center">
+                <a class="blog-header-logo" href="/"><img id="blog-header-logo" src="/theme/images/adamnovotny_logo.jpg"></a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+            </div>
+          </div>
+        </header>
+      
+        <div class="nav-scroller py-1 mb-2">
+          <nav class="nav d-flex justify-content-between">
+            <a class="p-2 link-secondary" href="/books/books.html">Bookshelf <i class="fas fa-book fa-lg"></i></a>
+          </nav>
         </div>
-        <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-        <div>
-            <strong>Adam Novotny</strong>
-            <span>2018-07-15</span>
-        </div>
-        <div class="section-spacer"></div>
-        <div>
-            <a href="https://twitter.com/excitedAtom">
-                <i class="material-icons" role="presentation">share</i>
-                <span class="visuallyhidden">share</span>
-            </a>
-        </div>
-        </div>
-        <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
+    </div>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Limited Competition in Sports</h2>
+            <p class="blog-post-meta" >2018-07-15</p>
             <p>Freakonomics podcast titled <a href="http://freakonomics.com/podcast/leicester-city/" target="_blank">The Longest Long Shot</a> made me think about the benefits of competition. The core of the podcast discussed the unbelievable title run by the Leicester City Football Club in the English Premier League in 2016. According to bookmakers who set the team’s odds to 5000–1 at the beginning of the season, it was the greatest underdog story in sports history. However, I came away thinking about the difference between “full competition” sports leagues such as the Premier League and what I call “limited competition” leagues such as the NBA.</p>
 
 <p>Full competition leagues such as the Premier League have 3 main characteristics:</p>
@@ -65,31 +81,20 @@
 <p>The best examples are the recent transfers of the best athletes in basketball and soccer. The total cost of LeBron James from the perspective of the Los Angeles Lakers is <a href="http://www.espn.com/nba/story/_/id/24052129/official-lakers-announce-lebron-james-signed" target="_blank">$153M</a> over the next 4 seasons (or $38M per season). The cost of Christiano Ronaldo from the perspective of Juventus is <a href="https://www.theguardian.com/football/2018/jul/10/cristiano-ronaldo-juventus-real-madrid" target="_blank">$400M</a> (or $100 per season). To be fair, taxes and transfers fees are included so not all the money lands in Ronaldo’s pockets. However, Messi and Ronaldo from full competition leagues were among the <a href="https://en.wikipedia.org/wiki/Forbes%27_list_of_the_world%27s_highest-paid_athletes" target="_blank">top 3 highest paid athletes in 2016 and 2017</a>.</p>
 <p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
             <a href="https://medium.com/@excitedAtom/limited-competition-in-sports-c29fd30fdf1f/">Also on <i class="fab fa-medium fa-lg"></i></a>
+            </div>
+    
+            <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" href="/">Home</a>
+            </nav>
+    
         </div>
+  
     </div>
-    <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-        <a href="/"><i class="fas fa-arrow-alt-circle-left"></i></a>
-    </nav>
-</div>
+    <div class="col-md-2"></div>
+</main>
 
-        </main>
-    </div>
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="/theme/js/main.js" defer></script>
+      
 </body>
-<script>
-    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-        var link = el.querySelector('a');
-        if(!link) {
-        return;
-        }
-        var target = link.getAttribute('href');
-        if(!target) {
-        return;
-        }
-        el.addEventListener('click', function() {
-        location.href = target;
-        });
-    });
-</script>
+
+
 </html>

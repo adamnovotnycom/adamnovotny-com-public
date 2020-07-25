@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Adam Novotny's website">
+    <base href="/">
+    <title>Serving Dynamic Web Pages using Python and AWS Lambda</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/theme/images/favicon.png">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/theme/js/main.js" defer></script>
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="/theme/css/blog.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-3 pt-1">
+                <div class="btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bars fa-md"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a></li>
+                      <li><a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                      <li><a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                      <li><a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6 text-center">
+                <a class="dropdown-item" href="/"><img id="blog-header-logo" src="/theme/images/adamnovotny_logo.jpg"></a>
+            </div>
+            <div class="col-3 d-flex justify-content-end align-items-center">
+            </div>
+          </div>
+        </header>
+      
+        <div class="nav-scroller py-1 mb-2">
+          <nav class="nav d-flex justify-content-between">
+            <a class="p-2 link-secondary" href="/books/books.html">Bookshelf <i class="fas fa-book fa-lg"></i></a>
+          </nav>
+        </div>
+    </div>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Serving Dynamic Web Pages using Python and AWS Lambda</h2>
+            <p class="blog-post-meta" >2020-07-25</p>
+            <p>While AWS Lambda functions are typically used to build API endpoints, at their core Lambda functions can return almost anything. This includes returning html markup with dynamic content.</p>
+
+<p><img src="/theme/images/1*9bPdHLV7ghV1RuNYOGkTvA.png.png" alt="AWS Lambda + Python + Jinja" style="width: 100%" loading="lazy">
+<p>I will not go into details describing how to deploy AWS Lambda fucntions. Please see the official <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html" target="_blank">documentation</a>. I will however describe how to return dynamic html content instead of a typical <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>.</p>
+<h4>Step 0 — Optional</h4>
+<p>If you prefer to develop and test lambda functions locally (as I do), you can use Docker to simulate the lambda function. A sample Dockerfile I use is below.</p>
+<pre>FROM amazonlinux:latest
+RUN mkdir -p /mnt/app
+ADD . /mnt/app
+WORKDIR /mnt/app
+RUN yum update -y
+RUN yum install gcc -y
+RUN yum install gcc-c++ -y
+RUN yum install findutils -y
+RUN yum install zip -y
+RUN amazon-linux-extras install python3=3.6.2
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt -t aws_layer/python</pre>
+<p>The requirements.txt includes just one package for simplicity. It is the common <a href="https://jinja.palletsprojects.com/en/2.11.x/" target="_blank">templating for Python called Jinja2</a></p>
+<pre>Jinja2==2.11.1</pre>
+<p>You can test your Lambda function by simple calling it with sample parameters:</p>
+<pre>import lambda_function
+event = {
+    "queryStringParameters": {
+        "param1": "value1"
+    },
+    "path": "/api",
+    "requestContext": {
+         "param2": "value2"
+    }
+}
+res = lambda_function.lambda_handler(event=event, context={})
+assert 200 == int(res["statusCode"])</pre>
+<h4>Step 1 — Write html template</h4>
+<p>In this step, we write the html template the Lambda function will return. A good default is the new <a href="https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">Bootstrap 5</a> CSS framework where where the recommended starting markup looks something like this:</p>
+<pre>&lt;!doctype html&gt;
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"></p>
+<div class="highlight"><pre><span></span><span class="c">&lt;!-- Bootstrap CSS --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css&quot;</span> <span class="na">integrity=</span><span class="s">&quot;sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I&quot;</span> <span class="na">crossorigin=</span><span class="s">&quot;anonymous&quot;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;title&gt;</span>Hello, world!<span class="nt">&lt;/title&gt;</span>
+</pre></div>
+
+
+<p></head>
+  <body>
+    <h1>Hello, world!</h1>
+    <p>My name is {{my_name}}</p>
+  </body>
+</html></pre>
+<p>Where the dynamic nature of templating comes into play is the variable {{my_name}} which will be filled by our Lambda function using arguments passed to the function.</p>
+<p>Saving this file in folder “templates” and naming it index.html, we are ready to write the Lambda function.</p>
+<h4>Step 2 — Write Lambda function to serve your html page</h4>
+<p>In the example below, the lambda function expects URL parameters and parses those. So when using custom URL, the format would look something like this: Example.com/?my_name=somename. See step 10 in <a href="https://adamnovotny.com/blog/serverless-web-apps-with-firebase-and-aws-lambda.html" target="_blank">this tutorial</a> to add custom URLs to your API Gateway-triggered Lambda functions.</p>
+<pre>import os
+import sys
+from jinja2 import Environment, FileSystemLoader</pre>
+<pre>def lambda_handler(event, context):
+    env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(<strong>file</strong>), "templates"), encoding="utf8"))
+    my_name = False
+    if event["queryStringParameters"] and "my_name" in event["queryStringParameters"]:
+        my_name_query = event["queryStringParameters"]["my_name"]
+    template = env.get_template("index.html")
+    html = template.render(
+        my_name=my_name_query
+    )
+    return response(html)</pre>
+<pre>def response(myhtml):
+    return {
+        "statusCode": 200,
+        "body": myhtml,
+        "headers": {
+            "Content-Type": "text/html",
+        }
+    }</pre>
+<ul><li>jinja2 loads your previously created index.html using class “FileSystemLoader” and we store it as variable “env”</li></ul>
+<ul><li>variable “my_name” is parsed the the URL query parameters as explained above and stored as the Python variable my_name_query</li></ul>
+<ul><li>the jinja2 render function then passes my_name_query to the template and returns the html page</li></ul>
+<p>Also published on <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></p></p>
+            <a href="https://medium.com/@excitedAtom/serving-dynamic-web-pages-using-python-and-aws-lambda-864ff810fc5c/">Also on <i class="fab fa-medium fa-lg"></i></a>
+            </div>
+    
+            <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" href="/">Home</a>
+            </nav>
+    
+        </div>
+  
+    </div>
+    <div class="col-md-2"></div>
+</main>
+
+      
+</body>
+
+
+</html>

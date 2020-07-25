@@ -80,7 +80,8 @@
 <h4>Description</h4>
 <ul><li>FeatureSelector is defined to illustrate what a custom pipeline step looks like. In this case, the step simply selects a subset of columns to which the transformation defined in the next step of a scikit-learn Pipeline class is applied.</li></ul>
 <ul><li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns have their missing values filled using each column’s median value. Lastly, all numerical columns are scaled.</li></ul>
-<ul><li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li></ul></p>
+<ul><li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li></ul>
+<q>Also published on <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></q></p>
             <a href="https://medium.com/@excitedAtom/custom-scikit-learn-pipeline-925dcd25ca89/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     

@@ -123,7 +123,7 @@ def forecast_post():
 <ul><li>Deploy container using command <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime" target="_blank">heroku container:push</a></li></ul>
 <ul><li>Release container using command <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime" target="_blank">heroku container:release</a></li></ul>
 <p>At this point our code is deployed which we can test using <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjmut-U1JvdAhVKsqQKHaQUBg0QFjAAegQIBRAC&url=https%3A%2F%2Fwww.getpostman.com%2F&usg=AOvVaw1vWzpwzQOHi5ErKZnywLDR" target="_blank">Postman</a> to make a manual forecast request:</p>
-<img src="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" alt="" style="width: 100%" loading="lazy">
+<img src="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" alt="Postman sample request" style="width: 100%" loading="lazy">
 <p>The date is represented by Unix timestamp. The first Body window consists of inputs we provide to the endpoint in the form of prices. The second window returns forecasts from the app.</p>
 <h4>Testing</h4>
 <p>To test the implementation, I will reuse the code from the Evaluation step. However, instead of making predictions locally using our sklearn model, I will use the Heroku app to predict the 691 samples from Evaluation as a batch. The goal is for our predictions we made on a local machine to perfectly match those made using our deployment stack.</p>

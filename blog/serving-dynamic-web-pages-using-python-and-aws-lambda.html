@@ -100,26 +100,7 @@ res = lambda_function.lambda_handler(event=event, context={})
 assert 200 == int(res["statusCode"])</pre>
 <h4>Step 1 — Write html template</h4>
 <p>In this step, we write the html template the Lambda function will return. A good default is the new <a href="https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">Bootstrap 5</a> CSS framework where where the recommended starting markup looks something like this:</p>
-<pre>&lt;!doctype html&gt;
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"></p>
-<div class="highlight"><pre><span></span><span class="c">&lt;!-- Bootstrap CSS --&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css&quot;</span> <span class="na">integrity=</span><span class="s">&quot;sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I&quot;</span> <span class="na">crossorigin=</span><span class="s">&quot;anonymous&quot;</span><span class="nt">&gt;</span>
-
-<span class="nt">&lt;title&gt;</span>Hello, world!<span class="nt">&lt;/title&gt;</span>
-</pre></div>
-
-
-<p></head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>My name is {{my_name}}</p>
-  </body>
-</html></pre>
-<p>Where the dynamic nature of templating comes into play is the variable {{my_name}} which will be filled by our Lambda function using arguments passed to the function.</p>
+<img src="/theme/images/1*b3ZXkCsw8BwLt2Fx_eu6PQ.png.png" alt="Sample HTML page" style="width: 100%" loading="lazy">
 <p>Saving this file in folder “templates” and naming it index.html, we are ready to write the Lambda function.</p>
 <h4>Step 2 — Write Lambda function to serve your html page</h4>
 <p>In the example below, the lambda function expects URL parameters and parses those. So when using custom URL, the format would look something like this: Example.com/?my_name=somename. See step 10 in <a href="https://adamnovotny.com/blog/serverless-web-apps-with-firebase-and-aws-lambda.html" target="_blank">this tutorial</a> to add custom URLs to your API Gateway-triggered Lambda functions.</p>

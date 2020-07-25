@@ -81,7 +81,7 @@ DecisionTreeRegressor(criterion='mse', max_depth=3, max_features=None, max_leaf_
 <pre>X = pd.read_csv("X_test.csv", header=0)
 y = pd.read_csv("y_test.csv", header=0)</pre>
 <p>At this stage, we may perform additional performance evaluation on top of the Training step. However, I will stick to the metrics used previously: MAE, MSE, R2.</p>
-<img src="/theme/images/1*5Cjov6KncJ3qLJ-fHi6MTg.png.png" alt="" style="width: 100%" loading="lazy">
+<img src="/theme/images/1*5Cjov6KncJ3qLJ-fHi6MTg.png.png" alt="Decision tree MAE, MSE, R2" style="width: 100%" loading="lazy">
 <h4>Commentary</h4>
 <p>We have known that our model does not perform well enough in practice from the previous tutorial already. However, as I mentioned before, I went ahead and used it for illustrative purposes here in order to complete the tutorial and to explain the kind of thinking involved in real life projects where performance is not always ideal out of the box as many toy datasets would make one think.</p>
 <p>The key comparison is how well does our model evaluate relative to the training phase. In the case of models ready for production, I would expect the performance in the Evaluation step to be comparable to those of testing folds in the Training phase.</p>

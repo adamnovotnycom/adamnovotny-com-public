@@ -29,17 +29,6 @@
         <header class="blog-header py-3">
           <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-3 pt-1">
-                <div class="btn-group">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bars fa-md"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a></li>
-                      <li><a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
-                      <li><a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a></li>
-                      <li><a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
-                    </ul>
-                </div>
             </div>
             <div class="col-6 text-center">
                 <a class="dropdown-item" href="/"><img id="blog-header-logo" src="/theme/images/adamnovotny_logo.jpg"></a>
@@ -48,12 +37,29 @@
             </div>
           </div>
         </header>
-      
-        <div class="nav-scroller py-1 mb-2">
-          <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="/books/books.html">Bookshelf <i class="fas fa-book fa-lg"></i></a>
-          </nav>
-        </div>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/ml/ml.html">AI/ML <i class="fas fa-table fa-lg"></i></a>
+                <a class="dropdown-item" href="/programming/programming.html">Programming <i class="fas fa-table fa-lg"></i></a>
+                <a class="dropdown-item" href="/books/books.html">Bookshelf <i class="fas fa-book fa-lg"></i></a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Social</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a>
+                  <a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a>
+                  <a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a>
+                  <a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a>
+                </div>
+              </li>
+        </ul>
     </div>
       
 
@@ -91,10 +97,6 @@
 <p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
             <a href="https://medium.com/@excitedAtom/limited-competition-in-sports-c29fd30fdf1f/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
-    
-            <nav class="blog-pagination">
-            <a class="btn btn-outline-primary" href="/">Home</a>
-            </nav>
     
         </div>
   

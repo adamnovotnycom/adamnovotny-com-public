@@ -29,17 +29,6 @@
         <header class="blog-header py-3">
           <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-3 pt-1">
-                <div class="btn-group">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bars fa-md"></i>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a></li>
-                      <li><a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
-                      <li><a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a></li>
-                      <li><a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
-                    </ul>
-                </div>
             </div>
             <div class="col-6 text-center">
                 <a class="dropdown-item" href="/"><img id="blog-header-logo" src="/theme/images/adamnovotny_logo.jpg"></a>
@@ -48,12 +37,29 @@
             </div>
           </div>
         </header>
-      
-        <div class="nav-scroller py-1 mb-2">
-          <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="/books/books.html">Bookshelf <i class="fas fa-book fa-lg"></i></a>
-          </nav>
-        </div>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/ml/ml.html">AI/ML <i class="fas fa-table fa-lg"></i></a>
+                <a class="dropdown-item" href="/programming/programming.html">Programming <i class="fas fa-table fa-lg"></i></a>
+                <a class="dropdown-item" href="/books/books.html">Bookshelf <i class="fas fa-book fa-lg"></i></a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Social</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a>
+                  <a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a>
+                  <a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a>
+                  <a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a>
+                </div>
+              </li>
+        </ul>
     </div>
       
 
@@ -67,7 +73,7 @@
                         Custom scikit-learn Pipeline
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-06-25</p>
+                <p class="blog-post-meta">2020-06-25 | Machine Learning</p>
                 <p style="background-image: url(/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like. As of 6/2020, here is my latest iteration. In general, a machine learning pipeline should have the following characteristics: Include every step shared...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -76,7 +82,7 @@
                         Machine Learning Tutorial #4: Deployment
                     </a>
                 </h2>
-                <p class="blog-post-meta">2018-09-02</p>
+                <p class="blog-post-meta">2018-09-02 | Machine Learning</p>
                 <p style="background-image: url(/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Topics: Stack Selection, Heroku, Testing In this final phase of the series, I will suggest a few options ML engineers have to deploy their code. In large organizations, this part of the project will be handled by a specialized team which is especially...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -85,7 +91,7 @@
                         Machine Learning Tutorial #3: Evaluation
                     </a>
                 </h2>
-                <p class="blog-post-meta">2018-08-19</p>
+                <p class="blog-post-meta">2018-08-19 | Machine Learning</p>
                 <p style="background-image: url(/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Topics: Performance Metrics, Commentary In this third phase of the series, I will explore the Evaluation part of the ML project. I will reuse some of the code and solutions from the second Training phase. However, it is important to note that the...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -94,7 +100,7 @@
                         Machine Learning Tutorial #2: Training
                     </a>
                 </h2>
-                <p class="blog-post-meta">2018-08-12</p>
+                <p class="blog-post-meta">2018-08-12 | Machine Learning</p>
                 <p style="background-image: url(/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Topics: Performance Metrics, Cross Validation, Model Selection, Hyperparameter Optimization, Project Reflection, Tools This second part of the ML Tutorial follows up on the first Preprocessing part. All code is available in this Github repo. Other...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -103,7 +109,7 @@
                         Machine Learning Tutorial #1: Preprocessing
                     </a>
                 </h2>
-                <p class="blog-post-meta">2018-08-05</p>
+                <p class="blog-post-meta">2018-08-05 | Machine Learning</p>
                 <p style="background-image: url(/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Topics: Data Cleaning, Target Variable Selection, Feature Extraction, Scaling, Dimensionality Reduction In this machine learning tutorial, I will explore 4 steps that define a typical machine learning project: Preprocessing, Learning, Evaluation, and...</p>
             </div><!-- /.blog-post -->
   

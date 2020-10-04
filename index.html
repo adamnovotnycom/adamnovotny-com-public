@@ -8,27 +8,20 @@
     <title>Adam Novotny's website</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="/theme/images/favicon.png">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/theme/js/main.js" defer></script>
-
-    <!-- Custom styles for this template -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link href="/theme/css/blog.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="/theme/css/blog.css">
 </head>
 
 <body>
     <div class="container">
         <header class="blog-header py-3">
           <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-3 pt-1">
+            <div class="col-3">
+                <a class="dropdown-item" href="/"><img id="blog-header-logo" src="/theme/images/adamnovotny_logo.jpg"></a>
             </div>
             <div class="col-6 text-center">
             </div>
@@ -40,9 +33,9 @@
         </header>
 
         <ul class="nav nav-pills">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="dropdown-item" href="/"><img id="blog-header-logo" src="/theme/images/adamnovotny_logo.jpg"></a>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
               <div class="dropdown-menu">
@@ -75,7 +68,7 @@
                         Skin in the Game by Nassim Nicholas Taleb
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-10-04 | Books</p>
+                <p class="blog-post-meta">Books | 2020-10-04</p>
                 <p style="background-image: url(/theme/images/1*STVayKpah-JBAsfYqGfYtQ.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Skin in the Game is a curious collection anecdotes that has to make everyone question the fairness of modern society. A short subset of interesting thoughts is below: Bureaucracy is a construction by which a person is conveniently separated from the...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -84,7 +77,7 @@
                         Everything Explained for the Professional Pilot by Richie Lengel
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-09-19 | Books</p>
+                <p class="blog-post-meta">Books | 2020-09-19</p>
                 <p style="background-image: url(/theme/images/1*lskc82ZtyUHR9VrR7Vz0Yg.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">While summarizing this book isn’t useful due to its technical nature, below is a small subset of fun facts I came across. GPS calculates position based on precise signals received from satellites. How precise? Being 1/1000 of a second off results in a...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -93,7 +86,7 @@
                         Something Deeply Hidden by Sean Carroll
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-09-12 | Books</p>
+                <p class="blog-post-meta">Books | 2020-09-12</p>
                 <p style="background-image: url(/theme/images/1*FAA4W1jklc-8VM9GkjZk6Q.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Sean Carroll attempts to reconcile quantum mechanics with Einstein’s theory of relativity, something that physics conveniently ignores. There is a plethora of similar attempts such as Geometric Unity presented by Eric Weinstein. Carroll’s book is very...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -102,7 +95,7 @@
                         Genome by A.G. Riddle
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-08-16 | Books</p>
+                <p class="blog-post-meta">Books | 2020-08-16</p>
                 <p style="background-image: url(/theme/images/1*eC-9aFUEdybt6i_MCKxQ2Q.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Genome is fascinating science fiction book focused on what could be hidden in human Genome. The book’s website has an interesting section explaining which of main themes are fact vs fiction. Below is a selection of 3 facts I found interesting....</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -111,7 +104,7 @@
                         Serving Dynamic Web Pages using Python and AWS Lambda
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-07-25 | Programming</p>
+                <p class="blog-post-meta">Programming | 2020-07-25</p>
                 <p style="background-image: url(/theme/images/1*9bPdHLV7ghV1RuNYOGkTvA.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">While AWS Lambda functions are typically used to build API endpoints, at their core Lambda functions can return almost anything. This includes returning html markup with dynamic content. I will not go into details describing how to deploy AWS Lambda...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -120,7 +113,7 @@
                         Work Rules! by Laszlo Bock
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-07-11 | Books</p>
+                <p class="blog-post-meta">Books | 2020-07-11</p>
                 <p style="background-image: url(/theme/images/1*HLDCRwhxgRYIWA4-xvHTBQ.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Insights from Inside Google That Will Transform How You Live and Lead by Laszlo Bock Work Rules! is an informative look at Google’s people management. After reading it, I am still not entirely convinced that Google’s approach is applicable to every...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -129,7 +122,7 @@
                         Custom scikit-learn Pipeline
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-06-25 | Machine Learning</p>
+                <p class="blog-post-meta">Machine Learning | 2020-06-25</p>
                 <p style="background-image: url(/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like. As of 6/2020, here is my latest iteration. In general, a machine learning pipeline should have the following characteristics: Include every step shared...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -138,7 +131,7 @@
                         1984 by George Orwell
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-06-13 | Books</p>
+                <p class="blog-post-meta">Books | 2020-06-13</p>
                 <p style="background-image: url(/theme/images/1*7CUVpzNZEgjnPfZ2Vvp5kw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">George Orwell‘s 1984 (published in 1949) is clearly influenced by Ayn Rand’s The Fountainhead (published in 1943). Along with Atlas Shrugged published in the 1957 at the height of the Cold War these books compose an intellectual series describing the...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -147,7 +140,7 @@
                         Platform Revolution by Parker, Alstyne, and Choudary
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-05-30 | Books</p>
+                <p class="blog-post-meta">Books | 2020-05-30</p>
                 <p style="background-image: url(/theme/images/1*Pru4vGiSjBL6wD2y6r89Xg.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Below are some of my takeaways from the book Platform Revolution: How Networked Markets Are Transforming the Economy — and How to Make Them Work for You by Geoffrey Parker, Marshall Van Alstyne, and Sangeet Paul Choudary. The book was written in 2016...</p>
             </div><!-- /.blog-post -->
             <div class="blog-post">
@@ -156,7 +149,7 @@
                         COVID-19 Driving Stock Market Higher Than 1 Year Ago?
                     </a>
                 </h2>
-                <p class="blog-post-meta">2020-05-16 | Finance</p>
+                <p class="blog-post-meta">Finance | 2020-05-16</p>
                 <p style="background-image: url(/theme/images/1*yIDMVanoFc79QAurxt_pfw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">COVID-19 became a serious concern for wider public in the USA somewhere between February and March of 2020. Today on May 16, stock markets in the USA are optimistically higher than a year ago while most of the country is still under strict lockdown...</p>
             </div><!-- /.blog-post -->
   
@@ -200,6 +193,11 @@
 </main>
 
       
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/theme/js/main.js" defer></script>
 </body>
 
 

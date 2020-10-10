@@ -110,6 +110,14 @@ body {
 }
 
 .py-3 {
-    padding-top: 0.1rem!important;
-    padding-bottom: 0.1rem!important;
+    padding-top: 0.5rem!important;
+    padding-bottom: 0.5rem!important;
+}
+
+.menu-item {
+    margin-left: 1rem;
+}
+
+a {
+    color: #024dbc;
 }

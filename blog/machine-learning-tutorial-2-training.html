@@ -58,15 +58,15 @@
 
 <main class="container">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col"></div>
+        <div class="col-md-9">
     
             <div class="blog-post">
             <h2 class="blog-post-title">Machine Learning Tutorial #2: Training</h2>
             <p class="blog-post-meta" >2018-08-12</p>
             <h4>Topics: Performance Metrics, Cross Validation, Model Selection, Hyperparameter Optimization, Project Reflection, Tools</h4>
 
-<p><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy">
+<p><a href="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" target="_blank"><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a>
 <p>This second part of the ML Tutorial follows up on the first <a href="https://medium.com/@adam5ny/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> part. All code is available in this <a href="https://github.com/adam5ny/blogs/tree/master/ml-training" target="_blank">Github repo</a>. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, #2 Training (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
 <p>I concluded Tutorial #1 with 4 datasets: training features, testing features, training target variables, and testing target variables. Only training features and and training target variables will be used in this Tutorial #2. The testing data will be used for evaluation purposes in Tutorial #3.</p>
 <h4>Performance Metrics</h4>
@@ -78,9 +78,9 @@
 <h4>Cross Validation</h4>
 <p>I will return to the same topic I addressed in <a href="https://medium.com/@adam5ny/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a>. Due to the nature of time series data, standard randomized K-fold validation produces forward looking bias and should not be used. To illustrate the issue here, let’s assume that we split 8 years of data into 8 folds, each representing one year. The first training cycle will use folds #1–7 for training and fold #8 for testing. The next training cycle may use folds #2–8 for training and fold #1 for testing. This is of course unacceptable because we are using data from years 2–7 to forecast year 1.</p>
 <p>Our cross validation must respect the temporal sequence of the data. We can use Walk Forward Validation or simply multiple Train-Test Splits. For illustration, I will use 3 Train-Test splits. For example, let’s assume we have 2000 samples sorted by timestamp from the earliest. Our 3 segments would look as follows:</p>
-<img src="/theme/images/1*cFti5rqcbFrE5p_4My4eww.png.png" alt="Train-Test splits. Author: Adam Novotny" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*cFti5rqcbFrE5p_4My4eww.png.png" target="_blank"><img src="/theme/images/1*cFti5rqcbFrE5p_4My4eww.png.png" alt="Train-Test splits. Author: Adam Novotny" style="width: 100%" loading="lazy"></a>
 <h4>Model Selection</h4>
-<img src="/theme/images/1*M2clZWay68ODL2jEB-J5Dw.png.png" alt="ML Model Selection. Author: Adam Novotny" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*M2clZWay68ODL2jEB-J5Dw.png.png" target="_blank"><img src="/theme/images/1*M2clZWay68ODL2jEB-J5Dw.png.png" alt="ML Model Selection. Author: Adam Novotny" style="width: 100%" loading="lazy"></a>
 <p>In this section, I will select the models to train. The “Supervised” algorithms section (red section in the image above) is relevant because the dataset contains both features and labels (target variables). I like to follow <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" target="_blank">Occam’s razor</a> when it comes to algorithms selection. In other words, start with the algorithm that exhibits the fastest times to train and the greatest interpretability. Then we can increase complexity.</p>
 <p>I will explore the following algorithms in this section:</p>
 <ul><li>Linear Regression: fast to learn, easy to interpret</li></ul>
@@ -94,7 +94,7 @@ model = linear_model.LinearRegression()
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)</pre>
 <p>Initial results yielded nothing remotely promising so I took another step and transformed features further. I created polynomial and nonlinear features to account for nonlinear relationships. For example, features [a, b] become [1, a, b, a², ab, b²] in the case of degree-2 polynomial.</p>
-<img src="/theme/images/1*c9-D9EJoTwKsRlJuK_WQaQ.png.png" alt="Linear Regression results. Author: Adam Novotny" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*c9-D9EJoTwKsRlJuK_WQaQ.png.png" target="_blank"><img src="/theme/images/1*c9-D9EJoTwKsRlJuK_WQaQ.png.png" alt="Linear Regression results. Author: Adam Novotny" style="width: 100%" loading="lazy"></a>
 <p>The x-axis represents 3 cross validation segments (the fold 1st uses 1749 samples for training and 1749 for testing, the 2nd uses 3499 for training and 1749 for testing, and the last uses 5249 for training and 1749 for testing). Clearly, the results suggest that the linear model is not useful in practice. At this stage I have at least the following options:</p>
 <ul><li>Ridge regression: addresses overfitting (if any)</li></ul>
 <ul><li>Lasso linear: reduces model complexity</li></ul>
@@ -135,10 +135,10 @@ y_pred = model.predict(X_test)</pre>
 <ul><li>min samples per split: the minimum number of samples required to split an internal node</li></ul>
 <ul><li>max leaf nodes: number or None (allow unlimited number of leaf nodes)</li></ul>
 <p>Illustrative grid search results are below:</p>
-<img src="/theme/images/1*CQHDbOr3_ZO7oWkdOYdKQw.png.png" alt="Grid Search Decision Tree — first rows" style="width: 100%" loading="lazy">
-<img src="/theme/images/1*DQHZ9reWIOMF6fq9eKA8IQ.png.png" alt="Grid Search Decision Tree — last rows" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*CQHDbOr3_ZO7oWkdOYdKQw.png.png" target="_blank"><img src="/theme/images/1*CQHDbOr3_ZO7oWkdOYdKQw.png.png" alt="Grid Search Decision Tree — first rows" style="width: 100%" loading="lazy"></a>
+<a href="/theme/images/1*DQHZ9reWIOMF6fq9eKA8IQ.png.png" target="_blank"><img src="/theme/images/1*DQHZ9reWIOMF6fq9eKA8IQ.png.png" alt="Grid Search Decision Tree — last rows" style="width: 100%" loading="lazy"></a>
 <p>Performance using the best parameters:</p>
-<img src="/theme/images/1*2qHu4Z1DiJGmx440QCyTAA.png.png" alt="Decision Tree results" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*2qHu4Z1DiJGmx440QCyTAA.png.png" target="_blank"><img src="/theme/images/1*2qHu4Z1DiJGmx440QCyTAA.png.png" alt="Decision Tree results" style="width: 100%" loading="lazy"></a>
 <p>Again, the results do not seem to be very promising. They appear to be better than linear regression (lower MAE and MSE) but R² is still too low to be useful. I would conclude, however, that the greater expressiveness of decision trees is useful and I would discard the linear regression model at this stage.</p>
 <h4>Neural Networks</h4>
 <p>Exploring the hyperparameters of the neural net build by Keras, we can alter at least the following parameters:</p>
@@ -148,10 +148,10 @@ y_pred = model.predict(X_test)</pre>
 <ul><li>batch size: the number of samples per gradient update</li></ul>
 <ul><li>epochs to train: the number of iterations over the entire training dataset</li></ul>
 <p>Illustrative grid search results are below:</p>
-<img src="/theme/images/1*c_fhFAu5NkphQXM6Do8QXQ.png.png" alt="Grid Search Neural Net — first rows" style="width: 100%" loading="lazy">
-<img src="/theme/images/1*CZIYuZ9UrEdoVkWhOtfIWQ.png.png" alt="Grid Search Neural Net — last rows" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*c_fhFAu5NkphQXM6Do8QXQ.png.png" target="_blank"><img src="/theme/images/1*c_fhFAu5NkphQXM6Do8QXQ.png.png" alt="Grid Search Neural Net — first rows" style="width: 100%" loading="lazy"></a>
+<a href="/theme/images/1*CZIYuZ9UrEdoVkWhOtfIWQ.png.png" target="_blank"><img src="/theme/images/1*CZIYuZ9UrEdoVkWhOtfIWQ.png.png" alt="Grid Search Neural Net — last rows" style="width: 100%" loading="lazy"></a>
 <p>Using the best parameters, we obtain the following performance metrics:</p>
-<img src="/theme/images/1*auWhs2uGbBher9adskreog.png.png" alt="Keras MAE, MSE, R2" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*auWhs2uGbBher9adskreog.png.png" target="_blank"><img src="/theme/images/1*auWhs2uGbBher9adskreog.png.png" alt="Keras MAE, MSE, R2" style="width: 100%" loading="lazy"></a>
 <p>Neural net and decision tree results are similar which is common. Both algorithms have very expressive hypothesis spaces and often produce comparable results. If I achieve comparable results, I tend to use the decision tree model for its faster training times and greater interpretability.</p>
 <h4>Project Reflection</h4>
 <p>At this stage it becomes clear that no model can be used in production. While the decision tree model appears to perform the best, its performance on testing data is still unreliable. At this stage, it would be time to go back and find additional features and/or data sources.</p>
@@ -167,9 +167,8 @@ y_pred = model.predict(X_test)</pre>
             </div>
     
         </div>
-  
+        <div class="col"></div>
     </div>
-    <div class="col-md-2"></div>
 </main>
 
       

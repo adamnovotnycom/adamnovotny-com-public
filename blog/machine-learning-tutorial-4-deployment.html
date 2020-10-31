@@ -58,15 +58,15 @@
 
 <main class="container">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col"></div>
+        <div class="col-md-9">
     
             <div class="blog-post">
             <h2 class="blog-post-title">Machine Learning Tutorial #4: Deployment</h2>
             <p class="blog-post-meta" >2018-09-02</p>
             <h4>Topics: Stack Selection, Heroku, Testing</h4>
 
-<p><img src="/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy">
+<p><a href="/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png.png" target="_blank"><img src="/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a>
 <p>In this final phase of the series, I will suggest a few options ML engineers have to deploy their code. In large organizations, this part of the project will be handled by a specialized team which is especially important when scaling is a concern. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , #4 Deployment (this article). <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github code</a>.</p>
 <h4>Stack Selection</h4>
 <p>The number of options to deploy ML code is numerous but I typically decide between at least the three general buckets:</p>
@@ -75,7 +75,7 @@
 <ul><li>Custom backend code (e.g. <a href="http://flask.pocoo.org/docs/0.12/" target="_blank">Python Flask</a> served by <a href="https://devcenter.heroku.com/articles/getting-started-with-python" target="_blank">Heroku</a>)</li></ul>
 <h4>As-a-service solution</h4>
 <p>Platforms such as Microsoft Azure Machine Learning Studio offer the full suite of tools for the entire project including preprocessing and training. Custom API endpoints are usually easy to generate and writing code is often not necessary thanks to drag-and-drop interfaces. The solutions are often well optimized for <a href="https://en.wikipedia.org/wiki/Lazy_learning" target="_blank">lazy learners</a> where evaluation is the most expensive computational step. The downside is that it is sometimes more challenging to bring in custom code (such as the final model) without going through all the project steps on the platform.</p>
-<img src="/theme/images/1*4F3z9NovnqtOtIRWRCJn_Q.jpeg.png" alt="As-a-service deployment example: Microsoft Azure" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*4F3z9NovnqtOtIRWRCJn_Q.jpeg.png" target="_blank"><img src="/theme/images/1*4F3z9NovnqtOtIRWRCJn_Q.jpeg.png" alt="As-a-service deployment example: Microsoft Azure" style="width: 100%" loading="lazy"></a>
 <h4>Serverless function</h4>
 <p>Serverless functions are a good solution for inexpensive computations. AWS uses default timeout of 3 seconds for a function to complete. While timeouts can be extended, the default value is often a good general guideline when deciding about suitability. Lambda only allows 50MB of custom code to be uploaded which is generally not enough for most machine learning purposes. However, functions are well suited for fast computations such as linear regression models. Another downside is that platforms support only specific languages. In terms of Python solutions, AWS Lambda supports versions 2.7 and 3.6 only at the time of writing this article.</p>
 <h4>Custom backend code</h4>
@@ -122,12 +122,12 @@ def forecast_post():
 <ul><li>Deploy container using command <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime" target="_blank">heroku container:push</a></li></ul>
 <ul><li>Release container using command <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime" target="_blank">heroku container:release</a></li></ul>
 <p>At this point our code is deployed which we can test using <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjmut-U1JvdAhVKsqQKHaQUBg0QFjAAegQIBRAC&url=https%3A%2F%2Fwww.getpostman.com%2F&usg=AOvVaw1vWzpwzQOHi5ErKZnywLDR" target="_blank">Postman</a> to make a manual forecast request:</p>
-<img src="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" alt="Postman sample request" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" target="_blank"><img src="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" alt="Postman sample request" style="width: 100%" loading="lazy"></a>
 <p>The date is represented by Unix timestamp. The first Body window consists of inputs we provide to the endpoint in the form of prices. The second window returns forecasts from the app.</p>
 <h4>Testing</h4>
 <p>To test the implementation, I will reuse the code from the Evaluation step. However, instead of making predictions locally using our sklearn model, I will use the Heroku app to predict the 691 samples from Evaluation as a batch. The goal is for our predictions we made on a local machine to perfectly match those made using our deployment stack.</p>
 <p>This step is critical to ensure that we can replicate our results remotely using a pre-trained model. The testing code is also available on <a href="https://github.com/adam5ny/blogs/blob/master/ml-deployment/backend/tests/test_app.py" target="_blank">Github</a>. We confirm that the performance of our Heroku app matches the performance generated locally in the Evaluation tutorial:</p>
-<img src="/theme/images/1*Oewaabcu926MZpC-zFFpHQ.png.png" alt="Tested deployment performance matches evaluation results" style="width: 100%" loading="lazy">
+<a href="/theme/images/1*Oewaabcu926MZpC-zFFpHQ.png.png" target="_blank"><img src="/theme/images/1*Oewaabcu926MZpC-zFFpHQ.png.png" alt="Tested deployment performance matches evaluation results" style="width: 100%" loading="lazy"></a>
 <p>To conclude, the project is intended to provide an overview of the kind of thinking a data science project entails. The code should not be used in production and is provided solely for illustrative purposes. As always, I welcome all constructive feedback (positive or negative) on <a href="https://twitter.com/adam5ny" target="_blank">Twitter</a>.</p>
 <p>Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a>, #4 Deployment (this article). <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github code</a>.</p>
 <p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
@@ -135,9 +135,8 @@ def forecast_post():
             </div>
     
         </div>
-  
+        <div class="col"></div>
     </div>
-    <div class="col-md-2"></div>
 </main>
 
       

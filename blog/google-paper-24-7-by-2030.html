@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Adam Novotny's website">
     <base href="/">
-    <title>Something Deeply Hidden by Sean Carroll</title>
+    <title>Google Paper: 24/7 by 2030</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/theme/images/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -62,30 +62,17 @@
         <div class="col-md-9">
     
             <div class="blog-post">
-            <h2 class="blog-post-title">Something Deeply Hidden by Sean Carroll</h2>
-            <p class="blog-post-meta" >2020-09-12</p>
-            <p>Sean Carroll attempts to reconcile quantum mechanics with Einstein’s theory of relativity, something that physics conveniently ignores. There is a plethora of similar attempts such as Geometric Unity <a href="https://www.youtube.com/watch?v=Z7rd04KzLcg&" target="_blank">presented</a> by Eric Weinstein. Carroll’s book is very readable even for physics enthusiasts like myself who lack formal education in the field.</p>
+            <h2 class="blog-post-title">Google Paper: 24/7 by 2030</h2>
+            <p class="blog-post-meta" >2020-10-31</p>
+            <p>Google released a <a href="https://www.gstatic.com/gumdrop/sustainability/247-carbon-free-energy.pdf" target="_blank">white paper</a> describing how the company intends to generate all of its electricity needs from renewable energy sources by 2030. Previously, Google committed to reducing emissions by buying offsets or generating renewable energy off-cycle. This new commitment goes by further: “Google intends to match its operational electricity use with nearby carbon-free energy sources in every hour of every year”</p>
 
-<p><a href="/theme/images/1*FAA4W1jklc-8VM9GkjZk6Q.png.png" target="_blank"><img src="/theme/images/1*FAA4W1jklc-8VM9GkjZk6Q.png.png" alt="Something Deeply Hidden: Quantum Worlds and the Emergence of Spacetime Hardcover by Sean Carroll" style="width: 100%" loading="lazy"></a>
-<p>Background:</p>
-<ul><li><a href="https://en.wikipedia.org/wiki/Quantum_probability" target="_blank">Quantum probability</a></li></ul>
-<ul><li><a href="https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation" target="_blank">Schrödinger equation</a></li></ul>
-<ul><li><a href="https://en.wikipedia.org/wiki/Quantum_superposition" target="_blank">Superposition</a></li></ul>
-<ul><li><a href="https://en.wikipedia.org/wiki/Many-worlds_interpretation" target="_blank">Many-Worlds theory</a></li></ul>
-<ul><li><a href="https://en.wikipedia.org/wiki/Electromagnetic_field" target="_blank">Electromagnetic field</a></li></ul>
-<ul><li><a href="https://en.wikipedia.org/wiki/Planck_constant" target="_blank">Planck constant</a></li></ul>
-<ul><li><a href="https://en.wikipedia.org/wiki/Uncertainty_principle" target="_blank">Uncertainty principle, Heisenberg’s uncertainty principle</a></li></ul>
-<p>Quantum notes:</p>
-<ul><li>Qubits: systems with two possible measurement outcomes. A classical “bit” has just two possible values, 0 and 1. The state of qubit is a superposition of two possibilities (e.g. spin up and down), each weighted by a complex number</li></ul>
-<ul><li>Entanglement arises because there is just one wave function for the entire universe, not separate wave functions for each component of the it</li></ul>
-<ul><li>Decoherence is a situation when macroscopic objects become entangled with the environment. Decoherence causes the wave function to split into multiple worlds</li></ul>
-<ul><li>“It makes no sense to wonder which branch I will end up in. Both of them have every right to think of themselves as me.” In Many-Worlds, the life-span of a person should be thought of as a branching tree</li></ul>
-<ul><li>How many splittings have occured? Assume 10^(88) particules in the universe, each splits the wave function in two a million times per second, and we have 10^(18) seconds since the Big Bang: 10^(88) * 10^(6) * 10^(18) = 10^(112) splittings and 2^(10^(112)) branches</li></ul>
-<ul><li>Special relativity (1905): everyone measures light to travel at the same speed in vacuum. Since there is no absolute frame of motion, time and space are relative</li></ul>
-<ul><li>Consequences of General relativity: expansion of the universe and black holes. Special relativity is a framework, general relativity is a specific theory</li></ul>
-<ul><li>Hawking: black holes emit particles into space. Those particles carry energy away from black holes. Black holes have entropy: where does the information go when black holes form and then evaporate?</li></ul>
-<ul><li>About me: <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></li></ul></p>
-            <a href="https://medium.com/@excitedAtom/book-notes-something-deeply-hidden-by-sean-carroll-c1123c9380f5/">Also on <i class="fab fa-medium fa-lg"></i></a>
+<p><a href="/theme/images/1*HOTcFQxbxwukF2iOdh3lkw.png.png" target="_blank"><img src="/theme/images/1*HOTcFQxbxwukF2iOdh3lkw.png.png" alt="Google’s energy journey" style="width: 100%" loading="lazy"></a>
+<p>Everybody interested should read it — it’s short.</p>
+<p>Google cooperated with a <a href="https://www.watttime.org/" target="_blank">Watttime</a> to generate the dataset that measures the carbon emissions intensity in regions where Google’s data centers are located. Watttime has a very interesting <a href="https://www.watttime.org/api-documentation/#introduction" target="_blank">API</a> providing carbon intensity in real time. I collected a random set of data points over 24 hours for a selected number of regions where Google data centers are <a href="https://www.google.com/about/datacenters/locations/" target="_blank">located</a> in the US. All code is available in this <a href="https://gist.github.com/excitedAtom/0d980a908a35732e9e55e8b1e8f27985" target="_blank">Github gist</a>.</p>
+<a href="/theme/images/1*U11j-6mlV0pwUsNslceXaQ.png.png" target="_blank"><img src="/theme/images/1*U11j-6mlV0pwUsNslceXaQ.png.png" alt="Marginal Operating Emissions Rates (MOER) of Select Google Data Centers" style="width: 100%" loading="lazy"></a>
+<p>Marginal Operating Emissions Rates (MOER): 0 represents no emissions (clean energy generation), 100 represents highest emissions. In other words, for all regions where MOER is high, Google has a lot of work to do to replace (or store) electricity used from clean sources. In the chart above, <a href="https://www.google.com/about/datacenters/locations/midlothian/" target="_blank">Midlothian, TX</a> appears to be one of those challenging locations. On the other hand, Mayes County, OK is a location that Google appears to be satisfied with: “Our highest clean energy percentage is in Oklahoma (Southwest Power Pool), where our purchases of wind power helped drive carbon-free energy performance at our data center from 41% to 96%”</p>
+<p>I firmly believe that renewable energy will be widely adopted only if it is at least as cheap as alternatives. So exploring the data from a financial perspective is critical: From 2009 to 2019, costs for wind and solar power declined by 70% and 89% (<a href="https://www.lazard.com/media/451086/lazards-levelized-cost-of-energy-version-130-vf.pdf" target="_blank">see page 8</a>).</p></p>
+            <a href="https://medium.com/@excitedAtom/google-paper-24-7-by-2030-9211a2b33e69/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     
         </div>

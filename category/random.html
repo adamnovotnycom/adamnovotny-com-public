@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Adam Novotny's website">
     <base href="/">
-    <title>Adam Novotny's website - Random category</title>
+    <title>Adam Novotny's website</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -24,16 +24,22 @@
             <div class="col-6 text-center">
             </div>
             <div class="col-3 d-flex justify-content-end">
-                <a class="menu-item" href="https://github.com/excitedAtom"><i class="fab fa-github fa-md"></i></a>
-                <a class="menu-item" href="https://twitter.com/excitedAtom"><i class="fab fa-twitter fa-md"></i></a>
+                <div class="btn-group">
+                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-address-card fa-md"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a></li>
+                    <li><a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                    <li><a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                    <li><a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+                </div>
             </div>
           </div>
         </header>
 
         <ul class="nav nav-pills">
-            <!-- <li class="nav-item">
-              <a class="dropdown-item" href="https://adamnovotny.com/"><img id="blog-header-logo" src="https://adamnovotny.com/theme/images/adamnovotny_logo.jpg"></a>
-            </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
               <div class="dropdown-menu">
@@ -41,18 +47,9 @@
                 <a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a>
                 <a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning  <i class="fas fa-table fa-md"></i></a>
                 <a class="dropdown-item" href="https://adamnovotny.com/category/programming.html">Coding <i class="fas fa-laptop fa-md"></i></a>
-                <a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-laptop fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a>
               </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Social</a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a>
-                  <a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a>
-                  <a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a>
-                  <a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a>
-                </div>
-              </li>
         </ul>
     </div>
       
@@ -61,6 +58,15 @@
     <div class="row">
       <div class="col-md-8">
 
+            <div class="blog-post">
+                <h2 class="blog-post-title">
+                    <a href="https://adamnovotny.com/blog/google-paper-24-7-by-2030.html">
+                        Google Paper: 24/7 by 2030
+                    </a>
+                </h2>
+                <p class="blog-post-meta">Random | 2020-10-31</p>
+                <p style="background-image: url(/theme/images/1*HOTcFQxbxwukF2iOdh3lkw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Google released a white paper describing how the company intends to generate all of its electricity needs from renewable energy sources by 2030. Previously, Google committed to reducing emissions by buying offsets or generating renewable energy...</p>
+            </div><!-- /.blog-post -->
             <div class="blog-post">
                 <h2 class="blog-post-title">
                     <a href="https://adamnovotny.com/blog/i-finally-read-facebooks-terms-of-service.html">
@@ -74,11 +80,6 @@
       </div>
   
       <aside class="col-md-4">
-        <div class="p-4 mb-3 bg-light rounded" id="quote">
-            <p class="mb-0"><i>{{text}}</i></p>
-            <p class="mb-0"><a v-bind:href="url">~ {{author}} <i class="fab fa-wikipedia-w fa-lg"></i></a></p>
-        </div>
-  
         <div class="p-4">
           <h4 class="font-italic">Archives</h4>
           <ol class="list-unstyled mb-0">

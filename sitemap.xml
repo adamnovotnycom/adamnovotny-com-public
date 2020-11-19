@@ -4,290 +4,269 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2020-11-15T02:00:45-00:00</lastmod>
+<loc>https://adamnovotny.com/</loc>
+<lastmod>2020-11-19T15:49:36-00:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
-<loc>/books/books.html</loc>
-<lastmod>2020-11-15T02:00:45-00:00</lastmod>
+<loc>https://adamnovotny.com/books/books.html</loc>
+<lastmod>2020-11-19T15:49:36-00:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
-<loc>/ml/ml.html</loc>
-<lastmod>2020-11-15T02:00:45-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/coding/coding.html</loc>
-<lastmod>2020-11-15T02:00:45-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/finance/finance.html</loc>
-<lastmod>2020-11-15T02:00:45-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/blog/google-paper-24-7-by-2030.html</loc>
+<loc>https://adamnovotny.com/blog/google-paper-24-7-by-2030.html</loc>
 <lastmod>2020-10-31T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/skin-in-the-game-by-nassim-nicholas-taleb.html</loc>
+<loc>https://adamnovotny.com/blog/skin-in-the-game-by-nassim-nicholas-taleb.html</loc>
 <lastmod>2020-10-04T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/everything-explained-for-the-professional-pilot-by-richie-lengel.html</loc>
+<loc>https://adamnovotny.com/blog/everything-explained-for-the-professional-pilot-by-richie-lengel.html</loc>
 <lastmod>2020-09-19T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/something-deeply-hidden-by-sean-carroll.html</loc>
+<loc>https://adamnovotny.com/blog/something-deeply-hidden-by-sean-carroll.html</loc>
 <lastmod>2020-09-12T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/genome-by-a-g-riddle.html</loc>
+<loc>https://adamnovotny.com/blog/genome-by-a-g-riddle.html</loc>
 <lastmod>2020-08-16T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html</loc>
+<loc>https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html</loc>
 <lastmod>2020-07-25T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/work-rules.html</loc>
+<loc>https://adamnovotny.com/blog/work-rules.html</loc>
 <lastmod>2020-07-11T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/custom-scikit-learn-pipeline.html</loc>
+<loc>https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html</loc>
 <lastmod>2020-06-25T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/1984.html</loc>
+<loc>https://adamnovotny.com/blog/1984.html</loc>
 <lastmod>2020-06-13T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/platform-revolution.html</loc>
+<loc>https://adamnovotny.com/blog/platform-revolution.html</loc>
 <lastmod>2020-05-30T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/covid-19-driving-stock-market-higher-than-1-year-ago.html</loc>
+<loc>https://adamnovotny.com/blog/covid-19-driving-stock-market-higher-than-1-year-ago.html</loc>
 <lastmod>2020-05-16T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/the-real-divide-those-who-are-not-allowed-to-work.html</loc>
+<loc>https://adamnovotny.com/blog/the-real-divide-those-who-are-not-allowed-to-work.html</loc>
 <lastmod>2020-05-09T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/the-billionaire-raj.html</loc>
+<loc>https://adamnovotny.com/blog/the-billionaire-raj.html</loc>
 <lastmod>2020-05-03T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/free-healthcare-is-free-markets.html</loc>
+<loc>https://adamnovotny.com/blog/free-healthcare-is-free-markets.html</loc>
 <lastmod>2020-04-25T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/what-i-no-longer-believe.html</loc>
+<loc>https://adamnovotny.com/blog/what-i-no-longer-believe.html</loc>
 <lastmod>2020-04-18T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/on-government-run-capitalism.html</loc>
+<loc>https://adamnovotny.com/blog/on-government-run-capitalism.html</loc>
 <lastmod>2020-04-11T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/climate-change-part-1-sea-level-change.html</loc>
+<loc>https://adamnovotny.com/blog/climate-change-part-1-sea-level-change.html</loc>
 <lastmod>2019-12-15T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/custom-vpn-using-pivpn-and-public-cloud.html</loc>
+<loc>https://adamnovotny.com/blog/custom-vpn-using-pivpn-and-public-cloud.html</loc>
 <lastmod>2018-12-30T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/lessons-from-the-2008-financial-crisis-t-10-edition.html</loc>
+<loc>https://adamnovotny.com/blog/lessons-from-the-2008-financial-crisis-t-10-edition.html</loc>
 <lastmod>2018-09-23T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/serverless-web-apps-with-firebase-and-aws-lambda.html</loc>
+<loc>https://adamnovotny.com/blog/serverless-web-apps-with-firebase-and-aws-lambda.html</loc>
 <lastmod>2018-09-09T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/machine-learning-tutorial-4-deployment.html</loc>
+<loc>https://adamnovotny.com/blog/machine-learning-tutorial-4-deployment.html</loc>
 <lastmod>2018-09-02T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/machine-learning-tutorial-3-evaluation.html</loc>
+<loc>https://adamnovotny.com/blog/machine-learning-tutorial-3-evaluation.html</loc>
 <lastmod>2018-08-19T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/machine-learning-tutorial-2-training.html</loc>
+<loc>https://adamnovotny.com/blog/machine-learning-tutorial-2-training.html</loc>
 <lastmod>2018-08-12T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/machine-learning-tutorial-1-preprocessing.html</loc>
+<loc>https://adamnovotny.com/blog/machine-learning-tutorial-1-preprocessing.html</loc>
 <lastmod>2018-08-05T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/limited-competition-in-sports.html</loc>
+<loc>https://adamnovotny.com/blog/limited-competition-in-sports.html</loc>
 <lastmod>2018-07-15T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/inflation-is-back.html</loc>
+<loc>https://adamnovotny.com/blog/inflation-is-back.html</loc>
 <lastmod>2018-06-23T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/50-percent-of-2017-icos-have-failed-already.html</loc>
+<loc>https://adamnovotny.com/blog/50-percent-of-2017-icos-have-failed-already.html</loc>
 <lastmod>2018-06-10T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/i-finally-read-facebooks-terms-of-service.html</loc>
+<loc>https://adamnovotny.com/blog/i-finally-read-facebooks-terms-of-service.html</loc>
 <lastmod>2018-06-03T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/why-most-icos-are-going-to-0-and-its-not-a-big-deal.html</loc>
+<loc>https://adamnovotny.com/blog/why-most-icos-are-going-to-0-and-its-not-a-big-deal.html</loc>
 <lastmod>2017-09-03T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/blog/linear-programming-in-python-cvxopt-and-game-theory.html</loc>
+<loc>https://adamnovotny.com/blog/linear-programming-in-python-cvxopt-and-game-theory.html</loc>
 <lastmod>2017-08-16T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/category/books.html</loc>
+<loc>https://adamnovotny.com/category/books.html</loc>
 <lastmod>2020-10-04T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
-<loc>/category/finance.html</loc>
+<loc>https://adamnovotny.com/category/finance.html</loc>
 <lastmod>2020-10-31T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
-<loc>/category/machine-learning.html</loc>
+<loc>https://adamnovotny.com/category/machine-learning.html</loc>
 <lastmod>2020-06-25T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
-<loc>/category/privacy.html</loc>
-<lastmod>2018-06-03T00:00:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>/category/programming.html</loc>
+<loc>https://adamnovotny.com/category/programming.html</loc>
 <lastmod>2020-07-25T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 <url>
-<loc>/author/adam-novotny.html</loc>
+<loc>https://adamnovotny.com/category/random.html</loc>
+<lastmod>2018-06-03T00:00:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://adamnovotny.com/author/adam-novotny.html</loc>
 <lastmod>2020-10-31T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
-<priority>0.5</priority>
+<priority>0.8</priority>
 </url>
 
 </urlset>

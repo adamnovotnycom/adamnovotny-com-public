@@ -55,35 +55,9 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-
-            <div class="blog-post">
-                <h2 class="blog-post-title">Book Notes</h2>
-                <ol class="list-unstyled">
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*7CUVpzNZEgjnPfZ2Vvp5kw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/1984.html">1984 by George Orwell | 2020-06-13</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*lskc82ZtyUHR9VrR7Vz0Yg.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/everything-explained-for-the-professional-pilot-by-richie-lengel.html">Everything Explained for the Professional Pilot by Richie Lengel | 2020-09-19</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*eC-9aFUEdybt6i_MCKxQ2Q.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/genome-by-a-g-riddle.html">Genome by A.G. Riddle | 2020-08-16</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*Pru4vGiSjBL6wD2y6r89Xg.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/platform-revolution.html">Platform Revolution by Parker, Alstyne, and Choudary | 2020-05-30</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*STVayKpah-JBAsfYqGfYtQ.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/skin-in-the-game-by-nassim-nicholas-taleb.html">Skin in the Game by Nassim Nicholas Taleb | 2020-10-04</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*FAA4W1jklc-8VM9GkjZk6Q.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/something-deeply-hidden-by-sean-carroll.html">Something Deeply Hidden by Sean Carroll | 2020-09-12</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*MFiM4S9wpv5_0SnPpV4VVQ.jpeg_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/the-billionaire-raj.html">The Billionaire Raj by James Crabtree | 2020-05-03</a>
-                            </li>
-                            <li style="height: 3.5rem; background-image: url(/theme/images/1*HLDCRwhxgRYIWA4-xvHTBQ.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">
-                                <a class="p-2" href="https://adamnovotny.com/blog/work-rules.html">Work Rules! by Laszlo Bock | 2020-07-11</a>
-                            </li>
-                </ol>
+            <div class="p-4 mb-3 bg-light rounded" id="quote">
+                <p class="mb-0"><i>{{text}}</i></p>
+                <p class="mb-0"><a v-bind:href="url">~ {{author}} <i class="fab fa-wikipedia-w fa-lg"></i></a></p>
             </div>
         </div>
     </div>
@@ -95,7 +69,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://adamnovotny.com/theme/js/main.js" defer></script>
+ 
+
+<script src="https://adamnovotny.com/theme/js/lucky.js" defer></script>
+
 </body>
 
 

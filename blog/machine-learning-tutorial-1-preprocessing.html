@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="Topics: Data Cleaning, Target Variable Selection, Feature Extraction, Scaling, Dimensionality Reduction In this machine learning tutorial, I will...">
+    <title>Machine Learning Tutorial #1: Preprocessing | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-3">
+                <a href="https://adamnovotny.com/"><img id="blog-header-logo" src="https://adamnovotny.com/theme/images/adamnovotny_logo.png"></a>
+            </div>
+            <div class="col-6 text-center">
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+            </div>
+          </div>
+        </header>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://adamnovotny.com/category/books.html">Book Notes <i class="fas fa-book fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning  <i class="fas fa-table fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/programming.html">Coding <i class="fas fa-laptop fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About Me</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a>
+                    <a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a>
+                    <a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a>
+                </div>
+              </li>
+        </ul>
+        
+    </div>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Machine Learning Tutorial #1: Preprocessing</h2>
+            <p class="blog-post-meta" >2018-08-05</p>
+            <h4>Topics: Data Cleaning, Target Variable Selection, Feature Extraction, Scaling, Dimensionality Reduction</h4>
+
+<p>In this machine learning tutorial, I will explore 4 steps that define a typical machine learning project: Preprocessing, Learning, Evaluation, and Prediction (deployment). In this first part, I will complete the Preprocessing step. Other tutorials in this series: #1 Preprocessing (this article), <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+
+<p><a href="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png"><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a>
+<p>I will use stock price data as the main dataset. There are a few reasons why this is a good choice for the tutorial:</p>
+<ul><li>The dataset is public by definition and can be easily downloaded from multiple sources so anyone can replicate the work.</li></ul>
+<ul><li>Not all features are immediately available from the source and need to be extracted using domain knowledge, resembling real life.</li></ul>
+<ul><li>The outcome of the project is highly uncertain which again simulates real life. Billions of dollars are thrown at the stock price prediction problem every year and the vast majority of projects fail. This tutorial is therefore not about creating a magical money-printing machine; it is about replicating the experience a machine learning engineer might have with a project.</li></ul>
+<p>All code is located at the following <a href="https://github.com/adam5ny/blogs/tree/master/ml-preprocessing" target="_blank">Github repo</a>. The file “preprocessing.py” drives the analysis. Python 3.6 is recommended and the file includes directions to setup all necessary dependencies.</p>
+<p>First we need to download the dataset. I will somewhat arbitrarily choose the Microsoft stock data (source: <a href="https://finance.yahoo.com/quote/MSFT/history?p=MSFT" target="_blank">Yahoo Finance</a>). I will use the entire available history which at the time of writing includes 3/13/1986 — 7/30/2018. The share price performed as follows during this period:</p>
+<a href="/theme/images/1*lR8eaHKYLjtKsZY_J19pog.png.png"><img src="/theme/images/1*lR8eaHKYLjtKsZY_J19pog.png.png" alt="MSFT stock price. Source https://finance.yahoo.com/chart/MSFT" style="width: 100%" loading="lazy"></a>
+<p>The price movement is interesting because it exhibits at least two modes of behavior:</p>
+<ul><li>the steep rise until the year 2000 when tech stocks crashed</li></ul>
+<ul><li>the sideways movement since 2000</li></ul>
+<p>This makes for a number of interesting machine learning complexities such as the sampling of training and testing data.</p>
+<h4>Data Cleaning</h4>
+<p>After some simple manipulations and loading of the csv data into pandas DataFrame, we have the following dataset where open, high, low and close represent prices on each date and volume the total number of shares traded.</p>
+<a href="/theme/images/1*psQ_9EoBHpiN78QgreAVOQ.png.png"><img src="/theme/images/1*psQ_9EoBHpiN78QgreAVOQ.png.png" alt="Raw dataset includes columns: date, prices (open, high, low, close), trading volume" style="width: 100%" loading="lazy"></a>
+<a href="/theme/images/1*pF4V5GC6b2vfC-koQkAynw.png.png"><img src="/theme/images/1*pF4V5GC6b2vfC-koQkAynw.png.png" alt="Raw dataset includes columns: date, prices (open, high, low, close), trading volume" style="width: 100%" loading="lazy"></a>
+<p>Missing values are not present which I confirmed by running the following command:</p>
+<pre>missing_values_count = df.isnull().sum()</pre>
+<a href="/theme/images/1*RxQtAFDbviXDbYcxU8j02Q.png.png"><img src="/theme/images/1*RxQtAFDbviXDbYcxU8j02Q.png.png" alt="No missing values in dataset" style="width: 100%" loading="lazy"></a>
+<p>Outliers are the next topic I need to address. The key point to understand here is that our dataset now includes prices but prices are not the metric I will attempt to forecast because they are measured in absolute terms and therefore harder to compare across time and other assets. In the tables above, the first price available is ~$0.07 while the last is $105.37.</p>
+<p>Instead, I will attempt to forecast daily returns. For example, at the end of the second trading day the return was +3.6% (0.073673/0.071132). I will therefore create a return column and use it to analyze possible outliers.</p>
+<p>The 5 smallest daily returns present in the dataset are the following:</p>
+<a href="/theme/images/1*-FluO_dSIB7Gc8Rlvgry_w.png.png"><img src="/theme/images/1*-FluO_dSIB7Gc8Rlvgry_w.png.png" alt="5 smallest daily returns" style="width: 100%" loading="lazy"></a>
+<p>And 5 largest daily returns:</p>
+<a href="/theme/images/1*CvJuQYGojLfLlxpnm9Ut1w.png.png"><img src="/theme/images/1*CvJuQYGojLfLlxpnm9Ut1w.png.png" alt="5 largest daily returns" style="width: 100%" loading="lazy"></a>
+<p>The most negative return is -30% (index 405) and the largest is 20% (index 3692). Normally, a further domain-specific analysis of the outliers is necessary here. I will skip it for now and assume this tutorial outlines the process for illustrative purposes only. Generally, the data appears to make sense given that in 1987 and 2000 market crashes took place associated with extremely volatility.</p>
+<p>The same analysis would be required for open, high, low and volume columns. Admittedly, data cleaning was somewhat academic because Yahoo Finance is a very widely used and reliable source. It is still a useful exercise to understand the data.</p>
+<h4>Target Variable Selection</h4>
+<p>We need to define what our ML algorithms will attempt to forecast. Specifically, we will forecast next day’s return. The timing of returns is important here so we are not mistakenly forecasting today’s or yesterday’s return. The formula to define tomorrow’s return as our target variable is as follows:</p>
+<pre>df["y"] = df["return"].shift(-1)</pre>
+<h4>Feature Extraction</h4>
+<p>Now I will turn to some simple transformations of the prices, returns and volume to <a href="https://en.wikipedia.org/wiki/Feature_extraction" target="_blank">extract features</a> ML algorithms can consume. Finance practitioners have developed 100s of such features but I will only show a few. Hedge funds spent the vast majority of time on this step because ML algorithms are generally only as useful as the data available, aka. “garbage in, garbage out”.</p>
+<p>One feature we might consider is how today’s closing price relates to that of 5 trading days ago (one calendar week). I call this feature “5d_momentum”:</p>
+<pre>df[“5d_momentum”] = df[“close”] / df[“close”].shift(5)</pre>
+<a href="/theme/images/1*4dWC4F1sqjmpW5dohmF-Mg.png.png"><img src="/theme/images/1*4dWC4F1sqjmpW5dohmF-Mg.png.png" alt="New 5d_momentum feature" style="width: 100%" loading="lazy"></a>
+<p>One typical trend following feature is <a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:moving_average_convergence_divergence_macd" target="_blank">MACD</a> (Moving Average Convergence/Divergence Oscillator). The strengths of pandas shine here because MACD can be created in only 4 lines of code. The chart of the MACD indicator is below. On the lower graph, a typical buy signal would be the blue “macd_line” crossing above the orange line representing a 9-day exponential moving average of the “macd_line”. The inverse would represent a sell signal.</p>
+<a href="/theme/images/1*cA6MrDLu1Fuwd4pIDoS0fQ.png.png"><img src="/theme/images/1*cA6MrDLu1Fuwd4pIDoS0fQ.png.png" alt="MACD of stock price" style="width: 100%" loading="lazy"></a>
+<p>The python code “generate_features.py” located in the Github repo mentioned above includes additional features we might consider. For example:</p>
+<ul><li><a href="https://www.investopedia.com/articles/active-trading/052014/how-use-moving-average-buy-stocks.asp" target="_blank">Trend: Moving Average</a></li></ul>
+<a href="/theme/images/1*2ip_ErJJ73742mxoNoGknA.png.png"><img src="/theme/images/1*2ip_ErJJ73742mxoNoGknA.png.png" alt="MSFT Moving Average 50 day — 200 day" style="width: 100%" loading="lazy"></a>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:parabolic_sar" target="_blank">Trend: Parabolic SAR</a></li></ul>
+<a href="/theme/images/1*uRA6nhA4QpXoqhl6dfECrg.png.png"><img src="/theme/images/1*uRA6nhA4QpXoqhl6dfECrg.png.png" alt="MSFT SAR" style="width: 100%" loading="lazy"></a>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:stochastic_oscillator_fast_slow_and_full" target="_blank">Momentum: Stochastic Oscillator</a></li></ul>
+<a href="/theme/images/1*Qt0JrOJuvdUBelJ_ddGO1g.png.png"><img src="/theme/images/1*Qt0JrOJuvdUBelJ_ddGO1g.png.png" alt="MSFT Stochastic Oscillator" style="width: 100%" loading="lazy"></a>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:commodity_channel_index_cci" target="_blank">Momentum: Commodity Channel Index (CCI)</a></li></ul>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:relative_strength_index_rsi" target="_blank">Momentum: Relative Strength Index (RSI)</a></li></ul>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:bollinger_bands" target="_blank">Volatility: Bollinger Bands</a></li></ul>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:average_true_range_atr" target="_blank">Volatility: Average True Range</a></li></ul>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:on_balance_volume_obv" target="_blank">Volume: On Balance Volume (OBV)</a></li></ul>
+<ul><li><a href="https://stockcharts.com/school/doku.php?id=chart_school:technical_indicators:chaikin_oscillator" target="_blank">Volume: Chaikin Oscillator</a></li></ul>
+<p>At the end of the feature extraction process, we have the following features:</p>
+<pre>['return', 'close_to_open', 'close_to_high', 'close_to_low', 'macd_diff', 'ma_50_200', 'sar', 'stochastic_oscillator', 'cci', 'rsi', '5d_volatility', '21d_volatility', '60d_volatility', 'bollinger', 'atr', 'on_balance_volume', 'chaikin_oscillator']</pre>
+<h4>Sampling</h4>
+<p>We need to split the data into training and testing buckets. I cannot stress enough that the testing dataset should never be used in the Learning step. It will be used only in the Evaluation step so that performance metrics are completely independent of training and represent an unbiased estimate of actual performance.</p>
+<p>Normally, we could randomize the sampling of testing data but time series data is often not well suited for randomized sampling. The reason being that would would bias the learning process. For example, randomization could produce a situation where the data point from 1/1/2005 is used in the Learning step to later forecast a return from 1/1/2003.</p>
+<p>I will therefore choose a much simpler way to sample the data and use the first 7000 samples as training dataset for Learning and the remaining 962 as testing dataset for Evaluation.</p>
+<p>Both datasets will be saved as csv files so we conclude this part of the ML tutorial by storing 4 files (MSFT_X_learn.csv, MSFT_y_learn.csv, MSFT_X_test.csv, MSFT_y_test.csv). These will be consumed by the next steps of this tutorial.</p>
+<h4>Scaling</h4>
+<p>Feature scaling is used to reduce the time to Learn. This typically applies to <a href="https://en.wikipedia.org/wiki/Feature_scaling#Application" target="_blank">stochastic gradient descent and SMV</a>.</p>
+<p>The open source<a href="http://scikit-learn.org/stable/index.html" target="_blank"> sklearn</a> package will be used for most additional ML application so I will start using it here to <a href="http://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling" target="_blank">scale all features</a> to have zero mean and unit variance:</p>
+<pre>from sklearn import preprocessing
+scaler_model = preprocessing.StandardScaler().fit(X_train)
+X_train_scaled = scaler_model.transform(X_train)
+X_test_scaled = scaler_model.transform(X_test)</pre>
+<p>It is important that data sampling takes place before features are modified to avoid any training to testing data leakage.</p>
+<h4>Dimensionality Reduction</h4>
+<p>At this stage, our dataset 17 features. The number of features has a significant impact on the speed of learning. We could use a number of techniques to try to reduce the number of features so that only the most “useful” features remain.</p>
+<p>Many hedge funds would be working with 100s of features at this stage so dimensional reduction would be critical. In our case, we only have 17 illustrative features so I will keep them all in the dataset until I explore the learning times of different algorithms.</p>
+<p>Out of curiosity however, I will perform Principal Component Analysis <a href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html" target="_blank">(PCA) </a>to get an idea of how many features we could create from our dataset without losing meaningful explanatory power.</p>
+<pre>from sklearn.decomposition import PCA
+sk_model = PCA(n_components=10)
+sk_model.fit_transform(features_ndarray)
+print(sk_model.explained_variance_ratio_.cumsum())
+ [0.30661571 0.48477408 0.61031358 0.71853895 0.78043556 0.83205298
+ 0.8764804  0.91533986 0.94022672 0.96216244]</pre>
+<p>The first 8 features explain 91.5% of data variance. The downside of PCA is that new features are located in a lower dimensional space so they no longer correspond the real-life concepts. For example, the first original feature could be “macd_line” I derived above. After PCA, the first feature explains 31% of variance but we not longer have any logical description for what the feature represents in real life.</p>
+<p>For now, I will keep all features 17 original features but note that if the learning time of algorithms is too slow, PCA will be helpful.</p>
+<p>Other tutorials in this series: #1 Preprocessing (this article), <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+<p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p></p>
+            <a href="https://medium.com/@excitedAtom/machine-learning-tutorial-1-preprocessing-d90198e37577/">Also on <i class="fab fa-medium fa-lg"></i></a>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+
+</html>

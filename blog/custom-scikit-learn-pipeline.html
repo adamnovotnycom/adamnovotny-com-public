@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like. As of 6/2020, here is my latest iteration. In...">
+    <title>Custom scikit-learn Pipeline | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-3">
+                <a href="https://adamnovotny.com/"><img id="blog-header-logo" src="https://adamnovotny.com/theme/images/adamnovotny_logo.png"></a>
+            </div>
+            <div class="col-6 text-center">
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+            </div>
+          </div>
+        </header>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://adamnovotny.com/category/books.html">Book Notes <i class="fas fa-book fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning  <i class="fas fa-table fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/programming.html">Coding <i class="fas fa-laptop fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About Me</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://github.com/excitedAtom">Github <i class="fab fa-github fa-md"></i></a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/in/excitedAtom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a>
+                    <a class="dropdown-item" href="https://medium.com/@excitedAtom">Medium <i class="fab fa-medium fa-md"></i></a>
+                    <a class="dropdown-item" href="https://twitter.com/excitedAtom">Twitter <i class="fab fa-twitter fa-md"></i></a>
+                </div>
+              </li>
+        </ul>
+        
+    </div>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Custom scikit-learn Pipeline</h2>
+            <p class="blog-post-meta" >2020-06-25</p>
+            <p>I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like. As of 6/2020, here is my latest iteration.</p>
+
+<p><a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 100%" loading="lazy"></a>
+<p>In general, a machine learning pipeline should have the following characteristics:</p>
+<ul><li>Include every step shared between training and scoring to ensure consistency. The pipeline does not need to include one-off steps such as removing duplicates which would not be relevant at scoring time.</li></ul>
+<ul><li>Have as few custom components as necessary. For example, when filling missing values in numerical columns with median value, there is no reason NOT to use SimpleImputer class from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html" target="_blank">sklearn.impute</a>. In my example gist below I included a custom FeatureSelector class just to illustrate how to defined a custom pipeline step. In reality, an already defined scikit-learn class with the same functionality would be used.</li></ul>
+<ul><li>Allow for parallel preprocessing subject to the computing environment limits. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps do not affect each other.</li></ul>
+<ul><li>(optional) The pipeline should be as small as possible when serialized to enable a serverless deployment. Serverless frameworks such as <a href="https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html" target="_blank">AWS Lambda limit</a> the zipped deployment size of all code. As of 6/2020 Lambda limits the deployment size to 250MB. This is enough for certain combinations of code such as scikit-learn and XGBoost with certain optimization.</li></ul>
+<p>Full pipeline Gist: <a href="https://gist.github.com/excitedAtom/dda3bad52112f64d1ef2d136eeb66b4e" target="_blank">https://gist.github.com/excitedAtom/dda3bad52112f64d1ef2d136eeb66b4e</a></p>
+<a href="/theme/images/1*1G7mCD8y1N2C0rGM0aESDg.png.png"><img src="/theme/images/1*1G7mCD8y1N2C0rGM0aESDg.png.png" alt="Pipeline imports and helper functions. Gist: https://gist.github.com/excitedAtom/dda3bad52112f64d1ef2d136eeb66b4e" style="width: 100%" loading="lazy"></a>
+<a href="/theme/images/1*AKzavQV0uZzuk4dn34mOhw.png.png"><img src="/theme/images/1*AKzavQV0uZzuk4dn34mOhw.png.png" alt="Pipeline definition. Gist: https://gist.github.com/excitedAtom/dda3bad52112f64d1ef2d136eeb66b4e" style="width: 100%" loading="lazy"></a>
+<a href="/theme/images/1*oSp6ZOgKerYwc54t14A9ng.png.png"><img src="/theme/images/1*oSp6ZOgKerYwc54t14A9ng.png.png" alt="Pipeline fit — sample data. Gist: https://gist.github.com/excitedAtom/dda3bad52112f64d1ef2d136eeb66b4e" style="width: 100%" loading="lazy"></a>
+<h4>Description</h4>
+<ul><li>FeatureSelector is defined to illustrate what a custom pipeline step looks like. In this case, the step simply selects a subset of columns to which the transformation defined in the next step of a scikit-learn Pipeline class is applied.</li></ul>
+<ul><li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns have their missing values filled using each column’s median value. Lastly, all numerical columns are scaled.</li></ul>
+<ul><li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li></ul>
+<p>Also published on <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></p></p>
+            <a href="https://medium.com/@excitedAtom/custom-scikit-learn-pipeline-925dcd25ca89/">Also on <i class="fab fa-medium fa-lg"></i></a>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+
+</html>

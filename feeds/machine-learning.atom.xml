@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes - Machine Learning</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/machine-learning.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2020-12-23T00:00:00-05:00</updated><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2020-12-23T00:00:00-05:00</published><updated>2020-12-23T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-12-23:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;This alphabetically sorted collection of AI, ML, and data resources was last updated on 3/19/2021.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes - Machine Learning</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/machine-learning.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-03-20T00:00:00-05:00</updated><entry><title>Google Colab and Auto-sklearn with Profiling</title><link href="https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html" rel="alternate"></link><published>2021-03-20T00:00:00-05:00</published><updated>2021-03-20T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-20:/blog/google-colab-and-auto-sklearn-with-profiling.html</id><summary type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, I generated a regression dataset using &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html" target="_blank"&gt;scikit …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, I generated a regression dataset using &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html" target="_blank"&gt;scikit learn&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;X, y, coeff = make_regression(
+    n_samples=1000,
+    n_features=100,
+    n_informative=5,
+    noise=0,
+    shuffle=False,
+    coef=True)&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"&gt;&lt;img src="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;This generates a dataset with 100 numerical features where the first 5 features are informative (these are labeled as “feat_0” to “feat_4”). The rest (“feat_5” to “feat_99”) are random noise. We can see this in the scatter matrix above where where only the first 5 features show a correlation with the label.&lt;/p&gt;
+&lt;p&gt;We know that this is a simple regression problem which could be solved using a simple linear regression perfectly. However, knowing what to expect helps us to verify the performance of auto-sklearn which trains its ensemble model using the following steps:&lt;/p&gt;
+&lt;pre&gt;import autosklearn.regressionautoml = autosklearn.regression.AutoSklearnRegressor(
+    time_left_for_this_task=300,
+    n_jobs=-1
+)
+automl.fit(
+    X_train_transformed,
+    df_train["label"]
+)&lt;/pre&gt;
+&lt;p&gt;I also created random categorical features which are then one-hot-encoded into a feature set “X_train_transformed“. Running the AutoSklearnRegressor for 5 minutes (300 second limit) produced the following expected results:&lt;/p&gt;
+&lt;pre&gt;predictions = automl.predict(X_train_transformed)
+r2_score(df_train["label"], predictions)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;0.999
+predictions = automl.predict(X_test_transformed)
+r2_score(df_test["label"], predictions)
+0.999&lt;/pre&gt;
+&lt;p&gt;A separate pip package &lt;a href="https://github.com/VIDA-NYU/PipelineVis" target="_blank"&gt;PipelineProfiler&lt;/a&gt; helps us visualize the steps auto-sklearn took to achieve the result:&lt;/p&gt;
+&lt;a href="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"&gt;&lt;img src="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;We can see the attempts auto-sklearn made to generate the best emsemble of models withing the 5 minute constraint I set. The best model found was &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank"&gt;Liblinear SVM&lt;/a&gt;, which produced R2 of nearly 1.0. As a result, this toy ensemble model gives weight of 1.0 to just one algorithm. Libsvm Svr and Gradient boosting scored between 0.9–0.96.&lt;/p&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;</content><category term="Machine Learning"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2020-12-23T00:00:00-05:00</published><updated>2020-12-23T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-12-23:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;This alphabetically sorted collection of AI, ML, and data resources was last updated on 3/19/2021.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"&gt;&lt;img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
 &lt;ul&gt;&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#adaboost" target="_blank"&gt;AdaBoost&lt;/a&gt;: Fits a sequence of weak learners on repeatadly modified data. The modifications are based on errors made by previous learners.&lt;/li&gt;&lt;/ul&gt;

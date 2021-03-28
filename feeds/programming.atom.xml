@@ -5,8 +5,9 @@
 &lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article …&lt;/p&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is an extension of my previous article describing a similar &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;deployment process using native AWS Lambda tools&lt;/a&gt;. However, Amazon since started &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/" target="_blank"&gt;supporting container images&lt;/a&gt; and updated it’s pricing policy to &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-1ms-billing-granularity-adds-cost-savings/" target="_blank"&gt;1ms granularity&lt;/a&gt;. Both are major developments improving tooling and making small deployments cost effective.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"&gt;&lt;img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article focused on the logic of the code and didn’t address how to actually deploy the function because that was well covered by AWS in its many tutorials. Here I explore the new the container deployment options while keeping all business logic untouched. Please review the AWS tutorial on deploying a &lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html" target="_blank"&gt;generic Python Lambda code using containers&lt;/a&gt; which I leveraged below.&lt;/p&gt;
-&lt;h4&gt;1. Dockerfile&lt;/h4&gt;
+&lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article focused on the logic of the code and didn’t address how to actually deploy the function because that was well covered by AWS in its many tutorials. Here I explore the new the container deployment options while keeping all business logic untouched.&lt;/p&gt;
+&lt;p&gt;Please review the AWS tutorial on deploying a &lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html" target="_blank"&gt;generic Python Lambda code using containers&lt;/a&gt; which I leveraged. In this article I am not going to describe how to push a container to AWS ECR or select your ECR container for your Lambda function in AWS Console. These are well covered in this AWS toturial. Below, I am showing how to serve html pages as opposed to the standard json API responses Lambdas are typically used for.&lt;/p&gt;
+&lt;h4&gt;Dockerfile&lt;/h4&gt;
 &lt;pre&gt;FROM public.ecr.aws/lambda/python:3.8
 RUN mkdir -p /mnt/app
 ADD app.py /mnt/app
@@ -21,7 +22,7 @@ CMD ["/mnt/app/app.handler"]&lt;/pre&gt;
 &lt;p&gt;1) app.py:&lt;/p&gt;
 &lt;pre&gt;import os
 from jinja2 import Environment, FileSystemLoader&lt;/pre&gt;
-&lt;pre&gt;def lambda_handler(event, context):
+&lt;pre&gt;def handler(event, context):
     env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(&lt;strong&gt;file&lt;/strong&gt;), "."), encoding="utf8"))
     my_name_from_query = False
     if event["queryStringParameters"] and "my_name" in event["queryStringParameters"]:
@@ -41,7 +42,9 @@ from jinja2 import Environment, FileSystemLoader&lt;/pre&gt;
 &lt;a href="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png"&gt;&lt;img src="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png" alt="index.html" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
 &lt;p&gt;app.py simply parses one argument named “my_name” from the Lambda query string and passes it to the html template as variable named “my_name”. Jinja2 then parses the variable and returns the final template.&lt;/p&gt;
 &lt;h4&gt;Calling and testing the app locally&lt;/h4&gt;
-&lt;p&gt;Testing the app locally is very simple thanks to the new container packaging. Simply run docker-compose -f docker-compose.yml up, where docker-compose.yml file is defined as:&lt;/p&gt;
+&lt;p&gt;Testing the app locally is very simple thanks to the new container packaging. Simply run&lt;/p&gt;
+&lt;pre&gt;docker-compose -f docker-compose.yml up&lt;/pre&gt;
+&lt;p&gt;where docker-compose.yml file is defined as:&lt;/p&gt;
 &lt;pre&gt;version: '3'
 services:
   cont_name:

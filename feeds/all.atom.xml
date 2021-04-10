@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/all.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-03-20T00:00:00-05:00</updated><entry><title>Google Colab and Auto-sklearn with Profiling</title><link href="https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html" rel="alternate"></link><published>2021-03-20T00:00:00-05:00</published><updated>2021-03-20T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-20:/blog/google-colab-and-auto-sklearn-with-profiling.html</id><summary type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/all.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-03-27T00:00:00-05:00</updated><entry><title>Dynamic HTML with Python, AWS Lambda, and Containers</title><link href="https://adamnovotny.com/blog/dynamic-html-with-python-aws-lambda-and-containers.html" rel="alternate"></link><published>2021-03-27T00:00:00-05:00</published><updated>2021-03-27T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-27:/blog/dynamic-html-with-python-aws-lambda-and-containers.html</id><summary type="html">&lt;p&gt;This article is an extension of my previous article describing a similar &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;deployment process using native AWS Lambda tools&lt;/a&gt;. However, Amazon since started &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/" target="_blank"&gt;supporting container images&lt;/a&gt; and updated it’s pricing policy to &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-1ms-billing-granularity-adds-cost-savings/" target="_blank"&gt;1ms granularity&lt;/a&gt;. Both are major developments improving tooling and making small deployments cost effective.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"&gt;&lt;img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article …&lt;/p&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is an extension of my previous article describing a similar &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;deployment process using native AWS Lambda tools&lt;/a&gt;. However, Amazon since started &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/" target="_blank"&gt;supporting container images&lt;/a&gt; and updated it’s pricing policy to &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-1ms-billing-granularity-adds-cost-savings/" target="_blank"&gt;1ms granularity&lt;/a&gt;. Both are major developments improving tooling and making small deployments cost effective.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"&gt;&lt;img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article focused on the logic of the code and didn’t address how to actually deploy the function because that was well covered by AWS in its many tutorials. Here I explore the new the container deployment options while keeping all business logic untouched. Please review the AWS tutorial on deploying a &lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html" target="_blank"&gt;generic Python Lambda code using containers&lt;/a&gt; which I leveraged below.&lt;/p&gt;
+&lt;h4&gt;1. Dockerfile&lt;/h4&gt;
+&lt;pre&gt;FROM public.ecr.aws/lambda/python:3.8
+RUN mkdir -p /mnt/app
+ADD app.py /mnt/app
+ADD index.html /mnt/app
+WORKDIR /mnt/app
+RUN pip install --upgrade pip
+RUN pip install Jinja2==2.11.*
+CMD ["/mnt/app/app.handler"]&lt;/pre&gt;
+&lt;p&gt;I am using the AWS base image because it is packaged with a very nice mini server that simulates function responses when developing locally. This is extremely useful because we can call the function with 100s of arguments and verify that it behaves as expected before deployed.&lt;/p&gt;
+&lt;h4&gt;App code&lt;/h4&gt;
+&lt;p&gt;From the Dockerfile, we can see that all application code is contained in two files:&lt;/p&gt;
+&lt;p&gt;1) app.py:&lt;/p&gt;
+&lt;pre&gt;import os
+from jinja2 import Environment, FileSystemLoader&lt;/pre&gt;
+&lt;pre&gt;def lambda_handler(event, context):
+    env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(&lt;strong&gt;file&lt;/strong&gt;), "."), encoding="utf8"))
+    my_name_from_query = False
+    if event["queryStringParameters"] and "my_name" in event["queryStringParameters"]:
+        my_name_from_query = event["queryStringParameters"]["my_name"]
+    template = env.get_template("index.html")
+    html = template.render(
+        my_name=my_name_from_query
+    )
+    return {
+        "statusCode": 200,
+        "body": html,
+        "headers": {
+            "Content-Type": "text/html",
+        }
+    }&lt;/pre&gt;
+&lt;p&gt;2) index.html:&lt;/p&gt;
+&lt;a href="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png"&gt;&lt;img src="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png" alt="index.html" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;app.py simply parses one argument named “my_name” from the Lambda query string and passes it to the html template as variable named “my_name”. Jinja2 then parses the variable and returns the final template.&lt;/p&gt;
+&lt;h4&gt;Calling and testing the app locally&lt;/h4&gt;
+&lt;p&gt;Testing the app locally is very simple thanks to the new container packaging. Simply run docker-compose -f docker-compose.yml up, where docker-compose.yml file is defined as:&lt;/p&gt;
+&lt;pre&gt;version: '3'
+services:
+  cont_name:
+    container_name: cont_name
+    image: cont_name_img
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/mnt/app
+    ports:
+      - "9000:8080"
+    stdin_open: true
+    tty: true
+    restart: always&lt;/pre&gt;
+&lt;p&gt;This stands up the function locally on a simple AWS-provided server. We can send requests and monitor responses using Python code such as:&lt;/p&gt;
+&lt;pre&gt;import requests
+r = requests.get(
+    "http://localhost:9000/2015-03-31/functions/function/invocations", 
+    data=open("event.json", "rb")
+)
+print(r.json())&lt;/pre&gt;
+&lt;p&gt;where “event.json” is any .json file we wish to send to the lambda function as arguments. In the example case above, we would send something like:&lt;/p&gt;
+&lt;pre&gt;{
+  "queryStringParameters": {
+    "my_name": "Adam"
+  }
+}&lt;/pre&gt;
+&lt;h4&gt;Cost&lt;/h4&gt;
+&lt;p&gt;The simple AWS base server returns responses such as the one below. This is where we can see the significant impact of the new 1ms pricing update. The cost of running this example code is about 9ms which is very small considering that we are returning a full html template to browsers. However, previously AWS would charge for the full 100ms because that is the minimum charge allowed. Now, this function could cost nearly 90% less!&lt;/p&gt;
+&lt;a href="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png"&gt;&lt;img src="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png" alt="Lambda duration" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category></entry><entry><title>Google Colab and Auto-sklearn with Profiling</title><link href="https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html" rel="alternate"></link><published>2021-03-20T00:00:00-05:00</published><updated>2021-03-20T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-20:/blog/google-colab-and-auto-sklearn-with-profiling.html</id><summary type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;First, I generated a regression dataset using &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html" target="_blank"&gt;scikit …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -838,131 +911,4 @@ print(sk_model.explained_variance_ratio_.cumsum())
 
 &lt;p&gt;The danger with ICOs is that most buyers don’t realize what they are buying and as soon as 90% of investments fail, they will panic which may wipe out the 10% of potential successes as lawsuits and regulators join the party.&lt;/p&gt;
 
-&lt;p&gt;Companies raising money using ICOs should go above and beyond explaining to buyers the expected risk / reward profile of these investments.&lt;/p&gt;</content><category term="Finance"></category></entry><entry><title>Linear programming in Python: CVXOPT and game theory</title><link href="https://adamnovotny.com/blog/linear-programming-in-python-cvxopt-and-game-theory.html" rel="alternate"></link><published>2017-08-16T00:00:00-05:00</published><updated>2017-08-16T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2017-08-16:/blog/linear-programming-in-python-cvxopt-and-game-theory.html</id><summary type="html">&lt;p&gt;CVXOPT is an excellent Python package for linear programming. However, when I was getting started with it, I spent way too much time getting it to work with simple game theory example problems. This tutorial aims to shorten the startup time for everyone trying to use CVXOPT for more advanced …&lt;/p&gt;</summary><content type="html">&lt;p&gt;CVXOPT is an excellent Python package for linear programming. However, when I was getting started with it, I spent way too much time getting it to work with simple game theory example problems. This tutorial aims to shorten the startup time for everyone trying to use CVXOPT for more advanced problems.&lt;/p&gt;
-
-&lt;p&gt;All code is available &lt;a href="http://github.com/adam5ny/blogs/tree/master/cvxopt" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Installation of dependencies:&lt;/p&gt;
-
-&lt;ul&gt;&lt;li&gt;Using Docker is the fastest way to run the code. In only 5 commands you can replicate my environment and run the code.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;ul&gt;&lt;li&gt;Alternatively, the code has the following dependencies: Python (3.5.3), numpy (1.12.1), cvxopt (1.1.9), glpk optimizer (but you can use the default optimizer, glpk is better for some more advanced problems)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Please review &lt;a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank"&gt;how CVXOPT solves simple maximization problems&lt;/a&gt;. While this article focuses on game theory problems, it is critical to understand how CVXOPT defines optimization problems in general.&lt;/p&gt;
-
-&lt;p&gt;The first problem we will solve is a &lt;a href="http://en.wikipedia.org/wiki/Minimax#Example" target="_blank"&gt;2-player zero-sum game&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The constraints matrix A is defined as&lt;/p&gt;
-
-&lt;pre&gt;A = [[3, -2, 2], [-1, 0, 4] ,[-4, -3, 1]]&lt;/pre&gt;
-
-&lt;p&gt;Next, we define a maxmin helper function&lt;/p&gt;
-
-&lt;pre&gt;def maxmin(self, A, solver="glpk"):
-    num_vars = len(A)
-     minimize matrix c
-    c = [-1] + [0 for i in range(num_vars)]
-    c = np.array(c, dtype="float")
-    c = matrix(c)
-     constraints G*x &lt;= h
-    G = np.matrix(A, dtype="float").T  reformat each variable is in a row
-    G *= -1  minimization constraint
-    G = np.vstack([G, np.eye(num_vars) * -1])  &gt; 0 constraint for all vars
-    new_col = [1 for i in range(num_vars)] + [0 for i in range(num_vars)]
-    G = np.insert(G, 0, new_col, axis=1)  insert utility column
-    G = matrix(G)
-    h = ([0 for i in range(num_vars)] + 
-         [0 for i in range(num_vars)])
-    h = np.array(h, dtype="float")
-    h = matrix(h)
-     contraints Ax = b
-    A = [0] + [1 for i in range(num_vars)]
-    A = np.matrix(A, dtype="float")
-    A = matrix(A)
-    b = np.matrix(1, dtype="float")
-    b = matrix(b)
-    sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
-    return sol&lt;/pre&gt;
-
-&lt;p&gt;Last, we use the maxmin helper function to solve our example problem:&lt;/p&gt;
-
-&lt;pre&gt;sol = maxmin(A=A, solver=”glpk”)
-probs = sol[“x”]
-print(probs)
- [ 1.67e-01]
- [ 8.33e-01]
- [ 0.00e+00]&lt;/pre&gt;
-
-&lt;p&gt;In other words, player A chooses action 1 with probility 1/6 and action 2 with probability 5/6.&lt;/p&gt;
-
-&lt;p&gt;Next we will solve a Correlated Equilibrium problem called Game of Chicken as defined on page 3 of &lt;a href="http://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank"&gt;this document&lt;/a&gt;. The constraints matrix A is defined as&lt;/p&gt;
-
-&lt;pre&gt;A = [[6, 6], [2, 7], [7, 2], [0, 0]]&lt;/pre&gt;
-
-&lt;p&gt;Next, we define a ce and build_ce_constraints helper functions:&lt;/p&gt;
-
-&lt;pre&gt;def ce(self, A, solver=None):
-    num_vars = len(A)
-     maximize matrix c
-    c = [sum(i) for i in A]  sum of payoffs for both players
-    c = np.array(c, dtype="float")
-    c = matrix(c)
-    c *= -1  cvxopt minimizes so *-1 to maximize
-     constraints G*x &lt;= h
-    G = self.build_ce_constraints(A=A)
-    G = np.vstack([G, np.eye(num_vars) * -1])  &gt; 0 constraint for all vars
-    h_size = len(G)
-    G = matrix(G)
-    h = [0 for i in range(h_size)]
-    h = np.array(h, dtype="float")
-    h = matrix(h)
-     contraints Ax = b
-    A = [1 for i in range(num_vars)]
-    A = np.matrix(A, dtype="float")
-    A = matrix(A)
-    b = np.matrix(1, dtype="float")
-    b = matrix(b)
-    sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
-    return sol&lt;/pre&gt;
-
-&lt;pre&gt;def build_ce_constraints(self, A):
-    num_vars = int(len(A) ** (1/2))
-    G = []
-     row player
-    for i in range(num_vars):  action row i
-        for j in range(num_vars):  action row j
-            if i != j:
-                constraints = [0 for i in A]
-                base_idx = i * num_vars
-                comp_idx = j * num_vars
-                for k in range(num_vars):
-                    constraints[base_idx+k] = (- A[base_idx+k][0]
-                                               + A[comp_idx+k][0])
-                G += [constraints]
-     col player
-    for i in range(num_vars):  action column i
-        for j in range(num_vars):  action column j
-            if i != j:
-                constraints = [0 for i in A]
-                for k in range(num_vars):
-                    constraints[i + (k * num_vars)] = (
-                        - A[i + (k * num_vars)][1]
-                        + A[j + (k * num_vars)][1])
-                G += [constraints]
-    return np.matrix(G, dtype="float")&lt;/pre&gt;
-
-&lt;p&gt;Using the helper functions, we solve the Game of Chicken&lt;/p&gt;
-
-&lt;pre&gt;sol = ce(A=A, solver="glpk")
-probs = sol["x"]
-print(probs)
- [ 5.00e-01]
- [ 2.50e-01]
- [ 2.50e-01]
- [ 0.00e+00]&lt;/pre&gt;
-
-&lt;p&gt;In other words, the optimal strategy is for both players to select actions [6, 6] 50% of the time, actions [2, 7] 25% of the time, and action [7, 2] also 25% of the time.&lt;/p&gt;
-
-&lt;p&gt;Hopefully this overview helps in getting you started with linear programming and game theory in Python.&lt;/p&gt;
-
-&lt;p&gt;Credits: &lt;a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank"&gt;cvxopt.org/examples/tutorial/lp.html&lt;/a&gt;&lt;a href="https://www.cs.duke.edu/courses/fall12/cps270/lpandgames.pdf" target="_blank"&gt;, cs.duke.edu/courses/fall12/cps270/lpandgames.pdf&lt;/a&gt;&lt;a href="https://en.wikipedia.org/wiki/Minimax#Example" target="_blank"&gt;, en.wikipedia.org/wiki/Minimax#Example&lt;/a&gt;&lt;a href="https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf" target="_blank"&gt;, https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf&lt;/a&gt;&lt;a href="https://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank"&gt;, cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps&lt;/a&gt;&lt;a href="https://www.cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf" target="_blank"&gt;, cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category></entry></feed>
+&lt;p&gt;Companies raising money using ICOs should go above and beyond explaining to buyers the expected risk / reward profile of these investments.&lt;/p&gt;</content><category term="Finance"></category></entry></feed>

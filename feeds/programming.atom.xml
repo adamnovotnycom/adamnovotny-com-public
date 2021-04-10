@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes - Programming</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/programming.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2020-07-25T00:00:00-05:00</updated><entry><title>Serving Dynamic Web Pages using Python and AWS Lambda</title><link href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" rel="alternate"></link><published>2020-07-25T00:00:00-05:00</published><updated>2020-07-25T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-07-25:/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html</id><summary type="html">&lt;p&gt;While AWS Lambda functions are typically used to build API endpoints, at their core Lambda functions can return almost anything. This includes returning html markup with dynamic content.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes - Programming</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/programming.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-03-27T00:00:00-05:00</updated><entry><title>Dynamic HTML with Python, AWS Lambda, and Containers</title><link href="https://adamnovotny.com/blog/dynamic-html-with-python-aws-lambda-and-containers.html" rel="alternate"></link><published>2021-03-27T00:00:00-05:00</published><updated>2021-03-27T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-27:/blog/dynamic-html-with-python-aws-lambda-and-containers.html</id><summary type="html">&lt;p&gt;This article is an extension of my previous article describing a similar &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;deployment process using native AWS Lambda tools&lt;/a&gt;. However, Amazon since started &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/" target="_blank"&gt;supporting container images&lt;/a&gt; and updated it’s pricing policy to &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-1ms-billing-granularity-adds-cost-savings/" target="_blank"&gt;1ms granularity&lt;/a&gt;. Both are major developments improving tooling and making small deployments cost effective.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"&gt;&lt;img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article …&lt;/p&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is an extension of my previous article describing a similar &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;deployment process using native AWS Lambda tools&lt;/a&gt;. However, Amazon since started &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/" target="_blank"&gt;supporting container images&lt;/a&gt; and updated it’s pricing policy to &lt;a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-1ms-billing-granularity-adds-cost-savings/" target="_blank"&gt;1ms granularity&lt;/a&gt;. Both are major developments improving tooling and making small deployments cost effective.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"&gt;&lt;img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;My &lt;a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank"&gt;previous&lt;/a&gt; article focused on the logic of the code and didn’t address how to actually deploy the function because that was well covered by AWS in its many tutorials. Here I explore the new the container deployment options while keeping all business logic untouched. Please review the AWS tutorial on deploying a &lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html" target="_blank"&gt;generic Python Lambda code using containers&lt;/a&gt; which I leveraged below.&lt;/p&gt;
+&lt;h4&gt;1. Dockerfile&lt;/h4&gt;
+&lt;pre&gt;FROM public.ecr.aws/lambda/python:3.8
+RUN mkdir -p /mnt/app
+ADD app.py /mnt/app
+ADD index.html /mnt/app
+WORKDIR /mnt/app
+RUN pip install --upgrade pip
+RUN pip install Jinja2==2.11.*
+CMD ["/mnt/app/app.handler"]&lt;/pre&gt;
+&lt;p&gt;I am using the AWS base image because it is packaged with a very nice mini server that simulates function responses when developing locally. This is extremely useful because we can call the function with 100s of arguments and verify that it behaves as expected before deployed.&lt;/p&gt;
+&lt;h4&gt;App code&lt;/h4&gt;
+&lt;p&gt;From the Dockerfile, we can see that all application code is contained in two files:&lt;/p&gt;
+&lt;p&gt;1) app.py:&lt;/p&gt;
+&lt;pre&gt;import os
+from jinja2 import Environment, FileSystemLoader&lt;/pre&gt;
+&lt;pre&gt;def lambda_handler(event, context):
+    env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(&lt;strong&gt;file&lt;/strong&gt;), "."), encoding="utf8"))
+    my_name_from_query = False
+    if event["queryStringParameters"] and "my_name" in event["queryStringParameters"]:
+        my_name_from_query = event["queryStringParameters"]["my_name"]
+    template = env.get_template("index.html")
+    html = template.render(
+        my_name=my_name_from_query
+    )
+    return {
+        "statusCode": 200,
+        "body": html,
+        "headers": {
+            "Content-Type": "text/html",
+        }
+    }&lt;/pre&gt;
+&lt;p&gt;2) index.html:&lt;/p&gt;
+&lt;a href="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png"&gt;&lt;img src="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png" alt="index.html" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;p&gt;app.py simply parses one argument named “my_name” from the Lambda query string and passes it to the html template as variable named “my_name”. Jinja2 then parses the variable and returns the final template.&lt;/p&gt;
+&lt;h4&gt;Calling and testing the app locally&lt;/h4&gt;
+&lt;p&gt;Testing the app locally is very simple thanks to the new container packaging. Simply run docker-compose -f docker-compose.yml up, where docker-compose.yml file is defined as:&lt;/p&gt;
+&lt;pre&gt;version: '3'
+services:
+  cont_name:
+    container_name: cont_name
+    image: cont_name_img
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/mnt/app
+    ports:
+      - "9000:8080"
+    stdin_open: true
+    tty: true
+    restart: always&lt;/pre&gt;
+&lt;p&gt;This stands up the function locally on a simple AWS-provided server. We can send requests and monitor responses using Python code such as:&lt;/p&gt;
+&lt;pre&gt;import requests
+r = requests.get(
+    "http://localhost:9000/2015-03-31/functions/function/invocations", 
+    data=open("event.json", "rb")
+)
+print(r.json())&lt;/pre&gt;
+&lt;p&gt;where “event.json” is any .json file we wish to send to the lambda function as arguments. In the example case above, we would send something like:&lt;/p&gt;
+&lt;pre&gt;{
+  "queryStringParameters": {
+    "my_name": "Adam"
+  }
+}&lt;/pre&gt;
+&lt;h4&gt;Cost&lt;/h4&gt;
+&lt;p&gt;The simple AWS base server returns responses such as the one below. This is where we can see the significant impact of the new 1ms pricing update. The cost of running this example code is about 9ms which is very small considering that we are returning a full html template to browsers. However, previously AWS would charge for the full 100ms because that is the minimum charge allowed. Now, this function could cost nearly 90% less!&lt;/p&gt;
+&lt;a href="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png"&gt;&lt;img src="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png" alt="Lambda duration" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Programming"></category></entry><entry><title>Serving Dynamic Web Pages using Python and AWS Lambda</title><link href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" rel="alternate"></link><published>2020-07-25T00:00:00-05:00</published><updated>2020-07-25T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-07-25:/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html</id><summary type="html">&lt;p&gt;While AWS Lambda functions are typically used to build API endpoints, at their core Lambda functions can return almost anything. This includes returning html markup with dynamic content.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/theme/images/1*9bPdHLV7ghV1RuNYOGkTvA.png.png"&gt;&lt;img src="/theme/images/1*9bPdHLV7ghV1RuNYOGkTvA.png.png" alt="AWS Lambda + Python + Jinja" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
 &lt;p&gt;I will not go into details describing how to deploy AWS Lambda functions. Please see the official &lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html" target="_blank"&gt;documentation&lt;/a&gt;. I will however describe …&lt;/p&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;While AWS Lambda functions are typically used to build API endpoints, at their core Lambda functions can return almost anything. This includes returning html markup with dynamic content.&lt;/p&gt;

@@ -11,11 +11,12 @@
     n_informative=5,
     noise=0,
     shuffle=False,
-    coef=True)&lt;/pre&gt;
+    coef=True
+)&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"&gt;&lt;img src="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;p&gt;This generates a dataset with 100 numerical features where the first 5 features are informative (these are labeled as “feat_0” to “feat_4”). The rest (“feat_5” to “feat_99”) are random noise. We can see this in the scatter matrix above where where only the first 5 features show a correlation with the label.&lt;/p&gt;
-&lt;p&gt;We know that this is a simple regression problem which could be solved using a simple linear regression perfectly. However, knowing what to expect helps us to verify the performance of auto-sklearn which trains its ensemble model using the following steps:&lt;/p&gt;
+&lt;p&gt;This generates a dataset with 100 numerical features where the first 5 features are informative (these are labeled as “feat_0” to “feat_4”). The rest (“feat_5” to “feat_99”) are random noise. We can see this in the scatter matrix above where only the first 5 features show a correlation with the label.&lt;/p&gt;
+&lt;p&gt;We know that this is a simple regression problem which could be solved using a linear regression perfectly. However, knowing what to expect helps us to verify the performance of auto-sklearn which trains its ensemble model using the following steps:&lt;/p&gt;
 &lt;pre&gt;import autosklearn.regressionautoml = autosklearn.regression.AutoSklearnRegressor(
     time_left_for_this_task=300,
     n_jobs=-1
@@ -24,7 +25,7 @@ automl.fit(
     X_train_transformed,
     df_train["label"]
 )&lt;/pre&gt;
-&lt;p&gt;I also created random categorical features which are then one-hot-encoded into a feature set “X_train_transformed“. Running the AutoSklearnRegressor for 5 minutes (300 second limit) produced the following expected results:&lt;/p&gt;
+&lt;p&gt;I also created random categorical features which are then one-hot-encoded into a feature set “X_train_transformed“. Running the AutoSklearnRegressor for 5 minutes (time_left_for_this_task=300) produced the following expected results:&lt;/p&gt;
 &lt;pre&gt;predictions = automl.predict(X_train_transformed)
 r2_score(df_train["label"], predictions)&lt;/p&gt;
 &lt;blockquote&gt;

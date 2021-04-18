@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Random notes">
-    <title>ANotes</title>
+    <meta name="description" content="Berkeley Earth publishes an unique dataset with global temperature measurements. Below is a guide to the download the data and start analyzing it...">
+    <title>Berkeley Earth Global Temperature Data | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -53,59 +53,37 @@
 
 <main class="container">
     <div class="row">
-      <div class="col-md-8">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Berkeley Earth Global Temperature Data</h2>
+            <p class="blog-post-meta" >2021-04-18</p>
+            <p><a href="http://berkeleyearth.org/data/">Berkeley Earth</a> publishes an unique dataset with global temperature measurements. Below is a guide to the download the data and start analyzing it using Python. All code can be found in this <a href="https://gist.github.com/adamnovotnycom/3e87d820504c5b9b2ac1a910acbc2ec0">gist</a>.</p>
 
-            <div class="blog-post">
-                <h2 class="blog-post-title">
-                    <a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data.html">
-                        Berkeley Earth Global Temperature Data
-                    </a>
-                </h2>
-                <p class="blog-post-meta">Random | 2021-04-18</p>
-                <p style="background-image: url(https://cdn-images-1.medium.com/max/1024/1*dWagAohxer_glY_aNeZ3Ew.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Berkeley Earth publishes an unique dataset with global temperature measurements. Below is a guide to the download the data and start analyzing it using Python. All code can be found in this gist. Berkeley Earth air temperature measurements above sea...</p>
-            </div><!-- /.blog-post -->
-            <div class="blog-post">
-                <h2 class="blog-post-title">
-                    <a href="https://adamnovotny.com/blog/google-paper-24-7-by-2030.html">
-                        Google Paper: 24/7 by 2030
-                    </a>
-                </h2>
-                <p class="blog-post-meta">Random | 2020-10-31</p>
-                <p style="background-image: url(/theme/images/1*HOTcFQxbxwukF2iOdh3lkw.png_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Google released a white paper describing how the company intends to generate all of its electricity needs from renewable energy sources by 2030. Previously, Google committed to reducing emissions by buying offsets or generating renewable energy...</p>
-            </div><!-- /.blog-post -->
-            <div class="blog-post">
-                <h2 class="blog-post-title">
-                    <a href="https://adamnovotny.com/blog/climate-change-part-1-sea-level-change.html">
-                        Climate Change part 1: Sea Level Change
-                    </a>
-                </h2>
-                <p class="blog-post-meta">Random | 2019-12-15</p>
-                <p style="background-image: url(/theme/images/1*Zm7zAFn44DDqv3tz-1MvhQ.jpeg_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">After reading many articles about climate change, I decided to start doing a technical deep dive and study the data. In the first part, I will just locate and visualize sea level data. To begin with, I looked at data from NOAA focused on sea level...</p>
-            </div><!-- /.blog-post -->
-            <div class="blog-post">
-                <h2 class="blog-post-title">
-                    <a href="https://adamnovotny.com/blog/i-finally-read-facebooks-terms-of-service.html">
-                        I Finally Read Facebook’s Terms of Service
-                    </a>
-                </h2>
-                <p class="blog-post-meta">Random | 2018-06-03</p>
-                <p style="background-image: url(/theme/images/0*nKjH5jX987I6yGQj_tiny.png); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;">Just like many people using free online services, I used to ignore many Terms of Service notices and just scrolled to the bottom to confirm them. I believed that the best mindset is just acknowledging the Terms and behaving defensively as if free...</p>
-            </div><!-- /.blog-post -->
-  
-      </div>
-  
-      <aside class="col-md-4">
-        <div class="p-4">
-          <h4 class="font-italic">Archives</h4>
-          <ol class="list-unstyled mb-0">
-                No archives
-          </ol>
+<figure><img style="width: 100%" loading="lazy"  alt="" src="https://cdn-images-1.medium.com/max/1024/1*dWagAohxer_glY_aNeZ3Ew.png"><figcaption>Berkeley Earth air temperature measurements above sea ice</figcaption></figure>
+
+<p>Download .txt file from <a href="http://berkeleyearth.org/data/">Berkeley Earth</a> data website section “Land + Ocean (1850 — Recent)” and read it using the following Python command:</p>
+
+<pre>colspecs = [(2, 6), (10, 12), (14, 22), (24, 29)]<br>df = pd.read_fwf(<br>    "{folder}/Land_and_Ocean_complete.txt",<br>    colspecs=colspecs,<br>    header=85<br>)<br>df.columns = ["year", "month", "anomaly_C", "confidence_95_C"]</pre>
+
+<p>colspecs defines the column indexes so (2, 6) represents year in the source text file.</p>
+
+<figure><img style="width: 100%" loading="lazy"  alt="" src="https://cdn-images-1.medium.com/max/976/1*V-cUeWZ7ms-F-zjKnvZLHw.png"><figcaption>Source file read using Pandas</figcaption></figure>
+
+<p>The data documentation explains that “anomaly_C” is the recorded temperature anomaly in Celsius relative to estimated Jan 1951-Dec 1980 global mean temperature of 14.108 +/- 0.02. The chart below shows the absolute air temperatures along with 95% uncertainty intervals (in green) recorded during the 2000s.</p>
+
+<figure><img style="width: 100%" loading="lazy"  alt="" src="https://cdn-images-1.medium.com/max/1024/1*UwwsEaJCFZq9DZc-Fsd18A.png"><figcaption>Berkeley Earth air temperature measurements above sea ice in 2000s</figcaption></figure>
+
+<p>This article was originally published on my personal website <a href="https://adamnovotny.com/">adamnovotny.com</a></p>
+
+<p><img style="width: 100%" loading="lazy"  src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=12119088b098" width="1" height="1" alt=""></p>
+            <a href="https://adamnovotnycom.medium.com/berkeley-earth-global-temperature-data-12119088b098?source=rss-2d413d8201a8------2/">Also on <i class="fab fa-medium fa-lg"></i></a>
+            </div>
+    
         </div>
-  
-      </aside>
-  
+        <div class="col"></div>
     </div>
-  
 </main>
 
       

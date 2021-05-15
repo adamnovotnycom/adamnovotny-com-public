@@ -58,27 +58,28 @@
     
             <div class="blog-post">
             <h2 class="blog-post-title">Berkeley Earth Global Temperature Data</h2>
-            <p class="blog-post-meta" >2021-04-18</p>
-            <p><a href="http://berkeleyearth.org/data/">Berkeley Earth</a> publishes an unique dataset with global temperature measurements. Below is a guide to the download the data and start analyzing it using Python. All code can be found in this <a href="https://gist.github.com/adamnovotnycom/3e87d820504c5b9b2ac1a910acbc2ec0">gist</a>.</p>
+            <p class="blog-post-meta" >2021-05-14</p>
+            <p><a href="http://berkeleyearth.org/data/">Berkeley Earth</a> publishes an unique dataset with global temperature measurements. Below is a guide to the download the data and start analyzing it using Python. All code can be found in this <a href="https://gist.github.com/adamnovotnycom/e844fbfdbcc563123cbbfcd96604bb7b">gist</a>.</p>
 
-<figure><img style="width: 100%" loading="lazy"  alt="" src="https://cdn-images-1.medium.com/max/1024/1*dWagAohxer_glY_aNeZ3Ew.png"><figcaption>Berkeley Earth air temperature measurements above sea ice</figcaption></figure>
+<p><a href="/theme/images/pztgdtmbiuigjqxlyuejjkjmprukqdkbjqvcbdc.png"><img style="width: 100%" loading="lazy"  alt="Berkeley Earth air temperature measurements above sea ice" src="/theme/images/pztgdtmbiuigjqxlyuejjkjmprukqdkbjqvcbdc.png"></a></p>
+<p>Download .txt file from <a href="http://berkeleyearth.org/data/">Berkeley Earth</a> data website section "Land + Ocean (1850 — Recent)" and read it using the following Python command:</p>
 
-<p>Download .txt file from <a href="http://berkeleyearth.org/data/">Berkeley Earth</a> data website section “Land + Ocean (1850 — Recent)” and read it using the following Python command:</p>
-
-<pre>colspecs = [(2, 6), (10, 12), (14, 22), (24, 29)]<br>df = pd.read_fwf(<br>    "{folder}/Land_and_Ocean_complete.txt",<br>    colspecs=colspecs,<br>    header=85<br>)<br>df.columns = ["year", "month", "anomaly_C", "confidence_95_C"]</pre>
+<pre>
+colspecs = [(2, 6), (10, 12), (14, 22), (24, 29)]
+df = pd.read_fwf(
+    "/content/drive/My Drive/Colab Notebooks/berkeley_earth/data/Land_and_Ocean_complete.txt",
+    colspecs=colspecs, 
+    header=85
+)
+df.columns = ["year", "month", "anomaly_C", "confidence_95_C"]
+df.head(12)
+</pre>
 
 <p>colspecs defines the column indexes so (2, 6) represents year in the source text file.</p>
 
-<figure><img style="width: 100%" loading="lazy"  alt="" src="https://cdn-images-1.medium.com/max/976/1*V-cUeWZ7ms-F-zjKnvZLHw.png"><figcaption>Source file read using Pandas</figcaption></figure>
-
-<p>The data documentation explains that “anomaly_C” is the recorded temperature anomaly in Celsius relative to estimated Jan 1951-Dec 1980 global mean temperature of 14.108 +/- 0.02. The chart below shows the absolute air temperatures along with 95% uncertainty intervals (in green) recorded during the 2000s.</p>
-
-<figure><img style="width: 100%" loading="lazy"  alt="" src="https://cdn-images-1.medium.com/max/1024/1*UwwsEaJCFZq9DZc-Fsd18A.png"><figcaption>Berkeley Earth air temperature measurements above sea ice in 2000s</figcaption></figure>
-
-<p>This article was originally published on my personal website <a href="https://adamnovotny.com/">adamnovotny.com</a></p>
-
-<p><img style="width: 100%" loading="lazy"  src="https://medium.com/_/stat?event=post.clientViewed&amp;referrerSource=full_rss&amp;postId=12119088b098" width="1" height="1" alt=""></p>
-            <a href="https://adamnovotnycom.medium.com/berkeley-earth-global-temperature-data-12119088b098?source=rss-2d413d8201a8------2/">Also on <i class="fab fa-medium fa-lg"></i></a>
+<p><a href="/theme/images/0dpug746gz4r84cl.png"><img style="width: 100%" loading="lazy"  alt="/theme/images/" src="/theme/images/0dpug746gz4r84cl.png"></a></p>
+<p>The data documentation explains that <i>anomaly_C</i> is the recorded temperature anomaly in Celsius relative to estimated Jan 1951-Dec 1980 global mean temperature of 14.108 +/- 0.02. The chart below shows the absolute air temperatures along with 95% uncertainty intervals (in green) recorded during the 2000s.</p>
+            <a href="https://adamnovotnycom.medium.com/berkeley-earth-global-temperature-data2/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     
         </div>

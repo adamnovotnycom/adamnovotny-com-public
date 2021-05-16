@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes - Machine Learning</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/machine-learning.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-03-20T00:00:00-05:00</updated><entry><title>Google Colab and Auto-sklearn with Profiling</title><link href="https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html" rel="alternate"></link><published>2021-03-20T00:00:00-05:00</published><updated>2021-03-20T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-20:/blog/google-colab-and-auto-sklearn-with-profiling.html</id><summary type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes - Machine Learning</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/machine-learning.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-05-16T00:00:00-05:00</updated><entry><title>Global Temperature Forecast Using Prophet and CO2</title><link href="https://adamnovotny.com/blog/berkeley-global-temperature-forecast-prophet.html" rel="alternate"></link><published>2021-05-16T00:00:00-05:00</published><updated>2021-05-16T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-05-16:/blog/berkeley-global-temperature-forecast-prophet.html</id><summary type="html">&lt;p&gt;
+In this article I will leverage the global &lt;a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html"&gt;temperate dataset I discussed previously&lt;/a&gt; to make a temperature forecast using &lt;a href="https://facebook.github.io/prophet/"&gt;Facebook Prophet&lt;/a&gt; for the next 50 years. Note: the temperature dataset serves ONLY as a vehicle to learn how to do forecasting using Prophet. In general, climate and other complex sciences …&lt;/p&gt;</summary><content type="html">&lt;p&gt;
+In this article I will leverage the global &lt;a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html"&gt;temperate dataset I discussed previously&lt;/a&gt; to make a temperature forecast using &lt;a href="https://facebook.github.io/prophet/"&gt;Facebook Prophet&lt;/a&gt; for the next 50 years. Note: the temperature dataset serves ONLY as a vehicle to learn how to do forecasting using Prophet. In general, climate and other complex sciences cannot be solved using a simple tool such ash Prophet.&lt;/p&gt;
+
+&lt;p&gt; All code can be found in this &lt;a href="https://gist.github.com/adamnovotnycom/8752aa0732576eac32de4e0b9fbda601"&gt;gist&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;section&gt;
+&lt;h4&gt;Data&lt;/h4&gt;
+&lt;p&gt;
+    To review, the temperature dataset covers monthly data since 1850 including 95% confidence intervals (high CI - blue, low CI - red):
+&lt;/p&gt;
+&lt;a href="/theme/images/bx08l40tssl2p9wv.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="temperature dataset" src="/theme/images/bx08l40tssl2p9wv.png"&gt;
+&lt;/a&gt;
+&lt;p&gt;
+    In addition, I will use the CO2 emmissions data from &lt;a href="https://ourworldindata.org/grapher/annual-co2-emissions-per-country?tab=chart&amp;time=1924..latest&amp;country=~OWID_WRL"&gt;ourworldindata.org&lt;/a&gt;:
+&lt;/p&gt;
+&lt;a href="/theme/images/4ob68f4dlgcu1r4z.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="CO2 emissions dataset" src="/theme/images/4ob68f4dlgcu1r4z.png"&gt;
+&lt;/a&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+&lt;h4&gt;Forecast&lt;/h4&gt;
+&lt;p&gt;
+I will only highlight here how the Prophet API works (specifically when we want include an additional regressor such as CO2). First, we need to format the training dataset such that the label columns is &lt;i&gt;y&lt;/i&gt; and date is &lt;i&gt;ds&lt;/i&gt;
+&lt;/p&gt;
+&lt;a href="/theme/images/4na1arghpydyjqu6.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="Prophet training dataset" src="/theme/images/4na1arghpydyjqu6.png"&gt;
+&lt;/a&gt;
+&lt;p&gt;
+Next, we train the Prophet model and add the custom regressor (CO2):
+&lt;/p&gt;
+&lt;pre&gt;
+m = Prophet()
+m.add_regressor("co2_monthly_bn_tons", 
+                prior_scale=0.5, 
+                mode="multiplicative",
+                standardize=True)
+m.fit(prophet_train_set)
+&lt;/pre&gt;
+&lt;p&gt;
+Then we need to create a forecast dataset that includes the dates to be forecasted and assumptions for the custom regressor. In the temperature forecasting dataset, I created timestamps for the next 50 years. Last 3 rows of the forecast dataset ("prophet_forecast_set"):
+&lt;/p&gt;
+&lt;a href="/theme/images/h12zg3yiwmdk3pa1.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="Prophet forecast dataset" src="/theme/images/h12zg3yiwmdk3pa1.png"&gt;
+&lt;/a&gt;
+&lt;p&gt;
+In order to create the dataset above, I had to make an assumption about CO2 growth. I assumed that monthly growth over the next 50 years will continue at the same pace as it has between 2000-2020:
+&lt;/p&gt;
+&lt;a href="/theme/images/9p5vaqrkoh3u5bgr.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="CO2 growth assumptions" src="/theme/images/9p5vaqrkoh3u5bgr.png"&gt;
+&lt;/a&gt;
+&lt;p&gt;
+In reality, the value of the temperature forecast comes from the data scientist's background knowledge of the field. In this example, in order for the temperature forecast to be valuable, we have to be able to forecast CO2 emissions (and other regressors) with high confidence.
+&lt;/p&gt;
+&lt;p&gt;
+Performing the actual forecast using Prophet is very simple:
+&lt;/p&gt;
+&lt;pre&gt;
+forecast_prophet = m.predict(prophet_forecast_set)
+forecast_prophet.head(5)
+&lt;/pre&gt;
+&lt;p&gt;
+Prophet generates valuable confidence intervals for its forecast. These confidence bars are more valuable than the point forecast itself. In the chart below, the point forecast in 2070 is 16.1C. However, the forecast ranges widely from nearly 17C to 15.2C.
+&lt;/p&gt;
+&lt;a href="/theme/images/66bdwdd86os7jq45.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="Temperature forecast" src="/theme/images/66bdwdd86os7jq45.png"&gt;
+&lt;/a&gt;
+&lt;/section&gt;
+
+&lt;section&gt;
+&lt;h4&gt;Validation&lt;/h4&gt;
+&lt;p&gt;
+The step that many people doing forecasts "conveniently" skip is validation. In other words, if we approached the problem the same way in the past, how incorrect would we turn out to be today.
+&lt;/p&gt;
+&lt;p&gt;
+Let's assume that we are standing in 1970, and we apply the exact same methodology as above to forecast the next 50 years (so we are forecasting 1970-2020). What would the forecasting graphs look like compared to the reality we've already experienced? First, our hypothetical CO2 assumption would match reality reasonably nicely:
+&lt;/p&gt;
+&lt;a href="/theme/images/4npp2fdw5x5cinm3.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="Hypothetical CO2 forecast since 1970" src="/theme/images/4npp2fdw5x5cinm3.png"&gt;
+&lt;/a&gt;
+&lt;p&gt;
+However, our temperature point forecast would underestimate reality. Our forecast is still within confidence intervals because it nearly perfectly aligns with the upper bound. However, the behavior of the forecast doesn't appear to reflect the upward slope we've experienced historically:
+&lt;/p&gt;
+&lt;a href="/theme/images/b74bpz4kt579ecxe.png"&gt;
+    &lt;img style="width: 100%" loading="lazy"  alt="Hypothetical temperature forecast since 1970" src="/theme/images/b74bpz4kt579ecxe.png"&gt;
+&lt;/a&gt;
+&lt;p&gt;
+This is an example of why confidence intervals are more important than point estimates. Also, it reflects how important it is to be intellectually honest when forecasting and perform historical validation. The takeaway here might be that we are missing additional regressors to be able to properly forecast the temperature physical process.
+&lt;/p&gt;
+
+&lt;/section&gt;</content><category term="Machine Learning"></category></entry><entry><title>Google Colab and Auto-sklearn with Profiling</title><link href="https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html" rel="alternate"></link><published>2021-03-20T00:00:00-05:00</published><updated>2021-03-20T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-03-20:/blog/google-colab-and-auto-sklearn-with-profiling.html</id><summary type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;First, I generated a regression dataset using &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html" target="_blank"&gt;scikit …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This article is a follow up to my previous tutorial on how to &lt;a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank"&gt;setup Google Colab and auto-sklean&lt;/a&gt;. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found &lt;a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank"&gt;here&lt;/a&gt;.&lt;/p&gt;
 

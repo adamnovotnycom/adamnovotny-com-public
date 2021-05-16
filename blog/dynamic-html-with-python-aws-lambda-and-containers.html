@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://adamnovotny.com/blog/dynamic-html-with-python-aws-lambda-and-containers.html">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
 </head>
 
@@ -129,7 +129,7 @@ print(r.json())</pre>
   }
 }</pre>
 <h4>Cost</h4>
-<p>The simple AWS base server returns responses such as the one below. This is where we can see the significant impact of the new 1ms pricing update. The cost of running this example code is about 9ms which is very small considering that we are returning a full html template to browsers. However, previously AWS would charge for the full 100ms because that is the minimum charge allowed. Now, this function could cost nearly 90% less!</p>
+<p>The simple AWS base server returns responses such as the one below. This is where we can see the significant impact of the new 1ms pricing update. The cost of running this example code is about 9ms which is very small considering that we are returning a full html template to browsers. However, previously AWS would charge for the full 100ms because that was the minimum charge defined. Now, this function could cost nearly 90% less!</p>
 <a href="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png"><img src="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png" alt="Lambda duration" style="width: 100%" loading="lazy"></a></p>
             <a href="https://medium.com/@adamnovotnycom/dynamic-html-with-python-aws-lambda-and-containers-e7a4467a8059/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
@@ -140,7 +140,7 @@ print(r.json())</pre>
 </main>
 
       
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>

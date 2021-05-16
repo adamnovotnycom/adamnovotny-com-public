@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="In this article I will leverage the global temperate dataset I discussed previously to make a temperature forecast using Facebook Prophet for the...">
+    <title>Global Temperature Forecast Using Prophet and CO2 | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/berkeley-global-temperature-forecast-prophet.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+          <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-3">
+                <a href="https://adamnovotny.com/"><img id="blog-header-logo" src="https://adamnovotny.com/theme/images/adamnovotny_logo.png"></a>
+            </div>
+            <div class="col-6 text-center">
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+            </div>
+          </div>
+        </header>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/programming.html">Programming <i class="fas fa-laptop fa-md"></i></a>
+                <a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About Me</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a>
+                    <a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a>
+                    <a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a>
+                </div>
+              </li>
+        </ul>
+        
+    </div>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Global Temperature Forecast Using Prophet and CO2</h2>
+            <p class="blog-post-meta" >2021-05-16</p>
+            <p>
+In this article I will leverage the global <a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html">temperate dataset I discussed previously</a> to make a temperature forecast using <a href="https://facebook.github.io/prophet/">Facebook Prophet</a> for the next 50 years. Note: the temperature dataset serves ONLY as a vehicle to learn how to do forecasting using Prophet. In general, climate and other complex sciences cannot be solved using a simple tool such ash Prophet.</p>
+
+<p> All code can be found in this <a href="https://gist.github.com/adamnovotnycom/8752aa0732576eac32de4e0b9fbda601">gist</a>.
+</p>
+
+<section>
+<h4>Data</h4>
+<p>
+    To review, the temperature dataset covers monthly data since 1850 including 95% confidence intervals (high CI - blue, low CI - red):
+</p>
+<a href="/theme/images/bx08l40tssl2p9wv.png">
+    <img style="width: 100%" loading="lazy"  alt="temperature dataset" src="/theme/images/bx08l40tssl2p9wv.png">
+</a>
+<p>
+    In addition, I will use the CO2 emmissions data from <a href="https://ourworldindata.org/grapher/annual-co2-emissions-per-country?tab=chart&time=1924..latest&country=~OWID_WRL">ourworldindata.org</a>:
+</p>
+<a href="/theme/images/4ob68f4dlgcu1r4z.png">
+    <img style="width: 100%" loading="lazy"  alt="CO2 emissions dataset" src="/theme/images/4ob68f4dlgcu1r4z.png">
+</a>
+</section>
+
+<section>
+<h4>Forecast</h4>
+<p>
+I will only highlight here how the Prophet API works (specifically when we want include an additional regressor such as CO2). First, we need to format the training dataset such that the label columns is <i>y</i> and date is <i>ds</i>
+</p>
+<a href="/theme/images/4na1arghpydyjqu6.png">
+    <img style="width: 100%" loading="lazy"  alt="Prophet training dataset" src="/theme/images/4na1arghpydyjqu6.png">
+</a>
+<p>
+Next, we train the Prophet model and add the custom regressor (CO2):
+</p>
+<pre>
+m = Prophet()
+m.add_regressor("co2_monthly_bn_tons", 
+                prior_scale=0.5, 
+                mode="multiplicative",
+                standardize=True)
+m.fit(prophet_train_set)
+</pre>
+<p>
+Then we need to create a forecast dataset that includes the dates to be forecasted and assumptions for the custom regressor. In the temperature forecasting dataset, I created timestamps for the next 50 years. Last 3 rows of the forecast dataset ("prophet_forecast_set"):
+</p>
+<a href="/theme/images/h12zg3yiwmdk3pa1.png">
+    <img style="width: 100%" loading="lazy"  alt="Prophet forecast dataset" src="/theme/images/h12zg3yiwmdk3pa1.png">
+</a>
+<p>
+In order to create the dataset above, I had to make an assumption about CO2 growth. I assumed that monthly growth over the next 50 years will continue at the same pace as it has between 2000-2020:
+</p>
+<a href="/theme/images/9p5vaqrkoh3u5bgr.png">
+    <img style="width: 100%" loading="lazy"  alt="CO2 growth assumptions" src="/theme/images/9p5vaqrkoh3u5bgr.png">
+</a>
+<p>
+In reality, the value of the temperature forecast comes from the data scientist's background knowledge of the field. In this example, in order for the temperature forecast to be valuable, we have to be able to forecast CO2 emissions (and other regressors) with high confidence.
+</p>
+<p>
+Performing the actual forecast using Prophet is very simple:
+</p>
+<pre>
+forecast_prophet = m.predict(prophet_forecast_set)
+forecast_prophet.head(5)
+</pre>
+<p>
+Prophet generates valuable confidence intervals for its forecast. These confidence bars are more valuable than the point forecast itself. In the chart below, the point forecast in 2070 is 16.1C. However, the forecast ranges widely from nearly 17C to 15.2C.
+</p>
+<a href="/theme/images/66bdwdd86os7jq45.png">
+    <img style="width: 100%" loading="lazy"  alt="Temperature forecast" src="/theme/images/66bdwdd86os7jq45.png">
+</a>
+</section>
+
+<section>
+<h4>Validation</h4>
+<p>
+The step that many people doing forecasts "conveniently" skip is validation. In other words, if we approached the problem the same way in the past, how incorrect would we turn out to be today.
+</p>
+<p>
+Let's assume that we are standing in 1970, and we apply the exact same methodology as above to forecast the next 50 years (so we are forecasting 1970-2020). What would the forecasting graphs look like compared to the reality we've already experienced? First, our hypothetical CO2 assumption would match reality reasonably nicely:
+</p>
+<a href="/theme/images/4npp2fdw5x5cinm3.png">
+    <img style="width: 100%" loading="lazy"  alt="Hypothetical CO2 forecast since 1970" src="/theme/images/4npp2fdw5x5cinm3.png">
+</a>
+<p>
+However, our temperature point forecast would underestimate reality. Our forecast is still within confidence intervals because it nearly perfectly aligns with the upper bound. However, the behavior of the forecast doesn't appear to reflect the upward slope we've experienced historically:
+</p>
+<a href="/theme/images/b74bpz4kt579ecxe.png">
+    <img style="width: 100%" loading="lazy"  alt="Hypothetical temperature forecast since 1970" src="/theme/images/b74bpz4kt579ecxe.png">
+</a>
+<p>
+This is an example of why confidence intervals are more important than point estimates. Also, it reflects how important it is to be intellectually honest when forecasting and perform historical validation. The takeaway here might be that we are missing additional regressors to be able to properly forecast the temperature physical process.
+</p>
+
+</section>
+            <a href="https://adamnovotnycom.medium.com/berkeley-global-temperature-forecast-prophet/">Also on <i class="fab fa-medium fa-lg"></i></a>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+
+</html>

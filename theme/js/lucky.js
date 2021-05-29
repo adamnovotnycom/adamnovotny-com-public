@@ -8,8 +8,9 @@ var app = new Vue({
 
     },
     mounted () {
+        // URL https://spreadsheets.google.com/feeds/list/{{sheet_id}}/{{sheet_number}}/public/basic?alt=json
         axios
-            .get('https://spreadsheets.google.com/feeds/list/1g6UwXwvHwpAQcNwkrR5CszdU2eIEDP02y1OGr3V5H40/od6/public/basic?alt=json')
+            .get('https://spreadsheets.google.com/feeds/list/1LMv7QPWl1SWZiplsJciO7KnKa_Lvt4TBVnu6igYSguk/3/public/basic?alt=json')
             .then(response => {
                 quotes = response['data']['feed']['entry']
                 quoteIndex = Math.floor(Math.random() * (quotes.length - 1))

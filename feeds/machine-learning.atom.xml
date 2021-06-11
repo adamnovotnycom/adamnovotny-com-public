@@ -211,15 +211,28 @@ Means
 &lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/coalesce-transact-sql?view=sql-server-ver15" target="_blank"&gt;COALESCE()&lt;/a&gt;: evaluates the arguments in order and returns the current value of the first expression that initially doesn’t evaluate to NULL&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification" target="_blank"&gt;SVM&lt;/a&gt;: Effective in high dimensional spaces (or when number of dimensions &amp;gt; number of examples). SVMs do not directly provide probability estimates
+&lt;li&gt;
+    &lt;a href="https://towardsdatascience.com/svd-8c2f72e264f" target="_blank"&gt;SVD (Singular Value Decomposition) + PCA intuition&lt;/a&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href=" https://realpython.com/gradient-descent-algorithm-python/#basic-gradient-descent-algorithm" target="_blank"&gt;Stochastic gradient descent&lt;/a&gt;
-&lt;a href="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png"&gt;&lt;img src="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png" alt="Stochastic gradient descent cost function" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;
+    &lt;a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification" target="_blank"&gt;SVM&lt;/a&gt;: Effective in high dimensional spaces (or when number of dimensions &amp;gt; number of examples). SVMs do not directly provide probability estimates
+&lt;/li&gt;&lt;/p&gt;
+&lt;li&gt;
+    &lt;a href=" https://realpython.com/gradient-descent-algorithm-python/#basic-gradient-descent-algorithm" target="_blank"&gt;Stochastic gradient descent&lt;/a&gt;
+    &lt;a href="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png"&gt;&lt;img src="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png" alt="Stochastic gradient descent cost function" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://online.stat.psu.edu/stat555/node/36/" target="_blank"&gt;T-test&lt;/a&gt;&lt;/li&gt;
-&lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_validation_curve.html#plotting-validation-curves" target="_blank"&gt;Validation curve&lt;/a&gt;&lt;/li&gt;
-&lt;a href="/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png"&gt;&lt;img src="/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png" alt="validation curve example" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+
+&lt;li&gt;
+    &lt;a href="https://online.stat.psu.edu/stat555/node/36/" target="_blank"&gt;T-test&lt;/a&gt;
+    &lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;/li&gt;
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://scikit-learn.org/stable/auto_examples/model_selection/plot_validation_curve.html#plotting-validation-curves&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Validation curve&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;img&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;alt=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;validation curve example&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;width: 100%&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;loading=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lazy&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Google Colab and AutoML: Auto-sklearn Setup</title><link href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" rel="alternate"></link><published>2020-12-04T00:00:00-05:00</published><updated>2020-12-04T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-12-04:/blog/google-colab-and-automl-auto-sklearn-setup.html</id><summary type="html">&lt;p&gt;Auto ML is fast becoming a popular solution to build minimal viable models for new projects. A popular library for Python is &lt;a href="https://automl.github.io/auto-sklearn/master/#" target="_blank"&gt;Auto-sklearn&lt;/a&gt; that leverages the most popular Python ML library &lt;a href="http://sklearn.org" target="_blank"&gt;scikit-learn&lt;/a&gt;. Auto-sklearn runs a smart search over scikit-learn models and parameters to find the best performing ensemble of models …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Auto ML is fast becoming a popular solution to build minimal viable models for new projects. A popular library for Python is &lt;a href="https://automl.github.io/auto-sklearn/master/#" target="_blank"&gt;Auto-sklearn&lt;/a&gt; that leverages the most popular Python ML library &lt;a href="http://sklearn.org" target="_blank"&gt;scikit-learn&lt;/a&gt;. Auto-sklearn runs a smart search over scikit-learn models and parameters to find the best performing ensemble of models.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png"&gt;&lt;img src="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png" alt="Logos of Google Drive + Colab + Scikit-learn + Auto-sklearn" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;

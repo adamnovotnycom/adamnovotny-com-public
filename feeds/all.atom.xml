@@ -226,194 +226,132 @@ r2_score(df_test["label"], predictions)
 &lt;a href="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"&gt;&lt;img src="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
 &lt;p&gt;Above we can see the attempts auto-sklearn made to generate the best emsemble of models within the 5 minute constraint I set. The best model found was &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank"&gt;Liblinear SVM&lt;/a&gt;, which produced R2 of nearly 1.0. As a result, this toy ensemble model gives weight of 1.0 to just one algorithm. Libsvm Svr and Gradient boosting scored between 0.9–0.96.&lt;/p&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/blockquote&gt;</content><category term="Machine Learning"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2020-12-23T00:00:00-05:00</published><updated>2020-12-23T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-12-23:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;This alphabetically sorted collection of AI, ML, and data resources was last updated on 3/26/2021.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"&gt;&lt;img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;/blockquote&gt;</content><category term="Machine Learning"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2020-12-23T00:00:00-05:00</published><updated>2020-12-23T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-12-23:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;This alphabetically sorted collection of AI, ML, and data resources was last updated on 5/16/2021.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-    &lt;b&gt;AdaBoost:&lt;/b&gt;
-    Fits a sequence of weak learners on repeatadly modified data. The modifications are based on errors made by previous learners. &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#adaboost" target="_blank"&gt;scikit tutorial&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;ANOVA:&lt;/b&gt;
-    Analysis of variance compares the means of three or …&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;This alphabetically sorted collection of AI, ML, and data resources was last updated on 3/26/2021.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"&gt;&lt;img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Algorithms&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;AdaBoost: Fits a sequence of weak learners on repeatadly modified data. The modifications are based on errors made by previous learners. &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#adaboost" target="_blank"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Classification: &lt;a href="https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html" target="_blank"&gt;scikit comparison&lt;/a&gt;
+&lt;a href="/theme/images/1*GkUw2SIWy0Fl2rKd6cIPmg.png.png"&gt;&lt;img src="/theme/images/1*GkUw2SIWy0Fl2rKd6cIPmg.png.png" alt="Classifier comparison: scikit-learn.org" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Expectation-maximization (EM): &lt;a href="https://scikit-learn.org/stable/modules/mixture.html#estimation-algorithm-expectation-maximization" target="_blank"&gt;algo&lt;/a&gt; assumes random components …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;This alphabetically sorted collection of AI, ML, and data resources was last updated on 5/16/2021.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-    &lt;b&gt;AdaBoost:&lt;/b&gt;
-    Fits a sequence of weak learners on repeatadly modified data. The modifications are based on errors made by previous learners. &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#adaboost" target="_blank"&gt;scikit tutorial&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Algorithms&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;AdaBoost: Fits a sequence of weak learners on repeatadly modified data. The modifications are based on errors made by previous learners. &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#adaboost" target="_blank"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Classification: &lt;a href="https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html" target="_blank"&gt;scikit comparison&lt;/a&gt;
+&lt;a href="/theme/images/1*GkUw2SIWy0Fl2rKd6cIPmg.png.png"&gt;&lt;img src="/theme/images/1*GkUw2SIWy0Fl2rKd6cIPmg.png.png" alt="Classifier comparison: scikit-learn.org" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Expectation-maximization (EM): &lt;a href="https://scikit-learn.org/stable/modules/mixture.html#estimation-algorithm-expectation-maximization" target="_blank"&gt;algo&lt;/a&gt; assumes random components and computes for each point a probability of being generated by each component of the model. Then iteratively tweaks the parameters to maximize the likelihood of the data given those assignments. Example: &lt;a href="https://scikit-learn.org/stable/modules/mixture.html#gaussian-mixture" target="_blank"&gt;Gaussian Mixture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting" target="_blank"&gt;Gradient Boosting&lt;/a&gt;: optimization of arbitrary differentiable loss functions.&lt;/li&gt;
+&lt;li&gt;K-means: aims to choose centroids that minimize the inertia, or within-cluster sum-of-squares criterion. Use the &lt;a href="https://www.scikit-yb.org/en/latest/api/cluster/elbow.html" target="_blank"&gt;“elbow” method&lt;/a&gt; to identify the right number of means. &lt;a href="https://scikit-learn.org/stable/modules/clustering.html#k-means" target="_blank"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;KNN: Simple, flexible, naturally handles multiple classes. Slow at scale, sensitive to feature scaling and irrelevant features. &lt;a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification" target="_blank"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linear Discriminant Analysis (LDA): A classifier with a linear decision boundary, generated by fitting class conditional densities to the data and using Bayes’ rule. The model fits a Gaussian density to each class, assuming that all classes share the same covariance matrix. &lt;a href="https://scikit-learn.org/stable/modules/lda_qda.html#mathematical-formulation-of-the-lda-and-qda-classifiers" target="_blank"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Naive Bayes: uses naive conditional independence assumption of features. &lt;a href="https://scikit-learn.org/stable/modules/naive_bayes.html#naive-bayes" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PCA: transform data using k vectors that minimize the perpendicular distance to points. PCA can be also thought of as an &lt;a href="https://online.stat.psu.edu/stat505/lesson/11/11.2" target="_blank"&gt;eigenvalue/engenvector decomposition&lt;/a&gt;. &lt;a href="https://scikit-learn.org/stable/modules/decomposition.html#pca" target="_blank"&gt;scikit&lt;/a&gt;. &lt;a href="https://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf" target="_blank"&gt;Intuition paper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Random Forests: each tree is built using a sample of rows (with replacement) from training set. Less prone to overfitting. &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#random-forests" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stochastic gradient descent &lt;a href=" https://realpython.com/gradient-descent-algorithm-python/#basic-gradient-descent-algorithm" target="_blank"&gt;tutorial&lt;/a&gt;. Calculus solution: &lt;a href="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png"&gt;&lt;img src="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png" alt="Stochastic gradient descent cost function" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SVD: Singular Value Decomposition &lt;a href="https://towardsdatascience.com/svd-8c2f72e264f" target="_blank"&gt; intuition with PCA use case&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;SVM: Effective in high dimensional spaces (or when number of dimensions &amp;gt; number of examples). SVMs do not directly provide probability estimates. &lt;a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;ANOVA:&lt;/b&gt;
-    Analysis of variance compares the means of three or more independent groups to determine if there is a statistically significant difference between the corresponding population means. &lt;a href="https://www.statology.org/one-way-anova/" target="_blank"&gt;Statology tutorial&lt;/a&gt; 
+&lt;li&gt;&lt;strong&gt;Anomaly detection&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;Future examples may look nothing like the past. This is where supervised learning differs because it assumes that future examples fall within the range of the training data. Using &lt;a href="https://towardsdatascience.com/understanding-anomaly-detection-in-python-using-gaussian-mixture-model-e26e5d06094b" target="_blank"&gt;Gaussian Mixtures for anomaly detection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Anomaly detection:&lt;/b&gt;
-    future examples may look nothing like the past. This is where supervised learning differs because it assumes that future examples fall within the range of the training data. Using &lt;a href="https://towardsdatascience.com/understanding-anomaly-detection-in-python-using-gaussian-mixture-model-e26e5d06094b" target="_blank"&gt;Gaussian Mixtures for anomaly detection&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Bayes&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.nature.com/articles/s43586-020-00001-2" target="_blank"&gt;Nature article overview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Bayesian modelling:&lt;/b&gt;
-    &lt;a href="https://www.nature.com/articles/s43586-020-00001-2" target="_blank"&gt;Nature article overview&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Explainability&lt;/strong&gt; &lt;a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Partial dependence plots (PDP): x-axis = value of a single feature, y-axis = label. &lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#partial-dependence-plots" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Individual conditional expectation (ICE): x-axis = value of a single feature, y-axis = label. &lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#individual-conditional-expectation-ice-plot" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Permutation feature importance: Randomly shuffle features and calculate impact on model metrics such as F1. &lt;a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-feature-importance" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Global surrogate: train an easily interpretable model (such as liner regression) on the predictions made by a black box model&lt;/li&gt;
+&lt;li&gt;Local Surrogate: LIME (for Local Interpretable Model-agnostic Explanations). Train individual models to approximate an individual prediction by removing features to learn their impact on the prediction&lt;/li&gt;
+&lt;li&gt;Shapley Value (SHAP): The contribution of each feature is measured by adding and removing it from all other feature subsets. The Shapley Value for one feature is the weighted sum of all its contributions&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Classification algorithms:&lt;/b&gt;
-    &lt;a href="https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html" target="_blank"&gt;scikit tutorial&lt;/a&gt;
-    &lt;a href="/theme/images/1*GkUw2SIWy0Fl2rKd6cIPmg.png.png"&gt;&lt;img src="/theme/images/1*GkUw2SIWy0Fl2rKd6cIPmg.png.png" alt="Classifier comparison: scikit-learn.org" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Infrastructure&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;Data &lt;a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/" target="_blank"&gt;(source a16z)&lt;/a&gt;
+&lt;a href="/theme/images/1*LYBSxf0MPcERPzkEJlk9Cw.png.png"&gt;&lt;img src="/theme/images/1*LYBSxf0MPcERPzkEJlk9Cw.png.png" alt="A Unified Data Infra" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ML &lt;a href="/theme/images/1*MqMX4k5IupAK9T9vKs5h8g.png.png"&gt;&lt;img src="/theme/images/1*MqMX4k5IupAK9T9vKs5h8g.png.png" alt="AI and ML Blueprint" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Confidence intervals:&lt;/b&gt;
-    &lt;ol&gt;
-        &lt;li&gt;
-        &lt;a href="https://online.stat.psu.edu/stat501/node/644" target="_blank"&gt;Linear regression coefficient&lt;/a&gt;
-        &lt;a href="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png"&gt;&lt;img src="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png" alt="t-interval for slope parameter beta_1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-        &lt;/li&gt;
-    &lt;/ol&gt;
+&lt;li&gt;&lt;strong&gt;Learning curves&lt;/strong&gt; &lt;a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html#plotting-learning-curves" target="_blank"&gt;scikit tutorial&lt;/a&gt; &lt;a href="/theme/images/1*fz1sqw361u7Y_D1G-aDEmw.png.png"&gt;&lt;img src="/theme/images/1*fz1sqw361u7Y_D1G-aDEmw.png.png" alt="Learning Curve example" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linear regression&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;assumptions (LINE) &lt;a href="https://online.stat.psu.edu/stat500/lesson/9/9.2/9.2.3#paragraph--3265" target="_blank"&gt;source&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Linearity&lt;/li&gt;
+&lt;li&gt;Independence of errors&lt;/li&gt;
+&lt;li&gt;Normality of errors&lt;/li&gt;
+&lt;li&gt;Equal variances&lt;/li&gt;
+&lt;li&gt;Tests of assumptions: i) plot each feature on x-axis vs y_error, ii) plot y_predicted on x-axis vs y_error, iii) histogram of errors.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Data and ML Infrastructure:&lt;/b&gt;
-    &lt;a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/" target="_blank"&gt;a16z&lt;/a&gt;
-    &lt;a href="/theme/images/1*LYBSxf0MPcERPzkEJlk9Cw.png.png"&gt;&lt;img src="/theme/images/1*LYBSxf0MPcERPzkEJlk9Cw.png.png" alt="A Unified Data Infra" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-    &lt;a href="/theme/images/1*MqMX4k5IupAK9T9vKs5h8g.png.png"&gt;&lt;img src="/theme/images/1*MqMX4k5IupAK9T9vKs5h8g.png.png" alt="AI and ML Blueprint" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;Overspecified model can be used for prediction of the label, but should not be used to ascribe the effect of a feature on the label. &lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/mixture.html#estimation-algorithm-expectation-maximization" target="_blank"&gt;Expectation-maximization (EM)&lt;/a&gt;: assumes random components and computes for each point a probability of being generated by each component of the model. Then iteratively tweaks the parameters to maximize the likelihood of the data given those assignments. Example: &lt;a href="https://scikit-learn.org/stable/modules/mixture.html#gaussian-mixture" target="_blank"&gt;Gaussian Mixture&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Machine learning solutions&lt;/strong&gt; &lt;a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"&gt;&lt;img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Means&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;Arithmetic: &lt;a href="https://mathworld.wolfram.com/ArithmeticMean.html" target="_blank"&gt;wolfram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Geometric: used in finance to calculate average growth rates and is referred to as the compounded annual growth rate. &lt;a href="https://mathworld.wolfram.com/GeometricMean.html" target="_blank"&gt;wolfram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Harmonic: used in finance to average multiples like the price-earnings ratio because it gives equal weight to each data point. Using a weighted arithmetic mean to average these ratios would give greater weight to high data points than low data points because price-earnings ratios aren't price-normalized while the earnings are equalized. &lt;a href="https://mathworld.wolfram.com/HarmonicMean.html" target="_blank"&gt;wolfram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    Explainability &lt;a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank"&gt;tutorial&lt;/a&gt;:
-    &lt;ol&gt;
-    &lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#partial-dependence-plots" target="_blank"&gt;Partial dependence plots (PDP): &lt;/a&gt;x-axis = value of a single feature, y-axis = label&lt;/li&gt;
-    &lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#individual-conditional-expectation-ice-plot" target="_blank"&gt;Individual conditional expectation (ICE): &lt;/a&gt;x-axis = value of a single feature, y-axis = label&lt;/li&gt;
-    &lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-feature-importance" target="_blank"&gt;Permutation feature importance: &lt;/a&gt;Randomly shuffle features and calculate impact on model metrics such as F1&lt;/li&gt;
-    &lt;li&gt;Global surrogate: train an easily interpretable model (such as liner regression) on the predictions made by a black box model&lt;/li&gt;
-    &lt;li&gt;Local Surrogate: LIME (for Local Interpretable Model-agnostic Explanations). Train individual models to approximate an individual prediction by removing features to learn their impact on the prediction.&lt;/li&gt;
-    &lt;li&gt;Shapley Value (SHAP): The contribution of each feature is measured by adding and removing it from all other feature subsets. The Shapley Value for one feature is the weighted sum of all its contributions&lt;/li&gt;
-    &lt;/ol&gt;
+&lt;li&gt;&lt;strong&gt;Model evaluation metrics&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;Classification:&lt;ul&gt;
+&lt;li&gt;Recall: &lt;a href="https://en.wikipedia.org/wiki/Precision_and_recall#Recall" target="_blank"&gt;wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Receiver operating characteristic (ROC): relates true positive rate (y-axis) and false positive rate (x-axis). TPR = TP / (TP + FN) and FPR = FP / (FP + TN). &lt;a href="https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://online.stat.psu.edu/stat501/lesson/6/6.2#paragraph--785" target="_blank"&gt;F-statistic&lt;/a&gt;: determines whether to reject a full model (F) in favor of a reduced (R) model. Reject full model if F is large — or equivalently if its associated p-value is small
-    &lt;a href="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png"&gt;&lt;img src="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png" alt="F-statistic" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;Regression&lt;ul&gt;
+&lt;li&gt;R2: strength of a linear relationship. Could be 0 for nonlinear relationships. Never worsens with more features. &lt;a href="https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting" target="_blank"&gt;Gradient Boosting&lt;/a&gt;: optimization of arbitrary differentiable loss functions. — Risk of overfitting
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Hypothesis tests
-    &lt;a href="/theme/images/1*ShYx679GlV5WVL8ukd2j2w.png"&gt;&lt;img src="/theme/images/1*ShYx679GlV5WVL8ukd2j2w.png" alt="Selecting statistical test. Source: Statistical Rethinking 2. Free Chapter 1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Overfitting and regularization&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;Overfitting (high variance) options: more data, increase regularization, or decrease model complexity. &lt;a href="https://rmartinshort.jimdofree.com/2019/02/17/overfitting-bias-variance-and-leaning-curves/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lasso regression: linear model regularization technique with tendency to prefer solutions with fewer non-zero coefficients. &lt;a href="https://scikit-learn.org/stable/modules/linear_model.html#lasso" target="_blank"&gt;scikit tutorial&lt;/a&gt;. &lt;a href="/theme/images/1*bvk1Esh-TGPCIub2ggNzQg.png.png"&gt;&lt;img src="/theme/images/1*bvk1Esh-TGPCIub2ggNzQg.png.png" alt="Lasso equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ridge regression: imposes a penalty on the size of the coefficients
+&lt;a href="/theme/images/1*fekJIBmDHMoU2zQ6wVmQkA.png.png"&gt;&lt;img src="/theme/images/1*fekJIBmDHMoU2zQ6wVmQkA.png.png" alt="Ridge Regression" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;a href="https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Validation curve: &lt;a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_validation_curve.html#plotting-validation-curves" target="_blank"&gt;scikit&lt;/a&gt;&lt;a href="/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png"&gt;&lt;img src="/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png" alt="validation curve example" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification" target="_blank"&gt;KNN&lt;/a&gt;: + Simple, flexible, naturally handles multiple classes. — Slow at scale, sensitive to feature scaling and irrelevant features
+&lt;li&gt;&lt;strong&gt;Pearson’s correlation coefficient&lt;/strong&gt;. &lt;a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient" target="_blank"&gt;wiki&lt;/a&gt;. &lt;a href="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png"&gt;&lt;img src="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png" alt="Correlation formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preprocessing&lt;/strong&gt;&lt;ol&gt;
+&lt;li&gt;duplicates&lt;/li&gt;
+&lt;li&gt;outliers&lt;/li&gt;
+&lt;li&gt;missing values&lt;ul&gt;
+&lt;li&gt;SMOTE: Generate and place a new point on the vector between a minority class point and one of its nearest neighbors, located [0, 1] percent of the way from the original point. Algorithm is parameterized with k_neighbors. &lt;a href="https://www.kaggle.com/residentmario/oversampling-with-smote-and-adasyn" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/clustering.html#k-means" target="_blank"&gt;K-means&lt;/a&gt;: aims to choose centroids that minimize the inertia, or within-cluster sum-of-squares criterion. Use the &lt;a href="https://www.scikit-yb.org/en/latest/api/cluster/elbow.html" target="_blank"&gt;“elbow” method&lt;/a&gt; to identify the right number of means&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/linear_model.html#lasso" target="_blank"&gt;Lasso&lt;/a&gt;: linear model regularization technique with tendency to prefer solutions with fewer non-zero coefficients&lt;/li&gt;
-&lt;a href="/theme/images/1*bvk1Esh-TGPCIub2ggNzQg.png.png"&gt;&lt;img src="/theme/images/1*bvk1Esh-TGPCIub2ggNzQg.png.png" alt="Lasso equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html#plotting-learning-curves" target="_blank"&gt;Learning Curve&lt;/a&gt;&lt;/li&gt;
-&lt;a href="/theme/images/1*fz1sqw361u7Y_D1G-aDEmw.png.png"&gt;&lt;img src="/theme/images/1*fz1sqw361u7Y_D1G-aDEmw.png.png" alt="Learning Curve example" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;li&gt;&lt;a href="https://sklearn.org/modules/lda_qda.html#mathematical-formulation-of-the-lda-and-qda-classifiers" target="_blank"&gt;Linear Discriminant Analysis (LDA)&lt;/a&gt;: A classifier with a linear decision boundary, generated by fitting class conditional densities to the data and using Bayes’ rule. The model fits a Gaussian density to each class, assuming that all classes share the same covariance matrix.&lt;/li&gt;
-&lt;li&gt;Linear regression&lt;a href="https://online.stat.psu.edu/stat500/lesson/9/9.2/9.2.3#paragraph--3265" target="_blank"&gt; assumptions&lt;/a&gt; (LINE): 1) Linearity, 2) Independence of errors, 3) Normality of errors, 4) Equal variances. Tests of assumptions: i) plot each feature on x-axis vs y_error, ii) plot y_predicted on x-axis vs y_error, iii) histogram of errors&lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Means:&lt;/b&gt;
-    &lt;ol&gt;
-        &lt;li&gt;&lt;a href="https://mathworld.wolfram.com/ArithmeticMean.html" target="_blank"&gt;Arithmetic&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="https://mathworld.wolfram.com/GeometricMean.html" target="_blank"&gt;Geometric&lt;/a&gt;: used in finance to calculate average growth rates and is referred to as the compounded annual growth rate&lt;/li&gt;
-        &lt;li&gt;&lt;a href="https://mathworld.wolfram.com/HarmonicMean.html" target="_blank"&gt;Harmonic: &lt;/a&gt; used in finance to average multiples like the price-earnings ratio because it gives equal weight to each data point. Using a weighted arithmetic mean to average these ratios would give greater weight to high data points than low data points because price-earnings ratios aren't price-normalized while the earnings are equalized&lt;/li&gt;
-    &lt;/ol&gt;
+&lt;li&gt;feature correlation&lt;/li&gt;
+&lt;li&gt;feature distribution/skew&lt;/li&gt;
+&lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;a href="https://rmartinshort.jimdofree.com/2019/02/17/overfitting-bias-variance-and-leaning-curves/" target="_blank"&gt;Overfitting, bias-variance and learning curves&lt;/a&gt;. Overfitting (high variance) options: more data, increase regularization, or decrease model complexity&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://online.stat.psu.edu/stat462/node/195/" target="_blank"&gt;Overspecified&lt;/a&gt; model: can be used for prediction of the label, but should not be used to ascribe the effect of a feature on the label&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/decomposition.html#pca" target="_blank"&gt;PCA&lt;/a&gt;: transform data using k vectors that minimize the perpendicular distance to points. PCA can be also thought of as an &lt;a href="https://online.stat.psu.edu/stat505/lesson/11/11.2" target="_blank"&gt;eigenvalue/engenvector decomposition&lt;/a&gt;. &lt;a href="https://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf" target="_blank"&gt;Intuition paper&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient" target="_blank"&gt;Pearson’s correlation coefficient&lt;/a&gt;&lt;/li&gt;
-&lt;a href="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png"&gt;&lt;img src="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png" alt="Correlation formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;li&gt;
-    &lt;b&gt;Preprocessing steps:&lt;/b&gt;
-    &lt;ol&gt;
-    &lt;li&gt;duplicates&lt;/li&gt;
-    &lt;li&gt;outliers&lt;/li&gt;
-    &lt;li&gt;missing values&lt;/li&gt;
-    &lt;li&gt;feature correlation&lt;/li&gt;
-    &lt;li&gt;feature distribution/skew&lt;/li&gt;
-    &lt;/ol&gt;
+&lt;li&gt;&lt;strong&gt;Probability distributions&lt;/strong&gt; &lt;a href="https://www.statology.org/statistics-socs/" target="_blank"&gt;Description acronym SOCS&lt;/a&gt;: shape, outliers, center, spread. &lt;a href="https://medium.com/@srowen/common-probability-distributions-347e6b945ce4" target="_blank"&gt;Comparison article&lt;/a&gt;. &lt;a href="/theme/images/Bf8a4LtHWOrJ.png"&gt;&lt;img src="/theme/images/Bf8a4LtHWOrJ.png" alt="Correlation formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Beta: probability distribution on probabilities bounded [0, 1]. &lt;a href="https://towardsdatascience.com/beta-distribution-intuition-examples-and-derivation-cf00f4db57af" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Binomial: probability of obtaining k successes in n binomial experiments with probability p. &lt;a href="https://www.statology.org/binomial-distribution/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="http://cecas.clemson.edu/~ahoover/ece854/lecture-notes/lecture-normeqs.pdf" target="_blank"&gt;Linear algebra solution&lt;/a&gt;&lt;a href="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png"&gt;&lt;img src="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Poisson: the probability of obtaining k successes during a given time interval. &lt;a href="https://www.statology.org/poisson-distribution/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;
-    &lt;b&gt;Probability distributions:&lt;/b&gt;
-    &lt;a href="https://www.statology.org/statistics-socs/" target="_blank"&gt;Description acronym&lt;/a&gt; SOCS (shape, outliers, center, spread). &lt;a href="https://medium.com/@srowen/common-probability-distributions-347e6b945ce4" target="_blank"&gt;Comparison&lt;/a&gt;
-    &lt;ol&gt;
-        &lt;li&gt;
-            &lt;a href="https://towardsdatascience.com/beta-distribution-intuition-examples-and-derivation-cf00f4db57af" target="_blank"&gt;Beta Distribution&lt;/a&gt;: probability distribution on probabilities bounded [0, 1]
-        &lt;/li&gt;
-        &lt;li&gt;
-            &lt;a href="https://www.statology.org/binomial-distribution/" target="_blank"&gt;Binomial&lt;/a&gt;: probability of obtaining k successes in n binomial experiments with probability p
-        &lt;/li&gt;
-        &lt;li&gt;
-            &lt;a href="https://www.statology.org/the-normal-distribution/" target="_blank"&gt;Normal&lt;/a&gt;: 1 stdev contains 68% of data, 2 stdev 95%. 3 stdev 99.7%
-        &lt;/li&gt;
-        &lt;li&gt;
-            &lt;a href="https://www.statology.org/poisson-distribution/" target="_blank"&gt;Poisson&lt;/a&gt;: the probability of obtaining k successes during a given time interval
-        &lt;/li&gt;
-    &lt;/ol&gt;
-    &lt;a href="/theme/images/Bf8a4LtHWOrJ.png"&gt;&lt;img src="/theme/images/Bf8a4LtHWOrJ.png" alt="Correlation formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;/li&gt;&lt;/p&gt;
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#random-forests" target="_blank"&gt;Random Forests&lt;/a&gt;: each tree is built using a sample of rows (with replacement) from training set. + Less prone to overfitting
+&lt;li&gt;&lt;strong&gt;Reinforcement learning&lt;/strong&gt; &lt;a href="/theme/images/1*TMQs5IMfL3k9OZwy1cck_A.png"&gt;&lt;img src="/theme/images/1*TMQs5IMfL3k9OZwy1cck_A.png" alt="Reinforcement learning" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sample variance&lt;/strong&gt;: divided by n-1 to achieve an unbiased estimator because 1 degree of freedom is used to estimate b0. &lt;a href="https://online.stat.psu.edu/stat500/lesson/1/1.5/1.5.3#paragraph--3051" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sorting&lt;/strong&gt;: &lt;a href="https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms" target="_blank"&gt;tutorial&lt;/a&gt;. &lt;a href="/theme/images/rO1H18bCodMa.png"&gt;&lt;img src="/theme/images/rO1H18bCodMa.png" alt="Ridge Regression" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SQL tricks&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;window functions, row_number() and partition(): &lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/row-number-transact-sql?view=sql-server-ver15#d-using-row_number-with-partition" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;COALESCE(): evaluates the arguments in order and returns the current value of the first expression that initially doesn’t evaluate to NULL. &lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/coalesce-transact-sql?view=sql-server-ver15" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc" target="_blank"&gt;Receiver operating characteristic (ROC)&lt;/a&gt;: relates true positive rate (y-axis) and false positive rate (x-axis). A &lt;a href="https://en.wikipedia.org/wiki/Precision_and_recall#Recall" target="_blank"&gt;confusion&lt;/a&gt; matrix defines TPR = TP / (TP + FN) and FPR = FP / (FP + TN)
+&lt;li&gt;&lt;strong&gt;Statistics&lt;/strong&gt;: &lt;a href="https://www.statology.org/tutorials/" target="_blank"&gt;Statology tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Statistical tests&lt;/strong&gt; &lt;a href="/theme/images/1*ShYx679GlV5WVL8ukd2j2w.png"&gt;&lt;img src="/theme/images/1*ShYx679GlV5WVL8ukd2j2w.png" alt="Selecting statistical test. Source: Statistical Rethinking 2. Free Chapter 1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;ANOVA: Analysis of variance compares the means of three or more independent groups to determine if there is a statistically significant difference between the corresponding population means. &lt;a href="https://www.statology.org/one-way-anova/" target="_blank"&gt;Statology tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;F-statistic: determines whether to reject a full model (F) in favor of a reduced (R) model. Reject full model if F is large — or equivalently if its associated p-value is small. &lt;a href="https://online.stat.psu.edu/stat501/lesson/6/6.2#paragraph--785" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png"&gt;&lt;img src="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png" alt="F-statistic" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linear regression coefficient CI: &lt;a href="https://online.stat.psu.edu/stat501/node/644" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png"&gt;&lt;img src="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png" alt="t-interval for slope parameter beta_1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;T-test: &lt;a href="https://online.stat.psu.edu/stat555/node/36/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-
-&lt;li&gt;Reinforcement learning
-    &lt;a href="/theme/images/1*TMQs5IMfL3k9OZwy1cck_A.png"&gt;&lt;img src="/theme/images/1*TMQs5IMfL3k9OZwy1cck_A.png" alt="Reinforcement learning" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
+&lt;li&gt;&lt;strong&gt;Underfitting (high bias)&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;Options: decrease regularization, increase model complexity&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
-
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification" target="_blank"&gt;Ridge Regression&lt;/a&gt; regularization: imposes a penalty on the size of the coefficients
-    &lt;a href="/theme/images/1*fekJIBmDHMoU2zQ6wVmQkA.png.png"&gt;&lt;img src="/theme/images/1*fekJIBmDHMoU2zQ6wVmQkA.png.png" alt="Ridge Regression" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/model_evaluation.html#r2-score" target="_blank"&gt;R2&lt;/a&gt;: strength of a linear relationship. Could be 0 for nonlinear relationships. Never worsens with more features
-&lt;/li&gt;
-
-&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/modules/naive_bayes.html#naive-bayes" target="_blank"&gt;Naive Bayes&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;a href="http://cecas.clemson.edu/~ahoover/ece854/lecture-notes/lecture-normeqs.pdf" target="_blank"&gt;Normal Equation&lt;/a&gt;&lt;/li&gt;
-
-&lt;p&gt;&lt;a href="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png"&gt;&lt;img src="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;li&gt;&lt;a href="https://online.stat.psu.edu/stat500/lesson/1/1.5/1.5.3#paragraph--3051" target="_blank"&gt;Sample variance&lt;/a&gt;: divided by n-1 to achieve an unbiased estimator because 1 degree of freedom is used to estimate b0&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.kaggle.com/residentmario/oversampling-with-smote-and-adasyn" target="_blank"&gt;SMOTE&lt;/a&gt; algorithm is parameterized with k_neighbors. Generate and place a new point on the vector between a minority class point and one of its nearest neighbors, located [0, 1] percent of the way from the original point&lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://lamfo-unb.github.io/2019/04/21/Sorting-algorithms" target="_blank"&gt;Sorting algorithms&lt;/a&gt;
-    &lt;a href="/theme/images/rO1H18bCodMa.png"&gt;&lt;img src="/theme/images/rO1H18bCodMa.png" alt="Ridge Regression" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;SQL tricks
-    &lt;ol&gt;
-        &lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/row-number-transact-sql?view=sql-server-ver15#d-using-row_number-with-partition" target="_blank"&gt;window functions, row_number() and partition()&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/coalesce-transact-sql?view=sql-server-ver15" target="_blank"&gt;COALESCE()&lt;/a&gt;: evaluates the arguments in order and returns the current value of the first expression that initially doesn’t evaluate to NULL&lt;/li&gt;
-    &lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-Statistics review: &lt;a href="https://www.statology.org/tutorials/" target="_blank"&gt;Statology&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://towardsdatascience.com/svd-8c2f72e264f" target="_blank"&gt;SVD (Singular Value Decomposition) + PCA intuition&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification" target="_blank"&gt;SVM&lt;/a&gt;: Effective in high dimensional spaces (or when number of dimensions &amp;gt; number of examples). SVMs do not directly provide probability estimates
-&lt;/li&gt;&lt;/p&gt;
-&lt;li&gt;
-    &lt;a href=" https://realpython.com/gradient-descent-algorithm-python/#basic-gradient-descent-algorithm" target="_blank"&gt;Stochastic gradient descent&lt;/a&gt;
-    &lt;a href="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png"&gt;&lt;img src="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png" alt="Stochastic gradient descent cost function" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-    &lt;a href="https://online.stat.psu.edu/stat555/node/36/" target="_blank"&gt;T-test&lt;/a&gt;
-    &lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-    &lt;a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_validation_curve.html#plotting-validation-curves" target="_blank"&gt;Validation curve&lt;/a&gt;
-    &lt;a href="/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png"&gt;&lt;img src="/theme/images/1*HVM4sFhGDTNE40xr5aVCiQ.png.png" alt="validation curve example" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;
-&lt;/li&gt;
-
 &lt;/ul&gt;</content><category term="Machine Learning"></category></entry><entry><title>Google Colab and AutoML: Auto-sklearn Setup</title><link href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" rel="alternate"></link><published>2020-12-04T00:00:00-05:00</published><updated>2020-12-04T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2020-12-04:/blog/google-colab-and-automl-auto-sklearn-setup.html</id><summary type="html">&lt;p&gt;Auto ML is fast becoming a popular solution to build minimal viable models for new projects. A popular library for Python is &lt;a href="https://automl.github.io/auto-sklearn/master/#" target="_blank"&gt;Auto-sklearn&lt;/a&gt; that leverages the most popular Python ML library &lt;a href="http://sklearn.org" target="_blank"&gt;scikit-learn&lt;/a&gt;. Auto-sklearn runs a smart search over scikit-learn models and parameters to find the best performing ensemble of models …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Auto ML is fast becoming a popular solution to build minimal viable models for new projects. A popular library for Python is &lt;a href="https://automl.github.io/auto-sklearn/master/#" target="_blank"&gt;Auto-sklearn&lt;/a&gt; that leverages the most popular Python ML library &lt;a href="http://sklearn.org" target="_blank"&gt;scikit-learn&lt;/a&gt;. Auto-sklearn runs a smart search over scikit-learn models and parameters to find the best performing ensemble of models.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png"&gt;&lt;img src="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png" alt="Logos of Google Drive + Colab + Scikit-learn + Auto-sklearn" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;

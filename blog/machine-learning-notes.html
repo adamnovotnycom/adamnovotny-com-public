@@ -88,7 +88,7 @@
 <li><a href="https://www.nature.com/articles/s43586-020-00001-2" target="_blank">Nature article overview</a></li>
 </ul>
 </li>
-<li><strong>Explainability</strong> <a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank">tutorial</a><ul>
+<li><strong>Explainability and bias evaluation</strong> <a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank">tutorial</a><ul>
 <li>Partial dependence plots (PDP): x-axis = value of a single feature, y-axis = label. <a href="https://scikit-learn.org/stable/modules/partial_dependence.html#partial-dependence-plots" target="_blank">scikit</a></li>
 <li>Individual conditional expectation (ICE): x-axis = value of a single feature, y-axis = label. <a href="https://scikit-learn.org/stable/modules/partial_dependence.html#individual-conditional-expectation-ice-plot" target="_blank">scikit</a></li>
 <li>Permutation feature importance: Randomly shuffle features and calculate impact on model metrics such as F1. <a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-feature-importance" target="_blank">scikit</a></li>
@@ -116,13 +116,14 @@
 <li>Overspecified model can be used for prediction of the label, but should not be used to ascribe the effect of a feature on the label. </li>
 </ul>
 </li>
-<li><strong>Machine learning solutions</strong> <a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"><img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"></a></li>
+<li><strong>ML types</strong> <a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"><img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"></a></li>
 <li><strong>Means</strong><ul>
 <li>Arithmetic: <a href="https://mathworld.wolfram.com/ArithmeticMean.html" target="_blank">wolfram</a></li>
 <li>Geometric: used in finance to calculate average growth rates and is referred to as the compounded annual growth rate. <a href="https://mathworld.wolfram.com/GeometricMean.html" target="_blank">wolfram</a></li>
 <li>Harmonic: used in finance to average multiples like the price-earnings ratio because it gives equal weight to each data point. Using a weighted arithmetic mean to average these ratios would give greater weight to high data points than low data points because price-earnings ratios aren't price-normalized while the earnings are equalized. <a href="https://mathworld.wolfram.com/HarmonicMean.html" target="_blank">wolfram</a></li>
 </ul>
 </li>
+<li><strong>ML Lifecycle</strong> <a href="https://aws.amazon.com/blogs/machine-learning/architect-and-build-the-full-machine-learning-lifecycle-with-amazon-sagemaker/" target="_blank">AWS blog</a> <a href="/theme/images/mvaymymdlhxpalecniyphkibwaqhmboz.jpg"><img src="/theme/images/mvaymymdlhxpalecniyphkibwaqhmboz.jpg" alt="ML lifecycle" style="width: 100%" loading="lazy"></a></li>
 <li><strong>Model evaluation metrics</strong><ul>
 <li>Classification:<ul>
 <li>Recall: <a href="https://en.wikipedia.org/wiki/Precision_and_recall#Recall" target="_blank">wiki</a></li>
@@ -144,18 +145,41 @@
 </ul>
 </li>
 <li><strong>Pearson’s correlation coefficient</strong>. <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient" target="_blank">wiki</a>. <a href="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png"><img src="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png" alt="Correlation formula" style="width: 100%" loading="lazy"></a></li>
-<li><strong>Preprocessing</strong><ol>
-<li>duplicates</li>
-<li>outliers</li>
-<li>missing values<ul>
+<li>
+<p><strong>Preprocessing</strong> <a href="https://scikit-learn.org/stable/modules/preprocessing.html" target="_blank">scikit</a></p>
+<ol>
+<li>
+<p>Analysis</p>
+<ol>
+<li>Remove duplicates</li>
+<li>Feature correlation</li>
+<li>Feature distribution/skew</li>
+</ol>
+</li>
+<li>
+<p>Production pipeline</p>
+<ol>
+<li>Outliers: remove or apply non-linear transformations</li>
+<li>
+<p>Missing values</p>
+<ul>
 <li>SMOTE: Generate and place a new point on the vector between a minority class point and one of its nearest neighbors, located [0, 1] percent of the way from the original point. Algorithm is parameterized with k_neighbors. <a href="https://www.kaggle.com/residentmario/oversampling-with-smote-and-adasyn" target="_blank">tutorial</a></li>
 </ul>
 </li>
-<li>feature correlation</li>
-<li>feature distribution/skew</li>
+<li>
+<p>Standardization</p>
+</li>
+<li>Discretization</li>
+<li>Encoding categorical features</li>
+<li>Generating polynomial features</li>
+<li>Dimensionality reduction</li>
 </ol>
 </li>
-<li><strong>Probability distributions</strong> <a href="https://www.statology.org/statistics-socs/" target="_blank">Description acronym SOCS</a>: shape, outliers, center, spread. <a href="https://medium.com/@srowen/common-probability-distributions-347e6b945ce4" target="_blank">Comparison article</a>. <a href="/theme/images/Bf8a4LtHWOrJ.png"><img src="/theme/images/Bf8a4LtHWOrJ.png" alt="Correlation formula" style="width: 100%" loading="lazy"></a><ul>
+</ol>
+</li>
+<li>
+<p><strong>Probability distributions</strong> <a href="https://www.statology.org/statistics-socs/" target="_blank">Description acronym SOCS</a>: shape, outliers, center, spread. <a href="https://medium.com/@srowen/common-probability-distributions-347e6b945ce4" target="_blank">Comparison article</a>. <a href="/theme/images/Bf8a4LtHWOrJ.png"><img src="/theme/images/Bf8a4LtHWOrJ.png" alt="Correlation formula" style="width: 100%" loading="lazy"></a></p>
+<ul>
 <li>Beta: probability distribution on probabilities bounded [0, 1]. <a href="https://towardsdatascience.com/beta-distribution-intuition-examples-and-derivation-cf00f4db57af" target="_blank">tutorial</a></li>
 <li>Binomial: probability of obtaining k successes in n binomial experiments with probability p. <a href="https://www.statology.org/binomial-distribution/" target="_blank">tutorial</a><a href="http://cecas.clemson.edu/~ahoover/ece854/lecture-notes/lecture-normeqs.pdf" target="_blank">Linear algebra solution</a><a href="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png"><img src="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png" alt="Normal equation" style="width: 100%" loading="lazy"></a></li>
 <li>Poisson: the probability of obtaining k successes during a given time interval. <a href="https://www.statology.org/poisson-distribution/" target="_blank">tutorial</a></li>

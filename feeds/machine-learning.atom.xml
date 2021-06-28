@@ -191,7 +191,8 @@ r2_score(df_test["label"], predictions)
 &lt;li&gt;Tests of assumptions: i) plot each feature on x-axis vs y_error, ii) plot y_predicted on x-axis vs y_error, iii) histogram of errors.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Overspecified model can be used for prediction of the label, but should not be used to ascribe the effect of a feature on the label. &lt;/li&gt;
+&lt;li&gt;Overspecified model can be used for prediction of the label, but should not be used to ascribe the effect of a feature on the label.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://cecas.clemson.edu/~ahoover/ece854/lecture-notes/lecture-normeqs.pdf" target="_blank"&gt;Linear algebra solution&lt;/a&gt;&lt;a href="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png"&gt;&lt;img src="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;ML types&lt;/strong&gt; &lt;a href="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png"&gt;&lt;img src="/theme/images/1*mobq_8Cwq6J59oN07-aKwA.png.png" alt="ML breakdown: Supervised + Unsupervised + RL" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
@@ -260,7 +261,7 @@ r2_score(df_test["label"], predictions)
 &lt;ul&gt;
 &lt;li&gt;Beta: probability distribution on probabilities bounded [0, 1]. &lt;a href="https://towardsdatascience.com/beta-distribution-intuition-examples-and-derivation-cf00f4db57af" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Binomial: probability of obtaining k successes in n binomial experiments with probability p. &lt;a href="https://www.statology.org/binomial-distribution/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Normal: Empirical Rule, sometimes called the 68-95-99.7 rule. &lt;a href="http://cecas.clemson.edu/~ahoover/ece854/lecture-notes/lecture-normeqs.pdf" target="_blank"&gt;Linear algebra solution&lt;/a&gt;&lt;a href="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png"&gt;&lt;img src="/theme/images/1*i0ylsCBDeVY5rFlGa9AYWg.png.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Normal: empirical rule, sometimes called the 68-95-99.7 rule&lt;/li&gt;
 &lt;li&gt;Poisson: the probability of obtaining k successes during a given time interval. &lt;a href="https://www.statology.org/poisson-distribution/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;

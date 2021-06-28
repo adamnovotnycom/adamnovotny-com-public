@@ -326,8 +326,8 @@ r2_score(df_test["label"], predictions)
 &lt;p&gt;Analysis&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Remove duplicates&lt;/li&gt;
+&lt;li&gt;SOCS of each feature: Shape (skew), Outliers, Center, Spread&lt;/li&gt;
 &lt;li&gt;Feature correlation&lt;/li&gt;
-&lt;li&gt;Feature distribution/skew&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;

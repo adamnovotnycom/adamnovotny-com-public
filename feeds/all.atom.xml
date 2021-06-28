@@ -258,6 +258,7 @@ r2_score(df_test["label"], predictions)
 &lt;li&gt;&lt;strong&gt;Bayes&lt;/strong&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.nature.com/articles/s43586-020-00001-2" target="_blank"&gt;Nature article overview&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://towardsdatascience.com/bayesian-a-b-testing-in-pymc3-54dceb87af74" target="_blank"&gt;Bayesian A/B Testing in PyMC3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://towardsdatascience.com/bayesian-inference-intuition-and-example-148fd8fb95d6" target="_blank"&gt;Inference — Intuition and Example (Beta &amp;amp; Binomial)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Explainability and bias evaluation&lt;/strong&gt; &lt;a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;ul&gt;

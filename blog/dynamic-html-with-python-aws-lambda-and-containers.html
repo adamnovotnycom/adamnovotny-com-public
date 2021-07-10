@@ -62,8 +62,7 @@
             <h2 class="blog-post-title">Dynamic HTML with Python, AWS Lambda, and Containers</h2>
             <p class="blog-post-meta" >2021-03-27</p>
             <p>This article is an extension of my previous article describing a similar <a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank">deployment process using native AWS Lambda tools</a>. However, Amazon since started <a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/" target="_blank">supporting container images</a> and updated it’s pricing policy to <a href="https://aws.amazon.com/blogs/aws/new-for-aws-lambda-1ms-billing-granularity-adds-cost-savings/" target="_blank">1ms granularity</a>. Both are major developments improving tooling and making small deployments cost effective.</p>
-
-<p><a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"><img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png"><img src="/theme/images/1*WSpeFmskKx0xiwx-WRRJ6A.jpeg.png" alt="Deploying AWS Lambda using a container" style="width: 100%" loading="lazy"></a></p>
 <p>My <a href="https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html" target="_blank">previous</a> article focused on the logic of the code and didn’t address how to actually deploy the function because that was well covered by AWS in its many tutorials. Here I explore the new the container deployment options while keeping all business logic untouched. Please review the AWS tutorial on deploying a <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html" target="_blank">generic Python Lambda code using containers</a> which I leveraged below.</p>
 <h4>1. Dockerfile</h4>
 <pre>FROM public.ecr.aws/lambda/python:3.8
@@ -81,7 +80,7 @@ CMD ["/mnt/app/app.handler"]</pre>
 <pre>import os
 from jinja2 import Environment, FileSystemLoader</pre>
 <pre>def lambda_handler(event, context):
-    env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(<strong>file</strong>), "."), encoding="utf8"))
+    env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(__file__), "."), encoding="utf8"))
     my_name_from_query = False
     if event["queryStringParameters"] and "my_name" in event["queryStringParameters"]:
         my_name_from_query = event["queryStringParameters"]["my_name"]
@@ -97,7 +96,7 @@ from jinja2 import Environment, FileSystemLoader</pre>
         }
     }</pre>
 <p>2) index.html:</p>
-<a href="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png"><img src="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png" alt="index.html" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png"><img src="/theme/images/1*aJfoRhYbqPXONxww3qyYeA.png.png" alt="index.html" style="width: 100%" loading="lazy"></a></p>
 <p>app.py simply parses one argument named “my_name” from the Lambda query string and passes it to the html template as variable named “my_name”. Jinja2 then parses the variable and returns the final template.</p>
 <h4>Calling and testing the app locally</h4>
 <p>Testing the app locally is very simple thanks to the new container packaging. Simply run docker-compose -f docker-compose.yml up, where docker-compose.yml file is defined as:</p>
@@ -131,7 +130,7 @@ print(r.json())</pre>
 }</pre>
 <h4>Cost</h4>
 <p>The simple AWS base server returns responses such as the one below. This is where we can see the significant impact of the new 1ms pricing update. The cost of running this example code is about 9ms which is very small considering that we are returning a full html template to browsers. However, previously AWS would charge for the full 100ms because that was the minimum charge defined. Now, this function could cost nearly 90% less!</p>
-<a href="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png"><img src="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png" alt="Lambda duration" style="width: 100%" loading="lazy"></a></p>
+<p><a href="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png"><img src="/theme/images/1*5Xq3l1IxQmCWQxIkSg4wLw.png.png" alt="Lambda duration" style="width: 100%" loading="lazy"></a></p>
             <a href="https://medium.com/@adamnovotnycom/dynamic-html-with-python-aws-lambda-and-containers-e7a4467a8059/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     

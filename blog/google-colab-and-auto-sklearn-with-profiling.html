@@ -62,9 +62,7 @@
             <h2 class="blog-post-title">Google Colab and Auto-sklearn with Profiling</h2>
             <p class="blog-post-meta" >2021-03-20</p>
             <p>This article is a follow up to my previous tutorial on how to <a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank">setup Google Colab and auto-sklean</a>. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found <a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank">here</a>.</p>
-
 <p>First, I generated a regression dataset using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html" target="_blank">scikit learn</a>.</p>
-
 <pre>X, y, coeff = make_regression(
     n_samples=1000,
     n_features=100,
@@ -73,8 +71,7 @@
     shuffle=False,
     coef=True
 )</pre>
-
-<p><a href="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"><img src="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"><img src="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"></a></p>
 <p>This generates a dataset with 100 numerical features where the first 5 features are informative (these are labeled as “feat_0” to “feat_4”). The rest (“feat_5” to “feat_99”) are random noise. We can see this in the scatter matrix above where only the first 5 features show a correlation with the label.</p>
 <p>We know that this is a simple regression problem which could be solved using a linear regression perfectly. However, knowing what to expect helps us to verify the performance of auto-sklearn which trains its ensemble model using the following steps:</p>
 <pre>import autosklearn.regressionautoml = autosklearn.regression.AutoSklearnRegressor(
@@ -87,18 +84,14 @@ automl.fit(
 )</pre>
 <p>I also created random categorical features which are then one-hot-encoded into a feature set “X_train_transformed“. Running the AutoSklearnRegressor for 5 minutes (time_left_for_this_task=300) produced the following expected results:</p>
 <pre>predictions = automl.predict(X_train_transformed)
-r2_score(df_train["label"], predictions)</p>
-<blockquote>
-<blockquote>
-<p>0.999
+r2_score(df_train["label"], predictions)
+>> 0.999
 predictions = automl.predict(X_test_transformed)
 r2_score(df_test["label"], predictions)
-0.999</pre>
+>> 0.999</pre>
 <p>A separate pip package <a href="https://github.com/VIDA-NYU/PipelineVis" target="_blank">PipelineProfiler</a> helps us visualize the steps auto-sklearn took to achieve the result:</p>
-<a href="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"><img src="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"></a>
-<p>Above we can see the attempts auto-sklearn made to generate the best emsemble of models within the 5 minute constraint I set. The best model found was <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank">Liblinear SVM</a>, which produced R2 of nearly 1.0. As a result, this toy ensemble model gives weight of 1.0 to just one algorithm. Libsvm Svr and Gradient boosting scored between 0.9–0.96.</p></p>
-</blockquote>
-</blockquote>
+<p><a href="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"><img src="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"></a></p>
+<p>Above we can see the attempts auto-sklearn made to generate the best emsemble of models within the 5 minute constraint I set. The best model found was <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank">Liblinear SVM</a>, which produced R2 of nearly 1.0. As a result, this toy ensemble model gives weight of 1.0 to just one algorithm. Libsvm Svr and Gradient boosting scored between 0.9–0.96.</p>
             <a href="https://medium.com/@adamnovotnycom/google-colab-and-auto-sklearn-with-profiling-2ae30d363613/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     

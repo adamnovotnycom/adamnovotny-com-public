@@ -62,20 +62,19 @@
             <h2 class="blog-post-title">Google Colab and AutoML: Auto-sklearn Setup</h2>
             <p class="blog-post-meta" >2020-12-04</p>
             <p>Auto ML is fast becoming a popular solution to build minimal viable models for new projects. A popular library for Python is <a href="https://automl.github.io/auto-sklearn/master/#" target="_blank">Auto-sklearn</a> that leverages the most popular Python ML library <a href="http://sklearn.org" target="_blank">scikit-learn</a>. Auto-sklearn runs a smart search over scikit-learn models and parameters to find the best performing ensemble of models.</p>
-
-<p><a href="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png"><img src="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png" alt="Logos of Google Drive + Colab + Scikit-learn + Auto-sklearn" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png"><img src="/theme/images/1*n6-MAHisW5-xLrEUndHe5g.png.png" alt="Logos of Google Drive + Colab + Scikit-learn + Auto-sklearn" style="width: 100%" loading="lazy"></a></p>
 <p>This tutorial describes how to setup Auto-sklearn on <a href="https://colab.research.google.com/" target="_blank">Google Colab</a>. The complete <a href="https://gist.github.com/adamnovotnycom/1df7ef10649d8241c389c96becb7fe37" target="_blank">notebook gist</a> includes a toy project that uses an <a href="https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data" target="_blank">old Airbnb dataset</a> from Kaggle.</p>
 <p>The key first step is to install linux dependencies alongside Auto-sklearn:</p>
 <pre>!sudo apt-get install build-essential swig
 !pip install auto-sklearn==0.11.1</pre>
 <p>After running these commands in Colab, restart the Colab runtime and run all commands again.</p>
 <p>The Airbnb dataset can be used for a regression project where price is the label. I selected a few numerical and categorical features randomly so the dataset used for modeling has the following characteristics:</p>
-<a href="/theme/images/1*-lXTkg7Y9W-XMdNPR5KPkA.png.png"><img src="/theme/images/1*-lXTkg7Y9W-XMdNPR5KPkA.png.png" alt="Airbnb dataset description" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*-lXTkg7Y9W-XMdNPR5KPkA.png.png"><img src="/theme/images/1*-lXTkg7Y9W-XMdNPR5KPkA.png.png" alt="Airbnb dataset description" style="width: 100%" loading="lazy"></a></p>
 <p>A more sophisticated ML project would require a detailed feature selection process and data analysis at this stage. For example, does the maximum value of 1,250 for minimum_nights make sense? In this case, I am simply showing the Auto-sklearn setup so I will skip these time consuming steps.</p>
 <p>Next, all numerical features are <a href="https://en.wikipedia.org/wiki/Standard_score" target="_blank">standardized</a> and missing values filled. Scikit-learn (and therefore Auto-sklearn) cannot handle string categories so categorical features are <a href="https://machinelearningmastery.com/why-one-hot-encode-data-in-machine-learning/" target="_blank">one hot encoded</a>. Also, infrequently appearing categories are combined into a single bucket to combat the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a>. In this case, any neighborhood that appears less than 0.5% of the time is renamed to “neighborhood_other”. Before transformations, the first 5 rows of the training dataset have the following items:</p>
-<a href="/theme/images/1*5zbUTS8k6rTqTYUtpATzlw.png.png"><img src="/theme/images/1*5zbUTS8k6rTqTYUtpATzlw.png.png" alt="Training dataset before transformations" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*5zbUTS8k6rTqTYUtpATzlw.png.png"><img src="/theme/images/1*5zbUTS8k6rTqTYUtpATzlw.png.png" alt="Training dataset before transformations" style="width: 100%" loading="lazy"></a></p>
 <p>After transformations, the first few columns of the 5 rows look like this:</p>
-<a href="/theme/images/1*AySz4rydwvMNfOnt4v-UpA.png.png"><img src="/theme/images/1*AySz4rydwvMNfOnt4v-UpA.png.png" alt="Training dataset after transformations" style="width: 100%" loading="lazy"></a>
+<p><a href="/theme/images/1*AySz4rydwvMNfOnt4v-UpA.png.png"><img src="/theme/images/1*AySz4rydwvMNfOnt4v-UpA.png.png" alt="Training dataset after transformations" style="width: 100%" loading="lazy"></a></p>
 <p>I am finally ready to explore Auto-sklearn using few simple commands that fit a new model:</p>
 <pre>import autosklearn.regression
 automl = autosklearn.regression.AutoSklearnRegressor(
@@ -106,7 +105,7 @@ grid.fit(X_train_transformed, y_train.values.ravel())</pre>
 sklearn.metrics.r2_score(y_test, predictions)
  output: 0.0982</pre>
 <p>Impressively, the default Auto-sklearn <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" target="_blank">R2</a> performance of 0.186 is nearly twice as good as simplistic scikit-learn-only performance of 0.098. These are not intended to be absolute benchmarks because I performed no customization but the relative performance is worth noting. The results suggest that Auto-sklearn can set a very reasonable lower performance bound that no model deployed in production should underperform.</p>
-<p>More about me: <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></p></p>
+<p>More about me: <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></p>
             <a href="https://medium.com/@adamnovotnycom/google-colab-and-automl-auto-sklearn-setup-2dff936372e6/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     

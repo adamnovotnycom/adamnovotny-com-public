@@ -62,25 +62,15 @@
             <h2 class="blog-post-title">Linear programming in Python: CVXOPT and game theory</h2>
             <p class="blog-post-meta" >2017-08-16</p>
             <p>CVXOPT is an excellent Python package for linear programming. However, when I was getting started with it, I spent way too much time getting it to work with simple game theory example problems. This tutorial aims to shorten the startup time for everyone trying to use CVXOPT for more advanced problems.</p>
-
 <p>All code is available <a href="http://github.com/adam5ny/blogs/tree/master/cvxopt" target="_blank">here</a>.</p>
-
 <p>Installation of dependencies:</p>
-
 <ul><li>Using Docker is the fastest way to run the code. In only 5 commands you can replicate my environment and run the code.</li></ul>
-
 <ul><li>Alternatively, the code has the following dependencies: Python (3.5.3), numpy (1.12.1), cvxopt (1.1.9), glpk optimizer (but you can use the default optimizer, glpk is better for some more advanced problems)</li></ul>
-
 <p>Please review <a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank">how CVXOPT solves simple maximization problems</a>. While this article focuses on game theory problems, it is critical to understand how CVXOPT defines optimization problems in general.</p>
-
 <p>The first problem we will solve is a <a href="http://en.wikipedia.org/wiki/Minimax#Example" target="_blank">2-player zero-sum game</a>.</p>
-
 <p>The constraints matrix A is defined as</p>
-
 <pre>A = [[3, -2, 2], [-1, 0, 4] ,[-4, -3, 1]]</pre>
-
 <p>Next, we define a maxmin helper function</p>
-
 <pre>def maxmin(self, A, solver="glpk"):
     num_vars = len(A)
      minimize matrix c
@@ -106,24 +96,17 @@
     b = matrix(b)
     sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
     return sol</pre>
-
 <p>Last, we use the maxmin helper function to solve our example problem:</p>
-
 <pre>sol = maxmin(A=A, solver=”glpk”)
 probs = sol[“x”]
 print(probs)
  [ 1.67e-01]
  [ 8.33e-01]
  [ 0.00e+00]</pre>
-
 <p>In other words, player A chooses action 1 with probility 1/6 and action 2 with probability 5/6.</p>
-
 <p>Next we will solve a Correlated Equilibrium problem called Game of Chicken as defined on page 3 of <a href="http://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank">this document</a>. The constraints matrix A is defined as</p>
-
 <pre>A = [[6, 6], [2, 7], [7, 2], [0, 0]]</pre>
-
 <p>Next, we define a ce and build_ce_constraints helper functions:</p>
-
 <pre>def ce(self, A, solver=None):
     num_vars = len(A)
      maximize matrix c
@@ -147,7 +130,6 @@ print(probs)
     b = matrix(b)
     sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
     return sol</pre>
-
 <pre>def build_ce_constraints(self, A):
     num_vars = int(len(A) ** (1/2))
     G = []
@@ -173,9 +155,7 @@ print(probs)
                         + A[j + (k * num_vars)][1])
                 G += [constraints]
     return np.matrix(G, dtype="float")</pre>
-
 <p>Using the helper functions, we solve the Game of Chicken</p>
-
 <pre>sol = ce(A=A, solver="glpk")
 probs = sol["x"]
 print(probs)
@@ -183,11 +163,8 @@ print(probs)
  [ 2.50e-01]
  [ 2.50e-01]
  [ 0.00e+00]</pre>
-
 <p>In other words, the optimal strategy is for both players to select actions [6, 6] 50% of the time, actions [2, 7] 25% of the time, and action [7, 2] also 25% of the time.</p>
-
 <p>Hopefully this overview helps in getting you started with linear programming and game theory in Python.</p>
-
 <p>Credits: <a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank">cvxopt.org/examples/tutorial/lp.html</a><a href="https://www.cs.duke.edu/courses/fall12/cps270/lpandgames.pdf" target="_blank">, cs.duke.edu/courses/fall12/cps270/lpandgames.pdf</a><a href="https://en.wikipedia.org/wiki/Minimax#Example" target="_blank">, en.wikipedia.org/wiki/Minimax#Example</a><a href="https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf" target="_blank">, https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf</a><a href="https://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank">, cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps</a><a href="https://www.cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf" target="_blank">, cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf</a></p>
             <a href="https://medium.com/@adamnovotnycom/linear-programming-in-python-cvxopt-and-game-theory-8626a143d428/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>

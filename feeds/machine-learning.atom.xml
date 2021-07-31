@@ -269,6 +269,10 @@ r2_score(df_test["label"], predictions)
 &lt;li&gt;T-test: &lt;a href="https://online.stat.psu.edu/stat555/node/36/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transformers&lt;/strong&gt; &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.machinecurve.com/index.php/2020/12/28/introduction-to-transformers-in-machine-learning/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1232021073114943.png"&gt;&lt;img src="/theme/images/1232021073114943.png" alt="Original transformer architecture" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Underfitting (high bias)&lt;/strong&gt;&lt;ul&gt;
 &lt;li&gt;Options: decrease regularization, increase model complexity&lt;/li&gt;
 &lt;/ul&gt;

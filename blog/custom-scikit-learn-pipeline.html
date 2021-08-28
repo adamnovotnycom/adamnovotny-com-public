@@ -72,12 +72,12 @@
 </ul>
 
 <h4>Full pipeline</h4>
-<script src="https://gist.github.com/adamnovotnycom/ee65804ce445db8ebd36c7c7586bbc36.js"></script>
-
+<script src="https://gist.github.com/adamnovotnycom/a09294f179d8e483d5411eb5c8c4e00f.js"></script>
+<p><a href="/notebooks/sklearn_pipe.html">Notebook HTML version</a></p>
 <h4>Comments</h4>
 <ul>
     <li>FeatureSelector is defined to illustrate what a custom pipeline step looks like. In this case, the step simply selects a subset of columns to which the transformation defined in the next step of a scikit-learn Pipeline class is applied.</li>
-    <li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns have their missing values filled using each column’s median value. Lastly, all numerical columns are scaled.</li>
+    <li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns are treated (scaling, missing values, etc)</li>
     <li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li>
 </ul>
             <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/">Also on <i class="fab fa-medium fa-lg"></i></a>
@@ -88,7 +88,7 @@
     </div>
 </main>
 
-      
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

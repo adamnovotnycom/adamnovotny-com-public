@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Intro I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like. In general, a machine learning pipeline...">
-    <title>Custom scikit-learn Pipeline | ANotes</title>
+    <meta name="description" content="Intro In general, a machine learning pipeline should have the following characteristics: To ensure data consistency, the pipeline should include...">
+    <title>Scikit-learn Pipeline with Feature Engineering | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -59,27 +59,22 @@
         <div class="col-md-9">
     
             <div class="blog-post">
-            <h2 class="blog-post-title">Custom scikit-learn Pipeline</h2>
+            <h2 class="blog-post-title">Scikit-learn Pipeline with Feature Engineering</h2>
             <p class="blog-post-meta" >2021-08-30</p>
             <h4>Intro</h4>
-<p>I have gone through many iterations of what my preferred scikit-learn custom pipeline looks like.</p>
-<p><a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 100%" loading="lazy"></a></p>
 <p>In general, a machine learning pipeline should have the following characteristics:</p>
+<p><a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 50%" loading="lazy"></a></p>
 <ul>
-    <li>Include every step required to score training dataset, testing dataset, and real time requests (if applicable) to ensure consistency. The pipeline does not need to include one-off steps such as removing duplicates.</li>
-    <li>Have as few custom components as necessary. For example, when filling missing values in numerical columns with median value, there is no reason NOT to use SimpleImputer class from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html" target="_blank">sklearn.impute</a>. In my example gist below I included a custom FeatureSelector class just to illustrate how to define a custom pipeline step. In reality, if it exists I would use an already defined scikit-learn class with the same functionality.</li>
-    <li>Allow for parallel preprocessing subject to the computing environment limits. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps are independent of each other.</li>
+    <li>To ensure data consistency, the pipeline should include every step (such as feature engineering) required to train and score training and testing datasets, and score real time requests. The pipeline does not need to include one-off steps such as removing duplicates.</li>
+    <li>Numerical features are transformed using scikit-learn classes. SimpleImputer is used to fill missing values and StandardScaler for scaling.</li>
+    <li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li>
+    <li>An example custom feature engineering class DailyTrendFeature is included in the pipeline for illustration.</li>
+    <li>The pipeline allows for parallel preprocessing subject to the limits of the computing environment. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps are independent of each other. This is accomplished using scikit-learn's <pre>FeatureUnion(n_jobs=-1, ...)</pre> class that combines other pipeline steps.</li>
 </ul>
 
 <h4>Full pipeline</h4>
 <script src="https://gist.github.com/adamnovotnycom/a09294f179d8e483d5411eb5c8c4e00f.js"></script>
 <p><a href="/notebooks/sklearn_pipe.html">Notebook HTML version</a></p>
-<h4>Comments</h4>
-<ul>
-    <li>FeatureSelector is defined to illustrate what a custom pipeline step looks like. In this case, the step simply selects a subset of columns to which the transformation defined in the next step of a scikit-learn Pipeline class is applied.</li>
-    <li>Numerical features are transformed using a scikit-learn Pipeline class. First, the appropriate columns are selected using the above FeatureSelector class. Then all numerical columns are treated (scaling, missing values, etc)</li>
-    <li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li>
-</ul>
             <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     

@@ -60,7 +60,10 @@
     
             <div class="blog-post">
             <h2 class="blog-post-title">Serverless web apps with Firebase and AWS Lambda</h2>
-            <p class="blog-post-meta" >2018-09-09</p>
+            <p class="blog-post-meta" >
+                2018-09-09 
+                <a href="https://medium.com/@adamnovotnycom/serverless-web-apps-with-firebase-and-aws-lambda-fb17783845eb/"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
             <h4>Topics: Firebase Hosting, AWS Lambda</h4>
 <p>Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to use technologies that might not be optimal for their projects. For example, people using <a href="https://firebase.google.com/" target="_blank">Google’s Firebase</a> to host their static resources have to write custom endpoint <a href="https://firebase.google.com/docs/functions/" target="_blank">functions</a> in JavaScript or TypeScript (as of August 2018). Developers typically use custom backend functions to hide business logic or proprietary data operations from users because anything that runs in the browsers front end as JavaScript is ultimately an open book from the users perspective.</p>
 <p><a href="/theme/images/1*6QfJob8HhDsYsGjzYSb3eA.jpeg.png"><img src="/theme/images/1*6QfJob8HhDsYsGjzYSb3eA.jpeg.png" alt="Firebase + AWS Lambda" style="width: 100%" loading="lazy"></a></p>
@@ -107,7 +110,6 @@ this.http.get('<a href="https://api.examle.com/get-data'" target="_blank">https:
 <ul><li>12) Return to your domain registrar’s DNS records, and create a CNAME record pointing to the target domain name above (such as xyz1234567899.cloudfront.net). Now once DNS records propagate, requesting api.example.com is going to terminate at your Lambda function and will be accessible by your Firebase frontend.</li></ul>
 <p>That’s it! Now you can deploy a fully featured web app with a custom backend, URL and generous free tiers (as of August 2018). With a little bit of practice the process takes about an hour subject to DNS propagation and requires virtually no backend deployment knowledge. It scales well for most small to medium-sized apps that do not require specialized compute-intensive workloads such as Machine Learning (see my ML deployment article <a href="https://medium.com/coinmonks/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">here</a>).</p>
 <p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p>
-            <a href="https://medium.com/@adamnovotnycom/serverless-web-apps-with-firebase-and-aws-lambda-fb17783845eb/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     
         </div>
@@ -115,10 +117,10 @@ this.http.get('<a href="https://api.examle.com/get-data'" target="_blank">https:
     </div>
 </main>
 
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
 

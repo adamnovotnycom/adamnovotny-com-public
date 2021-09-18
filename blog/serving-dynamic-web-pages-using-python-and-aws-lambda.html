@@ -60,7 +60,10 @@
     
             <div class="blog-post">
             <h2 class="blog-post-title">Serving Dynamic Web Pages using Python and AWS Lambda</h2>
-            <p class="blog-post-meta" >2020-07-25</p>
+            <p class="blog-post-meta" >
+                2020-07-25 
+                <a href="https://medium.com/@adamnovotnycom/serving-dynamic-web-pages-using-python-and-aws-lambda-864ff810fc5c/"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
             <p>While AWS Lambda functions are typically used to build API endpoints, at their core Lambda functions can return almost anything. This includes returning html markup with dynamic content.</p>
 <p><a href="/theme/images/1*9bPdHLV7ghV1RuNYOGkTvA.png.png"><img src="/theme/images/1*9bPdHLV7ghV1RuNYOGkTvA.png.png" alt="AWS Lambda + Python + Jinja" style="width: 100%" loading="lazy"></a></p>
 <p>I will not go into details describing how to deploy AWS Lambda functions. Please see the official <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html" target="_blank">documentation</a>. I will however describe how to return dynamic html content instead of a typical <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a>.</p>
@@ -124,7 +127,6 @@ from jinja2 import Environment, FileSystemLoader</pre>
 <ul><li>variable “my_name” is parsed from the URL query parameters as explained above and stored as the Python variable my_name_query</li></ul>
 <ul><li>the jinja2 render function then passes my_name_query to the template and returns the html page</li></ul>
 <p>Also published on <a href="https://adamnovotny.com" target="_blank">adamnovotny.com</a></p>
-            <a href="https://medium.com/@adamnovotnycom/serving-dynamic-web-pages-using-python-and-aws-lambda-864ff810fc5c/">Also on <i class="fab fa-medium fa-lg"></i></a>
             </div>
     
         </div>
@@ -132,10 +134,10 @@ from jinja2 import Environment, FileSystemLoader</pre>
     </div>
 </main>
 
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
 

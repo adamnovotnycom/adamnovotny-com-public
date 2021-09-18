@@ -13112,19 +13112,13 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><!-- Used for HTML output on website --></p>
-<div style="width: 100%; text-align: center;">
-<a href="https://adamnovotny.com">
-    <img style="height: 3em" src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
-</a>
-<a style="color: rgba(0,0,0,.55); font-size: 1.5rem font-weight: 400;" href="https://adamnovotny.com">Home</a>
-</div>
+<h1 id="Sklearn-pipeline">Sklearn pipeline<a class="anchor-link" href="#Sklearn-pipeline">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
@@ -13148,6 +13142,27 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3.7.12 (default, Sep 10 2021, 00:21:48) 
+[GCC 7.5.0]
+1.1.5
+2
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13158,7 +13173,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
@@ -13179,7 +13194,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13275,7 +13290,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
@@ -13291,7 +13306,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13346,7 +13361,7 @@ div#notebook {
     </tr>
     <tr>
       <th>top</th>
-      <td>2009-02-09</td>
+      <td>2000-10-09</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -13447,7 +13462,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
@@ -13463,7 +13478,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -13487,7 +13502,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
@@ -13517,7 +13532,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[30]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13693,7 +13708,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
@@ -13709,7 +13724,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[31]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13740,7 +13755,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;open_close_delta&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;close&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;open&quot;</span><span class="p">]</span>
@@ -13757,7 +13772,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13859,7 +13874,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;day_of_week&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofweek</span>
@@ -13877,7 +13892,7 @@ dtype: object</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[33]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13992,7 +14007,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;return&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;adj_close&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;adj_close&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -14044,7 +14059,7 @@ Name: label, dtype: int64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">train_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2016-12-31&quot;</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">],</span> <span class="p">:]</span>
@@ -14116,7 +14131,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">numerical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="s2">&quot;open_close_delta&quot;</span><span class="p">]</span>
@@ -14130,7 +14145,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="k">class</span> <span class="nc">FeatureSelector</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
@@ -14149,7 +14164,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">numerical_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span> <span class="o">=</span> <span class="p">[</span> 
@@ -14166,7 +14181,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">categorical_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span> <span class="o">=</span> <span class="p">[</span> 
@@ -14195,7 +14210,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="k">class</span> <span class="nc">DailyTrendFeature</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
@@ -14237,7 +14252,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="k">def</span> <span class="nf">test_new_feature_pipeline</span><span class="p">():</span>
@@ -14269,15 +14284,15 @@ Name: date, dtype: object
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>     return
-0  1.007534
-1  0.977716
-2  1.013077
-3  0.992660
-4  0.989090
+0  0.991621
+1  0.997277
+2  0.981978
+3  0.996962
+4  1.012702
    x0_up  x0_down  x0_flat
 0    0.0      0.0      1.0
-1    0.0      1.0      0.0
-2    1.0      0.0      0.0
+1    0.0      0.0      1.0
+2    0.0      0.0      1.0
 3    0.0      1.0      0.0
 4    0.0      0.0      1.0
 </pre>
@@ -14290,7 +14305,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">feature_pipeline</span> <span class="o">=</span> <span class="n">FeatureUnion</span><span class="p">(</span>
@@ -14310,7 +14325,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="k">def</span> <span class="nf">test_feature_pipeline</span><span class="p">():</span>
@@ -14378,78 +14393,78 @@ Name: date, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>5826</td>
-      <td>2016-03-18</td>
-      <td>204.169998</td>
-      <td>204.779999</td>
-      <td>203.800003</td>
-      <td>204.380005</td>
-      <td>185.306259</td>
-      <td>138372400</td>
-      <td>1.001029</td>
-      <td>4</td>
-      <td>1.003930</td>
+      <td>5215</td>
+      <td>2013-10-14</td>
+      <td>169.210007</td>
+      <td>171.080002</td>
+      <td>169.080002</td>
+      <td>170.940002</td>
+      <td>147.378723</td>
+      <td>112106000</td>
+      <td>1.010224</td>
+      <td>monday</td>
+      <td>1.003994</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>552</td>
-      <td>1995-04-06</td>
-      <td>50.687500</td>
-      <td>50.796875</td>
-      <td>50.593750</td>
-      <td>50.750000</td>
-      <td>31.533846</td>
-      <td>352500</td>
-      <td>1.001233</td>
-      <td>3</td>
-      <td>1.003708</td>
+      <td>5924</td>
+      <td>2016-08-08</td>
+      <td>218.399994</td>
+      <td>218.520004</td>
+      <td>217.740005</td>
+      <td>218.050003</td>
+      <td>198.728592</td>
+      <td>39906500</td>
+      <td>0.998397</td>
+      <td>monday</td>
+      <td>0.999404</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1502</td>
-      <td>1999-01-11</td>
-      <td>127.687500</td>
-      <td>127.687500</td>
-      <td>125.218750</td>
-      <td>126.531250</td>
-      <td>83.928345</td>
-      <td>7578300</td>
-      <td>0.990945</td>
-      <td>monday</td>
-      <td>0.990460</td>
+      <td>821</td>
+      <td>1996-04-30</td>
+      <td>65.437500</td>
+      <td>65.562500</td>
+      <td>65.125000</td>
+      <td>65.390625</td>
+      <td>41.525272</td>
+      <td>184400</td>
+      <td>0.999284</td>
+      <td>1</td>
+      <td>0.999284</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1286</td>
-      <td>1998-03-04</td>
-      <td>105.093750</td>
-      <td>105.406250</td>
-      <td>104.437500</td>
-      <td>104.812500</td>
-      <td>68.631920</td>
-      <td>4404100</td>
-      <td>0.997324</td>
+      <td>973</td>
+      <td>1996-12-04</td>
+      <td>74.875000</td>
+      <td>75.062500</td>
+      <td>74.093750</td>
+      <td>74.953125</td>
+      <td>48.096256</td>
+      <td>2365100</td>
+      <td>1.001043</td>
       <td>2</td>
-      <td>0.993483</td>
+      <td>1.002717</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>543</td>
-      <td>1995-03-24</td>
-      <td>49.671875</td>
-      <td>50.218750</td>
-      <td>49.671875</td>
-      <td>50.218750</td>
-      <td>31.203758</td>
-      <td>134000</td>
-      <td>1.011010</td>
-      <td>4</td>
-      <td>1.014200</td>
-      <td>0.0</td>
+      <td>2043</td>
+      <td>2001-03-05</td>
+      <td>124.150002</td>
+      <td>124.779999</td>
+      <td>123.809998</td>
+      <td>124.739998</td>
+      <td>84.509819</td>
+      <td>5293200</td>
+      <td>1.004752</td>
+      <td>monday</td>
+      <td>1.009142</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
@@ -14498,37 +14513,37 @@ Name: date, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.997402</td>
-      <td>0.110542</td>
+      <td>1.880130</td>
+      <td>1.728391</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.550386</td>
-      <td>0.141906</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>0.186182</td>
+      <td>-1.002947</td>
       <td>0.0</td>
       <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.417001</td>
-      <td>-1.436333</td>
+      <td>-0.745779</td>
+      <td>-0.798280</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
-      <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -14537,8 +14552,8 @@ Name: date, dtype: object
     </tr>
     <tr>
       <th>3</th>
-      <td>-0.475595</td>
-      <td>-0.457772</td>
+      <td>-0.694616</td>
+      <td>-0.391867</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -14550,16 +14565,16 @@ Name: date, dtype: object
     </tr>
     <tr>
       <th>4</th>
-      <td>-0.554419</td>
-      <td>1.641657</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>-0.625917</td>
+      <td>0.464703</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
@@ -14581,7 +14596,7 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="n">model_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span>
@@ -14709,42 +14724,22 @@ Name: date, dtype: object
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span><span class="o">%%</span><span class="n">shell</span>
 <span class="c1"># ### html with outputs</span>
-<span class="c1"># jupyter nbconvert --to html &#39;/content/drive/My Drive/Colab Notebooks/custom_scikit_pipeline/sklearn_pipe.ipynb&#39; --no-input --no-prompt</span>
+<span class="c1"># jupyter nbconvert --to html  --no-input --no-prompt &#39;/content/drive/My Drive/Colab Notebooks/custom_scikit_pipeline/sklearn_pipe.ipynb&#39;</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[50]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre></pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-python"><pre><span></span>

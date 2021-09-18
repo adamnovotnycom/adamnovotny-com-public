@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Intro In general, a machine learning pipeline should have the following characteristics: To ensure data consistency, the pipeline should include...">
+    <meta name="description" content="Takeaway In general, a machine learning pipeline should have the following characteristics: To ensure data consistency, the pipeline should...">
     <title>Scikit-learn Pipeline with Feature Engineering | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html">
@@ -60,8 +60,11 @@
     
             <div class="blog-post">
             <h2 class="blog-post-title">Scikit-learn Pipeline with Feature Engineering</h2>
-            <p class="blog-post-meta" >2021-08-30</p>
-            <h4>Intro</h4>
+            <p class="blog-post-meta" >
+                2021-08-30 
+                <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <h4>Takeaway</h4>
 <p>In general, a machine learning pipeline should have the following characteristics:</p>
 <p><a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 50%" loading="lazy"></a></p>
 <ul>
@@ -72,10 +75,7 @@
     <li>The pipeline allows for parallel preprocessing subject to the limits of the computing environment. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps are independent of each other. This is accomplished using scikit-learn's <pre>FeatureUnion(n_jobs=-1, ...)</pre> class that combines other pipeline steps.</li>
 </ul>
 
-<h4>Full pipeline</h4>
-<script src="https://gist.github.com/adamnovotnycom/a09294f179d8e483d5411eb5c8c4e00f.js"></script>
-<p><a href="/notebooks/sklearn_pipe.html">Notebook HTML version</a></p>
-            <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/">Also on <i class="fab fa-medium fa-lg"></i></a>
+<h4>Complete notebook</h4>
             </div>
     
         </div>
@@ -83,10 +83,11 @@
     </div>
 </main>
 
+<iframe style="width:100%; height:8000px" src="https://adamnovotny.com/notebooks/sklearn_pipe.html"></iframe>
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 
 

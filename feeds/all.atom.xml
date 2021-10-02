@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/all.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-08-30T00:00:00-05:00</updated><subtitle></subtitle><entry><title>Scikit-learn Pipeline with Feature Engineering</title><link href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html" rel="alternate"></link><published>2021-08-30T00:00:00-05:00</published><updated>2021-08-30T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-08-30:/blog/custom-scikit-learn-pipeline.html</id><summary type="html">&lt;h4&gt;Takeaway&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/all.atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-08-30T00:00:00-05:00</updated><entry><title>Scikit-learn Pipeline with Feature Engineering</title><link href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html" rel="alternate"></link><published>2021-08-30T00:00:00-05:00</published><updated>2021-08-30T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-08-30:/blog/custom-scikit-learn-pipeline.html</id><summary type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="summary"&gt;Summary&lt;/h4&gt;
 &lt;p&gt;In general, a machine learning pipeline should have the following characteristics:&lt;/p&gt;
 &lt;p&gt;&lt;a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"&gt;&lt;img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 50%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
-    &lt;li&gt;To ensure data consistency, the pipeline should include every step (such as feature engineering) required to train and score training and testing datasets, and score real time requests. The pipeline does not need to include one-off steps such …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h4&gt;Takeaway&lt;/h4&gt;
+    &lt;li&gt;To ensure data consistency, the pipeline should include every step (such as feature engineering) required to train and score training and testing datasets, and score real time requests. The pipeline does not need to include …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="summary"&gt;Summary&lt;/h4&gt;
 &lt;p&gt;In general, a machine learning pipeline should have the following characteristics:&lt;/p&gt;
 &lt;p&gt;&lt;a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"&gt;&lt;img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 50%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -12,9 +22,11 @@
     &lt;li&gt;Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the &lt;a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank"&gt;Curse of dimensionality&lt;/a&gt; that might occur when too many categories are present.&lt;/li&gt;
     &lt;li&gt;An example custom feature engineering class DailyTrendFeature is included in the pipeline for illustration.&lt;/li&gt;
     &lt;li&gt;The pipeline allows for parallel preprocessing subject to the limits of the computing environment. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps are independent of each other. This is accomplished using scikit-learn's &lt;pre&gt;FeatureUnion(n_jobs=-1, ...)&lt;/pre&gt; class that combines other pipeline steps.&lt;/li&gt;
+    &lt;li&gt;&lt;a href="https://gist.github.com/adamnovotnycom/a09294f179d8e483d5411eb5c8c4e00f" target="_blank"&gt;Notebook as Github Gist&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4&gt;Notebook&lt;/h4&gt;</content><category term="Machine Learning"></category></entry><entry><title>Global Temperature Forecast Using Prophet and CO2</title><link href="https://adamnovotny.com/blog/berkeley-global-temperature-forecast-prophet.html" rel="alternate"></link><published>2021-05-16T00:00:00-05:00</published><updated>2021-05-16T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-05-16:/blog/berkeley-global-temperature-forecast-prophet.html</id><summary type="html">&lt;p&gt;
+&lt;h4 id="notebook"&gt;Notebook&lt;/h4&gt;
+&lt;!-- notebook.html will be appended here per theme/article.html --&gt;</content><category term="Machine Learning"></category></entry><entry><title>Global Temperature Forecast Using Prophet and CO2</title><link href="https://adamnovotny.com/blog/berkeley-global-temperature-forecast-prophet.html" rel="alternate"></link><published>2021-05-16T00:00:00-05:00</published><updated>2021-05-16T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-05-16:/blog/berkeley-global-temperature-forecast-prophet.html</id><summary type="html">&lt;p&gt;
 In this article I will leverage the global &lt;a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html"&gt;temperate dataset I discussed previously&lt;/a&gt; to make a temperature forecast using &lt;a href="https://facebook.github.io/prophet/"&gt;Facebook Prophet&lt;/a&gt; for the next 50 years. Note: the temperature dataset serves ONLY as a vehicle to learn how to do forecasting using Prophet. In general, climate and other complex sciences …&lt;/p&gt;</summary><content type="html">&lt;p&gt;
 In this article I will leverage the global &lt;a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html"&gt;temperate dataset I discussed previously&lt;/a&gt; to make a temperature forecast using &lt;a href="https://facebook.github.io/prophet/"&gt;Facebook Prophet&lt;/a&gt; for the next 50 years. Note: the temperature dataset serves ONLY as a vehicle to learn how to do forecasting using Prophet. In general, climate and other complex sciences cannot be solved using a simple tool such ash Prophet.&lt;/p&gt;
 
@@ -266,7 +278,9 @@ r2_score(df_test["label"], predictions)
 &lt;li&gt;&lt;a href="https://towardsdatascience.com/bayesian-inference-intuition-and-example-148fd8fb95d6" target="_blank"&gt;Inference — Intuition and Example (Beta &amp;amp; Binomial)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Explainability and bias evaluation&lt;/strong&gt; &lt;a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Explainability&lt;/strong&gt; &lt;ul&gt;
+&lt;li&gt;Books: &lt;a href="https://christophm.github.io/interpretable-ml-book/" target="_blank"&gt;Interpretable Machine Learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tutorials: &lt;a href="https://www.twosigma.com/articles/interpretability-methods-in-machine-learning-a-brief-survey/" target="_blank"&gt;twosigma: a brief survey&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Partial dependence plots (PDP): x-axis = value of a single feature, y-axis = label. &lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#partial-dependence-plots" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Individual conditional expectation (ICE): x-axis = value of a single feature, y-axis = label. &lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#individual-conditional-expectation-ice-plot" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Permutation feature importance: Randomly shuffle features and calculate impact on model metrics such as F1. &lt;a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-feature-importance" target="_blank"&gt;scikit&lt;/a&gt;&lt;/li&gt;
@@ -375,6 +389,12 @@ r2_score(df_test["label"], predictions)
 &lt;li&gt;F-statistic: determines whether to reject a full model (F) in favor of a reduced (R) model. Reject full model if F is large — or equivalently if its associated p-value is small. &lt;a href="https://online.stat.psu.edu/stat501/lesson/6/6.2#paragraph--785" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png"&gt;&lt;img src="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png" alt="F-statistic" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Linear regression coefficient CI: &lt;a href="https://online.stat.psu.edu/stat501/node/644" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png"&gt;&lt;img src="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png" alt="t-interval for slope parameter beta_1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;T-test: &lt;a href="https://online.stat.psu.edu/stat555/node/36/" target="_blank"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/EthicalML/awesome-production-machine-learning" target="_blank"&gt;EthicalML/awesome-production-machine-learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/EthicalML/awesome-production-machine-learning#explaining-black-box-models-and-datasets" target="_blank"&gt;Explain&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/EthicalML/awesome-production-machine-learning#data-pipeline-etl-frameworks" target="_blank"&gt;Data pipelines&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Transformers&lt;/strong&gt; &lt;ul&gt;

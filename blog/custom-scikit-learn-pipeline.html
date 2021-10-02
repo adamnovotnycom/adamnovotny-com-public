@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Takeaway In general, a machine learning pipeline should have the following characteristics: To ensure data consistency, the pipeline should...">
+    <meta name="description" content="Contents Summary Notebook Summary In general, a machine learning pipeline should have the following characteristics: To ensure data consistency,...">
     <title>Scikit-learn Pipeline with Feature Engineering | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html">
@@ -62,9 +62,14 @@
             <h2 class="blog-post-title">Scikit-learn Pipeline with Feature Engineering</h2>
             <p class="blog-post-meta" >
                 2021-08-30 
-                <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/"><i class="fab fa-medium fa-lg"></i></a>
+                <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
             </p>
-            <h4>Takeaway</h4>
+            <h4>Contents</h4>
+<ol>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#notebook">Notebook</a></li>
+</ol>
+<h4 id="summary">Summary</h4>
 <p>In general, a machine learning pipeline should have the following characteristics:</p>
 <p><a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 50%" loading="lazy"></a></p>
 <ul>
@@ -73,9 +78,11 @@
     <li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li>
     <li>An example custom feature engineering class DailyTrendFeature is included in the pipeline for illustration.</li>
     <li>The pipeline allows for parallel preprocessing subject to the limits of the computing environment. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps are independent of each other. This is accomplished using scikit-learn's <pre>FeatureUnion(n_jobs=-1, ...)</pre> class that combines other pipeline steps.</li>
+    <li><a href="https://gist.github.com/adamnovotnycom/a09294f179d8e483d5411eb5c8c4e00f" target="_blank">Notebook as Github Gist</a></li>
 </ul>
 
-<h4>Notebook</h4>
+<h4 id="notebook">Notebook</h4>
+<!-- notebook.html will be appended here per theme/article.html -->
             </div>
     
         </div>
@@ -83,7 +90,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <iframe style="width:100%; height:9000px" src="https://adamnovotny.com/notebooks/sklearn_pipe.html"></iframe>
+            <iframe style="width:100%; height:10000px" src="https://adamnovotny.com/notebooks/sklearn_pipe.html"></iframe>
         </div>
     </div>
 </main>

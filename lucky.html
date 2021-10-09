@@ -52,18 +52,25 @@
       </nav>
       
 
-<main class="container">
+<main class="container" id="luck">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <div class="p-4 mb-3 bg-light rounded" id="quote">
-                <p class="mb-0"><i>{{text}}</i></p>
-                <p class="mb-0"><a v-bind:href="url">~ {{author}} <i class="fab fa-wikipedia-w fa-lg"></i></a></p>
-            </div>
+        <div class="col">
+            <h4>Random Quote</h4>
+            <p><i>{{quote_text}}</i></p>
+            <p><a v-bind:href="quote_url">~ {{quote_author}} <i class="fab fa-wikipedia-w fa-lg"></i></a></p>
         </div>
     </div>
-    <div class="col-md-2"></div>
-
+    <div class="row">
+        <div class="col">
+            <h4>Random Fact</h4>
+            <a v-bind:href="factLink" target="_blank">source</a>
+            <p style="font-size: 8px;">{{factLink}}</p>
+        </div>
+    <div class="row">
+        <div class="col">
+            <iframe style="width:100%; height: 5000px" v-bind:src="factLink"></iframe>
+        </div>
+    </div>
 </main>
 
     

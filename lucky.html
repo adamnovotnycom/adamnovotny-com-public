@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
     <meta name="description" content="">
-    <title> Quotes </title>
+    <title> Lucky </title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
@@ -46,6 +46,16 @@
                   <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
                 </ul>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/feed.xml">Feed <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
@@ -63,8 +73,8 @@
     <div class="row">
         <div class="col">
             <h4>Random Fact</h4>
-            <a v-bind:href="factLink" target="_blank">source</a>
-            <p style="font-size: 8px;">{{factLink}}</p>
+            <a v-bind:href="factLink" target="_blank">{{factLink}}</a>
+            <i class="fas fa-arrow-down"></i>
         </div>
     <div class="row">
         <div class="col">

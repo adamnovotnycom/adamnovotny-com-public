@@ -27,6 +27,7 @@ var app = new Vue({
                 const json = JSON.parse(text.substr(47).slice(0, -2));
                 sheetRows = json.table.rows;
                 rowIndex = Math.floor(Math.random() * (sheetRows.length - 1));
+                rowIndex = Math.max(1, rowIndex); // first row are column names
                 this.factLink = sheetRows[rowIndex].c[0].v;
             })
     }

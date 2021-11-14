@@ -5,9 +5,9 @@
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment. Key highlights:&lt;/p&gt;
+&lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.&lt;/p&gt;
 &lt;h6&gt;Dataset&lt;/h6&gt;
-&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 13 Nov 2021 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2021-11-13:/blog/lstm-forecast-synthetic-data.html</guid><category>Machine Learning</category></item><item><title>Scikit-learn Pipeline with Feature Engineering</title><link>https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html</link><description>&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 13 Nov 2021 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2021-11-13:/blog/lstm-forecast-synthetic-data.html</guid><category>Machine Learning</category></item><item><title>Scikit-learn Pipeline with Feature Engineering</title><link>https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html</link><description>&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;

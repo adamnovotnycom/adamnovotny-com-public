@@ -74,7 +74,7 @@
             <p class="blog-post-meta" >
                 Published: 2021-11-13
                 <a href="https://medium.com/@adamnovotnycom/lstm-forecast-synthetic-data/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
-                <br>Updated: 2021-11-13
+                Updated: 2021-11-13
             </p>
             <h4>Contents</h4>
 <ul>
@@ -82,10 +82,10 @@
 <li><a href="#notebook">Notebook</a></li>
 </ul>
 <h4>Summary <span id="summary"></span></h4>
-<p>Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment. Key highlights:</p>
+<p>Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.</p>
 <h6>Dataset</h6>
-<p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled. Time series dependence is created by making each label a weighted average of the <pre>make_friedman1</pre> generated values and previous labels. For details see notebook function <pre>generate_data()</pre></p>
-<p>This image shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
+<p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the <pre>make_friedman1</pre> generated values and previous labels. For details see notebook function <pre>generate_data()</pre></p>
+<p>The image below shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
 <a href="/theme/images/lstm_oin235no.png"><img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h6>Model training</h6>
 <p>The model is a simple NN with a single hidden layer defined as </p>
@@ -99,7 +99,7 @@
 <a href="/theme/images/lstm_synthetic_data_test_234897f.png"><img src="/theme/images/lstm_synthetic_data_test_234897f.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h4>Notebook <span id="notebook"></span></h4>
 <ul>
-<li>embedded below</li>
+<li><a href="/blog/lstm-forecast-synthetic-data.html#notebook">embedded in blog post</a></li>
 <li><a href="/notebooks/lstm_synthetic_data.html" target="_blank">as html</a></li>
 <li><a href="https://gist.github.com/adamnovotnycom/36af4c4400a7f970982685472661eba1" target="_blank">as Github Gist</a></li>
 </ul>

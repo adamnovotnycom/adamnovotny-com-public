@@ -5,18 +5,18 @@
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment. Key highlights:&lt;/p&gt;
+&lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.&lt;/p&gt;
 &lt;h6&gt;Dataset&lt;/h6&gt;
-&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some …&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are …&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h4&gt;
-&lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment. Key highlights:&lt;/p&gt;
+&lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.&lt;/p&gt;
 &lt;h6&gt;Dataset&lt;/h6&gt;
-&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are manually scaled. Time series dependence is created by making each label a weighted average of the &lt;pre&gt;make_friedman1&lt;/pre&gt; generated values and previous labels. For details see notebook function &lt;pre&gt;generate_data()&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;This image shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
+&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the &lt;pre&gt;make_friedman1&lt;/pre&gt; generated values and previous labels. For details see notebook function &lt;pre&gt;generate_data()&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;The image below shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
 &lt;a href="/theme/images/lstm_oin235no.png"&gt;&lt;img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h6&gt;Model training&lt;/h6&gt;
 &lt;p&gt;The model is a simple NN with a single hidden layer defined as &lt;/p&gt;
@@ -30,7 +30,7 @@
 &lt;a href="/theme/images/lstm_synthetic_data_test_234897f.png"&gt;&lt;img src="/theme/images/lstm_synthetic_data_test_234897f.png" alt="Validation loss" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Notebook &lt;span id="notebook"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;embedded below&lt;/li&gt;
+&lt;li&gt;&lt;a href="/blog/lstm-forecast-synthetic-data.html#notebook"&gt;embedded in blog post&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="/notebooks/lstm_synthetic_data.html" target="_blank"&gt;as html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://gist.github.com/adamnovotnycom/36af4c4400a7f970982685472661eba1" target="_blank"&gt;as Github Gist&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

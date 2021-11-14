@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-11-13T00:00:00-05:00</updated><entry><title>Keras LSTM Forecasting Using Synthetic Data</title><link href="https://adamnovotny.com/blog/lstm-forecast-synthetic-data.html" rel="alternate"></link><published>2021-11-13T00:00:00-05:00</published><updated>2021-11-13T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-11-13:/blog/lstm-forecast-synthetic-data.html</id><summary type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-11-13T00:00:00-05:00</updated><entry><title>Keras LSTM Forecasting Using Synthetic Data</title><link href="https://adamnovotny.com/blog/lstm-forecast-synthetic-data.html" rel="alternate"></link><published>2021-11-13T00:00:00-05:00</published><updated>2021-11-13T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-11-13:/blog/lstm-forecast-synthetic-data.html</id><summary type="html">&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;h3&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.&lt;/p&gt;
-&lt;h6&gt;Dataset&lt;/h6&gt;
-&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are …&lt;/p&gt;</summary><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;h4&gt;Dataset&lt;/h4&gt;
+&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;h3&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.&lt;/p&gt;
-&lt;h6&gt;Dataset&lt;/h6&gt;
-&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the &lt;pre&gt;make_friedman1&lt;/pre&gt; generated values and previous labels. For details see notebook function &lt;pre&gt;generate_data()&lt;/pre&gt;&lt;/p&gt;
+&lt;h4&gt;Dataset&lt;/h4&gt;
+&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the &lt;i&gt;make_friedman1&lt;/i&gt; generated values and previous labels. For details see notebook function &lt;i&gt;generate_data()&lt;/i&gt;.&lt;/p&gt;
 &lt;p&gt;The image below shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
 &lt;a href="/theme/images/lstm_oin235no.png"&gt;&lt;img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h6&gt;Model training&lt;/h6&gt;
-&lt;p&gt;The model is a simple NN with a single hidden layer defined as &lt;/p&gt;
-&lt;pre&gt;keras.layers.LSTM(32)&lt;/pre&gt;
-&lt;p&gt;The generated dataset is split into training, validation, and test sets, each honoring time series nature of the data. Validation set is used to stop training early to prevent overfitting. However, this is not a concern for our synthetic dataset as can be seen from following chart. The validation curve never starts increasing as training epochs continue:
+&lt;h4&gt;Model training&lt;/h4&gt;
+&lt;p&gt;The model is a simple NN with a single hidden layer defined as 
+&lt;i&gt;keras.layers.LSTM(32)&lt;/i&gt;. The generated dataset is split into training, validation, and test sets, each honoring time series nature of the data. Validation set is used to stop training early to prevent overfitting. However, this is not a concern for our synthetic dataset as can be seen from following chart. The validation curve never starts increasing as training epochs continue:
 &lt;a href="/theme/images/lstm_synthetic_data_9827345.png"&gt;&lt;img src="/theme/images/lstm_synthetic_data_9827345.png" alt="Validation loss" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h6&gt;Model evalution&lt;/h6&gt;
+&lt;h4&gt;Model evalution&lt;/h4&gt;
 &lt;p&gt;Comparing predictions and actual labels for the validation set shows strong performance even though there are clear optimizations that can be made near extreme values:
 &lt;a href="/theme/images/lstm_synthetic_data_val_q4598.png"&gt;&lt;img src="/theme/images/lstm_synthetic_data_val_q4598.png" alt="Validation loss" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;However, the validation set was already used during training for early stopping purposes. This is why we set aside a test dataset the model has never seen during training. The test dataset is the only true evaluation of the expected performance of the model and in this case it confirms that the model performs well for the synthetic dataset:

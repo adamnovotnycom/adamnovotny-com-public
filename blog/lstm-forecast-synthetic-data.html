@@ -73,26 +73,25 @@
             <h2 class="blog-post-title">Keras LSTM Forecasting Using Synthetic Data</h2>
             <p class="blog-post-meta" >
                 Published: 2021-11-13
-                <a href="https://medium.com/@adamnovotnycom/lstm-forecast-synthetic-data/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+                <a href="https://adamnovotnycom.medium.com/keras-lstm-forecasting-using-synthetic-data-9e1ae4e07d47/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
                 Updated: 2021-11-13
             </p>
-            <h4>Contents</h4>
+            <h3>Contents</h3>
 <ul>
 <li><a href="#summary">Summary</a></li>
 <li><a href="#notebook">Notebook</a></li>
 </ul>
-<h4>Summary <span id="summary"></span></h4>
+<h3>Summary <span id="summary"></span></h3>
 <p>Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.</p>
-<h6>Dataset</h6>
-<p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the <pre>make_friedman1</pre> generated values and previous labels. For details see notebook function <pre>generate_data()</pre></p>
+<h4>Dataset</h4>
+<p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the <i>make_friedman1</i> generated values and previous labels. For details see notebook function <i>generate_data()</i>.</p>
 <p>The image below shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
 <a href="/theme/images/lstm_oin235no.png"><img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
-<h6>Model training</h6>
-<p>The model is a simple NN with a single hidden layer defined as </p>
-<pre>keras.layers.LSTM(32)</pre>
-<p>The generated dataset is split into training, validation, and test sets, each honoring time series nature of the data. Validation set is used to stop training early to prevent overfitting. However, this is not a concern for our synthetic dataset as can be seen from following chart. The validation curve never starts increasing as training epochs continue:
+<h4>Model training</h4>
+<p>The model is a simple NN with a single hidden layer defined as 
+<i>keras.layers.LSTM(32)</i>. The generated dataset is split into training, validation, and test sets, each honoring time series nature of the data. Validation set is used to stop training early to prevent overfitting. However, this is not a concern for our synthetic dataset as can be seen from following chart. The validation curve never starts increasing as training epochs continue:
 <a href="/theme/images/lstm_synthetic_data_9827345.png"><img src="/theme/images/lstm_synthetic_data_9827345.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
-<h6>Model evalution</h6>
+<h4>Model evalution</h4>
 <p>Comparing predictions and actual labels for the validation set shows strong performance even though there are clear optimizations that can be made near extreme values:
 <a href="/theme/images/lstm_synthetic_data_val_q4598.png"><img src="/theme/images/lstm_synthetic_data_val_q4598.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <p>However, the validation set was already used during training for early stopping purposes. This is why we set aside a test dataset the model has never seen during training. The test dataset is the only true evaluation of the expected performance of the model and in this case it confirms that the model performs well for the synthetic dataset:

@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="">
-    <title>ANotes - Categories</title>
+    <meta name="description" content="Contents Summary Notebook Summary Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a...">
+    <title>Keras LSTM Forecasting Using Synthetic Data | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/lstm-forecast-synthetic-data.html">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -62,13 +63,59 @@
         </div>
       </nav>
       
-    <h1>Categories on ANotes</h1>
-    <ul>
-        <li><a href="https://adamnovotny.com/category/finance.html">Finance</a> (10)</li>
-        <li><a href="https://adamnovotny.com/category/machine-learning.html">Machine Learning</a> (10)</li>
-        <li><a href="https://adamnovotny.com/category/programming.html">Programming</a> (5)</li>
-        <li><a href="https://adamnovotny.com/category/random.html">Random</a> (4)</li>
-    </ul>
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Keras LSTM Forecasting Using Synthetic Data</h2>
+            <p class="blog-post-meta" >
+                Published: 2021-11-13
+                <a href="https://medium.com/@adamnovotnycom/lstm-forecast-synthetic-data/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+                <br>Updated: 2021-11-13
+            </p>
+            <h4>Contents</h4>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#notebook">Notebook</a></li>
+</ul>
+<h4>Summary <span id="summary"></span></h4>
+<p>Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment. Key highlights:</p>
+<h6>Dataset</h6>
+<p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled. Time series dependence is created by making each label a weighted average of the <pre>make_friedman1</pre> generated values and previous labels. For details see notebook function <pre>generate_data()</pre></p>
+<p>This image shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
+<a href="/theme/images/lstm_oin235no.png"><img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<h6>Model training</h6>
+<p>The model is a simple NN with a single hidden layer defined as </p>
+<pre>keras.layers.LSTM(32)</pre>
+<p>The generated dataset is split into training, validation, and test sets, each honoring time series nature of the data. Validation set is used to stop training early to prevent overfitting. However, this is not a concern for our synthetic dataset as can be seen from following chart. The validation curve never starts increasing as training epochs continue:
+<a href="/theme/images/lstm_synthetic_data_9827345.png"><img src="/theme/images/lstm_synthetic_data_9827345.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<h6>Model evalution</h6>
+<p>Comparing predictions and actual labels for the validation set shows strong performance even though there are clear optimizations that can be made near extreme values:
+<a href="/theme/images/lstm_synthetic_data_val_q4598.png"><img src="/theme/images/lstm_synthetic_data_val_q4598.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<p>However, the validation set was already used during training for early stopping purposes. This is why we set aside a test dataset the model has never seen during training. The test dataset is the only true evaluation of the expected performance of the model and in this case it confirms that the model performs well for the synthetic dataset:
+<a href="/theme/images/lstm_synthetic_data_test_234897f.png"><img src="/theme/images/lstm_synthetic_data_test_234897f.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<h4>Notebook <span id="notebook"></span></h4>
+<ul>
+<li>embedded below</li>
+<li><a href="/notebooks/lstm_synthetic_data.html" target="_blank">as html</a></li>
+<li><a href="https://gist.github.com/adamnovotnycom/36af4c4400a7f970982685472661eba1" target="_blank">as Github Gist</a></li>
+</ul>
+<!-- notebook.html will be appended here per theme/article.html -->
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <iframe style="width:100%; height:15000px" src="https://adamnovotny.com/notebooks/lstm_synthetic_data.html"></iframe>
+        </div>
+    </div>
+</main>
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

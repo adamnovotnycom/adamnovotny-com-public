@@ -5,44 +5,51 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/</loc>
-<lastmod>2021-12-18T15:01:17-00:00</lastmod>
+<lastmod>2021-12-18T20:00:28-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/lucky.html</loc>
-<lastmod>2021-12-18T15:01:17-00:00</lastmod>
+<lastmod>2021-12-18T20:00:28-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/robots.txt</loc>
-<lastmod>2021-12-18T15:01:17-00:00</lastmod>
+<lastmod>2021-12-18T20:00:28-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/notebooks/sklearn_pipe.html</loc>
-<lastmod>2021-12-18T15:01:17-00:00</lastmod>
+<lastmod>2021-12-18T20:00:28-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/notebooks/lstm_synthetic_data.html</loc>
-<lastmod>2021-12-18T15:01:17-00:00</lastmod>
+<lastmod>2021-12-18T20:00:28-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/bookshelf.html</loc>
-<lastmod>2021-12-18T15:01:17-00:00</lastmod>
+<lastmod>2021-12-18T20:00:28-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
+</url>
+
+<url>
+<loc>https://adamnovotny.com/blog/machine-learning-docker-template.html</loc>
+<lastmod>2021-12-18T00:00:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.5</priority>
 </url>
 
 <url>
@@ -246,6 +253,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2017-08-16T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://adamnovotny.com/category/articles.html</loc>
+<lastmod>2021-12-18T00:00:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>

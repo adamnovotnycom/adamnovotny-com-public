@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-12-18T00:00:00-05:00</updated><entry><title>Machine Learning Docker Template</title><link href="https://adamnovotny.com/blog/machine-learning-docker-template.html" rel="alternate"></link><published>2021-12-18T00:00:00-05:00</published><updated>2021-12-18T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-12-18:/blog/machine-learning-docker-template.html</id><summary type="html">&lt;!-- medium_link: https://adamnovotnycom.medium.com/tbd --&gt;
-
-&lt;h3&gt;Contents&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2021-12-18T00:00:00-05:00</updated><entry><title>Machine Learning Docker Template</title><link href="https://adamnovotny.com/blog/machine-learning-docker-template.html" rel="alternate"></link><published>2021-12-18T00:00:00-05:00</published><updated>2021-12-18T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-12-18:/blog/machine-learning-docker-template.html</id><summary type="html">&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#code"&gt;Code&lt;/a&gt;&lt;/li&gt;
@@ -10,9 +8,7 @@
 &lt;p&gt;The purpose of this post is to propose a template for machine learning projects that strives to follow these principles:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;All data scientists can quickly setup an identical development environment based on Docker that encourages good software engineering practices.&lt;/li&gt;
-&lt;li&gt;Dependency management is handled during the environment's …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;!-- medium_link: https://adamnovotnycom.medium.com/tbd --&gt;
-
-&lt;h3&gt;Contents&lt;/h3&gt;
+&lt;li&gt;Dependency management is handled during the environment's …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#code"&gt;Code&lt;/a&gt;&lt;/li&gt;
@@ -26,7 +22,7 @@
 &lt;/ol&gt;
 &lt;h3&gt;Code &lt;span id="code"&gt;&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;The template is available on github &lt;a href="https://github.com/adamnovotnycom/machine-learning-docker-template"&gt;adamnovotnycom/machine-learning-docker-template&lt;/a&gt;. The general template structure looks as follows:
-&lt;a href="/theme/images/machine_learning_docker_template_4.png"&gt;&lt;img src="/theme/images/machine_learning_docker_template_4.png" alt="ML Template" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href="/theme/images/machine_learning_docker_template_4.png"&gt;&lt;img src="/theme/images/machine_learning_docker_template_5.png" alt="ML Template" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;b&gt;Dockerfile&lt;/b&gt; defines the development environment and uses Miniconda as base image
@@ -41,7 +37,7 @@
 &lt;li&gt;
 &lt;p&gt;&lt;b&gt;conda.yaml&lt;/b&gt; is used for dependency management and includes standard data science packages.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;b&gt;machine_learning_docker_template&lt;/b&gt; package should include all production code that can be installed and run by an external system. As a result, the code can be developed locally but also easily runs on an external machine when additional compute power is needed for model training or when additional permissions are required for deployment.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;ml_docker_template&lt;/b&gt; package should include all production code that can be installed and run by an external system. As a result, the code can be developed locally but also easily runs on an external machine when additional compute power is needed for model training or when additional permissions are required for deployment.&lt;/li&gt;
 &lt;/ol&gt;</content><category term="Machine Learning"></category></entry><entry><title>Keras LSTM Forecasting Using Synthetic Data</title><link href="https://adamnovotny.com/blog/lstm-forecast-synthetic-data.html" rel="alternate"></link><published>2021-11-13T00:00:00-05:00</published><updated>2021-11-13T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-11-13:/blog/lstm-forecast-synthetic-data.html</id><summary type="html">&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;

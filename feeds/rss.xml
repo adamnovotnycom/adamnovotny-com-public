@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>ANotes</title><link>https://adamnovotny.com/</link><description></description><lastBuildDate>Sat, 18 Dec 2021 00:00:00 -0500</lastBuildDate><item><title>Machine Learning Docker Template</title><link>https://adamnovotny.com/blog/machine-learning-docker-template.html</link><description>&lt;!-- medium_link: https://adamnovotnycom.medium.com/tbd --&gt;
-
-&lt;h3&gt;Contents&lt;/h3&gt;
+<rss version="2.0"><channel><title>ANotes</title><link>https://adamnovotny.com/</link><description></description><lastBuildDate>Sat, 18 Dec 2021 00:00:00 -0500</lastBuildDate><item><title>Machine Learning Docker Template</title><link>https://adamnovotny.com/blog/machine-learning-docker-template.html</link><description>&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#code"&gt;Code&lt;/a&gt;&lt;/li&gt;

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Topics: Firebase Hosting, AWS Lambda Serverless has become a popular solution for small to medium-sized projects. The downside is a technology...">
+    <meta name="description" content="Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to...">
     <title>Serverless web apps with Firebase and AWS Lambda | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/serverless-web-apps-with-firebase-and-aws-lambda.html">
@@ -32,7 +32,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -74,8 +74,7 @@
                 Published: 2018-09-09
                 . <a href="https://medium.com/@adamnovotnycom/serverless-web-apps-with-firebase-and-aws-lambda-fb17783845eb/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
             </p>
-            <h4>Topics: Firebase Hosting, AWS Lambda</h4>
-<p>Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to use technologies that might not be optimal for their projects. For example, people using <a href="https://firebase.google.com/" target="_blank">Google’s Firebase</a> to host their static resources have to write custom endpoint <a href="https://firebase.google.com/docs/functions/" target="_blank">functions</a> in JavaScript or TypeScript (as of August 2018). Developers typically use custom backend functions to hide business logic or proprietary data operations from users because anything that runs in the browsers front end as JavaScript is ultimately an open book from the users perspective.</p>
+            <p>Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to use technologies that might not be optimal for their projects. For example, people using <a href="https://firebase.google.com/" target="_blank">Google’s Firebase</a> to host their static resources have to write custom endpoint <a href="https://firebase.google.com/docs/functions/" target="_blank">functions</a> in JavaScript or TypeScript (as of August 2018). Developers typically use custom backend functions to hide business logic or proprietary data operations from users because anything that runs in the browsers front end as JavaScript is ultimately an open book from the users perspective.</p>
 <p><a href="/theme/images/1*6QfJob8HhDsYsGjzYSb3eA.jpeg.png"><img src="/theme/images/1*6QfJob8HhDsYsGjzYSb3eA.jpeg.png" alt="Firebase + AWS Lambda" style="width: 100%" loading="lazy"></a></p>
 <p>One simple solution is to combine Firebase with custom functions using a different platform. I will outline the steps to create a Firebase-hosted web app, setup DNS for subdomain, and create AWS Lambda functions to serve custom business logic as APIs. This is just an example setup and all major cloud players provide solutions that can be combined in other ways such as using <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html" target="_blank">AWS S3 to host statics resources</a> and <a href="https://cloud.google.com/functions/?utm_source=google&utm_medium=cpc&utm_campaign=emea-emea-all-en-dr-bkws-all-all-trial-e-gcp-1003963&utm_content=text-ad-none-any-DEV_c-CRE_253480695966-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20BKWS%20~%20EXA_M:1_EMEA_EN_General_Cloud%20Functions_ETL%20Warehouse-KWID_43700019207153401-kwd-34012173938-userloc_1003837&utm_term=KW_function%20google-ST_function%20google&ds_rl=1245734&gclid=EAIaIQobChMInM_0gaH43AIVpp3tCh1CTAHNEAAYASAAEgJ1iPD_BwE&dclid=COGAr4Oh-NwCFQ6ZdwodUTIBBQ" target="_blank">Google’s Cloud Function</a> to serve business logic API.</p>
 <p>At the end we will have:</p>
@@ -119,7 +118,6 @@ this.http.get('<a href="https://api.examle.com/get-data'" target="_blank">https:
 <p><a href="/theme/images/1*et1Xy6T2IAhI2O475rC4Kw.png.png"><img src="/theme/images/1*et1Xy6T2IAhI2O475rC4Kw.png.png" alt="Custom Domain Name" style="width: 100%" loading="lazy"></a></p>
 <ul><li>12) Return to your domain registrar’s DNS records, and create a CNAME record pointing to the target domain name above (such as xyz1234567899.cloudfront.net). Now once DNS records propagate, requesting api.example.com is going to terminate at your Lambda function and will be accessible by your Firebase frontend.</li></ul>
 <p>That’s it! Now you can deploy a fully featured web app with a custom backend, URL and generous free tiers (as of August 2018). With a little bit of practice the process takes about an hour subject to DNS propagation and requires virtually no backend deployment knowledge. It scales well for most small to medium-sized apps that do not require specialized compute-intensive workloads such as Machine Learning (see my ML deployment article <a href="https://medium.com/coinmonks/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">here</a>).</p>
-<p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p>
             </div>
     
         </div>

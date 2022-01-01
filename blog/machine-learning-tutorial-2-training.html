@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Topics: Performance Metrics, Cross Validation, Model Selection, Hyperparameter Optimization, Project Reflection, Tools This second part of the ML...">
+    <meta name="description" content="This second part of the ML Tutorial follows up on the first Preprocessing part. All code is available in this Github repo. Other tutorials in this...">
     <title>Machine Learning Tutorial #2: Training | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-tutorial-2-training.html">
@@ -32,7 +32,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -74,8 +74,7 @@
                 Published: 2018-08-12
                 . <a href="https://medium.com/@adamnovotnycom/machine-learning-tutorial-2-training-f6f735830838/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
             </p>
-            <h4>Topics: Performance Metrics, Cross Validation, Model Selection, Hyperparameter Optimization, Project Reflection, Tools</h4>
-<p><a href="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png"><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a></p>
+            <p><a href="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png"><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a></p>
 <p>This second part of the ML Tutorial follows up on the first <a href="https://medium.com/@adam5ny/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> part. All code is available in this <a href="https://github.com/adam5ny/blogs/tree/master/ml-training" target="_blank">Github repo</a>. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, #2 Training (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
 <p>I concluded Tutorial #1 with 4 datasets: training features, testing features, training target variables, and testing target variables. Only training features and and training target variables will be used in this Tutorial #2. The testing data will be used for evaluation purposes in Tutorial #3.</p>
 <h4>Performance Metrics</h4>
@@ -171,7 +170,6 @@ y_pred = model.predict(X_test)</pre>
 <h4>Tools</h4>
 <p>Tooling is a common question but often not critical until the project is composed of tens of thousands of examples and at least hundreds of features. I typically start with scikit-learn and move elsewhere when performance becomes the bottleneck. <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a>, for example, is not just a deep learning framework but also contains other algorithms such as <a href="https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor" target="_blank">LinearRegressor</a>. We could train Linear Regression above with TensorFlow and GPUs if scikit-learn does not perform well enough.</p>
 <p>Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, #2 Training (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
-<p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p>
             </div>
     
         </div>

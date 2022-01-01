@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Topics: Data Cleaning, Target Variable Selection, Feature Extraction, Scaling, Dimensionality Reduction In this machine learning tutorial, I will...">
+    <meta name="description" content="In this machine learning tutorial, I will explore 4 steps that define a typical machine learning project: Preprocessing, Learning, Evaluation, and...">
     <title>Machine Learning Tutorial #1: Preprocessing | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-tutorial-1-preprocessing.html">
@@ -32,7 +32,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -74,8 +74,7 @@
                 Published: 2018-08-05
                 . <a href="https://medium.com/@adamnovotnycom/machine-learning-tutorial-1-preprocessing-d90198e37577/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
             </p>
-            <h4>Topics: Data Cleaning, Target Variable Selection, Feature Extraction, Scaling, Dimensionality Reduction</h4>
-<p>In this machine learning tutorial, I will explore 4 steps that define a typical machine learning project: Preprocessing, Learning, Evaluation, and Prediction (deployment). In this first part, I will complete the Preprocessing step. Other tutorials in this series: #1 Preprocessing (this article), <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+            <p>In this machine learning tutorial, I will explore 4 steps that define a typical machine learning project: Preprocessing, Learning, Evaluation, and Prediction (deployment). In this first part, I will complete the Preprocessing step. Other tutorials in this series: #1 Preprocessing (this article), <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
 <p><a href="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png"><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a></p>
 <p>I will use stock price data as the main dataset. There are a few reasons why this is a good choice for the tutorial:</p>
 <ul><li>The dataset is public by definition and can be easily downloaded from multiple sources so anyone can replicate the work.</li></ul>
@@ -154,7 +153,6 @@ print(sk_model.explained_variance_ratio_.cumsum())
 <p>The first 8 features explain 91.5% of data variance. The downside of PCA is that new features are located in a lower dimensional space so they no longer correspond the real-life concepts. For example, the first original feature could be “macd_line” I derived above. After PCA, the first feature explains 31% of variance but we not longer have any logical description for what the feature represents in real life.</p>
 <p>For now, I will keep all features 17 original features but note that if the learning time of algorithms is too slow, PCA will be helpful.</p>
 <p>Other tutorials in this series: #1 Preprocessing (this article), <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/@adam5ny/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
-<p>Author website: <a href="https://www.adamnovotny.com/" target="_blank">adamnovotny.com</a></p>
             </div>
     
         </div>

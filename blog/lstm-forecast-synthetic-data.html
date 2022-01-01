@@ -32,7 +32,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
                   <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/random.html">Random Thoughts <i class="fas fa-random fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -84,7 +84,7 @@
 <p>Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.</p>
 <h4>Dataset</h4>
 <p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the <i>make_friedman1</i> generated values and previous labels. For details see notebook function <i>generate_data()</i>.</p>
-<p>The image below shows correlations between the generated features, the y label generated for the same time period, and actual future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
+<p>The image below shows correlations between the generated features and future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
 <a href="/theme/images/lstm_oin235no.png"><img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h4>Model training</h4>
 <p>The model is a simple NN with a single hidden layer defined as 
@@ -93,7 +93,7 @@
 <h4>Model evalution</h4>
 <p>Comparing predictions and actual labels for the validation set shows strong performance even though there are clear optimizations that can be made near extreme values:
 <a href="/theme/images/lstm_synthetic_data_val_q4598.png"><img src="/theme/images/lstm_synthetic_data_val_q4598.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
-<p>However, the validation set was already used during training for early stopping purposes. This is why we set aside a test dataset the model has never seen during training. The test dataset is the only true evaluation of the expected performance of the model and in this case it confirms that the model performs well for the synthetic dataset:
+<p>However, the validation set was already used during training for early stopping. This is why we set aside a test dataset the model has never seen during training. The test dataset is the only true evaluation of the expected performance of the model and in this case it confirms that the model performs well for the synthetic dataset:
 <a href="/theme/images/lstm_synthetic_data_test_234897f.png"><img src="/theme/images/lstm_synthetic_data_test_234897f.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h4>Notebook <span id="notebook"></span></h4>
 <ul>

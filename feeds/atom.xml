@@ -22,7 +22,7 @@
 &lt;/ol&gt;
 &lt;h3&gt;Code &lt;span id="code"&gt;&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;The template is available on github &lt;a href="https://github.com/adamnovotnycom/machine-learning-docker-template"&gt;adamnovotnycom/machine-learning-docker-template&lt;/a&gt;. The general template structure looks as follows:
-&lt;a href="/theme/images/machine_learning_docker_template_5.png"&gt;&lt;img src="/theme/images/machine_learning_docker_template_5.png" alt="ML Template" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a href="/theme/images/20220129115215.png"&gt;&lt;img src="/theme/images/20220129115215.png" alt="ML Template" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;b&gt;Dockerfile&lt;/b&gt; defines the development environment and uses Miniconda as base image

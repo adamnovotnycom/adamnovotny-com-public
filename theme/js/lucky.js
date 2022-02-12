@@ -1,11 +1,11 @@
-
-var app = new Vue({
-    el: '#luck',
-    data: {
-        quote_text: '',
-        quote_author: '',
-        quote_url: '',
-        factLink: ''
+Vue.createApp({
+    data() {
+        return {
+            quote_text: '',
+            quote_author: '',
+            quote_url: '',
+            factLink: ''
+        }
     },
     mounted () {
         // Credits tutorial : https://benborgers.com/posts/google-sheets-json
@@ -31,4 +31,4 @@ var app = new Vue({
                 this.factLink = sheetRows[rowIndex].c[0].v;
             })
     }
-})
+}).mount('#luck')

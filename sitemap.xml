@@ -5,42 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/</loc>
-<lastmod>2022-02-12T20:45:08-00:00</lastmod>
+<lastmod>2022-02-18T00:39:39-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/lucky.html</loc>
-<lastmod>2022-02-12T20:45:08-00:00</lastmod>
+<lastmod>2022-02-18T00:39:39-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/robots.txt</loc>
-<lastmod>2022-02-12T20:45:08-00:00</lastmod>
+<lastmod>2022-02-18T00:39:39-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/notebooks/sklearn_pipe.html</loc>
-<lastmod>2022-02-12T20:45:08-00:00</lastmod>
+<lastmod>2022-02-18T00:39:39-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/notebooks/lstm_synthetic_data.html</loc>
-<lastmod>2022-02-12T20:45:08-00:00</lastmod>
+<lastmod>2022-02-18T00:39:39-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/bookshelf.html</loc>
-<lastmod>2022-02-12T20:45:08-00:00</lastmod>
+<lastmod>2022-02-18T00:39:39-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -123,13 +123,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://adamnovotny.com/blog/on-government-run-capitalism.html</loc>
-<lastmod>2020-04-11T00:00:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://adamnovotny.com/blog/custom-vpn-using-pivpn-and-public-cloud.html</loc>
 <lastmod>2018-12-30T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
@@ -179,20 +172,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://adamnovotny.com/blog/50-percent-of-2017-icos-have-failed-already.html</loc>
-<lastmod>2018-06-10T00:00:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/blog/why-most-icos-are-going-to-0-and-its-not-a-big-deal.html</loc>
-<lastmod>2017-09-03T00:00:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://adamnovotny.com/blog/linear-programming-in-python-cvxopt-and-game-theory.html</loc>
 <lastmod>2017-08-16T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
@@ -201,7 +180,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/category/finance.html</loc>
-<lastmod>2020-04-11T00:00:00-05:00</lastmod>
+<lastmod>2018-09-23T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>

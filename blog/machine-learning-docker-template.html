@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="Contents Summary Code Summary The purpose of this post is to propose a template for machine learning projects that strives to follow these...">
+    <title>Machine Learning Docker Template | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-docker-template.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Machine Learning Docker Template</h2>
+            <p class="blog-post-meta" >
+                Published: 2021-12-18
+                . <a href="https://adamnovotnycom.medium.com/machine-learning-docker-template-2e32e2d50b1b/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+                . Updated: 2022-01-29
+            </p>
+            <h3>Contents</h3>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+<h3>Summary <span id="summary"></span></h3>
+<p>The purpose of this post is to propose a template for machine learning projects that strives to follow these principles:</p>
+<ol>
+<li>All data scientists can quickly setup an identical development environment based on Docker that encourages good software engineering practices.</li>
+<li>Dependency management is handled during the environment's startup by <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> and requires minimal manual changes.</li>
+<li>Notebooks are encouraged for exploration. However, for production purposes notebooks must be version controlled, parametrized and run using <a href="https://github.com/nteract/papermill">Papermill</a>.</li>
+</ol>
+<h3>Code <span id="code"></span></h3>
+<p>The template is available on github <a href="https://github.com/adamnovotnycom/machine-learning-docker-template">adamnovotnycom/machine-learning-docker-template</a>. The general template structure looks as follows:
+<a href="/theme/images/20220129115215.png"><img src="/theme/images/20220129115215.png" alt="ML Template" style="width: 100%" loading="lazy"></a></p>
+<ol>
+<li>
+<p><b>Dockerfile</b> defines the development environment and uses Miniconda as base image
+    <pre>
+    FROM continuumio/miniconda3
+    ...
+    RUN conda env create -f conda.yml
+    RUN echo "source activate dev" &gt; ~/.bashrc
+    ...
+    </pre></p>
+</li>
+<li>
+<p><b>conda.yaml</b> is used for dependency management and includes standard data science packages.</p>
+</li>
+<li><b>ml_docker_template</b> package should include all production code that can be installed and run by an external system. As a result, the code can be developed locally but also easily runs on an external machine when additional compute power is needed for model training or when additional permissions are required for deployment.</li>
+</ol>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

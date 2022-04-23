@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="This article is a follow up to my previous tutorial on how to setup Google Colab and auto-sklean. Here, I will go into more detail that shows...">
+    <title>Google Colab and Auto-sklearn with Profiling | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Google Colab and Auto-sklearn with Profiling</h2>
+            <p class="blog-post-meta" >
+                Published: 2021-03-20
+                . <a href="https://medium.com/@adamnovotnycom/google-colab-and-auto-sklearn-with-profiling-2ae30d363613/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <p>This article is a follow up to my previous tutorial on how to <a href="https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html" target="_blank">setup Google Colab and auto-sklean</a>. Here, I will go into more detail that shows auto-sklearn performance on an artificially created dataset. The full notebook gist can be found <a href="https://gist.github.com/adamnovotnycom/ffe8e3961fe0207c64a1b9a074883e51" target="_blank">here</a>.</p>
+<p>First, I generated a regression dataset using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html" target="_blank">scikit learn</a>.</p>
+<pre>X, y, coeff = make_regression(
+    n_samples=1000,
+    n_features=100,
+    n_informative=5,
+    noise=0,
+    shuffle=False,
+    coef=True
+)</pre>
+<p><a href="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"><img src="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"></a></p>
+<p>This generates a dataset with 100 numerical features where the first 5 features are informative (these are labeled as “feat_0” to “feat_4”). The rest (“feat_5” to “feat_99”) are random noise. We can see this in the scatter matrix above where only the first 5 features show a correlation with the label.</p>
+<p>We know that this is a simple regression problem which could be solved using a linear regression perfectly. However, knowing what to expect helps us to verify the performance of auto-sklearn which trains its ensemble model using the following steps:</p>
+<pre>import autosklearn.regressionautoml = autosklearn.regression.AutoSklearnRegressor(
+    time_left_for_this_task=300,
+    n_jobs=-1
+)
+automl.fit(
+    X_train_transformed,
+    df_train["label"]
+)</pre>
+<p>I also created random categorical features which are then one-hot-encoded into a feature set “X_train_transformed“. Running the AutoSklearnRegressor for 5 minutes (time_left_for_this_task=300) produced the following expected results:</p>
+<pre>predictions = automl.predict(X_train_transformed)
+r2_score(df_train["label"], predictions)
+>> 0.999
+predictions = automl.predict(X_test_transformed)
+r2_score(df_test["label"], predictions)
+>> 0.999</pre>
+<p>A separate pip package <a href="https://github.com/VIDA-NYU/PipelineVis" target="_blank">PipelineProfiler</a> helps us visualize the steps auto-sklearn took to achieve the result:</p>
+<p><a href="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"><img src="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"></a></p>
+<p>Above we can see the attempts auto-sklearn made to generate the best emsemble of models within the 5 minute constraint I set. The best model found was <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank">Liblinear SVM</a>, which produced R2 of nearly 1.0. As a result, this toy ensemble model gives weight of 1.0 to just one algorithm. Libsvm Svr and Gradient boosting scored between 0.9–0.96.</p>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

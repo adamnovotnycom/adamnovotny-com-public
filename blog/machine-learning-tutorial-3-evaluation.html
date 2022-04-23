@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="In this third phase of the series, I will explore the Evaluation part of the ML project. I will reuse some of the code and solutions from the...">
+    <title>Machine Learning Tutorial #3: Evaluation | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-tutorial-3-evaluation.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Machine Learning Tutorial #3: Evaluation</h2>
+            <p class="blog-post-meta" >
+                Published: 2018-08-19
+                . <a href="https://medium.com/@adamnovotnycom/machine-learning-tutorial-3-evaluation-a157f90914c9/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <p><a href="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png"><img src="/theme/images/1*iPgIcpnc-nzkigs6RaTZBw.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a></p>
+<p>In this third phase of the series, I will explore the Evaluation part of the ML project. I will reuse some of the code and solutions from the second Training phase. However, it is important to note that the Evaluation phase should be completely separate from training except for using the final model produced in the Training step. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, #3 Evaluation (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a>. <a href="https://github.com/adam5ny/blogs/tree/master/ml-evaluation" target="_blank">Github code</a>.</p>
+<h4>Performace Metrics</h4>
+<p>The goal of this section is to determine how our model from the Training step performs on real life data it has not learned from. First, we have to load the model we saved as the Final model:</p>
+<pre>model = pickle.load(open("dtree_model.pkl", "rb"))
+>>> model
+DecisionTreeRegressor(criterion='mse', max_depth=3, max_features=None, max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, min_samples_leaf=1, min_samples_split=5, min_weight_fraction_leaf=0.0, presort=False, random_state=1, splitter='best')</pre>
+<p>Next, we will load the testing data we created in the Preprocessing part of this tutorial. The primary reason why I keep the Evaluation section separate from Training is precisely this step. I keep the code separate as well to ensure that no information from training leaks into evaluation. To restate, we should have not seen the data used in this section at any point until now.</p>
+<pre>X = pd.read_csv("X_test.csv", header=0)
+y = pd.read_csv("y_test.csv", header=0)</pre>
+<p>At this stage, we may perform additional performance evaluation on top of the Training step. However, I will stick to the metrics used previously: MAE, MSE, R2.</p>
+<p><a href="/theme/images/1*5Cjov6KncJ3qLJ-fHi6MTg.png.png"><img src="/theme/images/1*5Cjov6KncJ3qLJ-fHi6MTg.png.png" alt="Decision tree MAE, MSE, R2" style="width: 100%" loading="lazy"></a></p>
+<h4>Commentary</h4>
+<p>We have known that our model does not perform well enough in practice from the previous tutorial already. However, as I mentioned before, I went ahead and used it for illustrative purposes here in order to complete the tutorial and to explain the kind of thinking involved in real life projects where performance is not always ideal out of the box as many toy datasets would make one think.</p>
+<p>The key comparison is how well does our model evaluate relative to the training phase. In the case of models ready for production, I would expect the performance in the Evaluation step to be comparable to those of testing folds in the Training phase.</p>
+<p>Comparing the last training test fold <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">here</a> (5249 datapoints used to train) and the Evaluation results above:</p>
+<ul><li>MAE: final Training phase ~10^-2. Evaluation phase ~10^-2</li></ul>
+<ul><li>MSE: final Training phase ~10^-4. Evaluation phase ~10^-3</li></ul>
+<ul><li>R²: final Training phase ~0. Evaluation phase ~0</li></ul>
+<p>The performance on dataset the model has never seen before is reasonably similar. Nonetheless, overfitting is still something to potentially address. If we had a model ready for production from the Training phase, we would be reasonably confident at this stage that it would perform as we expect on out of sample data.</p>
+<p>Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, #3 Evaluation (this article), <a href="https://medium.com/@adam5ny/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">#4 Prediction</a></p>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

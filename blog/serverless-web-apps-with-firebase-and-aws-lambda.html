@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to...">
+    <title>Serverless web apps with Firebase and AWS Lambda | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/serverless-web-apps-with-firebase-and-aws-lambda.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Serverless web apps with Firebase and AWS Lambda</h2>
+            <p class="blog-post-meta" >
+                Published: 2018-09-09
+                . <a href="https://medium.com/@adamnovotnycom/serverless-web-apps-with-firebase-and-aws-lambda-fb17783845eb/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <p>Serverless has become a popular solution for small to medium-sized projects. The downside is a technology stack lock-in which forces developers to use technologies that might not be optimal for their projects. For example, people using <a href="https://firebase.google.com/" target="_blank">Google’s Firebase</a> to host their static resources have to write custom endpoint <a href="https://firebase.google.com/docs/functions/" target="_blank">functions</a> in JavaScript or TypeScript (as of August 2018). Developers typically use custom backend functions to hide business logic or proprietary data operations from users because anything that runs in the browsers front end as JavaScript is ultimately an open book from the users perspective.</p>
+<p><a href="/theme/images/1*6QfJob8HhDsYsGjzYSb3eA.jpeg.png"><img src="/theme/images/1*6QfJob8HhDsYsGjzYSb3eA.jpeg.png" alt="Firebase + AWS Lambda" style="width: 100%" loading="lazy"></a></p>
+<p>One simple solution is to combine Firebase with custom functions using a different platform. I will outline the steps to create a Firebase-hosted web app, setup DNS for subdomain, and create AWS Lambda functions to serve custom business logic as APIs. This is just an example setup and all major cloud players provide solutions that can be combined in other ways such as using <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html" target="_blank">AWS S3 to host statics resources</a> and <a href="https://cloud.google.com/functions/?utm_source=google&utm_medium=cpc&utm_campaign=emea-emea-all-en-dr-bkws-all-all-trial-e-gcp-1003963&utm_content=text-ad-none-any-DEV_c-CRE_253480695966-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20BKWS%20~%20EXA_M:1_EMEA_EN_General_Cloud%20Functions_ETL%20Warehouse-KWID_43700019207153401-kwd-34012173938-userloc_1003837&utm_term=KW_function%20google-ST_function%20google&ds_rl=1245734&gclid=EAIaIQobChMInM_0gaH43AIVpp3tCh1CTAHNEAAYASAAEgJ1iPD_BwE&dclid=COGAr4Oh-NwCFQ6ZdwodUTIBBQ" target="_blank">Google’s Cloud Function</a> to serve business logic API.</p>
+<p>At the end we will have:</p>
+<ul><li>www.example.com (<a href="https://en.wikipedia.org/wiki/Single-page_application" target="_blank">single page app</a> served by Firebase)</li></ul>
+<ul><li>api.example.com (AWS lambda function serving custom business logic used by www.example.com)</li></ul>
+<p>I will not go into specific details on each platform because their UIs constantly change. Instead, I will highlight the sequence of steps I typically take to setup the services quickly.</p>
+<h4>Firebase hosting</h4>
+<ul><li>1) Deploy a static web app to <a href="https://firebase.google.com/products/hosting/" target="_blank">Firebase</a> by following <a href="https://firebase.google.com/docs/hosting/deploying" target="_blank">this part</a> of the Firebase documentation. The end result will be a public web app. Its URL will look something like this: my-project-name.firebaseapp.com</li></ul>
+<p><a href="/theme/images/1*gH7ELyB6td5o2A1bY4drGw.png.png"><img src="/theme/images/1*gH7ELyB6td5o2A1bY4drGw.png.png" alt="Firebase hosting setup" style="width: 100%" loading="lazy"></a></p>
+<ul><li>2) Let’s assume we purchased the custom domain example.com. We now need to update the DNS records so that example.com and www.example.com point to our static web app.</li></ul>
+<ul><li>3) Go to your Firebase project dashboard and in the hosting section initiate the steps to connect to a custom domain. You will need to verify ownership of the domain by adding a DNS TXT record to your registrar’s DNS settings. As always, the <a href="https://firebase.google.com/docs/hosting/custom-domain" target="_blank">documentation</a> is useful.</li></ul>
+<p><a href="/theme/images/1*Kd7lW2alk8UA4cL8kkvxxA.png.png"><img src="/theme/images/1*Kd7lW2alk8UA4cL8kkvxxA.png.png" alt="Connect custom domain to Firebase app" style="width: 100%" loading="lazy"></a></p>
+<ul><li>4) Go to your domain registrar’s DNS settings, and create a DNS A record for subdomain www pointing to the IP address of the Firebase servers obtained in the previous step. After SSL certificates are automatically provisioned by Firebase, users can go to https://www.example.com to locate your Firebase app.</li></ul>
+<ul><li>5) We also need to make sure that users entering just example.com are also pointed to https://www.example.com. To accomplish this, return to your registrar’s DNS settings and a setup subdomain forwarding. The exact steps vary for each registrar but the end result will be example.com -> https://www.example.com. If possible, set the redirect as permanent 301, forward path, and enable SSL.</li></ul>
+<h4>AWS Lambda</h4>
+<p>At this point we have a web app deployed and using our custom URL. The app however uses the subdomain api.example.com to obtain proprietary data. In Angular, the code requesting data from the subdomain may look something like this:</p>
+<pre>const headers = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'x-api-key': 'some-api-key'
+    })
+};
+this.http.get('<a href="https://api.examle.com/get-data'" target="_blank">https://api.example.com'</a>, headers)
+.subscribe((data: string) => {
+    const dataJson = JSON.parse(data);
+    // some data operations
+    }
+);</pre>
+<p>If our backend is relatively simple (doesn’t require large third party packages) and runs fast, the easiest solution is to deploy cloud functions at one of the largest providers. AWS limits Lambda deployments to 50MB and the default timeout is 3 seconds which are reasonable guidelines to determine whether your custom API backend is suitable for serverless functions.</p>
+<ul><li>6) We need to create a Lambda function. I like to test my lambda functions locally and then deploy them as zip files to AWS. For Python, follow <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python-how-to-create-deployment-package.html" target="_blank">this</a> tutorial. Lambda supports all major languages and similar tutorials exists for at least Node.js, C#, Go, Java.</li></ul>
+<p><a href="/theme/images/1*ktkhPraczTuDeRUkbkhUUA.png.png"><img src="/theme/images/1*ktkhPraczTuDeRUkbkhUUA.png.png" alt="AWS Lambda zip upload" style="width: 100%" loading="lazy"></a></p>
+<ul><li>7) Next we need to make the function publicly available so we will use API Gateway to create a public endpoint. Make sure to check that API key is required and then go to Actions and Deploy API.</li></ul>
+<p><a href="/theme/images/1*HgGVxaoWfxJo9jM3WSs-3Q.png.png"><img src="/theme/images/1*HgGVxaoWfxJo9jM3WSs-3Q.png.png" alt="API Gateway endpoint creation" style="width: 100%" loading="lazy"></a></p>
+<ul><li>8) Secure the endpoint with at least an API key which can be created in the API Gateway as well.</li></ul>
+<p><a href="/theme/images/1*UQQ7OzNmF9iNxeWxlIXYDQ.png.png"><img src="/theme/images/1*UQQ7OzNmF9iNxeWxlIXYDQ.png.png" alt="API key generation example" style="width: 100%" loading="lazy"></a></p>
+<ul><li>9) Create a Usage Plan that will limit how often your API can be used. This will prevent your Lambda function from being overused. While AWS Lambda has a very generous free tier, security is paramount for peace of mind. A Usage Plan basically connects the API key (step 8) to the endpoint deployment (step 7). At this point, you should be able to use your Lambda function by going to a URL that looks something like this https://xyz1234567.execute-api.us-east-1.amazonaws.com/stage. Remember that an API key is required as a header so tools such as <a href="https://www.getpostman.com/" target="_blank">Postman</a> are useful to customize the API requests easily.</li></ul>
+<p><a href="/theme/images/1*xbehZsrAZpOs_zB8QDD6Wg.png.png"><img src="/theme/images/1*xbehZsrAZpOs_zB8QDD6Wg.png.png" alt="Usage Plan example" style="width: 100%" loading="lazy"></a></p>
+<ul><li>10) Ultimately, we want to have a nice-looking URL such as api.example.com instead of the long random URL above. First, we need to create a certificate for our subdomain to so that our connection supports <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank">SSL</a> (https). Go to Certificate Manager and follow the steps to create a certificate managed by AWS:</li></ul>
+<p><a href="/theme/images/1*FBijvl_qHBaCx2ue46fSzg.png.png"><img src="/theme/images/1*FBijvl_qHBaCx2ue46fSzg.png.png" alt="AWS Certificate Manager" style="width: 100%" loading="lazy"></a></p>
+<ul><li>11) Now that we have a certificate available, return to API Gateway and go to Custom Domain Names and create the API name (such as api.example.com) and select the ACM certificate created in previous step. Map it to your API deployment. This will generate a Target domain name of the form xyz1234567899.cloudfront.net.</li></ul>
+<p><a href="/theme/images/1*et1Xy6T2IAhI2O475rC4Kw.png.png"><img src="/theme/images/1*et1Xy6T2IAhI2O475rC4Kw.png.png" alt="Custom Domain Name" style="width: 100%" loading="lazy"></a></p>
+<ul><li>12) Return to your domain registrar’s DNS records, and create a CNAME record pointing to the target domain name above (such as xyz1234567899.cloudfront.net). Now once DNS records propagate, requesting api.example.com is going to terminate at your Lambda function and will be accessible by your Firebase frontend.</li></ul>
+<p>That’s it! Now you can deploy a fully featured web app with a custom backend, URL and generous free tiers (as of August 2018). With a little bit of practice the process takes about an hour subject to DNS propagation and requires virtually no backend deployment knowledge. It scales well for most small to medium-sized apps that do not require specialized compute-intensive workloads such as Machine Learning (see my ML deployment article <a href="https://medium.com/coinmonks/machine-learning-tutorial-4-deployment-79764123e9e1" target="_blank">here</a>).</p>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

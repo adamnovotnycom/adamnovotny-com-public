@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="Motivation: Many public Wi-Fi networks block certain internet ports and protocols. For example, a public library might only allow ports 80 and 443...">
+    <title>Custom VPN using PiVPN and public cloud | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/custom-vpn-using-pivpn-and-public-cloud.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Custom VPN using PiVPN and public cloud</h2>
+            <p class="blog-post-meta" >
+                Published: 2018-12-30
+                . <a href="https://medium.com/@adamnovotnycom/custom-vpn-using-pivpn-and-public-cloud-d3b3b71b6698/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <p>Motivation: Many public Wi-Fi networks block certain internet ports and protocols. For example, a public library might only allow ports 80 and 443 and the TCP protocol. Leaving aside the logic of such decisions by network owners, they prevent users from taking advantage of many commercial VPN products that rely on other ports. The goal of this article is to create a custom VPN solution to improve privacy even on such restricted public networks.
+<a href="/theme/images/1*hI_JbE-q2OQpXW1tEB46Cg.png.png"><img src="/theme/images/1*hI_JbE-q2OQpXW1tEB46Cg.png.png" alt="AWS, Google Cloud, Microsoft Azure" style="width: 100%" loading="lazy"></a>
+<a href="/theme/images/1*7C1odbX4Kk_yxToAaKnlwA.png.png"><img src="/theme/images/1*7C1odbX4Kk_yxToAaKnlwA.png.png" alt="PiVPN" style="width: 100%" loading="lazy"></a></p>
+<p>All step are outlined in more detail in <a href="https://github.com/adam5ny/vpn-gcp-pivpn" target="_blank">this Github repo</a>. The tutorial is written for Python 3 and <a href="https://cloud.google.com/compute/" target="_blank">Google Cloud Compute</a>. However, all public clouds can be used including AWS or Azure.</p>
+<h4>Create public cloud compute instance</h4>
+<p>Login to <a href="https://console.cloud.google.com/" target="_blank">GCP console</a>. Create an Ubuntu machine and make sure to allow https traffic. Then locate your public IP which is where your traffic will be routed. In GCP, you can find it using the following steps (as of Dec 2018): VPC network > External IP addresses > switch the type of your instance IP from “Ephemeral” to “Static”. This will be your public IP.</p>
+<h4>Create PiVPN instance</h4>
+<p>Login to your compute instance and download PiVPN using the following command:</p>
+<pre>curl -L <a href="https://install.pivpn.io" target="_blank">https://install.pivpn.io</a> | bash</pre>
+<p>Follow all setup steps using default values except for port and protocol. Select port 443 and protocol TCP. Select reboot at the end of the installation.</p>
+<h4>Create VPN credentials</h4>
+<pre>pivpn add</pre>
+<p>Enter your custom username and password. Download credentials to your computer from your newly create cloud computer instance. Credentials are typically located at ~/ovpns on your Ubuntu instance.</p>
+<h4>Download a VPN client for your platform</h4>
+<p>For MacOS you may use <a href="https://tunnelblick.net/" target="_blank">Tunnelblick</a>. Then drag credentials (.ovpn) from the previous step to the Tunneblick app icon. Click on Tunneblick icon to connect to your VPN with your custom username and password.</p>
+<h4>Final notes:</h4>
+<ul><li>use port 80 instead of 443 above if necessary.</li></ul>
+<ul><li>to minimize cost, remember to shut down your compute instance when you are not using the VPN. The typical cost is < $20 for 100GB of traffic and 24/7 usage which is in line with respectable third-party VPN providers. However, your cost may be significantly lower if you shut down unused instances and use pre-emptible instances (GCP-specific).</li></ul>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

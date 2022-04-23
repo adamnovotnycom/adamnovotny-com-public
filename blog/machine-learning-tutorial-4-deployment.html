@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="In this final phase of the series, I will suggest a few options ML engineers have to deploy their code. In large organizations, this part of the...">
+    <title>Machine Learning Tutorial #4: Deployment | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-tutorial-4-deployment.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Machine Learning Tutorial #4: Deployment</h2>
+            <p class="blog-post-meta" >
+                Published: 2018-09-02
+                . <a href="https://medium.com/@adamnovotnycom/machine-learning-tutorial-4-deployment-79764123e9e1/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <p><a href="/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png.png"><img src="/theme/images/1*T_-rIQ8yUgPba_ezxt6ogg.png.png" alt="Machine Learning project overview. Author: Adam Novotny" style="width: 100%" loading="lazy"></a></p>
+<p>In this final phase of the series, I will suggest a few options ML engineers have to deploy their code. In large organizations, this part of the project will be handled by a specialized team which is especially important when scaling is a concern. Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a> , #4 Deployment (this article). <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github code</a>.</p>
+<h4>Stack Selection</h4>
+<p>The number of options to deploy ML code is numerous but I typically decide between at least the three general buckets:</p>
+<ul><li>Solution provided as-a-service (e.g. Microsoft Azure Machine Learning Studio)</li></ul>
+<ul><li>Serverless function (e.g. <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-programming-model.html" target="_blank">AWS Lambda</a>)</li></ul>
+<ul><li>Custom backend code (e.g. <a href="http://flask.pocoo.org/docs/0.12/" target="_blank">Python Flask</a> served by <a href="https://devcenter.heroku.com/articles/getting-started-with-python" target="_blank">Heroku</a>)</li></ul>
+<h4>As-a-service solution</h4>
+<p>Platforms such as Microsoft Azure Machine Learning Studio offer the full suite of tools for the entire project including preprocessing and training. Custom API endpoints are usually easy to generate and writing code is often not necessary thanks to drag-and-drop interfaces. The solutions are often well optimized for <a href="https://en.wikipedia.org/wiki/Lazy_learning" target="_blank">lazy learners</a> where evaluation is the most expensive computational step. The downside is that it is sometimes more challenging to bring in custom code (such as the final model) without going through all the project steps on the platform.</p>
+<p><a href="/theme/images/1*4F3z9NovnqtOtIRWRCJn_Q.jpeg.png"><img src="/theme/images/1*4F3z9NovnqtOtIRWRCJn_Q.jpeg.png" alt="As-a-service deployment example: Microsoft Azure" style="width: 100%" loading="lazy"></a></p>
+<h4>Serverless function</h4>
+<p>Serverless functions are a good solution for inexpensive computations. AWS uses default timeout of 3 seconds for a function to complete. While timeouts can be extended, the default value is often a good general guideline when deciding about suitability. Lambda only allows 50MB of custom code to be uploaded which is generally not enough for most machine learning purposes. However, functions are well suited for fast computations such as linear regression models. Another downside is that platforms support only specific languages. In terms of Python solutions, AWS Lambda supports versions 2.7 and 3.6 only at the time of writing this article.</p>
+<h4>Custom backend code</h4>
+<p>Writing a custom backend code on platform such as Heroku or Amazon’s EC2 allows us to replicate fully the code we write on local machines. The code and server deployment can be fully customized for the type of ML algorithm we are deploying. The downside of such solutions is their operational complexity because we need to focus on many steps unrelated to ML such as security.</p>
+<p>I will deploy the code on <a href="https://devcenter.heroku.com/articles/getting-started-with-python" target="_blank">Heroku</a> which offers a free tier for testing purposes. The lightweight <a href="http://flask.pocoo.org/" target="_blank">Flask framework</a> will drive the backend. The primary reason for this choice is that it allows us to reuse essentially all the code written in previous tutorials for the backend. We can install Flask with Python 3.6 and all machine learning libraries we use previously side by side.</p>
+<p>The entire backend code to run the app is literally a few lines long with Flask:</p>
+<pre>import pickle
+import pandas as pd
+from flask import Flask, jsonify, request, make_response</pre>
+<pre>app = Flask(__name__)</pre>
+<pre><a href="http://twitter.com/app" target="_blank">@app</a>.route('/forecast', methods=["POST"])
+def forecast_post():
+    """
+    Args:
+        request.data: json pandas dataframe
+            example: {
+                "columns": ["date", "open", "high", "low", "close",
+                   "volume"],
+                "index":[1, 0],
+                "data": [
+                   [1532390400000, 108, 108, 107, 107, 26316],
+                   [1532476800000, 107, 111, 107, 110, 30702]]
+            }
+    """
+    if request.data:
+        df = pd.read_json(request.data, orient='split')
+        X = preprocess(df)
+        model = pickle.load(open("dtree_model.pkl", "rb"))
+        y_pred = run_model(X, model)
+        resp = make_response(jsonify({
+           "y_pred": json.dumps(y_pred.tolist())
+        }), 200)
+        return resp
+    else:
+        return make_response(jsonify({"message": "no data"}), 400)</pre>
+<ul><li>pd.read_json(…): reads data from <a href="https://en.wikipedia.org/wiki/POST_(HTTP)" target="_blank">POST request</a> which is a json object corresponding to price data formatted the same way as Yahoo finance prices (our original data source)</li></ul>
+<ul><li>preprocess(…): copy of our code from the <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> tutorial that manipulates raw price data into features. Importantly, the scaler used must be the exact same we used in Preprocessing so it has to be saved to pickle file first during Preprocessing and loaded from pickle now</li></ul>
+<ul><li>run_model(…): loads and runs our saved final model from the <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">Training</a> tutorial</li></ul>
+<ul><li>make_response(…): returns forecasts</li></ul>
+<h4>Heroku</h4>
+<p>Deploying our prediction code to Heroku will require that we collect at least two necessary pieces of our code from previous tutorials: the final model (saved as a pickle file) and the code from the <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">Preprocessing</a> tutorial that transforms the original features we collected from the real world to features our model can handle.</p>
+<p>I will not go into details about how to deploy a Docker app on Heroku. There are plenty of good materials including Heroku’s documentation, which is excellent. All the necessary code to run and deploy the Docker app on Heroku is also in the <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github </a>repo. There are a few key steps to remember:</p>
+<ul><li>Save Dockerfile as Dockerfile.web which is a container of all code necessary to run the app</li></ul>
+<ul><li>Deploy container using command <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime" target="_blank">heroku container:push</a></li></ul>
+<ul><li>Release container using command <a href="https://devcenter.heroku.com/articles/container-registry-and-runtime" target="_blank">heroku container:release</a></li></ul>
+<p>At this point our code is deployed which we can test using <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwjmut-U1JvdAhVKsqQKHaQUBg0QFjAAegQIBRAC&url=https%3A%2F%2Fwww.getpostman.com%2F&usg=AOvVaw1vWzpwzQOHi5ErKZnywLDR" target="_blank">Postman</a> to make a manual forecast request:</p>
+<p><a href="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png"><img src="/theme/images/1*5kvKnVEez88tZ96uTtOqjg.png.png" alt="Postman sample request" style="width: 100%" loading="lazy"></a></p>
+<p>The date is represented by Unix timestamp. The first Body window consists of inputs we provide to the endpoint in the form of prices. The second window returns forecasts from the app.</p>
+<h4>Testing</h4>
+<p>To test the implementation, I will reuse the code from the Evaluation step. However, instead of making predictions locally using our sklearn model, I will use the Heroku app to predict the 691 samples from Evaluation as a batch. The goal is for our predictions we made on a local machine to perfectly match those made using our deployment stack.</p>
+<p>This step is critical to ensure that we can replicate our results remotely using a pre-trained model. The testing code is also available on <a href="https://github.com/adam5ny/blogs/blob/master/ml-deployment/backend/tests/test_app.py" target="_blank">Github</a>. We confirm that the performance of our Heroku app matches the performance generated locally in the Evaluation tutorial:</p>
+<p><a href="/theme/images/1*Oewaabcu926MZpC-zFFpHQ.png.png"><img src="/theme/images/1*Oewaabcu926MZpC-zFFpHQ.png.png" alt="Tested deployment performance matches evaluation results" style="width: 100%" loading="lazy"></a></p>
+<p>To conclude, the project is intended to provide an overview of the kind of thinking a data science project entails. The code should not be used in production and is provided solely for illustrative purposes. As always, I welcome all constructive feedback (positive or negative) on <a href="https://twitter.com/adam5ny" target="_blank">Twitter</a>.</p>
+<p>Other tutorials in this series: <a href="https://medium.com/coinmonks/machine-learning-tutorial-1-preprocessing-d90198e37577" target="_blank">#1 Preprocessing</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-2-training-f6f735830838" target="_blank">#2 Training</a>, <a href="https://medium.com/coinmonks/machine-learning-tutorial-3-evaluation-a157f90914c9" target="_blank">#3 Evaluation</a>, #4 Deployment (this article). <a href="https://github.com/adam5ny/blogs/tree/master/ml-deployment" target="_blank">Github code</a>.</p>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

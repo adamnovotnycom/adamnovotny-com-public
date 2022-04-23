@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="CVXOPT is an excellent Python package for linear programming. However, when I was getting started with it, I spent way too much time getting it to...">
+    <title>Linear programming in Python: CVXOPT and game theory | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/linear-programming-in-python-cvxopt-and-game-theory.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="https://adamnovotny.com">
+            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Articles
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/finance.html">Finance <i class="fas fa-chart-line fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-table fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  About
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://medium.com/@adamnovotnycom">Medium <i class="fab fa-medium fa-md"></i></a></li>
+                  <li><a class="dropdown-item" href="https://twitter.com/adamnovotnycom">Twitter <i class="fab fa-twitter fa-md"></i></a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Resources
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Linear programming in Python: CVXOPT and game theory</h2>
+            <p class="blog-post-meta" >
+                Published: 2017-08-16
+                . <a href="https://medium.com/@adamnovotnycom/linear-programming-in-python-cvxopt-and-game-theory-8626a143d428/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
+            </p>
+            <p>CVXOPT is an excellent Python package for linear programming. However, when I was getting started with it, I spent way too much time getting it to work with simple game theory example problems. This tutorial aims to shorten the startup time for everyone trying to use CVXOPT for more advanced problems.</p>
+<p>All code is available <a href="http://github.com/adam5ny/blogs/tree/master/cvxopt" target="_blank">here</a>.</p>
+<p>Installation of dependencies:</p>
+<ul><li>Using Docker is the fastest way to run the code. In only 5 commands you can replicate my environment and run the code.</li></ul>
+<ul><li>Alternatively, the code has the following dependencies: Python (3.5.3), numpy (1.12.1), cvxopt (1.1.9), glpk optimizer (but you can use the default optimizer, glpk is better for some more advanced problems)</li></ul>
+<p>Please review <a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank">how CVXOPT solves simple maximization problems</a>. While this article focuses on game theory problems, it is critical to understand how CVXOPT defines optimization problems in general.</p>
+<p>The first problem we will solve is a <a href="http://en.wikipedia.org/wiki/Minimax#Example" target="_blank">2-player zero-sum game</a>.</p>
+<p>The constraints matrix A is defined as</p>
+<pre>A = [[3, -2, 2], [-1, 0, 4] ,[-4, -3, 1]]</pre>
+<p>Next, we define a maxmin helper function</p>
+<pre>def maxmin(self, A, solver="glpk"):
+    num_vars = len(A)
+     minimize matrix c
+    c = [-1] + [0 for i in range(num_vars)]
+    c = np.array(c, dtype="float")
+    c = matrix(c)
+     constraints G*x <= h
+    G = np.matrix(A, dtype="float").T  reformat each variable is in a row
+    G *= -1  minimization constraint
+    G = np.vstack([G, np.eye(num_vars) * -1])  > 0 constraint for all vars
+    new_col = [1 for i in range(num_vars)] + [0 for i in range(num_vars)]
+    G = np.insert(G, 0, new_col, axis=1)  insert utility column
+    G = matrix(G)
+    h = ([0 for i in range(num_vars)] + 
+         [0 for i in range(num_vars)])
+    h = np.array(h, dtype="float")
+    h = matrix(h)
+     contraints Ax = b
+    A = [0] + [1 for i in range(num_vars)]
+    A = np.matrix(A, dtype="float")
+    A = matrix(A)
+    b = np.matrix(1, dtype="float")
+    b = matrix(b)
+    sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
+    return sol</pre>
+<p>Last, we use the maxmin helper function to solve our example problem:</p>
+<pre>sol = maxmin(A=A, solver=”glpk”)
+probs = sol[“x”]
+print(probs)
+ [ 1.67e-01]
+ [ 8.33e-01]
+ [ 0.00e+00]</pre>
+<p>In other words, player A chooses action 1 with probility 1/6 and action 2 with probability 5/6.</p>
+<p>Next we will solve a Correlated Equilibrium problem called Game of Chicken as defined on page 3 of <a href="http://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank">this document</a>. The constraints matrix A is defined as</p>
+<pre>A = [[6, 6], [2, 7], [7, 2], [0, 0]]</pre>
+<p>Next, we define a ce and build_ce_constraints helper functions:</p>
+<pre>def ce(self, A, solver=None):
+    num_vars = len(A)
+     maximize matrix c
+    c = [sum(i) for i in A]  sum of payoffs for both players
+    c = np.array(c, dtype="float")
+    c = matrix(c)
+    c *= -1  cvxopt minimizes so *-1 to maximize
+     constraints G*x <= h
+    G = self.build_ce_constraints(A=A)
+    G = np.vstack([G, np.eye(num_vars) * -1])  > 0 constraint for all vars
+    h_size = len(G)
+    G = matrix(G)
+    h = [0 for i in range(h_size)]
+    h = np.array(h, dtype="float")
+    h = matrix(h)
+     contraints Ax = b
+    A = [1 for i in range(num_vars)]
+    A = np.matrix(A, dtype="float")
+    A = matrix(A)
+    b = np.matrix(1, dtype="float")
+    b = matrix(b)
+    sol = solvers.lp(c=c, G=G, h=h, A=A, b=b, solver=solver)
+    return sol</pre>
+<pre>def build_ce_constraints(self, A):
+    num_vars = int(len(A) ** (1/2))
+    G = []
+     row player
+    for i in range(num_vars):  action row i
+        for j in range(num_vars):  action row j
+            if i != j:
+                constraints = [0 for i in A]
+                base_idx = i * num_vars
+                comp_idx = j * num_vars
+                for k in range(num_vars):
+                    constraints[base_idx+k] = (- A[base_idx+k][0]
+                                               + A[comp_idx+k][0])
+                G += [constraints]
+     col player
+    for i in range(num_vars):  action column i
+        for j in range(num_vars):  action column j
+            if i != j:
+                constraints = [0 for i in A]
+                for k in range(num_vars):
+                    constraints[i + (k * num_vars)] = (
+                        - A[i + (k * num_vars)][1]
+                        + A[j + (k * num_vars)][1])
+                G += [constraints]
+    return np.matrix(G, dtype="float")</pre>
+<p>Using the helper functions, we solve the Game of Chicken</p>
+<pre>sol = ce(A=A, solver="glpk")
+probs = sol["x"]
+print(probs)
+ [ 5.00e-01]
+ [ 2.50e-01]
+ [ 2.50e-01]
+ [ 0.00e+00]</pre>
+<p>In other words, the optimal strategy is for both players to select actions [6, 6] 50% of the time, actions [2, 7] 25% of the time, and action [7, 2] also 25% of the time.</p>
+<p>Hopefully this overview helps in getting you started with linear programming and game theory in Python.</p>
+<p>Credits: <a href="http://cvxopt.org/examples/tutorial/lp.html" target="_blank">cvxopt.org/examples/tutorial/lp.html</a><a href="https://www.cs.duke.edu/courses/fall12/cps270/lpandgames.pdf" target="_blank">, cs.duke.edu/courses/fall12/cps270/lpandgames.pdf</a><a href="https://en.wikipedia.org/wiki/Minimax#Example" target="_blank">, en.wikipedia.org/wiki/Minimax#Example</a><a href="https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf" target="_blank">, https://www3.ul.ie/ramsey/Lectures/Operations_Research_2/gametheory4.pdf</a><a href="https://www.cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps" target="_blank">, cs.rutgers.edu/~mlittman/topics/nips02/nips02/greenwald.ps</a><a href="https://www.cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf" target="_blank">, cs.duke.edu/courses/fall16/compsci570/LPandGames.pdf</a></p>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- dev Vue -->
+    <!-- <script src="https://unpkg.com/vue@3.2"></script>  -->
+    <!-- prod Vue -->
+    <script src="https://unpkg.com/vue@3.2/dist/vue.global.prod.js"></script>
+    
+</body>
+
+
+</html>

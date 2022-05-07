@@ -15,8 +15,8 @@ Vue.createApp({
             .then(text => {
                 const json = JSON.parse(text.substr(47).slice(0, -2));
                 sheetRows = json.table.rows;
-                rowIndex = Math.floor(Math.random() * (sheetRows.length - 1)); 
-                rowIndex = Math.ceil(1, rowIndex); // skip first row
+                rowIndex = Math.floor(Math.random() * (sheetRows.length - 1));
+                rowIndex = Math.max(1, rowIndex); // skip first row 0
                 this.quote_text = sheetRows[rowIndex].c[0].v;
                 this.quote_author = sheetRows[rowIndex].c[1].v;
                 this.quote_url = sheetRows[rowIndex].c[2].v;

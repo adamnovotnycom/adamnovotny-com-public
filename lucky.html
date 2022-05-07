@@ -51,7 +51,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Feeling Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
+                  <li><a class="dropdown-item" href="https://adamnovotny.com/lucky.html">Lucky <i class="fas fa-quote-left fa-sm"></i></a></li>
                   <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
                   <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
                 </ul>
@@ -63,16 +63,17 @@
       
 
 <main class="container" id="luck">
+    <h4>Daily</h4>
     <div class="row">
         <div class="col">
-            <h4>Random Quote</h4>
+            <h6>Quote</h6>
             <p><i>{{quote_text}}</i></p>
             <p><a v-bind:href="quote_url">~ {{quote_author}} <i class="fab fa-wikipedia-w fa-lg"></i></a></p>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h4>Random Fact</h4>
+            <h6>Research</h6>
             <a v-bind:href="factLink" target="_blank">{{factLink}}</a>
             <i class="fas fa-arrow-down"></i>
         </div>

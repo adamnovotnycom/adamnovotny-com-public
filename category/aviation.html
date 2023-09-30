@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Contents Summary Notebook Summary In general, a machine learning pipeline should have the following characteristics: To ensure data consistency,...">
-    <title>Scikit-learn Pipeline with Feature Engineering | ANotes</title>
+    <meta name="description" content="Aviation notes">
+    <title>ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
-<link rel="canonical" href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -62,45 +61,32 @@
 
 <main class="container">
     <div class="row">
-        <div class="col"></div>
-        <div class="col-md-9">
-    
-            <div class="blog-post">
-            <h2 class="blog-post-title">Scikit-learn Pipeline with Feature Engineering</h2>
-            <p class="blog-post-meta" >
-                Published: 2021-08-30
-                . <a href="https://medium.com/@adamnovotnycom/custom-scikit-learn-pipeline-925dcd25ca89/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
-                . Updated: 2021-10-17
-            </p>
-            <h4>Contents</h4>
-<ol>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#notebook">Notebook</a></li>
-</ol>
-<h4 id="summary">Summary</h4>
-<p>In general, a machine learning pipeline should have the following characteristics:</p>
-<p><a href="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png"><img src="/theme/images/1*8PUAA9DjMv6CMsPWhbayIQ.png.png" alt="scikit-learn logo" style="width: 50%" loading="lazy"></a></p>
-<ul>
-    <li>To ensure data consistency, the pipeline should include every step (such as feature engineering) required to train and score training and testing datasets, and score real time requests. The pipeline does not need to include one-off steps such as removing duplicates.</li>
-    <li>Numerical features are transformed using scikit-learn classes. SimpleImputer is used to fill missing values and StandardScaler for scaling.</li>
-    <li>Categorical columns are similarly transformed. OneHotEncoder is applied transforming columns containing categorical values. Importantly, I like to define the categories argument to prevent the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality" target="_blank">Curse of dimensionality</a> that might occur when too many categories are present.</li>
-    <li>An example custom feature engineering class DailyTrendFeature is included in the pipeline for illustration.</li>
-    <li>The pipeline allows for parallel preprocessing subject to the limits of the computing environment. For example, the preprocessing of categorical and numerical features can take place in parallel because the transformation steps are independent of each other. This is accomplished using scikit-learn's <pre>FeatureUnion(n_jobs=-1, ...)</pre> class that combines other pipeline steps.</li>
-    <li><a href="https://gist.github.com/adamnovotnycom/a09294f179d8e483d5411eb5c8c4e00f" target="_blank">Notebook as Github Gist</a></li>
-</ul>
+      <div class="col-md-8">
 
-<h4 id="notebook">Notebook</h4>
-<!-- notebook.html will be appended here per theme/article.html -->
-            </div>
-    
+            <div class="blog-post">
+                <h2 class="blog-post-title">
+                    <a href="https://adamnovotny.com/blog/cirrus-landing-into-the-sun.html">
+                        Cirrus Landing Into The Sun
+                    </a>
+                </h2>
+                <p class="blog-post-meta">Aviation | 2023-09-30</p>
+                <p style="background-image: url(/theme/images/aviation1.jpeg); background-position: bottom right; background-size: 3.75rem; background-repeat: no-repeat;"></p>
+            </div><!-- /.blog-post -->
+  
+      </div>
+  
+      <aside class="col-md-4">
+        <div class="p-4">
+          <h4 class="font-italic">Archives</h4>
+          <ol class="list-unstyled mb-0">
+                No archives
+          </ol>
         </div>
-        <div class="col"></div>
+  
+      </aside>
+  
     </div>
-    <div class="row">
-        <div class="col">
-            <iframe style="width:100%; height:10000px" src="https://adamnovotny.com/notebooks/sklearn_pipe.html"></iframe>
-        </div>
-    </div>
+  
 </main>
 
     

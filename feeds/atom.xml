@@ -224,7 +224,7 @@
 &lt;h3&gt;Summary &lt;span id="summary"&gt;&lt;/span&gt;&lt;/h3&gt;
 &lt;p&gt;Keras LSTM can be a powerful tool for forecasting. Below is a simple template notebook showing how to setup a data science forecasting experiment.&lt;/p&gt;
 &lt;h4&gt;Dataset&lt;/h4&gt;
-&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Contents&lt;/h3&gt;
+&lt;p&gt;A synthetic dataset was generated using a scikit-learn regression generator &lt;a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank"&gt;make_friedman1&lt;/a&gt;. The dataset is nonlinear, with noise, and some features are …&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Contents&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#summary"&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#notebook"&gt;Notebook&lt;/a&gt;&lt;/li&gt;

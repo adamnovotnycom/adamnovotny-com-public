@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="">
-    <title>ANotes - Categories</title>
+    <meta name="description" content="Machine learning models (including language models) can be deployed using generous free tier on Hugging Face and a python-based open source UI...">
+    <title>Deploying Language Models With Gradio On Hugging Face | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/deploying-language-models-with-gradio-on-huggingface.html">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -57,13 +58,45 @@
         </div>
       </nav>
       
-    <h1>Categories on ANotes</h1>
-    <ul>
-        <li><a href="https://adamnovotny.com/category/aviation.html">Aviation</a> (2)</li>
-        <li><a href="https://adamnovotny.com/category/finance.html">Finance</a> (1)</li>
-        <li><a href="https://adamnovotny.com/category/machine-learning.html">Machine Learning</a> (17)</li>
-        <li><a href="https://adamnovotny.com/category/random.html">Random</a> (2)</li>
-    </ul>
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-9">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Deploying Language Models With Gradio On Hugging Face</h2>
+            <p class="blog-post-meta" >
+                Published: 2023-10-14
+            </p>
+            <p>Machine learning models (including language models) can be deployed using generous <a href="https://huggingface.co/pricing#spaces">free tier on Hugging Face</a> and a python-based open source UI tool <a href="https://www.gradio.app/guides/quickstart">Gradio</a> using the following steps.</p>
+<p>See live deployed app and source code <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface">here</a></p>
+<ol>
+<li>
+<p>For local development, create the <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/Dockerfile_dev">following Dockerfile</a>. It differs from production Dockerfile in how secrets are loaded and the use of <pre>CMD ["gradio", "app.py"]</pre> which runs (and reloads) source files every time a change is noticed.</p>
+</li>
+<li>
+<p><a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/docker-compose.yml">docker-compose</a> will launch the development Dockerfile using command <pre>export HF_TOKEN=paste_HF_token &amp;&amp; docker-compose -f docker-compose.yml up gradiohf</pre> where HF_TOKEN is your personal token provided by Hugging Face to ensure that license restrictions are being followed for certain models (such as Llama 2).</p>
+</li>
+<li>
+<p>Develop your Gradio <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/app.py">app.py</a>. This deployed example represents the absolute smallest version that selects a language model based on environmenal variable <strong>os.environ.get("MODEL")</strong>. The selections includes Llama 2 which will however require a paid plan to run on Hugging Face (with no code changes!). The live example runs a small <em>toy</em> model <a href="https://huggingface.co/google/flan-t5-small">google/flan-t5-small</a> that easily runs on the free tier.</p>
+</li>
+<li>
+<p>View your Gradio app running locally in browser: <pre>http://0.0.0.0:7860</pre></p>
+</li>
+<li>
+<p>Create production <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/Dockerfile">Dockerfile</a> and deploy on Hugging Face Spaces using this <a href="https://huggingface.co/docs/hub/spaces-sdks-docker">great documentation</a>.</p>
+</li>
+</ol>
+<h4>Example of Gradio UI deployed on Hugging Face</h4>
+<p><a href="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png"><img src="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png" alt="Normal equation" style="width: 100%" loading="lazy"></a></p>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- dev Vue -->

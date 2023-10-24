@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Machine learning models (including language models) can be deployed using generous free tier on Hugging Face and a python-based open source UI...">
+    <meta name="description" content="Machine learning models (including language models) can be easily deployed using generous free tier on Hugging Face and a python-based open source...">
     <title>Deploying Language Models With Gradio On Hugging Face | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/deploying-language-models-with-gradio-on-huggingface.html">
@@ -69,17 +69,17 @@
             <p class="blog-post-meta" >
                 Published: 2023-10-14
             </p>
-            <p>Machine learning models (including language models) can be deployed using generous <a href="https://huggingface.co/pricing#spaces">free tier on Hugging Face</a> and a python-based open source UI tool <a href="https://www.gradio.app/guides/quickstart">Gradio</a> using the following steps.</p>
+            <p>Machine learning models (including language models) can be easily deployed using generous <a href="https://huggingface.co/pricing#spaces">free tier on Hugging Face</a> and a python-based open source UI tool <a href="https://www.gradio.app/guides/quickstart">Gradio</a> by following these steps.</p>
 <p>See live deployed app and source code <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface">here</a></p>
 <ol>
 <li>
 <p>For local development, create the <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/Dockerfile_dev">following Dockerfile</a>. It differs from production Dockerfile in how secrets are loaded and the use of <pre>CMD ["gradio", "app.py"]</pre> which runs (and reloads) source files every time a change is noticed.</p>
 </li>
 <li>
-<p><a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/docker-compose.yml">docker-compose</a> will launch the development Dockerfile using command <pre>export HF_TOKEN=paste_HF_token &amp;&amp; docker-compose -f docker-compose.yml up gradiohf</pre> where HF_TOKEN is your personal token provided by Hugging Face to ensure that license restrictions are being followed for certain models (such as Llama 2).</p>
+<p><a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/docker-compose.yml">docker-compose</a> will launch the development Dockerfile using command <pre>export HF_TOKEN=paste_HF_token &amp;&amp; docker-compose -f docker-compose.yml up gradiohf</pre> where HF_TOKEN is an optional personal token provided by Hugging Face to ensure that license restrictions are being followed for certain models (such as Llama 2).</p>
 </li>
 <li>
-<p>Develop your Gradio <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/app.py">app.py</a>. This deployed example represents the absolute smallest version that selects a language model based on environmenal variable <strong>os.environ.get("MODEL")</strong>. The selections includes Llama 2 which will however require a paid plan to run on Hugging Face (with no code changes!). The live example runs a small <em>toy</em> model <a href="https://huggingface.co/google/flan-t5-small">google/flan-t5-small</a> that easily runs on the free tier.</p>
+<p>Develop your Gradio <a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/app.py">app.py</a>. This deployed example represents the absolute smallest version that selects a language model based on environmenal variable <strong>os.environ.get("MODEL")</strong>. The selections includes Llama 2 which will require a paid Spaces plan to run on Hugging Face (with no code changes!). The live example runs a small <em>toy</em> model <a href="https://huggingface.co/google/flan-t5-small">google/flan-t5-small</a> that easily runs on the free tier.</p>
 </li>
 <li>
 <p>View your Gradio app running locally in browser: <pre>http://0.0.0.0:7860</pre></p>

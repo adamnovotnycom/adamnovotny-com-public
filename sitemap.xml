@@ -6,7 +6,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
@@ -96,13 +96,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://adamnovotny.com/blog/lessons-from-the-2008-financial-crisis-t-10-edition.html</loc>
-<lastmod>2018-09-23T00:00:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://adamnovotny.com/blog/linear-programming-in-python-cvxopt-and-game-theory.html</loc>
 <lastmod>2017-08-16T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
@@ -174,77 +167,70 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/categories.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/aviation.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/category/finance.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/machine-learning.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/random.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/notebooks/lstm_synthetic_data.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/notebooks/sklearn_pipe.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/bookshelf.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/llm.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/wishlist.html</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/robots.txt</loc>
-<lastmod>2023-10-24T10:55:56-00:00</lastmod>
+<lastmod>2023-11-11T13:13:37-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>

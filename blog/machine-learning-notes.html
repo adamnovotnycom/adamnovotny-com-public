@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Collection of AI, ML, and data resources I've found useful. Contents Algorithms Bayes Explainability MLOps Model Evaluation Preprocessing...">
+    <meta name="description" content="Contents Algorithms Bayes Explainability MLOps Model Evaluation Preprocessing Reinforcement Learning SQL Statistics Algorithms K-means: aims to...">
     <title>Machine Learning Notes | ANotes</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
 <link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-notes.html">
@@ -16,48 +16,48 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="https://adamnovotny.com">
-            <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Articles
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/aviation.html">Aviation <i class="fas fa-plane fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-laptop fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  About
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
-                  <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
-                  <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
-                  <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
-                </ul>
-              </li>
-            </ul>
-            <a class="dropdown-item" href="https://privatewho.is/?s=adamnovotny.com">Email Me</a>
-          </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://adamnovotny.com">
+          <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Articles
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="https://adamnovotny.com/category/aviation.html">Aviation <i class="fas fa-plane fa-md"></i></a></li>
+                <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-laptop fa-md"></i></a></li>
+                <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/atom.xml">Feed Atom</a></li>
+                <li><a class="dropdown-item" href="https://adamnovotny.com/feeds/rss.xml">Feed RSS <i class="fas fa-rss-square fa-sm"></i></a></li>
+                <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class="dropdown-item" href="https://privatewho.is/?s=adamnovotny.com">Email Me</a>
         </div>
-      </nav>
+      </div>
+    </nav>
       
 
 <main class="container">
     <div class="row">
         <div class="col"></div>
-        <div class="col-md-9">
+        <div class="col-md-12">
     
             <div class="blog-post">
             <h2 class="blog-post-title">Machine Learning Notes</h2>
@@ -65,7 +65,13 @@
                 Published: 2022-05-07
                 . <a href="https://medium.com/@adamnovotnycom/machine-learning-notes-8dfcb983ff01/" target="_blank"><i class="fab fa-medium fa-lg"></i></a>
             </p>
-            <p>Collection of AI, ML, and data resources I've found useful.</p>
+            <p><iframe
+  title="ML notes notebook"
+  width="100%"
+  height="5000px"
+  src="/notebooks/ml_notes.html">
+</iframe>
+</p>
 <h4>Contents</h4>
 <ul>
 <li><a href="#algorithms">Algorithms</a></li>
@@ -80,9 +86,6 @@
 </ul>
 <h4>Algorithms <span id="algorithms"></span></h4>
 <ul>
-<li>Expectation-maximization (EM): <a href="https://scikit-learn.org/stable/modules/mixture.html#estimation-algorithm-expectation-maximization">algo</a> assumes random components and computes for each point a probability of being generated by each component of the model. Then iteratively tweaks the parameters to maximize the likelihood of the data given those assignments. Example: <a href="https://scikit-learn.org/stable/modules/mixture.html#gaussian-mixture">Gaussian Mixture</a></li>
-<li>Gaussian Mixtures: <a href="https://towardsdatascience.com/understanding-anomaly-detection-in-python-using-gaussian-mixture-model-e26e5d06094b">anomaly detection example</a>: future examples may look nothing like the past. This is where supervised learning differs because it assumes that future examples fall within the range of the training data</li>
-<li><a href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosting">Gradient Boosting</a>: optimization of arbitrary differentiable loss functions.</li>
 <li>K-means: aims to choose centroids that minimize the inertia, or within-cluster sum-of-squares criterion. Use the <a href="https://www.scikit-yb.org/en/latest/api/cluster/elbow.html">“elbow” method</a> to identify the right number of means. <a href="https://scikit-learn.org/stable/modules/clustering.html#k-means">scikit tutorial</a></li>
 <li>KNN: Simple, flexible, naturally handles multiple classes. Slow at scale, sensitive to feature scaling and irrelevant features. <a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification">scikit tutorial</a></li>
 <li>Linear Discriminant Analysis (LDA): A classifier with a linear decision boundary, generated by fitting class conditional densities to the data and using Bayes’ rule. The model fits a Gaussian density to each class, assuming that all classes share the same covariance matrix. <a href="https://scikit-learn.org/stable/modules/lda_qda.html#mathematical-formulation-of-the-lda-and-qda-classifiers">scikit tutorial</a></li>
@@ -220,7 +223,6 @@
 </ul>
 </li>
 </ul>
-<iframe style="width:100%; height: 4000px" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQdwyyqdYlU6DxxlnTJ07gFbQkwZSArRde6jylWVLBGNVsOc0Z3Gq8FfmEagJRUZOnjgafCd-eA_Fql/pubhtml?gid=634223602&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
             </div>
     
         </div>

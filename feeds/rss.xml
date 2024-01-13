@@ -3,13 +3,7 @@
 &lt;p&gt;See live deployed app and source code &lt;a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;For local development, create the &lt;a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/Dockerfile_dev"&gt;following Dockerfile&lt;/a&gt;. It differs from production Dockerfile in …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 14 Oct 2023 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2023-10-14:/blog/deploying-language-models-with-gradio-on-huggingface.html</guid><category>Machine Learning</category></item><item><title>Cirrus Touch&amp;Go Sun Glare</title><link>https://adamnovotny.com/blog/aviation-cirrus-landing-into-the-sun.html</link><description>&lt;h4&gt;Details&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;Plane: &lt;a href="https://en.wikipedia.org/wiki/Cirrus_SR20"&gt;Cirrus SR20 G2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Video: &lt;iframe width="100%" height="315" src="https://www.youtube.com/embed/YuBwHwMUmfY?si=miLNEiCCf8hIGJ_W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;Photos&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/theme/images/aviation1_tiny.png"&gt;&lt;img src="/theme/images/aviation1_tiny.png" alt="Cirrus Touch&amp;Go Sun Glare" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 30 Sep 2023 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2023-09-30:/blog/aviation-cirrus-landing-into-the-sun.html</guid><category>Aviation</category></item><item><title>Machine Learning Notes</title><link>https://adamnovotny.com/blog/machine-learning-notes.html</link><description>&lt;p&gt;&lt;iframe
+&lt;p&gt;For local development, create the &lt;a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface/blob/main/Dockerfile_dev"&gt;following Dockerfile&lt;/a&gt;. It differs from production Dockerfile in …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 14 Oct 2023 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2023-10-14:/blog/deploying-language-models-with-gradio-on-huggingface.html</guid><category>Machine Learning</category></item><item><title>Machine Learning Notes</title><link>https://adamnovotny.com/blog/machine-learning-notes.html</link><description>&lt;p&gt;&lt;iframe
   title="ML notes notebook"
   width="100%"
   height="5000px"

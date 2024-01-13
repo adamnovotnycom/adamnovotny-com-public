@@ -23,13 +23,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;Example of Gradio UI deployed on Hugging Face&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png"&gt;&lt;img src="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Cirrus Touch&amp;Go Sun Glare</title><link href="https://adamnovotny.com/blog/aviation-cirrus-landing-into-the-sun.html" rel="alternate"></link><published>2023-09-30T00:00:00-05:00</published><updated>2023-09-30T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2023-09-30:/blog/aviation-cirrus-landing-into-the-sun.html</id><content type="html">&lt;h4&gt;Details&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;Plane: &lt;a href="https://en.wikipedia.org/wiki/Cirrus_SR20"&gt;Cirrus SR20 G2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Video: &lt;iframe width="100%" height="315" src="https://www.youtube.com/embed/YuBwHwMUmfY?si=miLNEiCCf8hIGJ_W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4&gt;Photos&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/theme/images/aviation1_tiny.png"&gt;&lt;img src="/theme/images/aviation1_tiny.png" alt="Cirrus Touch&amp;Go Sun Glare" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Aviation"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2022-05-07T00:00:00-05:00</published><updated>2022-05-07T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2022-05-07:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;&lt;iframe
+&lt;p&gt;&lt;a href="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png"&gt;&lt;img src="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2022-05-07T00:00:00-05:00</published><updated>2022-05-07T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2022-05-07:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;&lt;iframe
   title="ML notes notebook"
   width="100%"
   height="5000px"

@@ -23,14 +23,7 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;Example of Gradio UI deployed on Hugging Face&lt;/h4&gt;
-&lt;p&gt;&lt;a href="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png"&gt;&lt;img src="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2022-05-07T00:00:00-05:00</published><updated>2022-05-07T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2022-05-07:/blog/machine-learning-notes.html</id><summary type="html">&lt;p&gt;&lt;iframe
-  title="ML notes notebook"
-  width="100%"
-  height="5000px"
-  src="/notebooks/ml_notes.html"&gt;
-&lt;/iframe&gt;
-&lt;/p&gt;
-&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;p&gt;&lt;a href="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png"&gt;&lt;img src="/theme/images/deploying-language-models-with-gradio-on-huggingface-overview.png" alt="Normal equation" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2022-05-07T00:00:00-05:00</published><updated>2022-05-07T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2022-05-07:/blog/machine-learning-notes.html</id><summary type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#algorithms"&gt;Algorithms&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#bayes"&gt;Bayes&lt;/a&gt;&lt;/li&gt;
@@ -45,14 +38,7 @@
 &lt;h4&gt;Algorithms &lt;span id="algorithms"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;K-means: aims to choose centroids that minimize the inertia, or within-cluster sum-of-squares criterion. Use the &lt;a href="https://www.scikit-yb.org/en/latest/api/cluster/elbow.html"&gt;“elbow” method&lt;/a&gt; to identify the right number of means. &lt;a href="https://scikit-learn.org/stable/modules/clustering.html#k-means"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;KNN: Simple, flexible, naturally handles multiple classes. Slow at scale, sensitive …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;&lt;iframe
-  title="ML notes notebook"
-  width="100%"
-  height="5000px"
-  src="/notebooks/ml_notes.html"&gt;
-&lt;/iframe&gt;
-&lt;/p&gt;
-&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;li&gt;KNN: Simple, flexible, naturally handles multiple classes. Slow at scale, sensitive …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#algorithms"&gt;Algorithms&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#bayes"&gt;Bayes&lt;/a&gt;&lt;/li&gt;

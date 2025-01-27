@@ -93,7 +93,7 @@
 &lt;li&gt;Partial dependence plots (PDP): x-axis = value of a single feature, y-axis = label. &lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#partial-dependence-plots"&gt;scikit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Individual conditional expectation (ICE): x-axis = value of a single feature, y-axis = label. &lt;a href="https://scikit-learn.org/stable/modules/partial_dependence.html#individual-conditional-expectation-ice-plot"&gt;scikit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Permutation feature importance: Randomly shuffle features and calculate impact on model metrics such as F1. &lt;a href="https://scikit-learn.org/stable/modules/permutation_importance.html#permutation-feature-importance"&gt;scikit&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Global surrogate: train an easily interpretable model (such as liner regression) on the predictions made by a black box model&lt;/li&gt;
+&lt;li&gt;Global surrogate: train an easily interpretable model (such as linear regression) on the predictions made by a black box model&lt;/li&gt;
 &lt;li&gt;Local Surrogate: LIME (for Local Interpretable Model-agnostic Explanations). Train individual models to approximate an individual prediction by removing features to learn their impact on the prediction&lt;/li&gt;
 &lt;li&gt;Shapley Value (SHAP): The contribution of each feature is measured by adding and removing it from all other feature subsets. The Shapley Value for one feature is the weighted sum of all its contributions&lt;/li&gt;
 &lt;/ul&gt;

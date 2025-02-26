@@ -145,6 +145,7 @@
 &lt;ul&gt;
 &lt;li&gt;window functions, row_number() and partition(): &lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/row-number-transact-sql?view=sql-server-ver15#d-using-row_number-with-partition"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;COALESCE(): evaluates the arguments in order and returns the current value of the first expression that initially doesn’t evaluate to NULL. &lt;a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/coalesce-transact-sql?view=sql-server-ver15"&gt;tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.crunchydata.com/developers/tutorials"&gt;crunchydata tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Statistics &lt;span id="statistics"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;

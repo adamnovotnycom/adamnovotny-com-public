@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>ANotes</title><link>https://adamnovotny.com/</link><description></description><lastBuildDate>Sat, 22 Feb 2025 00:00:00 -0500</lastBuildDate><item><title>AI / Machine Learning Notes</title><link>https://adamnovotny.com/blog/machine-learning-notes.html</link><description>&lt;h4&gt;Contents&lt;/h4&gt;
+<rss version="2.0"><channel><title>ANotes</title><link>https://adamnovotny.com/</link><description></description><lastBuildDate>Mon, 17 Mar 2025 00:00:00 -0500</lastBuildDate><item><title>Large Language Models (LLMs)</title><link>https://adamnovotny.com/blog/llm.html</link><description>&lt;h4&gt;Contents&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#architecture"&gt;Architecture&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Architecture &lt;span id="architecture"&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bbycroft.net/llm"&gt;LLM visualization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Overview &lt;span id="overview"&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Deep Dive into LLMs like ChatGPT by Andrej Karpathy &lt;a href="https://www.youtube.com/watch?v=7xTGNNLPyMI"&gt;Youtube&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Mon, 17 Mar 2025 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2025-03-17:/blog/llm.html</guid><category>Machine Learning</category></item><item><title>AI / Machine Learning Notes</title><link>https://adamnovotny.com/blog/machine-learning-notes.html</link><description>&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#algorithms"&gt;Algorithms&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#bayes"&gt;Bayes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#explainability"&gt;Explainability&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#llm"&gt;Large Language Models (LLMs)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#mlops"&gt;MLOps&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#model_evaluation"&gt;Model Evaluation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#preprocessing"&gt;Preprocessing&lt;/a&gt;&lt;/li&gt;
@@ -15,7 +26,7 @@
 &lt;h4&gt;Algorithms &lt;span id="algorithms"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;K-means: aims to choose centroids that minimize the inertia, or within-cluster sum-of-squares criterion. Use the &lt;a href="https://www.scikit-yb.org/en/latest/api/cluster/elbow.html"&gt;“elbow” method&lt;/a&gt; to identify the right number of means. &lt;a href="https://scikit-learn.org/stable/modules/clustering.html#k-means"&gt;scikit tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;KNN: Simple, flexible, naturally handles multiple classes …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 22 Feb 2025 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2025-02-22:/blog/machine-learning-notes.html</guid><category>Machine Learning</category></item><item><title>Deploying Language Models With Gradio On Hugging Face</title><link>https://adamnovotny.com/blog/deploying-language-models-with-gradio-on-huggingface.html</link><description>&lt;p&gt;Machine learning models (including language models) can be easily deployed using generous &lt;a href="https://huggingface.co/pricing#spaces"&gt;free tier on Hugging Face&lt;/a&gt; and a python-based open source UI tool &lt;a href="https://www.gradio.app/guides/quickstart"&gt;Gradio&lt;/a&gt; by following these steps.&lt;/p&gt;
+&lt;li&gt;KNN: Simple, flexible, naturally handles multiple classes. Slow at scale, sensitive …&lt;/li&gt;&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Adam Novotny</dc:creator><pubDate>Sat, 22 Feb 2025 00:00:00 -0500</pubDate><guid isPermaLink="false">tag:adamnovotny.com,2025-02-22:/blog/machine-learning-notes.html</guid><category>Machine Learning</category></item><item><title>Deploying Language Models With Gradio On Hugging Face</title><link>https://adamnovotny.com/blog/deploying-language-models-with-gradio-on-huggingface.html</link><description>&lt;p&gt;Machine learning models (including language models) can be easily deployed using generous &lt;a href="https://huggingface.co/pricing#spaces"&gt;free tier on Hugging Face&lt;/a&gt; and a python-based open source UI tool &lt;a href="https://www.gradio.app/guides/quickstart"&gt;Gradio&lt;/a&gt; by following these steps.&lt;/p&gt;
 &lt;p&gt;See live deployed app and source code &lt;a href="https://huggingface.co/spaces/AdamNovotnyCom/llama2-gradio-huggingface"&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;

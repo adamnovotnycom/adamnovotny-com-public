@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2025-03-17T00:00:00-05:00</updated><entry><title>Large Language Models (LLMs)</title><link href="https://adamnovotny.com/blog/llm.html" rel="alternate"></link><published>2025-03-17T00:00:00-05:00</published><updated>2025-03-17T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2025-03-17:/blog/llm.html</id><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2025-03-22T00:00:00-05:00</updated><entry><title>Large Language Models (LLMs) Notes</title><link href="https://adamnovotny.com/blog/llm.html" rel="alternate"></link><published>2025-03-22T00:00:00-05:00</published><updated>2025-03-22T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2025-03-22:/blog/llm.html</id><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#architecture"&gt;Architecture&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#overview"&gt;Overview&lt;/a&gt;s&lt;/li&gt;
@@ -10,7 +10,7 @@
 &lt;/ul&gt;
 &lt;h4&gt;Overview &lt;span id="overview"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Deep Dive into LLMs like ChatGPT by Andrej Karpathy &lt;a href="https://www.youtube.com/watch?v=7xTGNNLPyMI"&gt;Youtube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Deep Dive into LLMs like ChatGPT by Andrej Karpathy (Summary) &lt;a href="https://youtu.be/7xTGNNLPyMI?feature=shared&amp;t=12107"&gt;Youtube&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><category term="Machine Learning"></category></entry><entry><title>AI / Machine Learning Notes</title><link href="https://adamnovotny.com/blog/machine-learning-notes.html" rel="alternate"></link><published>2025-02-22T00:00:00-05:00</published><updated>2025-02-22T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2025-02-22:/blog/machine-learning-notes.html</id><summary type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#algorithms"&gt;Algorithms&lt;/a&gt;&lt;/li&gt;

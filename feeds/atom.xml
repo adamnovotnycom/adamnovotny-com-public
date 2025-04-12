@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2025-03-22T00:00:00-05:00</updated><entry><title>Large Language Models (LLMs) Notes</title><link href="https://adamnovotny.com/blog/llm.html" rel="alternate"></link><published>2025-03-22T00:00:00-05:00</published><updated>2025-03-22T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2025-03-22:/blog/llm.html</id><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>ANotes</title><link href="https://adamnovotny.com/" rel="alternate"></link><link href="https://adamnovotny.com/feeds/atom.xml" rel="self"></link><id>https://adamnovotny.com/</id><updated>2025-04-12T00:00:00-05:00</updated><entry><title>Large Language Models (LLMs) Notes</title><link href="https://adamnovotny.com/blog/llm.html" rel="alternate"></link><published>2025-04-12T00:00:00-05:00</published><updated>2025-04-12T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2025-04-12:/blog/llm.html</id><content type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#architecture"&gt;Architecture&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#papers"&gt;Papers&lt;/a&gt;&lt;/li&gt;
@@ -11,7 +11,7 @@
 &lt;/ul&gt;
 &lt;h4&gt;Papers &lt;span id="papers"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://adamnovotny.com/theme/documents/Attention_Is_All_You%20Need.pdf"&gt;Attention Is All You Need&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://adamnovotny.com/theme/documents/Attention_Is_All_You%20Need.pdf"&gt;Attention Is All You Need (pdf)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Overview &lt;span id="overview"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;

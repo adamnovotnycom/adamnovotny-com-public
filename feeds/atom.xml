@@ -284,7 +284,7 @@
   title="Keras LSTM Forecasting Using Synthetic Data notebook"
   width="100%"
   height="17000px"
-  src="/notebooks/lstm_synthetic_data.html"&gt;
+  src="/theme/documents/lstm_synthetic_data.html"&gt;
 &lt;/iframe&gt;
 &lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Scikit-learn Pipeline with Feature Engineering</title><link href="https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html" rel="alternate"></link><published>2021-08-30T00:00:00-05:00</published><updated>2021-08-30T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-08-30:/blog/custom-scikit-learn-pipeline.html</id><summary type="html">&lt;h4&gt;Contents&lt;/h4&gt;
 &lt;ol&gt;
@@ -317,7 +317,7 @@
   title="Scikit-learn Pipeline with Feature Engineering notebook"
   width="100%"
   height="10000px"
-  src="/notebooks/sklearn_pipe.html"&gt;
+  src="/theme/documents/sklearn_pipe.html"&gt;
 &lt;/iframe&gt;
 &lt;/p&gt;</content><category term="Machine Learning"></category></entry><entry><title>Global Temperature Forecast Using Prophet and CO2</title><link href="https://adamnovotny.com/blog/berkeley-global-temperature-forecast-prophet.html" rel="alternate"></link><published>2021-05-16T00:00:00-05:00</published><updated>2021-05-16T00:00:00-05:00</updated><author><name>Adam Novotny</name></author><id>tag:adamnovotny.com,2021-05-16:/blog/berkeley-global-temperature-forecast-prophet.html</id><summary type="html">&lt;p&gt;
 In this article I will leverage the global &lt;a href="https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html"&gt;temperate dataset I discussed previously&lt;/a&gt; to make a temperature forecast using &lt;a href="https://facebook.github.io/prophet/"&gt;Facebook Prophet&lt;/a&gt; for the next 50 years. Note: the temperature dataset serves ONLY as a vehicle to learn how to do forecasting using Prophet. In general, climate and other complex sciences …&lt;/p&gt;</summary><content type="html">&lt;p&gt;

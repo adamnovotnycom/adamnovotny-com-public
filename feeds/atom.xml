@@ -72,7 +72,6 @@
 &lt;li&gt;Stochastic gradient descent &lt;a href=" https://realpython.com/gradient-descent-algorithm-python/#basic-gradient-descent-algorithm"&gt;tutorial&lt;/a&gt;. Calculus solution: &lt;a href="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png"&gt;&lt;img src="/theme/images/1*_6C1R-IamnPtIo0jLOoblw.png.png" alt="Stochastic gradient descent cost function" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;SVD: Singular Value Decomposition &lt;a href="https://towardsdatascience.com/svd-8c2f72e264f"&gt; intuition with PCA use case&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;SVM: Effective in high dimensional spaces (or when number of dimensions &amp;gt; number of examples). SVMs do not directly provide probability estimates. &lt;a href="https://scikit-learn.org/stable/modules/svm.html#svm-classification"&gt;scikit&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Transformers &lt;a href="https://www.machinecurve.com/index.php/2020/12/28/introduction-to-transformers-in-machine-learning/"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1232021073114943.png"&gt;&lt;img src="/theme/images/1232021073114943.png" alt="Original transformer architecture" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Bayes &lt;span id="bayes"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;

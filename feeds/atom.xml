@@ -94,7 +94,6 @@
 &lt;/ul&gt;
 &lt;h4&gt;MLOps &lt;span id="mlops"&gt;&lt;/span&gt;&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="https://github.com/bentoml/BentoML"&gt;BentoML&lt;/a&gt;: open platform that simplifies ML model deployment by saving models in a standard format, defining a web service with pre/post processing, deploying the web service in a container&lt;/li&gt;
 &lt;li&gt;Data &lt;a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/"&gt;a16z&lt;/a&gt;
 &lt;a href="/theme/images/1*LYBSxf0MPcERPzkEJlk9Cw.png.png"&gt;&lt;img src="/theme/images/1*LYBSxf0MPcERPzkEJlk9Cw.png.png" alt="A Unified Data Infra" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;ML Blueprint &lt;a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/"&gt;a16z&lt;/a&gt;
@@ -180,7 +179,7 @@
 &lt;li&gt;Tests &lt;a href="/theme/images/1*ShYx679GlV5WVL8ukd2j2w.png"&gt;&lt;img src="/theme/images/1*ShYx679GlV5WVL8ukd2j2w.png" alt="Selecting statistical test. Source: Statistical Rethinking 2. Free Chapter 1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;ANOVA: Analysis of variance compares the means of three or more independent groups to determine if there is a statistically significant difference between the corresponding population means. &lt;a href="https://www.statology.org/one-way-anova/"&gt;Statology tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;F-statistic: determines whether to reject a full model (F) in favor of a reduced (R) model. Reject full model if F is large — or equivalently if its associated p-value is small. &lt;a href="https://online.stat.psu.edu/stat501/lesson/6/6.2#paragraph--785"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png"&gt;&lt;img src="/theme/images/1*7Vz6m3tqtLAvxF_Xqe2JAQ.png.png" alt="F-statistic" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Linear regression coefficient CI: &lt;a href="https://online.stat.psu.edu/stat501/node/644"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png"&gt;&lt;img src="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png" alt="t-interval for slope parameter beta_1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linear regression coefficient CI: &lt;a href="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png"&gt;&lt;img src="/theme/images/1*hQ5pabjmSByQSC5O4r_uRw.png.png" alt="t-interval for slope parameter beta_1" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;T-Test: &lt;a href="https://online.stat.psu.edu/stat555/node/36/"&gt;tutorial&lt;/a&gt;&lt;a href="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png"&gt;&lt;img src="/theme/images/1*R1ysZ-ofSr5wXwE0_emXiQ.png.png" alt="T-test formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;

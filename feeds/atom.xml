@@ -65,7 +65,7 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;Naive Bayes: uses naive conditional independence assumption of features. &lt;a href="https://scikit-learn.org/stable/modules/naive_bayes.html#naive-bayes"&gt;scikit&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;PCA: transform data using k vectors that minimize the perpendicular distance to points. PCA can be also thought of as an &lt;a href="https://online.stat.psu.edu/stat505/lesson/11/11.2"&gt;eigenvalue/engenvector decomposition&lt;/a&gt;. &lt;a href="https://scikit-learn.org/stable/modules/decomposition.html#pca"&gt;scikit&lt;/a&gt;. &lt;a href="https://www.cs.princeton.edu/picasso/mats/PCA-Tutorial-Intuition_jp.pdf"&gt;Intuition paper&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PCA: transform data using k vectors that minimize the perpendicular distance to points. PCA can be also thought of as an &lt;a href="https://online.stat.psu.edu/stat505/lesson/11/11.2"&gt;eigenvalue/engenvector decomposition&lt;/a&gt;. &lt;a href="https://scikit-learn.org/stable/modules/decomposition.html#pca"&gt;scikit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Pearson’s correlation coefficient**. &lt;a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient"&gt;wiki&lt;/a&gt;. &lt;a href="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png"&gt;&lt;img src="/theme/images/1*qtdPV-XQhTYACKS7beLDpg.jpeg.png" alt="Correlation formula" style="width: 100%" loading="lazy"&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Random Forests: each tree is built using a sample of rows (with replacement) from training set. Less prone to overfitting. &lt;a href="https://scikit-learn.org/stable/modules/ensemble.html#random-forests"&gt;scikit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;RNN: &lt;a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/"&gt;Karpathy tutorial&lt;/a&gt;&lt;/li&gt;

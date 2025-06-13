@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Adam Novotny">
-    <meta name="description" content="Contents Summary Code Summary The purpose of this post is to propose a template for machine learning projects that strives to follow these...">
-    <title>Machine Learning Docker Template | ANotes</title>
+    <meta name="description" content="email">
+    <title>Email</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
-<link rel="canonical" href="https://adamnovotny.com/blog/machine-learning-docker-template.html">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -55,47 +54,11 @@
 <main class="container">
     <div class="row">
         <div class="col"></div>
-        <div class="col-md-10">
-    
+        <div class="col-md-9">
             <div class="blog-post">
-            <h2 class="blog-post-title">Machine Learning Docker Template</h2>
-            <p class="blog-post-meta" >
-                Published: 2021-12-18
-                . Updated: 2022-01-29
-            </p>
-            <h3>Contents</h3>
-<ul>
-<li><a href="#summary">Summary</a></li>
-<li><a href="#code">Code</a></li>
-</ul>
-<h3>Summary <span id="summary"></span></h3>
-<p>The purpose of this post is to propose a template for machine learning projects that strives to follow these principles:</p>
-<ol>
-<li>All data scientists can quickly setup an identical development environment based on Docker that encourages good software engineering practices.</li>
-<li>Dependency management is handled during the environment's startup by <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a> and requires minimal manual changes.</li>
-<li>Notebooks are encouraged for exploration. However, for production purposes notebooks must be version controlled, parametrized and run using <a href="https://github.com/nteract/papermill">Papermill</a>.</li>
-</ol>
-<h3>Code <span id="code"></span></h3>
-<p>The template is available on github <a href="https://github.com/adamnovotnycom/machine-learning-docker-template">adamnovotnycom/machine-learning-docker-template</a>. The general template structure looks as follows:
-<a href="/theme/images/20220129115215.png"><img src="/theme/images/20220129115215.png" alt="ML Template" style="width: 100%" loading="lazy"></a></p>
-<ol>
-<li>
-<p><b>Dockerfile</b> defines the development environment and uses Miniconda as base image
-    <pre>
-    FROM continuumio/miniconda3
-    ...
-    RUN conda env create -f conda.yml
-    RUN echo "source activate dev" &gt; ~/.bashrc
-    ...
-    </pre></p>
-</li>
-<li>
-<p><b>conda.yaml</b> is used for dependency management and includes standard data science packages.</p>
-</li>
-<li><b>ml_docker_template</b> package should include all production code that can be installed and run by an external system. As a result, the code can be developed locally but also easily runs on an external machine when additional compute power is needed for model training or when additional permissions are required for deployment.</li>
-</ol>
+            <h2 class="blog-post-title">Email</h2>
+            <p><img src="/theme/images/email.png" style="width: 50%" loading="lazy"></p>
             </div>
-    
         </div>
         <div class="col"></div>
     </div>
@@ -103,6 +66,7 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://adamnovotny.com/theme/js/" defer></script>
 </body>
 
 

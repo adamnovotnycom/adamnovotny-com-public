@@ -6,210 +6,175 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
+<lastmod>2025-08-16T18:18:11-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/berkeley-earth-global-temperature-data2.html</loc>
-<lastmod>2021-05-14T00:00:00-05:00</lastmod>
+<lastmod>2021-05-14T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/berkeley-global-temperature-forecast-prophet.html</loc>
-<lastmod>2021-05-16T00:00:00-05:00</lastmod>
+<lastmod>2021-05-16T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/custom-scikit-learn-pipeline.html</loc>
-<lastmod>2021-08-30T00:00:00-05:00</lastmod>
+<lastmod>2021-08-30T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/custom-vpn-using-pivpn-and-public-cloud.html</loc>
-<lastmod>2018-12-30T00:00:00-05:00</lastmod>
+<lastmod>2018-12-30T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/deploying-language-models-with-gradio-on-huggingface.html</loc>
-<lastmod>2023-10-14T00:00:00-05:00</lastmod>
+<lastmod>2023-10-14T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/dynamic-html-with-python-aws-lambda-and-containers.html</loc>
-<lastmod>2021-03-27T00:00:00-05:00</lastmod>
+<lastmod>2021-03-27T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/google-colab-and-auto-sklearn-with-profiling.html</loc>
-<lastmod>2021-03-20T00:00:00-05:00</lastmod>
+<lastmod>2021-03-20T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/google-colab-and-automl-auto-sklearn-setup.html</loc>
-<lastmod>2020-12-04T00:00:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/blog/google-paper-24-7-by-2030.html</loc>
-<lastmod>2020-10-31T00:00:00-05:00</lastmod>
+<lastmod>2020-12-04T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/linear-programming-in-python-cvxopt-and-game-theory.html</loc>
-<lastmod>2017-08-16T00:00:00-05:00</lastmod>
+<lastmod>2017-08-16T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/llm.html</loc>
-<lastmod>2025-04-12T00:00:00-05:00</lastmod>
+<lastmod>2025-04-12T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/lstm-forecast-synthetic-data.html</loc>
-<lastmod>2021-11-13T00:00:00-05:00</lastmod>
+<lastmod>2021-11-13T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/machine-learning-docker-template.html</loc>
-<lastmod>2021-12-18T00:00:00-05:00</lastmod>
+<lastmod>2021-12-18T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/machine-learning-notes.html</loc>
-<lastmod>2025-06-11T00:00:00-05:00</lastmod>
+<lastmod>2025-06-11T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/machine-learning-tutorial-1-preprocessing.html</loc>
-<lastmod>2018-08-05T00:00:00-05:00</lastmod>
+<lastmod>2018-08-05T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/machine-learning-tutorial-2-training.html</loc>
-<lastmod>2018-08-12T00:00:00-05:00</lastmod>
+<lastmod>2018-08-12T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/machine-learning-tutorial-3-evaluation.html</loc>
-<lastmod>2018-08-19T00:00:00-05:00</lastmod>
+<lastmod>2018-08-19T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/machine-learning-tutorial-4-deployment.html</loc>
-<lastmod>2018-09-02T00:00:00-05:00</lastmod>
+<lastmod>2018-09-02T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/serverless-web-apps-with-firebase-and-aws-lambda.html</loc>
-<lastmod>2018-09-09T00:00:00-05:00</lastmod>
+<lastmod>2018-09-09T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/blog/serving-dynamic-web-pages-using-python-and-aws-lambda.html</loc>
-<lastmod>2020-07-25T00:00:00-05:00</lastmod>
+<lastmod>2020-07-25T00:00:00+00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/categories.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
+<lastmod>2025-08-16T18:18:11-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/machine-learning.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
+<lastmod>2025-08-16T18:18:11-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/random.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
+<lastmod>2025-08-16T18:18:11-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/flashcards.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/pages/bookshelf.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/pages/email.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/llm.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://adamnovotny.com/pages/wishlist.html</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
+<lastmod>2025-08-16T18:18:11-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/robots.txt</loc>
-<lastmod>2025-06-14T18:21:33-00:00</lastmod>
+<lastmod>2025-08-16T18:18:11-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>

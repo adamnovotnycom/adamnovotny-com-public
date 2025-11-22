@@ -6,7 +6,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://adamnovotny.com/</loc>
-<lastmod>2025-08-23T17:29:30-00:00</lastmod>
+<lastmod>2025-11-22T16:52:43-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
@@ -145,36 +145,43 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://adamnovotny.com/blog/vs-code-colab.html</loc>
+<lastmod>2025-11-22T00:00:00+00:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://adamnovotny.com/categories.html</loc>
-<lastmod>2025-08-23T17:29:30-00:00</lastmod>
+<lastmod>2025-11-22T16:52:43-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/machine-learning.html</loc>
-<lastmod>2025-08-23T17:29:30-00:00</lastmod>
+<lastmod>2025-11-22T16:52:43-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/category/random.html</loc>
-<lastmod>2025-08-23T17:29:30-00:00</lastmod>
+<lastmod>2025-11-22T16:52:43-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/pages/llm.html</loc>
-<lastmod>2025-08-23T17:29:30-00:00</lastmod>
+<lastmod>2025-11-22T16:52:43-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://adamnovotny.com/robots.txt</loc>
-<lastmod>2025-08-23T17:29:30-00:00</lastmod>
+<lastmod>2025-11-22T16:52:43-00:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>

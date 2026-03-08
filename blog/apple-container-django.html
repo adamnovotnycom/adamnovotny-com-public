@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Adam Novotny">
+    <meta name="description" content="Apple's Container is an open source command-line tool for running Linux containers natively on Apple Silicon Macs. It uses lightweight virtual...">
+    <title>Apple Container Django Apps | ANotes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://adamnovotny.com/theme/images/favicon.png">
+<link rel="canonical" href="https://adamnovotny.com/blog/apple-container-django.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://adamnovotny.com/theme/css/blog.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://adamnovotny.com">
+          <img src="https://adamnovotny.com/theme/images/adamnovotny_logo.png" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Articles
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="https://adamnovotny.com/category/machine-learning.html">Machine Learning <i class="fas fa-laptop fa-md"></i></a></li>
+                <li><a class="dropdown-item" href="https://adamnovotny.com">All articles</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="https://adamnovotny.com/pages/email.html">Email</a></li>
+                <li><a class="dropdown-item" href="https://adamnovotny.com/pages/bookshelf.html">Bookshelf <i class="fas fa-book fa-sm"></i></a></li>
+                <li><a class="dropdown-item" href="https://github.com/adamnovotnycom">Github <i class="fab fa-github fa-md"></i></a></li>
+                <li><a class="dropdown-item" href="https://www.linkedin.com/in/adamnovotnycom">LinkedIn <i class="fab fa-linkedin fa-md"></i></a></li>
+                <li><a class="dropdown-item" href="http://alum.mit.edu/www/ada.novotny">MIT Alum page</i></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      
+
+<main class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-10">
+    
+            <div class="blog-post">
+            <h2 class="blog-post-title">Apple Container Django Apps</h2>
+            <p class="blog-post-meta" >
+                Published: 2026-03-08
+            </p>
+            <p>Apple's <a href="https://github.com/apple/container">Container</a> is an open source command-line tool for running Linux containers natively on Apple Silicon Macs. It uses lightweight virtual machines to provide strong isolation without relying on Docker Desktop. This post walks through how to containerize and run a simple Django app.</p>
+<h2>The Dockerfile</h2>
+<p>Every container starts with a <code>Dockerfile</code>. The slim variant of the official Python 3.14 image to keep the image size small.</p>
+<div class="highlight"><pre><span></span><code>FROM<span class="w"> </span>python:3.14-slim
+
+WORKDIR<span class="w"> </span>/app
+
+COPY<span class="w"> </span>requirements.txt<span class="w"> </span>.
+RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+COPY<span class="w"> </span>.<span class="w"> </span>.
+
+RUN<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data
+
+EXPOSE<span class="w"> </span><span class="m">8000</span>
+
+CMD<span class="w"> </span><span class="o">[</span><span class="s2">&quot;python&quot;</span>,<span class="w"> </span><span class="s2">&quot;manage.py&quot;</span>,<span class="w"> </span><span class="s2">&quot;runserver&quot;</span>,<span class="w"> </span><span class="s2">&quot;0.0.0.0:8000&quot;</span><span class="o">]</span>
+</code></pre></div>
+
+<h2>Running the App with Apple Container</h2>
+<p><strong>Start the container system.</strong> This initializes the Apple Container daemon and the underlying VM infrastructure. You only need to do this once per session.</p>
+<div class="highlight"><pre><span></span><code>container<span class="w"> </span>system<span class="w"> </span>start
+</code></pre></div>
+
+<p><strong>Build the image.</strong> This reads the <code>Dockerfile</code> in the current directory and produces a local image tagged <code>project-name</code>.</p>
+<div class="highlight"><pre><span></span><code>container<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>project-name<span class="w"> </span>.
+</code></pre></div>
+
+<p><strong>Set environment variables.</strong> Django requires a secret key and a few other settings at runtime. We generate a key on the fly using Python's <code>secrets</code> module and <code>DJANGO_ALLOWED_HOSTS</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import secrets; print(secrets.token_urlsafe(50))&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">DJANGO_ALLOWED_HOSTS</span><span class="o">=</span>localhost
+</code></pre></div>
+
+<p><strong>Run the container.</strong> This is the main command. Breaking down the flags:</p>
+<ul>
+<li><code>--name web</code> gives the container a stable name so we can reference it by name later.</li>
+<li><code>-p 0.0.0.0:8000:8000</code> maps port 8000 on the host to port 8000 inside the container, making the app accessible at <code>http://localhost:8000</code>.</li>
+<li><code>-v sqlite_data:/data</code> mounts a named volume at <code>/data</code> so the SQLite database survives container restarts.</li>
+<li><code>-v ./:/app</code> bind-mounts the current project directory into the container, enabling live code reloading without rebuilding the image.</li>
+<li>The <code>-e</code> flags pass the environment variables we set above into the container.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>container<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+--name<span class="w"> </span>web<span class="w"> </span><span class="se">\</span>
+-p<span class="w"> </span><span class="m">0</span>.0.0.0:8000:8000<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>sqlite_data:/data<span class="w"> </span><span class="se">\</span>
+-v<span class="w"> </span>./:/app<span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DJANGO_SECRET_KEY</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">DJANGO_DEBUG</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DJANGO_DEBUG</span><span class="k">:-</span><span class="nv">False</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+-e<span class="w"> </span><span class="nv">DJANGO_ALLOWED_HOSTS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DJANGO_ALLOWED_HOSTS</span><span class="k">:-</span><span class="nv">localhost</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+project-name
+</code></pre></div>
+
+<p><strong>Stop and clean up.</strong> When you are done, stop the running container and remove it. The named volume <code>sqlite_data</code> is preserved, so your database remains intact for the next session.</p>
+<div class="highlight"><pre><span></span><code>container<span class="w"> </span>stop<span class="w"> </span>web<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>container<span class="w"> </span>rm<span class="w"> </span>web
+</code></pre></div>
+
+<p><strong>Shut down the container system.</strong> This stops the underlying VM and frees the associated resources.</p>
+<div class="highlight"><pre><span></span><code>container<span class="w"> </span>system<span class="w"> </span>stop
+</code></pre></div>
+            </div>
+    
+        </div>
+        <div class="col"></div>
+    </div>
+</main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+
+</html>

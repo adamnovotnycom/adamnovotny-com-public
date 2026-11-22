@@ -74,26 +74,26 @@
 <h4>Dataset</h4>
 <p>A synthetic dataset was generated using a scikit-learn regression generator <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1" target="_blank">make_friedman1</a>. The dataset is nonlinear, with noise, and some features are manually scaled to make the deep learning task more challenging. Time series dependence is created by making each label a weighted average of the <i>make_friedman1</i> generated values and previous labels. For details see notebook function <i>generate_data()</i>.</p>
 <p>The image below shows correlations between the generated features and future_label we are trying to forecast. Features x_0 - x_4 are the only informative features as can be verified from the bottom row showing meaningful but not very strong correlations:
-<a href="/theme/images/lstm_oin235no.png"><img src="/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<a href="https://adamnovotny.com/theme/images/lstm_oin235no.png"><img src="https://adamnovotny.com/theme/images/lstm_oin235no.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h4>Model training</h4>
 <p>The model is a simple NN with a single hidden layer defined as 
 <i>keras.layers.LSTM(32)</i>. The generated dataset is split into training, validation, and test sets, each honoring time series nature of the data. Validation set is used to stop training early to prevent overfitting. However, this is not a concern for our synthetic dataset as can be seen from following chart. The validation curve never starts increasing as training epochs continue:
-<a href="/theme/images/lstm_synthetic_data_9827345.png"><img src="/theme/images/lstm_synthetic_data_9827345.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<a href="https://adamnovotny.com/theme/images/lstm_synthetic_data_9827345.png"><img src="https://adamnovotny.com/theme/images/lstm_synthetic_data_9827345.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h4>Model evalution</h4>
 <p>Comparing predictions and actual labels for the validation set shows strong performance even though there are clear optimizations that can be made near extreme values:
-<a href="/theme/images/lstm_synthetic_data_val_q4598.png"><img src="/theme/images/lstm_synthetic_data_val_q4598.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<a href="https://adamnovotny.com/theme/images/lstm_synthetic_data_val_q4598.png"><img src="https://adamnovotny.com/theme/images/lstm_synthetic_data_val_q4598.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <p>However, the validation set was already used during training for early stopping. This is why we set aside a test dataset the model has never seen during training. The test dataset is the only true evaluation of the expected performance of the model and in this case it confirms that the model performs well for the synthetic dataset:
-<a href="/theme/images/lstm_synthetic_data_test_234897f.png"><img src="/theme/images/lstm_synthetic_data_test_234897f.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
+<a href="https://adamnovotny.com/theme/images/lstm_synthetic_data_test_234897f.png"><img src="https://adamnovotny.com/theme/images/lstm_synthetic_data_test_234897f.png" alt="Validation loss" style="width: 100%" loading="lazy"></a></p>
 <h4>Notebook <span id="notebook"></span></h4>
 <ul>
-<li><a href="/blog/lstm-forecast-synthetic-data.html#notebook">embedded in blog post</a></li>
+<li><a href="https://adamnovotny.com/blog/lstm-forecast-synthetic-data.html#notebook">embedded in blog post</a></li>
 <li><a href="https://gist.github.com/adamnovotnycom/36af4c4400a7f970982685472661eba1" target="_blank">as Github Gist</a></li>
 </ul>
 <p><iframe
   title="Keras LSTM Forecasting Using Synthetic Data notebook"
   width="100%"
   height="17000px"
-  src="/theme/documents/lstm_synthetic_data.html">
+  src="https://adamnovotny.com/theme/documents/lstm_synthetic_data.html">
 </iframe>
 </p>
             </div>

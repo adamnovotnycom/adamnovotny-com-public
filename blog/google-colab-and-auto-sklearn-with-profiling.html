@@ -73,7 +73,7 @@
     shuffle=False,
     coef=True
 )</pre>
-<p><a href="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"><img src="/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"></a></p>
+<p><a href="https://adamnovotny.com/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png"><img src="https://adamnovotny.com/theme/images/1*Nv5JrZA6e7M9-K_gPxsspg.jpeg.png" alt="Subset of 100 generated features" style="width: 100%" loading="lazy"></a></p>
 <p>This generates a dataset with 100 numerical features where the first 5 features are informative (these are labeled as “feat_0” to “feat_4”). The rest (“feat_5” to “feat_99”) are random noise. We can see this in the scatter matrix above where only the first 5 features show a correlation with the label.</p>
 <p>We know that this is a simple regression problem which could be solved using a linear regression perfectly. However, knowing what to expect helps us to verify the performance of auto-sklearn which trains its ensemble model using the following steps:</p>
 <pre>import autosklearn.regressionautoml = autosklearn.regression.AutoSklearnRegressor(
@@ -92,7 +92,7 @@ predictions = automl.predict(X_test_transformed)
 r2_score(df_test["label"], predictions)
 >> 0.999</pre>
 <p>A separate pip package <a href="https://github.com/VIDA-NYU/PipelineVis" target="_blank">PipelineProfiler</a> helps us visualize the steps auto-sklearn took to achieve the result:</p>
-<p><a href="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"><img src="/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"></a></p>
+<p><a href="https://adamnovotny.com/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png"><img src="https://adamnovotny.com/theme/images/1*9ZWW9HeGqTjkan4qtd4mDQ.jpeg.png" alt="PipelineProfiler output" style="width: 100%" loading="lazy"></a></p>
 <p>Above we can see the attempts auto-sklearn made to generate the best emsemble of models within the 5 minute constraint I set. The best model found was <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html" target="_blank">Liblinear SVM</a>, which produced R2 of nearly 1.0. As a result, this toy ensemble model gives weight of 1.0 to just one algorithm. Libsvm Svr and Gradient boosting scored between 0.9–0.96.</p>
             </div>
     

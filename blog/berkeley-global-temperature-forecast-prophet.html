@@ -74,14 +74,14 @@ In this article I will leverage the global <a href="https://adamnovotny.com/blog
 <p>
     To review, the temperature dataset covers monthly data since 1850 including 95% confidence intervals (high CI - blue, low CI - red):
 </p>
-<a href="/theme/images/bx08l40tssl2p9wv.png">
-    <img style="width: 100%" loading="lazy"  alt="temperature dataset" src="/theme/images/bx08l40tssl2p9wv.png">
+<a href="https://adamnovotny.com/theme/images/bx08l40tssl2p9wv.png">
+    <img style="width: 100%" loading="lazy"  alt="temperature dataset" src="https://adamnovotny.com/theme/images/bx08l40tssl2p9wv.png">
 </a>
 <p>
     In addition, I will use the CO2 emmissions data from <a href="https://ourworldindata.org/grapher/annual-co2-emissions-per-country?tab=chart&time=1924..latest&country=~OWID_WRL">ourworldindata.org</a>:
 </p>
-<a href="/theme/images/4ob68f4dlgcu1r4z.png">
-    <img style="width: 100%" loading="lazy"  alt="CO2 emissions dataset" src="/theme/images/4ob68f4dlgcu1r4z.png">
+<a href="https://adamnovotny.com/theme/images/4ob68f4dlgcu1r4z.png">
+    <img style="width: 100%" loading="lazy"  alt="CO2 emissions dataset" src="https://adamnovotny.com/theme/images/4ob68f4dlgcu1r4z.png">
 </a>
 </section>
 
@@ -90,8 +90,8 @@ In this article I will leverage the global <a href="https://adamnovotny.com/blog
 <p>
 I will only highlight here how the Prophet API works (specifically when we want include an additional regressor such as CO2). First, we need to format the training dataset such that the label column is <i>y</i> and date is <i>ds</i>
 </p>
-<a href="/theme/images/4na1arghpydyjqu6.png">
-    <img style="width: 100%" loading="lazy"  alt="Prophet training dataset" src="/theme/images/4na1arghpydyjqu6.png">
+<a href="https://adamnovotny.com/theme/images/4na1arghpydyjqu6.png">
+    <img style="width: 100%" loading="lazy"  alt="Prophet training dataset" src="https://adamnovotny.com/theme/images/4na1arghpydyjqu6.png">
 </a>
 <p>
 Next, we train the Prophet model and add the custom regressor (CO2):
@@ -107,14 +107,14 @@ m.fit(prophet_train_set)
 <p>
 Then we need to create a forecast dataset that includes the dates to be forecasted and assumptions for the custom regressor. In the temperature forecasting dataset, I created timestamps for the next 50 years. Last 3 rows of the forecast dataset ("prophet_forecast_set"):
 </p>
-<a href="/theme/images/h12zg3yiwmdk3pa1.png">
-    <img style="width: 100%" loading="lazy"  alt="Prophet forecast dataset" src="/theme/images/h12zg3yiwmdk3pa1.png">
+<a href="https://adamnovotny.com/theme/images/h12zg3yiwmdk3pa1.png">
+    <img style="width: 100%" loading="lazy"  alt="Prophet forecast dataset" src="https://adamnovotny.com/theme/images/h12zg3yiwmdk3pa1.png">
 </a>
 <p>
 In order to create the dataset above, I had to make an assumption about CO2 growth. I assumed that monthly growth over the next 50 years will continue at the same pace as it has between 2000-2020:
 </p>
-<a href="/theme/images/9p5vaqrkoh3u5bgr.png">
-    <img style="width: 100%" loading="lazy"  alt="CO2 growth assumptions" src="/theme/images/9p5vaqrkoh3u5bgr.png">
+<a href="https://adamnovotny.com/theme/images/9p5vaqrkoh3u5bgr.png">
+    <img style="width: 100%" loading="lazy"  alt="CO2 growth assumptions" src="https://adamnovotny.com/theme/images/9p5vaqrkoh3u5bgr.png">
 </a>
 <p>
 In reality, the value of the temperature forecast comes from the data scientist's background knowledge of the field. In this example, in order for the temperature forecast to be valuable, we have to be able to forecast CO2 emissions (and other regressors) with high confidence.
@@ -129,8 +129,8 @@ forecast_prophet.head(5)
 <p>
 Prophet generates valuable confidence intervals for its forecast. These confidence bars are more valuable than the point forecast itself. In the chart below, the point forecast in 2070 is 16.1C. However, the forecast ranges widely from nearly 17C to 15.2C.
 </p>
-<a href="/theme/images/66bdwdd86os7jq45.png">
-    <img style="width: 100%" loading="lazy"  alt="Temperature forecast" src="/theme/images/66bdwdd86os7jq45.png">
+<a href="https://adamnovotny.com/theme/images/66bdwdd86os7jq45.png">
+    <img style="width: 100%" loading="lazy"  alt="Temperature forecast" src="https://adamnovotny.com/theme/images/66bdwdd86os7jq45.png">
 </a>
 </section>
 
@@ -142,14 +142,14 @@ The step that many people doing forecasts "conveniently" skip is validation. In 
 <p>
 Let's assume that we are standing in 1970, and we apply the exact same methodology as above to forecast the next 50 years (so we are forecasting 1970-2020). What would the forecasting graphs look like compared to the reality we've already experienced? First, our hypothetical CO2 assumption would match reality reasonably nicely:
 </p>
-<a href="/theme/images/4npp2fdw5x5cinm3.png">
-    <img style="width: 100%" loading="lazy"  alt="Hypothetical CO2 forecast since 1970" src="/theme/images/4npp2fdw5x5cinm3.png">
+<a href="https://adamnovotny.com/theme/images/4npp2fdw5x5cinm3.png">
+    <img style="width: 100%" loading="lazy"  alt="Hypothetical CO2 forecast since 1970" src="https://adamnovotny.com/theme/images/4npp2fdw5x5cinm3.png">
 </a>
 <p>
 However, our temperature point forecast would underestimate reality. Our forecast is still within confidence intervals because it nearly perfectly aligns with the upper bound. However, the behavior of the forecast doesn't appear to reflect the upward slope we've experienced historically:
 </p>
-<a href="/theme/images/b74bpz4kt579ecxe.png">
-    <img style="width: 100%" loading="lazy"  alt="Hypothetical temperature forecast since 1970" src="/theme/images/b74bpz4kt579ecxe.png">
+<a href="https://adamnovotny.com/theme/images/b74bpz4kt579ecxe.png">
+    <img style="width: 100%" loading="lazy"  alt="Hypothetical temperature forecast since 1970" src="https://adamnovotny.com/theme/images/b74bpz4kt579ecxe.png">
 </a>
 <p>
 This is an example of why confidence intervals are more important than point estimates. Also, it reflects how important it is to be intellectually honest when forecasting and performing historical validation. The takeaway here might be that we are missing additional regressors to be able to properly forecast the temperature physical process.
